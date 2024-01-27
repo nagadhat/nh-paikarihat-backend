@@ -7,6 +7,7 @@ use App\Http\Controllers\Courier\CourierController;
 use App\Http\Controllers\Courier\UserCourierController;
 use App\Http\Controllers\Dashboard\AdminDashboard;
 use App\Http\Controllers\Dashboard\CustomerDashboard;
+use App\Http\Controllers\FrontEnd\AuthController;
 use App\Http\Controllers\Package\PackageController;
 use App\Http\Controllers\Pos\PosCartController;
 use App\Http\Controllers\Product\BrandController;
@@ -57,6 +58,10 @@ Route::domain('{shop}.' . env('APP_URL'))->group(function () {
     //  home page
     Route::get('/{slug}', [ShopController::class, 'index'])->name('user_shop');
 });
+
+
+// front-end auth routes
+Route::get('/login', [AuthController::class, 'login'])->name('customer_login');
 
 
 Route::get('/', [HomeController::class, 'homePage'])->name('home_page');

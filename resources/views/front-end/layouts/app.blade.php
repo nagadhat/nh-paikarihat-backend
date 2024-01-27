@@ -174,10 +174,11 @@
                                 <a href="{{ route('home_page') }}"><span class="links-text">HOME</span></a>
                             </li>
 
-                            {{-- <li class="menu-item top-menu-item top-menu-item-2">
-                                <a href="indexe223.html?route=account/login"><span class="links-text">MY
-                                        ACCOUNT</span></a>
-                            </li> --}}
+                            <li class="menu-item top-menu-item top-menu-item-2">
+                                <a href="{{ route('customer_login') }}">
+                                    <span class="links-text">MY ACCOUNT</span>
+                                </a>
+                            </li>
 
                             <li class="menu-item top-menu-item top-menu-item-6">
                                 <a href="tel:+8801917612791"><span class="links-text">HOTLINE : 09647 444 444</span></a>

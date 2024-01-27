@@ -11,4 +11,8 @@ class AuthController extends Controller
     {
         return view('front-end.auth.login');
     }
+    public function register()
+    {
+        return view('front-end.auth.register');
+    }
 }

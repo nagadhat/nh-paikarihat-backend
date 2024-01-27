@@ -4,11 +4,11 @@
 @extends('front-end.layouts.app')
 @section('page_content')
     <div id="account-login" class="container">
-        <ul class="breadcrumb qc-breadcrumb" style="padding: 8px">
-            <li><a href="javascript:void(0)"><i class="fa fa-home"></i> </a></li>
-            <li><a href="javascript:void(0)"><b style="font-size: 20px">Login
-            </b> </a></li>
-        </ul>
+        <ul class="breadcrumb">
+            <li><a href="{{ route('home_page') }}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{{ route('customer_login') }}">Account</a></li>
+            <li><a href="javascript:void(0)">Login</a></li>
+          </ul>
         <div class="row">
             <div id="content" class="col-sm-9">
                 <h1 class="title page-title">Account Login</h1>
@@ -21,7 +21,7 @@
                                 and keep track of the orders you have previously made.</p>
                             <div class="buttons">
                                 <div class="pull-right">
-                                    <a href="https://careforbd.com/index.php?route=account/register"
+                                    <a href="{{ route('customer_register') }}"
                                         class="btn btn-primary">Continue</a>
                                 </div>
                             </div>

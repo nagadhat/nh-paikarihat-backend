@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->string('username');
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('password');
             $table->longText('address')->nullable();
             $table->string('nid_number')->nullable();

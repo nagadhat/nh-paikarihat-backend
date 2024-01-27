@@ -63,6 +63,7 @@ Route::domain('{shop}.' . env('APP_URL'))->group(function () {
 // front-end auth routes
 Route::get('/customer-login', [AuthController::class, 'login'])->name('customer_login');
 Route::get('/customer-register', [AuthController::class, 'register'])->name('customer_register');
+Route::post('/customer-registered', [AuthController::class, 'registeredUser'])->name('customer_registered');
 
 
 Route::get('/', [HomeController::class, 'homePage'])->name('home_page');

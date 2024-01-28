@@ -66,11 +66,14 @@ Route::get('/customer-login', [AuthController::class, 'login'])->name('customer_
 Route::get('/customer-register', [AuthController::class, 'register'])->name('customer_register');
 Route::post('/customer-registered', [AuthController::class, 'registeredUser'])->name('customer_registered');
 Route::post('/login-customer', [AuthController::class, 'loginCustomer'])->name('login_customer');
+Route::get('/customer-logout', [AuthController::class, 'logoutCustomer'])->name('customer_logout');
 
 
 Route::prefix('/customer')->middleware('customer')->group(function () {
     Route::get('/', [CustomerDashboardController::class, 'customerDashboard'])->name('customer_dashboard');
 });
+
+
 
 
 

@@ -68,7 +68,7 @@ Route::post('/customer-registered', [AuthController::class, 'registeredUser'])->
 Route::post('/login-customer', [AuthController::class, 'loginCustomer'])->name('login_customer');
 
 
-Route::prefix('/customer')->middleware('Customer')->group(function () {
+Route::prefix('/customer')->middleware('customer')->group(function () {
     Route::get('/', [CustomerDashboardController::class, 'customerDashboard'])->name('customer_dashboard');
 });
 

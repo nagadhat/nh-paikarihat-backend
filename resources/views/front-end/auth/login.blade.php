@@ -36,7 +36,7 @@
                                 <div class="form-group">
                                     <label class="control-label" for="input-phone">Phone</label>
                                     <input type="text" name="phone" value="" placeholder="Enter Phone Number"
-                                        id="input-phone" class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }} " value="{{ old('phone') }}">
+                                        id="input-phone" class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }} " value="{{ old('phone') }}" required>
                                         @if ($errors->has('phone'))
                                         <div class="alert alert-danger col-md-12 " style="margin-top:10px">
                                             {{ $errors->first('phone') }}
@@ -47,7 +47,7 @@
                                     <label class="control-label" for="input-password">Password</label>
                                     <input type="password" name="password" value="" placeholder="Password"
                                         id="input-password"
-                                        class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" >
+                                        class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" required>
                                     @if ($errors->has('password'))
                                         <div class="alert alert-danger col-md-12 " style="margin-top:10px">
                                             {{ $errors->first('password') }}

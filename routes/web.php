@@ -65,7 +65,7 @@ Route::domain('{shop}.' . env('APP_URL'))->group(function () {
 Route::get('/customer-login', [AuthController::class, 'login'])->name('customer_login');
 Route::get('/customer-register', [AuthController::class, 'register'])->name('customer_register');
 Route::post('/customer-registered', [AuthController::class, 'registeredUser'])->name('customer_registered');
-
+Route::post('/login-customer', [AuthController::class, 'loginCustomer'])->name('login_customer');
 Route::get('/customer-dashboard', [CustomerDashboardController::class, 'customerDashboard'])->name('customer_dashboard');
 
 Route::get('/', [HomeController::class, 'homePage'])->name('home_page');

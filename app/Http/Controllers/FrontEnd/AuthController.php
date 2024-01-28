@@ -8,6 +8,7 @@ use App\Http\Requests\StoreRegisterRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
@@ -41,7 +42,10 @@ class AuthController extends Controller
         $customerAuth = $request->only('phone','password');
         if (Auth::attempt($customerAuth,true)) {
             $request->session()->regenerate();
-            return redirect()->route('dashboard');
+            return redirect()->route('customer_dashboard');
+        }else {
+            Alert::error("Invalid Phone & Password");
+            return redirect()->back();
         }
     }
 

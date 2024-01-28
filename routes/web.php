@@ -8,6 +8,7 @@ use App\Http\Controllers\Courier\UserCourierController;
 use App\Http\Controllers\Dashboard\AdminDashboard;
 use App\Http\Controllers\Dashboard\CustomerDashboard;
 use App\Http\Controllers\FrontEnd\AuthController;
+use App\Http\Controllers\FrontEnd\CustomerDashboardController;
 use App\Http\Controllers\Package\PackageController;
 use App\Http\Controllers\Pos\PosCartController;
 use App\Http\Controllers\Product\BrandController;
@@ -65,6 +66,7 @@ Route::get('/customer-login', [AuthController::class, 'login'])->name('customer_
 Route::get('/customer-register', [AuthController::class, 'register'])->name('customer_register');
 Route::post('/customer-registered', [AuthController::class, 'registeredUser'])->name('customer_registered');
 
+Route::get('/customer-dashboard', [CustomerDashboardController::class, 'customerDashboard'])->name('customer_dashboard');
 
 Route::get('/', [HomeController::class, 'homePage'])->name('home_page');
 Route::get('/product-details/{slug}', [ProductDetialsController::class, 'productDetails'])->name('product_details');

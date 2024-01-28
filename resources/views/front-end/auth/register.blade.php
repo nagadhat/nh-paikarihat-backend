@@ -2,23 +2,8 @@
     $title = 'Register';
 @endphp
 @extends('front-end.layouts.app')
-@section('styles')
-    <style>
-        input::-webkit-input-placeholder {
-            color: #ffffff;
-        }
-
-        input:-moz-placeholder {
-            color: #ffffff;
-        }
-
-        input::-ms-input-placeholder {
-            color: #ffffff;
-        }
-    </style>
-@endsection
 @section('page_content')
-    <div class="site-wrapper">
+    <div class="site-wrapper" style="padding-bottom:50px">
         <ul class="breadcrumb">
             <li><a href="{{ route('home_page') }}"><i class="fa fa-home"></i></a></li>
             <li><a href="{{ route('customer_login') }}">Account</a></li>

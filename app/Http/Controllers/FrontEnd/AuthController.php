@@ -12,41 +12,51 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
+    // Customer Login Page
     public function login()
     {
         return view('front-end.auth.login');
     }
+
+    // Customer Register Page
     public function register()
     {
         return view('front-end.auth.register');
     }
+
     // Store Register Customer Information
-    public function registeredUser(StoreRegisterRequest $request) {
+    public function registeredUser(StoreRegisterRequest $request)
+    {
         $request->validated();
         $user = new User();
-        $user->username   = $request->phone;
-        $user->name       = $request->firstname . ' ' . $request->lastname ;
-        $user->phone      = $request->phone;
-        $user->email      = $request->email;
-        $user->password   = bcrypt($request->password);
-        $res =$user->save();
+        $user->username    = $request->phone;
+        $user->name        = $request->firstname . ' ' . $request->lastname;
+        $user->phone       = $request->phone;
+        $user->email       = $request->email;
+        $user->password    = bcrypt($request->password);
+        $user->user_type   = 'customer';
+        $res = $user->save();
         if ($res) {
-           return redirect()->back()->with('success','you have registared successfuly!!');
+            Alert::success("Registared Successfuly!!");
+            return redirect()->route('customer_login');
         } else {
-            return redirect()->back()->with('fail','Something Wrong');
-        }
-    }
-//  Resgister User Login
-    public function loginCustomer(StoreLoginRequest $request) {
-        $request->validated();
-        $customerAuth = $request->only('phone','password');
-        if (Auth::attempt($customerAuth,true)) {
-            $request->session()->regenerate();
-            return redirect()->route('customer_dashboard');
-        }else {
-            Alert::error("Invalid Phone & Password");
+            Alert::error("Somthing Wrong!!");
             return redirect()->back();
         }
     }
 
+    //  Resgister User Login
+    public function loginCustomer(StoreLoginRequest $request)
+    {
+        $request->validated();
+        $customerAuth = $request->only('phone', 'password');
+        if (Auth::attempt($customerAuth, true)) {
+            $request->session()->regenerate();
+            Alert::success("Logging Successfuly!!");
+            return redirect()->route('customer_dashboard');
+        } else {
+            Alert::error("Invalid Phone & Password");
+            return redirect()->back();
+        }
+    }
 }

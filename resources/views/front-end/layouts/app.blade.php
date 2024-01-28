@@ -15,11 +15,11 @@
      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
      <meta name="description"
          content="Paikarihat Bangladesh Ltd is your ultimate online shopping destination in Dhaka and across Bangladesh, offering a vast selection of over 1 million products. With our extensive range, we bring convenience and variety right to your fingertips. Whether you're in Dhaka or anywhere else in Bangladesh, we've got you covered with our multiple outlets conveniently located across the country.">
- 
+
      {{-- og meta --}}
      <meta property="og:type" content="website">
      <meta property="og:url" content="{{ url()->current() }}">
- 
+
      @if (isset($product))
          <meta property="og:title" content="{{ $product['title'] }}">
          <meta property="og:description"
@@ -33,11 +33,11 @@
          <meta property="og:image" content="https://nagadhat.com.bd/web-files/og-meta.png">
      @endif
      {{-- /og meta --}}
- 
+
      {{-- facebook domain verification --}}
      <meta name="facebook-domain-verification" content="f5xejsz6newphrvysr0zhll2lyidpf" />
      {{-- end facebook domain verification --}}
- 
+
      <!-- Meta Pixel Code -->
      <script>
          ! function(f, b, e, v, n, t, s) {
@@ -64,7 +64,7 @@
      <noscript><img height="1" width="1" style="display:none"
              src="https://www.facebook.com/tr?id=599565935644837&ev=PageView&noscript=1" /></noscript>
      <!-- End Meta Pixel Code -->
- 
+
      <!-- Google Tag Manager -->
      <script>
          (function(w, d, s, l, i) {
@@ -98,7 +98,7 @@
     <meta property="og:image:width" content="600" />
     <meta property="og:image:height" content="315" />
     <meta property="og:description" content="Paikarihat - Online shopping in Bangladesh" />
-    
+
 
 
     <script src="{{ asset('front-end/assets/javascript/header.js') }}"></script>
@@ -169,30 +169,40 @@
             <div class="header header-classic header-lg">
                 <div class="top-bar navbar-nav">
                     <div class="top-menu top-menu-13">
-                        <ul class="j-menu">
-                            <li class="menu-item top-menu-item top-menu-item-1">
-                                <a href="{{ route('home_page') }}"><span class="links-text">HOME</span></a>
-                            </li>
-
-                            <li class="menu-item top-menu-item top-menu-item-2">
-                                <a href="{{ route('customer_login') }}">
-                                    <span class="links-text">MY ACCOUNT</span>
-                                </a>
-                            </li>
-
-                            <li class="menu-item top-menu-item top-menu-item-6">
-                                <a href="tel:+8801917612791"><span class="links-text">HOTLINE : 09647 444 444</span></a>
-                            </li>
-
-                        </ul>
+                        @if (Route::has('customer_login'))
+                            @auth
+                                <ul class="j-menu">
+                                    <li class="menu-item top-menu-item top-menu-item-1">
+                                        <a href="{{ route('customer_dashboard') }}"><span class="links-text">Account</span></a>
+                                    </li>
+                                    <li class="menu-item top-menu-item top-menu-item-2">
+                                        <a href="{{ route('customer_logout') }}">
+                                            <span class="links-text">Logout</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            @else
+                                <ul class="j-menu">
+                                    <li class="menu-item top-menu-item top-menu-item-1">
+                                        <a href="{{ route('home_page') }}"><span class="links-text">HOME</span></a>
+                                    </li>
+                                    <li class="menu-item top-menu-item top-menu-item-2">
+                                        <a href="{{ route('customer_login') }}">
+                                            <span class="links-text">MY ACCOUNT</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item top-menu-item top-menu-item-6">
+                                        <a href="tel:09647 444 444"><span class="links-text">HOTLINE : 09647 444 444</span></a>
+                                    </li>
+                                </ul>
+                            @endauth
+                        @endif
                     </div>
 
                     <div class="language-currency top-menu">
                         <div class="desktop-language-wrapper">
-
                         </div>
                         <div class="desktop-currency-wrapper">
-
                         </div>
                     </div>
                     <div class="third-menu"></div>
@@ -218,7 +228,6 @@
                                         <button type="submit" class="search-button"></button>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
@@ -251,26 +260,37 @@
                 <div class="mobile-top-bar">
                     <div class="mobile-top-menu-wrapper">
                         <div class="top-menu top-menu-13">
-                            <ul class="j-menu">
-                                <li class="menu-item top-menu-item top-menu-item-1">
-                                    <a href="{{ route('home_page') }}"><span class="links-text">HOME</span></a>
-                                </li>
-
-                                {{-- <li class="menu-item top-menu-item top-menu-item-2">
-                                    <a href="indexe223.html?route=account/login"><span class="links-text">MY
-                                            ACCOUNT</span></a>
-                                </li> --}}
-
-                                <li class="menu-item top-menu-item top-menu-item-6">
-                                    <a href="tel:+8801917612791"><span class="links-text">HOTLINE :
-                                        09647 444 444</span></a>
-                                </li>
-                            </ul>
+                            @if (Route::has('customer_login'))
+                                @auth
+                                    <ul class="j-menu">
+                                        <li class="menu-item top-menu-item top-menu-item-2">
+                                            <a href="{{ route('customer_dashboard') }}"><span class="links-text">
+                                                    Account</span></a>
+                                        </li>
+                                        <li class="menu-item top-menu-item top-menu-item-1">
+                                            <a href="{{ route('customer_logout') }}"><span class="links-text">Logout</span></a>
+                                        </li>
+                                    </ul>
+                                @else
+                                    <ul class="j-menu">
+                                        <li class="menu-item top-menu-item top-menu-item-1">
+                                            <a href="{{ route('home_page') }}"><span class="links-text">HOME</span></a>
+                                        </li>
+                                        <li class="menu-item top-menu-item top-menu-item-2">
+                                            <a href="{{ route('customer_login') }}"><span class="links-text">MY
+                                                    ACCOUNT</span></a>
+                                        </li>
+                                        <li class="menu-item top-menu-item top-menu-item-6">
+                                            <a href="tel:09647 444 444"><span class="links-text">HOTLINE :
+                                                09647 444 444</span></a>
+                                        </li>
+                                    </ul>
+                                @endauth
+                            @endif
                         </div>
                     </div>
                     <div class="language-currency top-menu">
                         <div class="mobile-currency-wrapper">
-
                         </div>
                         <div class="mobile-language-wrapper">
                         </div>
@@ -353,7 +373,7 @@
                                     <div class="links-menu links-menu-77">
                                         <ul class="module-body">
                                             <li class="menu-item links-menu-item links-menu-item-1">
-                                                <a href="https://cyberbroz.com/">
+                                                <a href="javascript:void(0)">
                                                     <span class="links-text">ওয়েবসাইট তৈরি করেছে Global Fast Coder</span>
                                                 </a>
                                             </li>
@@ -382,7 +402,7 @@
             <script src="{{ asset('front-end/assets/javascript/script.js') }}" type="text/javascript"></script>
             <script src="{{ asset('front-end/sweetalert2/sweetalert2.all.min.js') }}"></script>
             @include('sweetalert::alert')
-            
+
 
         <!-- Google Tag Manager (noscript) -->
         <noscript>

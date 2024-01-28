@@ -21,8 +21,7 @@
                                 and keep track of the orders you have previously made.</p>
                             <div class="buttons">
                                 <div class="pull-right">
-                                    <a href="{{ route('customer_register') }}"
-                                        class="btn btn-primary">Continue</a>
+                                    <a href="{{ route('customer_register') }}" class="btn btn-primary">Continue</a>
                                 </div>
                             </div>
                         </div>
@@ -31,19 +30,32 @@
                         <div class="well">
                             <h2 class="title" style="margin-bottom: 15px;">Returning Customer</h2>
                             <p><strong>I am a returning customer</strong></p>
-                            <form action="https://careforbd.com/index.php?route=account/login" method="post"
-                                enctype="multipart/form-data" class="form-horizontal login-form">
+                            <form action="{{ route('login_customer') }}" method="post" enctype="multipart/form-data"
+                                class="form-horizontal login-form">
+                                @csrf
                                 <div class="form-group">
-                                    <label class="control-label" for="input-email">Username</label>
-                                    <input type="text" name="email" value="" placeholder="E-Mail Address"
-                                        id="input-email" class="form-control">
+                                    <label class="control-label" for="input-phone">Phone</label>
+                                    <input type="text" name="phone" value="" placeholder="Enter Phone Number"
+                                        id="input-phone" class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }} " value="{{ old('phone') }}">
+                                        @if ($errors->has('phone'))
+                                        <div class="alert alert-danger col-md-12 " style="margin-top:10px">
+                                            {{ $errors->first('phone') }}
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" for="input-password">Password</label>
                                     <input type="password" name="password" value="" placeholder="Password"
-                                        id="input-password" class="form-control">
-                                    <div><a href="https://careforbd.com/index.php?route=account/forgotten"
-                                            target="_top">Forgotten Password</a></div>
+                                        id="input-password"
+                                        class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" >
+                                    @if ($errors->has('password'))
+                                        <div class="alert alert-danger col-md-12 " style="margin-top:10px">
+                                            {{ $errors->first('password') }}
+                                        </div>
+                                    @endif
+                                    <div>
+                                        <a href="#" target="_top">Forgotten Password</a>
+                                    </div>
                                 </div>
                                 <div class="buttons">
                                     <div class="pull-right">

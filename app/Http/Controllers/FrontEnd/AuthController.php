@@ -59,4 +59,10 @@ class AuthController extends Controller
             return redirect()->back();
         }
     }
+
+    //  Function to logout Customer
+    public function logoutCustomer() {
+        Auth::logout();
+        return to_route('home_page');
+    }
 }

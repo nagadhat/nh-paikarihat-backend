@@ -61,7 +61,8 @@ class AuthController extends Controller
     }
 
     //  Function to logout Customer
-    public function logoutCustomer() {
+    public function logoutCustomer()
+    {
         Auth::logout();
         return to_route('home_page');
     }
@@ -69,6 +70,28 @@ class AuthController extends Controller
     // function to profile update
     public function profileUpdate()
     {
-        return view('front-end.auth.customer-profile-update');
+        $user = User::find(auth()->id());
+        return view('front-end.auth.customer-profile-update', compact('user'));
+    }
+
+    public function profileSave(Request $request)
+    {
+        $user = User::find(auth()->id());
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+        ]);
+
+        if ($user) {
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'address' => $request->address,
+            ]);
+        }
+        
+        Alert::success('Profile Update Successfuly');
+        return redirect()->back();
     }
 }

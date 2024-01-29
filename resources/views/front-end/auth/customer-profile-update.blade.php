@@ -12,36 +12,37 @@
         <div class="row">
             <div id="content" class="col-sm-9">
                 <h1 class="title page-title">My Account Information</h1>
-                <form action="#" method="post" enctype="multipart/form-data"
+                <form action="{{ route('customer_profile_update_save') }}" method="post" enctype="multipart/form-data"
                     class="form-horizontal">
+                    @csrf
                     <div id="account">
                         <legend>Your Personal Details</legend>
                         <div class="form-group required account-firstname">
-                            <label class="col-sm-2 control-label" for="input-firstname">First Name </label>
+                            <label class="col-sm-2 control-label" for="input-firstname">Name </label>
                             <div class="col-sm-10">
-                                <input type="text" name="firstname" value="Akash" placeholder="First Name"
-                                    id="input-firstname" class="form-control">
+                                <input type="text" name="name" value="{{ $user->name }}" placeholder="First Name"
+                                    id="input-firstname" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group required account-lastname">
-                            <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
+                            <label class="col-sm-2 control-label" for="input-lastname">Address</label>
                             <div class="col-sm-10">
-                                <input type="text" name="lastname" value="Hossen" placeholder="Last Name"
-                                    id="input-lastname" class="form-control">
+                                <input type="text" name="address" value="{{ $user->address }}" placeholder="Last Name"
+                                    id="input-lastname" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group required account-email">
                             <label class="col-sm-2 control-label" for="input-email">E-Mail</label>
                             <div class="col-sm-10">
-                                <input type="email" name="email" value="akashlog402@gmail.com" placeholder="E-Mail"
-                                    id="input-email" class="form-control">
+                                <input type="email" name="email" value="{{ $user->email }}" placeholder="E-Mail"
+                                    id="input-email" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group required account-telephone">
                             <label class="col-sm-2 control-label" for="input-telephone">Telephone</label>
                             <div class="col-sm-10">
-                                <input type="tel" name="telephone" value="01794971951" placeholder="Telephone"
-                                    id="input-telephone" class="form-control">
+                                <input type="tel" name="telephone" value="{{ $user->phone }}" placeholder="Telephone"
+                                    id="input-telephone" class="form-control" readonly>
                             </div>
                         </div>
                     </div>

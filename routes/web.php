@@ -71,11 +71,9 @@ Route::get('/customer-logout', [AuthController::class, 'logoutCustomer'])->name(
 // customer routes
 Route::prefix('/customer')->middleware('customer')->group(function () {
     Route::get('/', [CustomerDashboardController::class, 'customerDashboard'])->name('customer_dashboard');
-    Route::match(['get', 'post'], '/customer-profile-update', [AuthController::class, 'profileUpdate'])->name('customer_profile_update');
+    Route::get('/customer-profile-update', [AuthController::class, 'profileUpdate'])->name('customer_profile_update');
+    Route::post('/customer-profile-update-save', [AuthController::class, 'profileSave'])->name('customer_profile_update_save');
 });
-
-
-
 
 
 Route::get('/', [HomeController::class, 'homePage'])->name('home_page');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLoginRequest;
 use App\Http\Requests\StoreRegisterRequest;
+use App\Http\Requests\UpdateCustomerProfileRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -74,23 +75,18 @@ class AuthController extends Controller
         return view('front-end.auth.customer-profile-update', compact('user'));
     }
 
-    public function profileSave(Request $request)
+    // function to profile update Save
+    public function profileSave(UpdateCustomerProfileRequest $request)
     {
         $user = User::find(auth()->id());
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'address' => 'required',
-        ]);
-
+        $request->validated();
         if ($user) {
             $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
+                'name'    => $request->name,
+                'email'   => $request->email,
                 'address' => $request->address,
             ]);
         }
-        
         Alert::success('Profile Update Successfuly');
         return redirect()->back();
     }

@@ -75,6 +75,8 @@ Route::prefix('/customer')->middleware('customer')->group(function () {
 
 
 
+
+
 Route::get('/', [HomeController::class, 'homePage'])->name('home_page');
 Route::get('/product-details/{slug}', [ProductDetialsController::class, 'productDetails'])->name('product_details');
 Route::get('/checkout-details/{checkout}', [OrderDetailsController::class, 'checkoutDetails'])->name('checkout_details');

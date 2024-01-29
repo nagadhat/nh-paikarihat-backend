@@ -17,7 +17,7 @@
                             <a href="{{ route('customer_profile_update') }}">Edit your account information</a>
                         </li>
                         <li class="edit-pass">
-                            <a href="javascript:void(0)">Change your password</a>
+                            <a href="{{ route('customer_password') }}">Change your password</a>
                         </li>
                         <li class="edit-address">
                             <a href="javascript:void(0)">Modify your

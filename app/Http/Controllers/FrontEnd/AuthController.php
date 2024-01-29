@@ -90,4 +90,9 @@ class AuthController extends Controller
         Alert::success('Profile Update Successfuly');
         return redirect()->back();
     }
+
+    public function customerPassword()
+    {
+        return view('front-end.auth.customer-password-change');
+    }
 }

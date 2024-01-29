@@ -1,5 +1,5 @@
 @php
-    $title = 'PasswordUpdate';
+    $title = 'profileupdate';
 @endphp
 @extends('front-end.layouts.app')
 @section('page_content')

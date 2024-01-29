@@ -11,23 +11,31 @@
     <div id="account-password" class="container">
         <div class="row">
             <div id="content" class="col-sm-9">
-                <h1 class="title page-title">Change Password</h1>
+                <h1 class="title page-title" style="color: #000;margin:30px 0 15px 0;">Change Password</h1>
 
-                <form action="#" method="post"
+                <form action="{{ route('customer_password_update') }}" method="post"
                     enctype="multipart/form-data" class="form-horizontal">
+                    @csrf
                     <fieldset>
                         <legend>Your Password</legend>
                         <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-password">Password</label>
+                            <label class="col-sm-2 control-label" for="input-password">Current Password</label>
                             <div class="col-sm-10">
-                                <input type="password" name="password" value="" placeholder="Password"
+                                <input type="password" name="current_password" value="" placeholder="Password"
                                     id="input-password" class="form-control">
                             </div>
                         </div>
                         <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-confirm">Password Confirm</label>
+                            <label class="col-sm-2 control-label" for="input-password">New Password</label>
                             <div class="col-sm-10">
-                                <input type="password" name="confirm" value="" placeholder="Password Confirm"
+                                <input type="password" name="new_password" value="" placeholder="Password"
+                                    id="input-password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-confirm">Confirm Password </label>
+                            <div class="col-sm-10">
+                                <input type="password" name="new_password_confirmation" value="" placeholder="Password Confirm"
                                     id="input-confirm" class="form-control">
                             </div>
                         </div>

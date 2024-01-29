@@ -74,6 +74,7 @@ Route::prefix('/customer')->middleware('customer')->group(function () {
     Route::get('/customer-profile-update', [AuthController::class, 'profileUpdate'])->name('customer_profile_update');
     Route::post('/customer-profile-update-save', [AuthController::class, 'profileSave'])->name('customer_profile_update_save');
     Route::get('/customer-password-change', [AuthController::class, 'customerPassword'])->name('customer_password');
+    Route::post('/customer-password-update', [AuthController::class, 'customerPasswordUpdate'])->name('customer_password_update');
 });
 
 

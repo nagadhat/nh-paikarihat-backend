@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateCustomerProfileRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
@@ -91,8 +92,29 @@ class AuthController extends Controller
         return redirect()->back();
     }
 
+    // function to Customer Password
     public function customerPassword()
     {
         return view('front-end.auth.customer-password-change');
+    }
+
+    // function to Customer Password Update
+    public function customerPasswordUpdate(Request $request)
+    {
+        $user = User::findOrFail(auth()->id());
+        if (!Hash::check($request->input('current_password'), $user->password)) {
+            Alert::error('Current Password Did Not Matched');
+            return redirect()->back();
+        }
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:8|confirmed|different:current_password',
+        ]);
+
+        $user->update([
+            'password' => bcrypt($request->new_password)
+        ]);
+        Alert::success('Password Update Successfuly!!!');
+        return redirect()->back();
     }
 }

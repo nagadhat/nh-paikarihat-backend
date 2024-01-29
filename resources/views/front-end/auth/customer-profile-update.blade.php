@@ -11,7 +11,7 @@
         </ul>
         <div class="row">
             <div id="content" class="col-sm-9">
-                <h1 class="title page-title">My Account Information</h1>
+                <h1 class="title page-title" style="color: #000; margin:30px 0 15px 0;">My Account Information</h1>
                 <form action="{{ route('customer_profile_update_save') }}" method="post" enctype="multipart/form-data"
                     class="form-horizontal">
                     @csrf

@@ -25,6 +25,9 @@
                         <li class="edit-wishlist">
                             <a href="javascript:void(0)">Modify your wish list</a>
                         </li>
+                        <li class="logout-icon">
+                            <a href="{{ route('customer_logout') }}">Logout</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="my-orders">

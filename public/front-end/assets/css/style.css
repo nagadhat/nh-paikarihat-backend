@@ -15570,6 +15570,10 @@ select.form-control::placeholder {
   color: rgba(105, 105, 115, 1);
   margin: 0
 }
+.account-list>li.logout-icon>a::before {
+    content: '\f08b' !important;
+    font-family: icomoon !important;
+}
 
 .account-list .edit-info {
   display: flex

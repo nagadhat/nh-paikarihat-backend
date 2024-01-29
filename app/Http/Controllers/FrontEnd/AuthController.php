@@ -65,4 +65,10 @@ class AuthController extends Controller
         Auth::logout();
         return to_route('home_page');
     }
+
+    // function to profile update
+    public function profileUpdate()
+    {
+        return view('front-end.auth.customer-profile-update');
+    }
 }

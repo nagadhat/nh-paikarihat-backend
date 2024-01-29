@@ -71,6 +71,7 @@ Route::get('/customer-logout', [AuthController::class, 'logoutCustomer'])->name(
 // customer routes
 Route::prefix('/customer')->middleware('customer')->group(function () {
     Route::get('/', [CustomerDashboardController::class, 'customerDashboard'])->name('customer_dashboard');
+    Route::match(['get', 'post'], '/customer-profile-update', [AuthController::class, 'profileUpdate'])->name('customer_profile_update');
 });
 
 

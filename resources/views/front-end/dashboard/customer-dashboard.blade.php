@@ -14,7 +14,7 @@
                 <div class="my-account">
                     <ul class="list-unstyled account-list" style="padding-bottom: 30px;">
                         <li class="edit-info">
-                            <a href="javascript:void(0)">Edit your account information</a>
+                            <a href="{{ route('customer_profile_update') }}">Edit your account information</a>
                         </li>
                         <li class="edit-pass">
                             <a href="javascript:void(0)">Change your password</a>

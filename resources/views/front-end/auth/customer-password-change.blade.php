@@ -13,8 +13,8 @@
             <div id="content" class="col-sm-9">
                 <h1 class="title page-title" style="color: #000;margin:30px 0 15px 0;">Change Password</h1>
 
-                <form action="{{ route('customer_password_update') }}" method="post"
-                    enctype="multipart/form-data" class="form-horizontal">
+                <form action="{{ route('customer_password_update') }}" method="post" enctype="multipart/form-data"
+                    class="form-horizontal">
                     @csrf
                     <fieldset>
                         <legend>Your Password</legend>
@@ -24,6 +24,11 @@
                                 <input type="password" name="current_password" value="" placeholder="Password"
                                     id="input-password" class="form-control">
                             </div>
+                            <div style="margin-top:10px;width:100%">
+                                @error('current_password')
+                                    <div class="alert alert-danger" style="width:60%">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                         <div class="form-group required">
                             <label class="col-sm-2 control-label" for="input-password">New Password</label>
@@ -31,12 +36,22 @@
                                 <input type="password" name="new_password" value="" placeholder="Password"
                                     id="input-password" class="form-control">
                             </div>
+                            <div style="margin-top:10px;width:100%">
+                                @error('new_password')
+                                    <div class="alert alert-danger" style="width:60%">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                         <div class="form-group required">
                             <label class="col-sm-2 control-label" for="input-confirm">Confirm Password </label>
                             <div class="col-sm-10">
-                                <input type="password" name="new_password_confirmation" value="" placeholder="Password Confirm"
-                                    id="input-confirm" class="form-control">
+                                <input type="password" name="new_password_confirmation" value=""
+                                    placeholder="Password Confirm" id="input-confirm" class="form-control">
+                            </div>
+                            <div style="margin-top:10px;width:100%">
+                                @error('new_password_confirmation')
+                                    <div class="alert alert-danger" style="width:60%">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </fieldset>
@@ -45,8 +60,7 @@
                             <button type="submit" class="btn btn-primary"><span>Continue</span></button>
                         </div>
                         <div class="pull-left">
-                            <a href="{{ route('customer_dashboard') }}"
-                                class="btn btn-default">Back
+                            <a href="{{ route('customer_dashboard') }}" class="btn btn-default">Back
                             </a>
                         </div>
                     </div>

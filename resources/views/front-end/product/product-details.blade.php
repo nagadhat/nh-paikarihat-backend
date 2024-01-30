@@ -256,6 +256,105 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="content-bottom-last" style="padding-bottom: 30px;">
+                    <div class="grid-rows">
+                        <div class="grid-row grid-row-content-bottom-1">
+                            <div class="grid-cols">
+                                <div class="grid-col grid-col-content-bottom-1-1">
+                                    <div class="grid-items">
+                                        <div class="grid-item grid-item-content-bottom-1-1-1">
+                                            <div class="module module-products module-products-253 module-products-grid">
+                                                <div class="module-body">
+                                                    <div class="tab-container">
+                                                        <ul class="nav nav-tabs">
+                                                            <li class="tab-1 active">
+                                                                <a href="#products-6561913ab7033-tab-1"
+                                                                    data-toggle="tab">Recent View Products</a>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="tab-content">
+                                                            <div class="module-item module-item-1 tab-pane active"
+                                                                id="products-6561913ab7033-tab-1">
+                                                                <div class="product-grid">
+                                                                    @foreach ($recentlyViewedProducts as $product)
+                                                                        <div class="product-layout  has-extra-button">
+                                                                            <div class="product-thumb">
+                                                                                <div class="image">
+                                                                                    <a href="{{ route('product_details', ['slug' => $product->slug]) }}" class="product-img ">
+                                                                                        @if (isset($product->photo))
+                                                                                            <div
+                                                                                                class="ph__product__img__related">
+                                                                                                <img src="{{ asset('storage/products/' . $product->photo) }}"
+                                                                                                    width="250"
+                                                                                                    height="250"
+                                                                                                    alt="No Image Found"
+                                                                                                    class="img-responsive img-first" />
+                                                                                            </div>
+                                                                                        @else
+                                                                                            <div
+                                                                                                class="ph__product__img__related">
+                                                                                                <img src="{{ asset('assets/images/others/error.png') }}"
+                                                                                                    width="250"
+                                                                                                    height="250"
+                                                                                                    alt="No Image Found"
+                                                                                                    class="img-responsive img-first" />
+                                                                                            </div>
+                                                                                        @endif
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="caption">
+                                                                                    <div class="name">
+                                                                                        <a href="{{ route('product_details', ['slug' => $product->slug]) }}">
+                                                                                            {{ Str::limit($product->title, 30, '...') }}
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    @php
+                                                                                        $disPrice = $product->price - $product->discount_amount;
+                                                                                    @endphp
+                                                                                    <div class="price">
+                                                                                        <div>
+                                                                                            @if ($product->discount_amount > 0)
+                                                                                                <span
+                                                                                                    class="price-new">{{ $disPrice }}
+                                                                                                    TAKA</span>
+                                                                                                <span
+                                                                                                    class="price-old">{{ $product->price }}
+                                                                                                    TAKA</span>
+                                                                                            @else
+                                                                                                <span
+                                                                                                    class="price-new">{{ $product->price }}
+                                                                                                    TAKA</span>
+                                                                                            @endif
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="extra-group">
+                                                                                        <div>
+                                                                                            <a class="btn btn-extra btn-extra-46"
+                                                                                                href="{{ route('checkout_details', ['checkout' => $product->slug]) }}">
+                                                                                                <span
+                                                                                                    class="btn-text">অর্ডার
+                                                                                                    করুণ</span>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

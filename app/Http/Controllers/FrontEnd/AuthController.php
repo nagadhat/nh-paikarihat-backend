@@ -103,13 +103,19 @@ class AuthController extends Controller
     {
         $user = User::findOrFail(auth()->id());
         if (!Hash::check($request->input('current_password'), $user->password)) {
-            Alert::error('Current Password Did Not Matched');
+            Alert::error('Please Enter Your Old Password');
             return redirect()->back();
         }
         $request->validate([
             'current_password' => 'required',
             'new_password' => 'required|min:8|confirmed|different:current_password',
+            'new_password_confirmation' => 'required|same:new_password|min:8'
         ]);
+
+        if (strcmp($request->input('current_password'), $request->input('new_password')) == 0) {
+            Alert::error('New Password should be different from the current password');
+            return redirect()->back();
+        }
 
         $user->update([
             'password' => bcrypt($request->new_password)

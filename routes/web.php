@@ -33,6 +33,7 @@ use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\FrontEnd\LandingPageController;
 use App\Http\Controllers\FrontEnd\OrderDetailsController;
 use App\Http\Controllers\FrontEnd\OrderHistoryController;
+use App\Http\Controllers\FrontEnd\ProductCartController;
 use App\Http\Controllers\FrontEnd\ProductDetialsController;
 use App\Http\Controllers\Landing\LandingPageListController;
 use Illuminate\Support\Facades\Route;

@@ -29,8 +29,5 @@ class ProductDetialsController extends Controller
 
         return view('front-end.product.product-details', compact('products', 'recentlyViewedProducts', 'relatedProducts'));
     }
-
-
-
 }
 

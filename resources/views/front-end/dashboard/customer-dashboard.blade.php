@@ -34,7 +34,7 @@
                     <h2 class="title" style="line-height: 1.5">My Orders</h2>
                     <ul class="list-unstyled account-list">
                         <li class="edit-order">
-                            <a href="javascript:void(0)">View your order history</a>
+                            <a href="{{ route('customer_order_history') }}">View your order history</a>
                         </li>
                         <li class="edit-downloads">
                             <a href="javascript:void(0)">Downloads</a>

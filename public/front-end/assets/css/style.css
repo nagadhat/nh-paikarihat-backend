@@ -42321,3 +42321,36 @@ input[type="radio"] {
 
 /* order details mobile view end*/
 
+.customer__orders{
+  display: flex;
+  gap: 15px;
+}
+
+
+.customer__orderitem{
+  flex-basis: 50%;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+.customer__orderitem.customer--orderitem:first-child{
+  flex: 3;
+}
+.customer__orderitem.customer--orderitem:last-child{
+  flex: 1;
+}
+div#account-edit {
+  padding-bottom: 50px;
+}
+@media (max-width: 767px) {
+  .customer__orders{
+      flex-direction: column;
+      gap: 30px;
+  }
+  .customer__orderitem{
+    flex-basis: 100;
+  }
+}
+
+
+

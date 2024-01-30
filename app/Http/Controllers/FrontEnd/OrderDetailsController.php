@@ -24,12 +24,33 @@ class OrderDetailsController extends Controller
     public function orderProduct(Request $request)
     {
         // Check if 'customer_name' is provided
-        Alert::success('success','Order ');
-        if (!$request->has('customer_name') || empty($request->customer_name)) {
-            return redirect()->back();
-        }
+        // Alert::success('success','Order ');
+        // if (!$request->has('customer_name') || empty($request->customer_name)) {
+        //     return redirect()->back();
+        // }
 
         // Rest of your code remains unchanged
+        // $user = User::create([
+        //     "name" => $request->customer_name,
+        //     "phone" => $request->customer_phone,
+        //     "username" => $request->customer_name,
+        //     "email" => 'customer@gmail.com',
+        //     "address" => $request->customer_address,
+        //     "password" => Hash::make('1234567'),
+        // ]);
+
+        
+    // Check if 'customer_name' is provided
+    Alert::success('success', 'Order ');
+    if (!$request->has('customer_name') || empty($request->customer_name)) {
+        return redirect()->back();
+    }
+    
+    // Check if the user is logged in
+    if (auth()->check()) {
+        $user = auth()->user();
+    } else {
+        // Create a new user if not logged in
         $user = User::create([
             "name" => $request->customer_name,
             "phone" => $request->customer_phone,
@@ -38,6 +59,7 @@ class OrderDetailsController extends Controller
             "address" => $request->customer_address,
             "password" => Hash::make('1234567'),
         ]);
+    }
 
         $orderPrefix = 'REG';
         // $totalOrderProductPrice = $request->total_quantity * $request->price;
@@ -91,7 +113,7 @@ class OrderDetailsController extends Controller
         ]);
 
         Alert::success('Success', "Thank You For Your Order");
-       return redirect()->route('invoice_order', $orderDetails->id);
+        return redirect()->route('invoice_order', $orderDetails->id);
     }
 
     // function to order invoice

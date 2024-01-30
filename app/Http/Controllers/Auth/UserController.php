@@ -154,6 +154,7 @@ class UserController extends Controller
         if (!Hash::check($request->input('current_password'), $user->password)) {
             return redirect()->back()->with('error', 'Current password is not matched.');
         }
+        
         // validation
         $request->validate([
             'current_password' => 'required',

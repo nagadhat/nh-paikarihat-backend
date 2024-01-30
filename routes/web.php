@@ -32,6 +32,7 @@ use App\Http\Controllers\User\SubscriptionController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\FrontEnd\LandingPageController;
 use App\Http\Controllers\FrontEnd\OrderDetailsController;
+use App\Http\Controllers\FrontEnd\OrderHistoryController;
 use App\Http\Controllers\FrontEnd\ProductDetialsController;
 use App\Http\Controllers\Landing\LandingPageListController;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +76,14 @@ Route::prefix('/customer')->middleware('customer')->group(function () {
     Route::post('/customer-profile-update-save', [AuthController::class, 'profileSave'])->name('customer_profile_update_save');
     Route::get('/customer-password-change', [AuthController::class, 'customerPassword'])->name('customer_password');
     Route::post('/customer-password-update', [AuthController::class, 'customerPasswordUpdate'])->name('customer_password_update');
+
+    // Customer Order History Routes
+    Route::controller(OrderHistoryController::class)->group(function () {
+        Route::get('/customer-order-history', 'customerOrderHistory')->name('customer_order_history');
+        Route::get('/customer-order-details/{id}', 'customerOrderDetails')->name('customer_order_details');
+        Route::get('/customer-order-invoice/{id}', 'customerOrderinvoice')->name('customer_order_invoice');
+    });
+               
 });
 
 

@@ -64,7 +64,7 @@
                                                 </div>
                                                 <div class="col-xs-12">
                                                     <input type="text" name="customer_name" class="form-control"
-                                                        placeholder="আপনার নাম লিখুন" required>
+                                                        placeholder="আপনার নাম লিখুন" value="{{ auth()->user()->name }}" required>
                                                 </div>
                                             </div>
                                             <div class="text-input form-group required">
@@ -74,7 +74,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="text" name="customer_phone" value=""
+                                                    <input type="text" name="customer_phone" value="{{ auth()->user()->phone }}"
                                                         class="form-control" placeholder="মোবাইল নম্বর লিখুন" required>
                                                 </div>
                                             </div>
@@ -85,7 +85,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="text" name="customer_address" value=""
+                                                    <input type="text" name="customer_address" value="{{ auth()->user()->address }}"
                                                         class="form-control" autocomplete="on"
                                                         placeholder="ডেলিভারী ঠিকানা লিখুন" required>
                                                 </div>

@@ -116,9 +116,12 @@
 
     <link href="{{ asset('front-end/assets/theme/lib/masterslider/style/mastersliderf13b.css') }}" type="text/css"
         rel="stylesheet" media="all" />
-
+   
     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product_carousel.css') }}" />
+    
+     {{-- data table css --}}
+     <link href="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
 
 
 
@@ -401,6 +404,11 @@
             <script src="{{ asset('front-end/assets/theme/lib/jquery/jquery-2.1.1.minf13b.js') }}"></script>
             <script src="{{ asset('front-end/assets/javascript/script.js') }}" type="text/javascript"></script>
             <script src="{{ asset('front-end/sweetalert2/sweetalert2.all.min.js') }}"></script>
+
+            {{-- data table js --}}
+            <script src="{{ asset('assets/vendors/datatables/jquery.dataTables.min.js') }}"></script>
+            <script src="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.js') }}"></script>
+
             @include('sweetalert::alert')
 
 

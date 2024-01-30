@@ -231,15 +231,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="classic-cart-wrapper">
+                    {{-- <div class="classic-cart-wrapper">
                         <div class="top-menu secondary-menu"></div>
                         <div class="desktop-cart-wrapper default-cart-wrapper">
                             <div id="cart" class="dropdown">
                                 <a data-toggle="dropdown" data-loading-text="Loading..."
-                                    class="dropdown-toggle cart-heading" href="index630e.html?route=checkout/cart">
-                                    {{-- <i class="fa fa-shopping-cart">
+                                    class="dropdown-toggle cart-heading" href="{{ route('add_to_cart') }}">
+                                    <i class="fa fa-shopping-cart">
                                         <span class="cart-label">Cart</span>
-                                    </i> --}}
+                                    </i>
                                     <span id="cart-items" class="count-badge count-zero">0</span>
                                 </a>
                                 <div id="cart-content" class="dropdown-menu cart-content j-dropdown">
@@ -250,6 +250,16 @@
                                     </ul>
                                 </div>
                             </div>
+                        </div>
+                    </div> --}}
+                    <div class="desktop-cart-wrapper default-cart-wrapper">
+                        <div id="cart" class="dropdown">
+                            <a class="dropdown-toggle cart-heading" href="{{ route('add_to_cart') }}">
+                                <i class="fa fa-shopping-cart">
+                                    <span class="cart-label">Cart</span>
+                                </i>
+                                <span id="cart-items" class="count-badge count-zero">0</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -302,8 +312,8 @@
                     </div> --}}
                     <div class="mobile-logo-wrapper">
                     </div>
-                    {{-- <div class="mobile-cart-wrapper mini-cart">
-                    </div> --}}
+                    <div class="mobile-cart-wrapper mini-cart">
+                    </div>
                 </div>
                 <div class="mobile-bar-group mobile-search-group">
                     <div class="mobile-search-wrapper full-search">

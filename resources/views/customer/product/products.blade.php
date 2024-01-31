@@ -22,7 +22,7 @@
                 <x-alert />
 
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="table">
                         <thead>
                             <tr>
                                 <th>SL#</th>
@@ -89,9 +89,9 @@
                 </div>
             </div>
         </div>
-        <div class="bg__product__pagination">
+        {{-- <div class="bg__product__pagination">
             {{ $products->links() }}
-        </div>
+        </div> --}}
     </div>
 @endsection
 

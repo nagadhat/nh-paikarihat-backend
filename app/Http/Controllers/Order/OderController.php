@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\OrderReturnRequest;
 use App\Models\Product;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 
 class OderController extends Controller
@@ -14,7 +15,7 @@ class OderController extends Controller
     // function to show all orders
     public function index()
     {
-        $ordersdetails = Order::all();
+        $ordersdetails = Order::orderBy('id', 'desc')->get();
         return view('customer.order.orders', compact('ordersdetails'));
     }
 
@@ -75,7 +76,7 @@ class OderController extends Controller
     // function to all return order 
     public function returnOrders()
     {
-        $orderReturn = OrderReturnRequest::all();
+        $orderReturn = OrderReturnRequest::orderBy('id', 'desc')->get();
         return view('customer.order.return-orders', compact('orderReturn'));
     }
     

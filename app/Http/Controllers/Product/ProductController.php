@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Product;
-use Illuminate\Pagination\Paginator;
 use App\Models\Product;
 use App\Models\ProductView;
 use App\Http\Controllers\Controller;
@@ -17,8 +16,7 @@ class ProductController extends Controller
     // function to show product page list
     public function index()
     {
-        Paginator::useBootstrap();
-        $products = Product::where('user_id', auth()->id())->latest()->paginate(10);
+        $products = Product::where('user_id', auth()->id())->orderBy('id', 'desc')->get();
         return view('customer.product.products', compact('products'));
     }
 

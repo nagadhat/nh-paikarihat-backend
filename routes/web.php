@@ -73,6 +73,8 @@ Route::get('/customer-logout', [AuthController::class, 'logoutCustomer'])->name(
 // add to Cart Routes
 Route::get("/add-to-cart", [ProductCartController::class,'addToCart'])->name('add_to_cart');
 Route::post('/product-add-cart',[ProductCartController::class,'productAddCart'])->name('product_add_cart');
+Route::get('/product-delete-cart/{id}',[ProductCartController::class,'productDeleteCart'])->name('product_delete_cart');
+Route::post('/product-increment',[ProductCartController::class,'productIncrement'])->name('product_increment');
 
 // customer routes
 Route::prefix('/customer')->middleware('customer')->group(function () {

@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
+use App\Models\ProductCart;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -16,8 +18,11 @@ class OrderDetailsController extends Controller
 {
     public function checkoutDetails($checkout)
     {
-        $products = Product::where('slug', $checkout)->firstOrFail();
-        return view('front-end.order.checkout-details', compact('products'));
+        $user = Auth::user()->id;
+
+         $cartItems = ProductCart::where('user_id', $user)->get(); // Add 'get()' to retrieve the results
+        // $products = Product::where('slug', $checkout)->firstOrFail();
+        return view('front-end.order.checkout-details', compact('cartItems'));
 
     }
 
@@ -39,13 +44,13 @@ class OrderDetailsController extends Controller
         //     "password" => Hash::make('1234567'),
         // ]);
 
-        
+
     // Check if 'customer_name' is provided
     Alert::success('success', 'Order ');
     if (!$request->has('customer_name') || empty($request->customer_name)) {
         return redirect()->back();
     }
-    
+
     // Check if the user is logged in
     if (auth()->check()) {
         $user = auth()->user();

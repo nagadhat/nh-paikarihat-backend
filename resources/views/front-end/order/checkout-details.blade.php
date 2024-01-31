@@ -1,11 +1,13 @@
 @php
     $title = 'checkout';
+
 @endphp
 
 @extends('front-end.layouts.app')
 @section('page_content')
 
     <div class="container" id="container">
+
         <ul class="breadcrumb qc-breadcrumb" style="padding: 8px">
             <li><a href="#"><i class="fa fa-home"></i> </a></li>
             <li><a href="#"><b style="font-size: 20px">অর্ডার ইনফরমেশন</b> </a></li>
@@ -64,7 +66,7 @@
                                                 </div>
                                                 <div class="col-xs-12">
                                                     <input type="text" name="customer_name" class="form-control"
-                                                        placeholder="আপনার নাম লিখুন" value="{{ !empty(auth()->user()->name)??auth()->user()->name }}" required>
+                                                        placeholder="আপনার নাম লিখুন" value="{{ isset(auth()->user()->customer_name) ? auth()->user()->customer_name: ''}}" required>
                                                 </div>
                                             </div>
                                             <div class="text-input form-group required">
@@ -74,7 +76,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="text" name="customer_phone" value="{{ !empty(auth()->user()->phone)??auth()->user()->phone }}"
+                                                    <input type="text" name="customer_phone" value="{{ isset(auth()->user()->customer_phone) ? auth()->user()->customer_phone: ''}}"
                                                         class="form-control" placeholder="মোবাইল নম্বর লিখুন" required>
                                                 </div>
                                             </div>
@@ -85,7 +87,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="text" name="customer_address" value="{{ !empty(auth()->user()->address)??auth()->user()->address }}"
+                                                    <input type="text" name="customer_address" value="{{ isset(auth()->user()->customer_address) ? auth()->user()->customer_address: ''}}"
                                                         class="form-control" autocomplete="on"
                                                         placeholder="ডেলিভারী ঠিকানা লিখুন" required>
                                                 </div>
@@ -127,7 +129,7 @@
                                                         <i class=""></i>
                                                     </span>
                                                     <span class="text">অর্ডার ইনফরমেশন </span>
-                                                    <input type="hidden" name="product_id" value="{{ $products->id }}">
+                                                    {{-- <input type="hidden" name="product_id" value="{{ $cartItems->id }}"> --}}
                                                 </h4>
                                             </div>
                                             <div class="qc-checkout-product panel-body">
@@ -143,6 +145,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            @foreach ($cartItems as $products )
                                                             <tr>
                                                                 <td class="">
                                                                     @if (isset($products->photo))
@@ -199,6 +202,8 @@
                                                                     TAKA</td>
                                                                 {{-- <td class="qc-total hidden">850 TAKA</td> --}}
                                                             </tr>
+                                                            @endforeach
+
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -211,10 +216,10 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <span id="productPrice">
-                                                                    {{ isset($products->price) ? $products->price : '' }}
+                                                                    {{-- {{ isset($products->price) ? $products->price : '' }} --}}
                                                                     TAKA</span>
                                                                 <input type="hidden" name="price"
-                                                                    value="{{ $products->price }}">
+                                                                    value="">
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -222,12 +227,12 @@
                                                                 <b>ডিসকাউন্ট</b>
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
-                                                                @php
+                                                                {{-- @php
                                                                     $dis = isset($products->discount_amount) ? $products->discount_amount : '0';
-                                                                @endphp
-                                                                <del>{{ $dis }} TAKA</del>
+                                                                @endphp --}}
+                                                                {{-- <del>{{ $dis }} TAKA</del> --}}
                                                                 <input type="hidden" id="Discount"
-                                                                    name="discount_amount" value="{{ $dis }}">
+                                                                    name="discount_amount" value="">
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -236,7 +241,7 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <span id="subtotal">
-                                                                    {{ $products->quantity * ($products->price - $products->discount_amount) }}
+                                                                    {{-- {{ $products->quantity * ($products->price - $products->discount_amount) }} --}}
 
                                                                 </span>
                                                                 TAKA
@@ -248,11 +253,11 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <p id="insideDhakaCharge" class="text-white">
-                                                                    <span>{{ $products->inside_dhaka }} TAKA</span>
+                                                                    {{-- <span>{{ $products->inside_dhaka }} TAKA</span> --}}
                                                                 </p>
                                                                 <p id="outsideDhakaCharge" class="text-white"
                                                                     style="display: none">
-                                                                    <span id="abc">{{ $products->outside_dhaka }}
+                                                                    {{-- <span id="abc">{{ $products->outside_dhaka }} --}}
                                                                         TAKA</span>
                                                                 </p>
                                                             </div>
@@ -265,7 +270,7 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <span id="grandTotal">
-                                                                    {{ $products->quantity * ($products->price - $products->discount_amount) }}
+                                                                    {{-- {{ $products->quantity * ($products->price - $products->discount_amount) }} --}}
                                                                     TAKA
                                                                 </span>
                                                             </div>

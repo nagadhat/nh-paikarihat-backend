@@ -11,7 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    
+
     public $timestamps = false;
     protected $guarded = [];
     protected $hidden = [
@@ -30,5 +30,9 @@ class User extends Authenticatable
     public function shop_details()
     {
         return $this->belongsTo(Shop::class, 'id', 'user_id');
+    }
+    public function carts()
+    {
+        return $this->hasMany(ProductCart::class);
     }
 }

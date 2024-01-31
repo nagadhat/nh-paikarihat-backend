@@ -110,7 +110,8 @@
 
                                                         <div class="caption">
                                                             <div class="name">
-                                                                <a href="{{ route('product_details', ['slug' => $product->slug]) }}">
+                                                                <a
+                                                                    href="{{ route('product_details', ['slug' => $product->slug]) }}">
                                                                     {{ Str::limit($product->title, 30, '...') }}
                                                                 </a>
                                                             </div>
@@ -159,33 +160,42 @@
     </div>
 @endsection
 @section('scripts')
-<script>
-alert('hello ');
-    let ajax_container = document.querySelector(".extra-group");
-console.log('ajax_container',ajax_container);
-ajax_container.addEventListener("click", function(e) {
-    e.preventDefault();
-    let that = this;
-    if ( '' !== e.target.dataset.product_id ) {
-        return;
-    }
-
-    fetch('/product-add-cart', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-        },
-        body: JSON.stringify({ data: '{{ $product->id }}' }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        alert(data.message);
-    })
-    .catch(error => {
-        console.error(error);
-    });
-</script>
-
+    <script>
+        (function($) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            });
+            $("body").on("click", '.add--to--cart-btn', function(e) {
+                e.preventDefault();
+                let that = this;
+                let productid = $(that).data('product_id');
+                if ('' === productid) {
+                    return;
+                }
+                $.ajax({
+                    url: "/product-add-cart",
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        productid,
+                        userid: {{ optional(Auth::user())->id }}
+                    }),
+                    success: function(data) {
+                        console.log(data);
+                        let {
+                            product_count
+                        } = data;
+                        // $("#cart-items").show().html(product_count);
+                        $("#cart-items").css("display", "block !important").html(product_count);
+                        console.log(product_count);
+                    },
+                    error: function(error) {
+                        console.log('error1st', error);
+                    }
+                });
+            });
+        })(jQuery);
+    </script>
 @endsection

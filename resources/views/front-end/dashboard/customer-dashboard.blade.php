@@ -40,13 +40,13 @@
                             <a href="javascript:void(0)">Downloads</a>
                         </li>
                         <li class="edit-returns">
-                            <a href="javascript:void(0)">View your return requests</a>
+                            <a href="{{ route('order_return_details') }}">View your return requests</a>
+                        </li>
+                        <li class="edit-recurring">
+                            <a href="{{ route('customer_order_return') }}">Send Return Request</a>
                         </li>
                         <li class="edit-transactions">
                             <a href="javascript:void(0)">Your Transactions</a>
-                        </li>
-                        <li class="edit-recurring">
-                            <a href="javascript:void(0)">Recurring payments</a>
                         </li>
                     </ul>
                 </div>

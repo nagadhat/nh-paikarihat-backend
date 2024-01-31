@@ -33,6 +33,7 @@ use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\FrontEnd\LandingPageController;
 use App\Http\Controllers\FrontEnd\OrderDetailsController;
 use App\Http\Controllers\FrontEnd\OrderHistoryController;
+use App\Http\Controllers\FrontEnd\OrderReturnController;
 use App\Http\Controllers\FrontEnd\ProductCartController;
 use App\Http\Controllers\FrontEnd\ProductDetialsController;
 use App\Http\Controllers\Landing\LandingPageListController;
@@ -87,6 +88,13 @@ Route::prefix('/customer')->middleware('customer')->group(function () {
         Route::get('/customer-order-history', 'customerOrderHistory')->name('customer_order_history');
         Route::get('/customer-order-details/{id}', 'customerOrderDetails')->name('customer_order_details');
         Route::get('/customer-order-invoice/{id}', 'customerOrderinvoice')->name('customer_order_invoice');
+    });
+
+    // Customer Order Return  Routes
+    Route::controller(OrderReturnController::class)->group(function () {
+        Route::get('/customer-order-return', 'customerOrderReturn')->name('customer_order_return');
+        Route::post('/order-return-request', 'OrderReturnRequest')->name('order_return_request');
+        Route::get('/order-return-details', 'OrderReturnDetails')->name('order_return_details');
     });
                
 });
@@ -235,6 +243,8 @@ Route::prefix('/user')->middleware('user')->group(function () {
     Route::controller(OderController::class)->group(function () {
         Route::get("/orders", "index")->name('orders');
         Route::get("/return-orders", "returnOrders")->name('return_orders');
+        Route::get("/return-order-filter/{status}", "returnOrderFilter")->name('return_order_filter');
+        Route::get("/return-order-status/{id}/{status}", "returnOrderStatus")->name('return_order_status');
         Route::get("/order-details/{invoice}", "orderDetails")->name('order_details');
         Route::get("/order-status/{id}/{status}", "orderStatus")->name('order_status');
         Route::get("/order-filter/{status}", "orderFilter")->name('order_filter');

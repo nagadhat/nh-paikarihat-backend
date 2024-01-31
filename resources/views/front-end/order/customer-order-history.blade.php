@@ -26,7 +26,7 @@
                                     <thead>
                                         <tr>
                                             <th>#SL</th>
-                                            <th>Invoice ID</th>
+                                            <th>Order Id</th>
                                             <th>Date</th>
                                             <th>Order Status</th>
                                             <th>Payment Status</th>

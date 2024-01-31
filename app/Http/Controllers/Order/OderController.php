@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Order;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\OrderReturnRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -71,9 +72,33 @@ class OderController extends Controller
         return redirect()->back();
     }
 
+    // function to all return order 
     public function returnOrders()
     {
-        return view('customer.order.return-orders');
+        $orderReturn = OrderReturnRequest::all();
+        return view('customer.order.return-orders', compact('orderReturn'));
+    }
+    
+    // function to return order filter
+    public function returnOrderFilter($status)
+    {
+        $orderReturn = OrderReturnRequest::where('status', '=', $status)->get();
+        return view('customer.order.return-orders', compact('orderReturn'));
+    }
+
+    // function to return order status change
+    public function returnOrderStatus($id, $status)
+    {
+        $order = OrderReturnRequest::findOrFail($id);
+        $currentStatus = $order->status;
+        if ($currentStatus == $status) {
+            toast('Already updated.', 'error');
+        } else {
+            $order->status = $status;
+            $order->save();
+            toast('Order status updated successfully.', 'success');
+        }
+        return redirect()->back();
     }
 
     public function orderDetails($invoice)

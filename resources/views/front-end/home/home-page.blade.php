@@ -133,8 +133,11 @@
                                                             <div class="extra-group">
                                                                 <div>
                                                                     <a href="{{ route('checkout_details', ['checkout' => $product->slug]) }}"
-                                                                        class="btn btn-extra btn-extra-46"
+                                                                        class="btn btn-extra btn-extra-46 add--to--cart-btn"
+                                                                        data-product_id="{{ $product->id }}"
                                                                         data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
+
+
                                                                         <span class="btn-text">অর্ডার করুণ</span>
                                                                     </a>
                                                                 </div>
@@ -154,4 +157,35 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+<script>
+alert('hello ');
+    let ajax_container = document.querySelector(".extra-group");
+console.log('ajax_container',ajax_container);
+ajax_container.addEventListener("click", function(e) {
+    e.preventDefault();
+    let that = this;
+    if ( '' !== e.target.dataset.product_id ) {
+        return;
+    }
+
+    fetch('/product-add-cart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+        },
+        body: JSON.stringify({ data: '{{ $product->id }}' }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        alert(data.message);
+    })
+    .catch(error => {
+        console.error(error);
+    });
+</script>
+
 @endsection

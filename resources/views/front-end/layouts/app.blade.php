@@ -116,10 +116,10 @@
 
     <link href="{{ asset('front-end/assets/theme/lib/masterslider/style/mastersliderf13b.css') }}" type="text/css"
         rel="stylesheet" media="all" />
-   
+
     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product_carousel.css') }}" />
-    
+
      {{-- data table css --}}
      <link href="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
 

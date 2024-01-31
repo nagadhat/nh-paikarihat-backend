@@ -72,7 +72,7 @@ Route::get('/customer-logout', [AuthController::class, 'logoutCustomer'])->name(
 
 // add to Cart Routes
 Route::get("/add-to-cart", [ProductCartController::class,'addToCart'])->name('add_to_cart');
-Route::get('/product-add-cart/{id}',[ProductCartController::class,'productAddCart'])->name('product_add_cart');
+Route::post('/product-add-cart',[ProductCartController::class,'productAddCart'])->name('product_add_cart');
 
 // customer routes
 Route::prefix('/customer')->middleware('customer')->group(function () {
@@ -88,7 +88,7 @@ Route::prefix('/customer')->middleware('customer')->group(function () {
         Route::get('/customer-order-details/{id}', 'customerOrderDetails')->name('customer_order_details');
         Route::get('/customer-order-invoice/{id}', 'customerOrderinvoice')->name('customer_order_invoice');
     });
-               
+
 });
 
 

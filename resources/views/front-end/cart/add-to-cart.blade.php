@@ -188,6 +188,7 @@
                         } = data;
                         if ('working'===message) {
                             // console.log($(that).parent('span').prev('input[name="quantity"]').html());
+                           // alert(quantity);
                             $(that).parent('span').prev('input[name="quantity"]').val(quantity);
                             location.reload();
                         }

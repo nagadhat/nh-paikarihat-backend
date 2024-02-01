@@ -149,6 +149,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            <?php $i=1;?>
                                                             @foreach ($cartItems as $products)
                                                                 <tr>
                                                                     <td class="">
@@ -180,34 +181,37 @@
                                                                             <i class="fa fa-times"></i>
                                                                         </button>
                                                                 </span> --}}
-                                                    <div class="qty-container">
-                                                        <button
-                                                            class="qty-btn-minus btn-danger btn-cornered mr-2 checkoutproduct-decrement"
-                                                            type="button"
-                                                            data-product_id="{{ $products->id }}"
-                                                            style="background-color: red; margin-right: 5px">
-                                                            <i class="fa fa-chevron-down"></i>
-                                                        </button>
-                                                        <input type="number" id="CurrentQty"
-                                                            name="total_quantity" min="1"
-                                                            value="{{ $products->quantity }}"
-                                                            class="input-qty input-cornered" />
-                                                        <button
-                                                            class="qty-btn-plus btn-danger btn-cornered ml-1 checkoutproduct-increment"
-                                                            type="button"
-                                                            data-product_id="{{ $products->id }}"
-                                                            style="background-color: red;margin-left:5px">
-                                                            <i class="fa fa-chevron-up"></i>
-                                                        </button>
-                                                    </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td class="qc-price hidden-xs hidden">
-                                                                        {{ isset($products->price) ? $products->price : '' }}
-                                                                        TAKA</td>
-                                                                    {{-- <td class="qc-total hidden">850 TAKA</td> --}}
-                                                                </tr>
-                                                            @endforeach
+                                                                <div class="qty-container">
+                                                                    <input type="hidden" id="product_id_{{ $i }}" value="{{ $products->id }}">
+                                                                    <button
+                                                                        class="qty-btn-minus btn-danger btn-cornered mr-2" onClick="incrementQuanty({{ $i }}, 'decrement')"
+                                                                        type="button"
+                                                                        style="background-color: red; margin-right: 5px">
+                                                                        <i class="fa fa-chevron-down"></i>
+                                                                    </button>
+                                                                    <input type="number" id="CurrentQty_{{ $i}}"
+                                                                        name="total_quantity" min="1"
+                                                                        value="{{ $products->quantity }}"
+                                                                        class="input-qty input-cornered" />
+                                                                    <button
+                                                                        class="qty-btn-plus btn-danger btn-cornered ml-1" onClick="incrementQuanty({{ $i }}, 'increment')"
+                                                                        type="button"
+                                                                        data-product_id="{{ $products->id }}"
+                                                                        style="background-color: red;margin-left:5px">
+                                                                        <i class="fa fa-chevron-up"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="qc-price hidden-xs hidden">
+                                                            {{ isset($products->price) ? $products->price : '' }}
+                                                            TAKA</td>
+                                                        {{-- <td class="qc-total hidden">850 TAKA</td> --}}
+                                                    </tr>
+                                                    <?php
+                                                        $i++;
+                                                    ?>
+                                                @endforeach
 
                                                         </tbody>
                                                     </table>
@@ -274,11 +278,8 @@
                                                                 style="font-weight: bold">
                                                                 মোট বিল
                                                             </label>
-                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right">
-                                                                <span id="grandTotal">
-                                                                    {{ isset($totalprice ) && isset($totaldiscount) ? ($totalprice + $totaldiscount + 60) :'' }}
-                                                                    TAKA
-                                                                </span>
+                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right" id="grandTotal">
+                                                                {{ isset($totalprice ) && isset($totaldiscount) ? ($totalprice + $totaldiscount + 60) :'' }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -306,83 +307,39 @@
     </div>
 @endsection
 @section('scripts')
-
     <script>
+       function incrementQuanty(i, type){
+            let productid = $('#product_id_'+i).val();
+            $.ajax({
+                url: "/product-increment",
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    productid,
+                    type:type
+                }),
+                success: function(data) {
+                    let {
+                        totalprice,
+                        message,
+                        quantity
+                    } = data;
+                    if ('working'===message) {
+                        $('#CurrentQty_'+i).val(quantity);
+                        $('#grandTotal').html(totalprice);
+                    }
+                },
+                error: function(error) {
+                    console.log('error1st', error);
+                }
+            });
+        };
 
-        // increment decrement function
         (function($) {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 }
-            });
-            $("body").on("click", '.checkoutproduct-increment', function(e) {
-                e.preventDefault();
-
-                let that = this;
-                let productid = $(that).data('product_id');
-                if ('' === productid) {
-                    return;
-                }
-                $.ajax({
-                    url: "/product-increment",
-                    type: 'post',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        productid,
-                        userid: {{ optional(Auth::user())->id }},
-                        type:"increment"
-                    }),
-                    success: function(data) {
-                        console.log(data);
-                        let {
-                            message,
-                            quantity
-                        } = data;
-                        if ('working'===message) {
-                            // console.log($(that).parent('span').prev('input[name="quantity"]').html());
-                            $(that).next('#CurrentQty').val(quantity);
-                            // location.reload();
-                        }
-                    },
-                    error: function(error) {
-                        console.log('error1st', error);
-                    }
-                });
-            });
-            $("body").on("click", '.checkoutproduct-decrement', function(e) {
-                e.preventDefault();
-
-                let that = this;
-                let productid = $(that).data('product_id');
-                if ('' === productid) {
-                    return;
-                }
-                $.ajax({
-                    url: "/product-increment",
-                    type: 'post',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        productid,
-                        userid: {{ optional(Auth::user())->id }},
-                        type:"decrement"
-                    }),
-                    success: function(data) {
-                        console.log(data);
-                        let {
-                            message,
-                            quantity
-                        } = data;
-                        if ('working'===message) {
-                            // console.log($(that).parent('span').prev('input[name="quantity"]').html());
-                            $(that).prev('#CurrentQty').val(quantity);
-                            // location.reload();
-                        }
-                    },
-                    error: function(error) {
-                        console.log('error1st', error);
-                    }
-                });
             });
         })(jQuery);
 

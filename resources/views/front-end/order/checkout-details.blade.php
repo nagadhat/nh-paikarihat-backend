@@ -5,7 +5,6 @@
 
 @extends('front-end.layouts.app')
 @section('page_content')
-
     <div class="container" id="container">
 
         <ul class="breadcrumb qc-breadcrumb" style="padding: 8px">
@@ -66,7 +65,9 @@
                                                 </div>
                                                 <div class="col-xs-12">
                                                     <input type="text" name="customer_name" class="form-control"
-                                                        placeholder="আপনার নাম লিখুন" value="{{ isset(auth()->user()->customer_name) ? auth()->user()->customer_name: ''}}" required>
+                                                        placeholder="আপনার নাম লিখুন"
+                                                        value="{{ !empty($userdata['name']) ? $userdata['name'] : '' }}"
+                                                        required>
                                                 </div>
                                             </div>
                                             <div class="text-input form-group required">
@@ -76,7 +77,8 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="text" name="customer_phone" value="{{ isset(auth()->user()->customer_phone) ? auth()->user()->customer_phone: ''}}"
+                                                    <input type="text" name="customer_phone"
+                                                        value="{{ !empty($userdata['phone']) ? $userdata['phone'] : '' }}"
                                                         class="form-control" placeholder="মোবাইল নম্বর লিখুন" required>
                                                 </div>
                                             </div>
@@ -87,7 +89,8 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="text" name="customer_address" value="{{ isset(auth()->user()->customer_address) ? auth()->user()->customer_address: ''}}"
+                                                    <input type="text" name="customer_address"
+                                                        value="{{ !empty($userdata['address']) ? $userdata['address'] : '' }}"
                                                         class="form-control" autocomplete="on"
                                                         placeholder="ডেলিভারী ঠিকানা লিখুন" required>
                                                 </div>
@@ -109,7 +112,8 @@
 
                                                     <label class="radio-inline" for="outsideDhaka">
                                                         <input type="radio" name="delivery_area" id="outsideDhaka"
-                                                            value="outside_dhaka" onclick="showOutsideDhaka()">Outside Dhaka
+                                                            value="outside_dhaka" onclick="showOutsideDhaka()">Outside
+                                                        Dhaka
                                                     </label>
                                                 </div>
                                             </div>
@@ -145,63 +149,64 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @foreach ($cartItems as $products )
-                                                            <tr>
-                                                                <td class="">
-                                                                    @if (isset($products->photo))
-                                                                        <div class=" ph__checkout__photo">
-                                                                            <img src="{{ asset('storage/products/' . $products->photo) }}"
-                                                                                class="img-responsive mobile-image"
-                                                                                alt="product image" />
-                                                                        </div>
-                                                                    @else
-                                                                        <div class="ph__checkout__photo ">
-                                                                            <img src="{{ asset('assets/images/others/error.png') }}"
-                                                                                class="img-responsive mobile-image"
-                                                                                alt="product image" />
-                                                                        </div>
-                                                                    @endif
-                                                                    <br>
-                                                                    <p>{{ isset($products->title) ? $products->title : '' }}
-                                                                    </p>
-                                                                </td>
-                                                                <td class="qc-quantity" style="padding-bottom: 70px;">
-                                                                    <div class="input-group input-group-sm">
-                                                                        {{-- <input type="text" name="stock" value="1"
+                                                            @foreach ($cartItems as $products)
+                                                                <tr>
+                                                                    <td class="">
+                                                                        @if (isset($products->product->photo))
+                                                                            <div class=" ph__checkout__photo">
+                                                                                <img src="{{ asset('storage/products/' . $products->product->photo) }}"
+                                                                                    class="img-responsive mobile-image"
+                                                                                    style="width:120px; height:100px !important;object-fit: cover;"
+                                                                                    alt="product image" />
+                                                                            </div>
+                                                                        @else
+                                                                            <div class="ph__checkout__photo ">
+                                                                                <img src="{{ asset('assets/images/others/error.png') }}"
+                                                                                    class="img-responsive mobile-image"
+                                                                                    alt="product image" />
+                                                                            </div>
+                                                                        @endif
+                                                                        <br>
+                                                                        <p>{{ Str::limit($products->product->title, 30, '...') ? Str::limit($products->product->title, 30, '...') : '' }}
+
+                                                                        </p>
+                                                                    </td>
+                                                                    <td class="qc-quantity" style="padding-bottom: 70px;">
+                                                                        <div class="input-group input-group-sm">
+                                                                            {{-- <input type="text" name="stock" value="1"
                                                                         class="qc-product-qantity form-control text-center">
                                                                     <span class="input-group-btn">
                                                                         <button class="btn btn-danger delete">
                                                                             <i class="fa fa-times"></i>
                                                                         </button>
-                                                                    </span> --}}
-                                                                        <div class="qty-container">
-                                                                            {{-- <button
-                                                                                class="qty-btn-minus btn-danger btn-cornered mr-2"
-                                                                                onclick="updateOrderDetails('minus')"
-                                                                                type="button"
-                                                                                style="background-color: red; margin-right: 5px">
-                                                                                <i class="fa fa-chevron-down"></i>
-                                                                            </button> --}}
-                                                                            <input type="number" id="CurrentQty"
-                                                                                name="total_quantity" min="1"
-                                                                                value="1"
-                                                                                onchange="updateOrderDetails('input')"
-                                                                                class="input-qty input-cornered" />
-                                                                            {{-- <button
-                                                                                class="qty-btn-plus btn-danger btn-cornered ml-1"
-                                                                                onclick="updateOrderDetails('plus')"
-                                                                                type="button"
-                                                                                style="background-color: red;margin-left:5px">
-                                                                                <i class="fa fa-chevron-up"></i>
-                                                                            </button> --}}
+                                                                </span> --}}
+                                                    <div class="qty-container">
+                                                        <button
+                                                            class="qty-btn-minus btn-danger btn-cornered mr-2 checkoutproduct-decrement"
+                                                            type="button"
+                                                            data-product_id="{{ $products->id }}"
+                                                            style="background-color: red; margin-right: 5px">
+                                                            <i class="fa fa-chevron-down"></i>
+                                                        </button>
+                                                        <input type="number" id="CurrentQty"
+                                                            name="total_quantity" min="1"
+                                                            value="{{ $products->quantity }}"
+                                                            class="input-qty input-cornered" />
+                                                        <button
+                                                            class="qty-btn-plus btn-danger btn-cornered ml-1 checkoutproduct-increment"
+                                                            type="button"
+                                                            data-product_id="{{ $products->id }}"
+                                                            style="background-color: red;margin-left:5px">
+                                                            <i class="fa fa-chevron-up"></i>
+                                                        </button>
+                                                    </div>
                                                                         </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="qc-price hidden-xs hidden">
-                                                                    {{ isset($products->price) ? $products->price : '' }}
-                                                                    TAKA</td>
-                                                                {{-- <td class="qc-total hidden">850 TAKA</td> --}}
-                                                            </tr>
+                                                                    </td>
+                                                                    <td class="qc-price hidden-xs hidden">
+                                                                        {{ isset($products->price) ? $products->price : '' }}
+                                                                        TAKA</td>
+                                                                    {{-- <td class="qc-total hidden">850 TAKA</td> --}}
+                                                                </tr>
                                                             @endforeach
 
                                                         </tbody>
@@ -216,10 +221,9 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <span id="productPrice">
-                                                                    {{-- {{ isset($products->price) ? $products->price : '' }} --}}
+                                                                    {{ isset($totalprice) ? $totalprice : '' }}
                                                                     TAKA</span>
-                                                                <input type="hidden" name="price"
-                                                                    value="">
+                                                                <input id="productPriceval" type="hidden" name="price" value="{{ isset($totalprice) ? $totalprice : ''  }}">
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -231,34 +235,36 @@
                                                                     $dis = isset($products->discount_amount) ? $products->discount_amount : '0';
                                                                 @endphp --}}
                                                                 {{-- <del>{{ $dis }} TAKA</del> --}}
+                                                                {{ isset($totaldiscount) ? $totaldiscount : '' }} TAKA
+
                                                                 <input type="hidden" id="Discount"
-                                                                    name="discount_amount" value="">
+                                                                    name="discount_amount" value="{{ isset($totaldiscount) ? $totaldiscount : '' }}">
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        {{-- <div class="row">
                                                             <label class="col-sm-9 col-xs-6 control-label">
                                                                 <b>সাবটোটাল</b>
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <span id="subtotal">
-                                                                    {{-- {{ $products->quantity * ($products->price - $products->discount_amount) }} --}}
+                                                                    {{ $products->quantity * ($products->price - $products->discount_amount) }}
 
                                                                 </span>
                                                                 TAKA
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                         <div class="row">
                                                             <label class="col-sm-9 col-xs-6 control-label">
                                                                 <b>ডেলিভারী চার্জ</b>
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <p id="insideDhakaCharge" class="text-white">
-                                                                    {{-- <span>{{ $products->inside_dhaka }} TAKA</span> --}}
+                                                                    <span> 60 TAKA</span>
+
                                                                 </p>
                                                                 <p id="outsideDhakaCharge" class="text-white"
                                                                     style="display: none">
-                                                                    {{-- <span id="abc">{{ $products->outside_dhaka }} --}}
-                                                                        TAKA</span>
+                                                                    <span> 120 TAKA</span>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -270,7 +276,7 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <span id="grandTotal">
-                                                                    {{-- {{ $products->quantity * ($products->price - $products->discount_amount) }} --}}
+                                                                    {{ isset($totalprice ) && isset($totaldiscount) ? ($totalprice + $totaldiscount + 60) :'' }}
                                                                     TAKA
                                                                 </span>
                                                             </div>
@@ -300,98 +306,178 @@
     </div>
 @endsection
 @section('scripts')
+
     <script>
-        var buttonPlus = $(".qty-btn-plus");
-        var buttonMinus = $(".qty-btn-minus");
 
-        var incrementPlus = buttonPlus.click(function() {
-            var $n = $(this)
-                .parent(".qty-container")
-                .find(".input-qty");
-            $n.val(Number($n.val()) + 1);
-        });
+        // increment decrement function
+        (function($) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            });
+            $("body").on("click", '.checkoutproduct-increment', function(e) {
+                e.preventDefault();
 
-        var incrementMinus = buttonMinus.click(function() {
-            var $n = $(this)
-                .parent(".qty-container")
-                .find(".input-qty");
-            var amount = Number($n.val());
-            if (amount > 0) {
-                $n.val(amount - 1);
-            }
-        });
-    </script>
-    <script>
-        function placeOrder() {
-            alert("Order Placed Sucessfully");
-        }
+                let that = this;
+                let productid = $(that).data('product_id');
+                if ('' === productid) {
+                    return;
+                }
+                $.ajax({
+                    url: "/product-increment",
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        productid,
+                        userid: {{ optional(Auth::user())->id }},
+                        type:"increment"
+                    }),
+                    success: function(data) {
+                        console.log(data);
+                        let {
+                            message,
+                            quantity
+                        } = data;
+                        if ('working'===message) {
+                            // console.log($(that).parent('span').prev('input[name="quantity"]').html());
+                            $(that).next('#CurrentQty').val(quantity);
+                            // location.reload();
+                        }
+                    },
+                    error: function(error) {
+                        console.log('error1st', error);
+                    }
+                });
+            });
+            $("body").on("click", '.checkoutproduct-decrement', function(e) {
+                e.preventDefault();
 
-        // Global Start
-        var subtotal = getData();
-        document.getElementById('grandTotal').innerText = '৳ ' + (subtotal + 60);
-        document.getElementById('subtotal').innerText = subtotal + 60;
-        document.getElementById('subtotal').innerText = subtotal;
-        // Global end
+                let that = this;
+                let productid = $(that).data('product_id');
+                if ('' === productid) {
+                    return;
+                }
+                $.ajax({
+                    url: "/product-increment",
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        productid,
+                        userid: {{ optional(Auth::user())->id }},
+                        type:"decrement"
+                    }),
+                    success: function(data) {
+                        console.log(data);
+                        let {
+                            message,
+                            quantity
+                        } = data;
+                        if ('working'===message) {
+                            // console.log($(that).parent('span').prev('input[name="quantity"]').html());
+                            $(that).prev('#CurrentQty').val(quantity);
+                            // location.reload();
+                        }
+                    },
+                    error: function(error) {
+                        console.log('error1st', error);
+                    }
+                });
+            });
+        })(jQuery);
 
-        var checkShipping = 1;
+// -----------------------------------------------------------------------------------------
+// var buttonPlus = $(".qty-btn-plus");
+//         var buttonMinus = $(".qty-btn-minus");
+
+//         var incrementPlus = buttonPlus.click(function() {
+//             var $n = $(this)
+//                 .parent(".qty-container")
+//                 .find(".input-qty");
+//             $n.val(Number($n.val()) + 1);
+//         });
+
+//         var incrementMinus = buttonMinus.click(function() {
+//             var $n = $(this)
+//                 .parent(".qty-container")
+//                 .find(".input-qty");
+//             var amount = Number($n.val());
+//             if (amount > 0) {
+//                 $n.val(amount - 1);
+//             }
+//         });
+//         function placeOrder() {
+//             alert("Order Placed Sucessfully");
+//         }
+
+//         // Global Start
+//         var subtotal = getData();
+//         document.getElementById('grandTotal').innerText = '৳ ' + (subtotal + 60);
+//         document.getElementById('subtotal').innerText = subtotal + 60;
+//         document.getElementById('subtotal').innerText = subtotal;
+//         // Global end
+
+//         var checkShipping = 1;
 
         function showInsideDhaka() {
             //Inside
             checkShipping = 1;
-            var subtotal = getData();
-
-            document.getElementById('grandTotal').innerText = '৳ ' + (subtotal + 60);
-            document.getElementById('subtotal').innerText = subtotal + 60;
-            document.getElementById('subtotal').innerText = subtotal;
-
+            // var subtotal = getData();
+            let discount = document.getElementById('Discount').value;
+            let productPriceval = document.getElementById('productPriceval').value;
+            document.getElementById('grandTotal').innerText = '৳ ' +(+productPriceval + +discount + 60);
+            // document.getElementById('subtotal').innerText = subtotal + 60;
+            // document.getElementById('subtotal').innerText = subtotal;
             document.getElementById("insideDhakaCharge").style.display = "block";
             document.getElementById("outsideDhakaCharge").style.display = "none";
         }
-
         function showOutsideDhaka() {
             // Outside
             checkShipping = 2;
-            var subtotal = getData();
+            // var subtotal = getData();
             var deliveryCharge = 120;
+            let discount = document.getElementById('Discount').value;
+            let productPriceval = document.getElementById('productPriceval').value;
+            // document.getElementById('grandTotal').innerText = '৳ ' +(+productPriceval + +discount + 60);
 
-            document.getElementById('grandTotal').innerText = '৳ ' + (subtotal + deliveryCharge);
-            document.getElementById('subtotal').innerText = subtotal;
+            document.getElementById('grandTotal').innerText = '৳ ' +( +productPriceval + +discount + deliveryCharge);
+            // document.getElementById('subtotal').innerText = subtotal;
 
             document.getElementById("insideDhakaCharge").style.display = "none";
             document.getElementById("outsideDhakaCharge").style.display = "block";
         }
 
 
-        function updateOrderDetails(type) {
-            var input = parseInt(document.getElementById('CurrentQty').value);
-            if (type == 'plus') {
-                input++;
-            }
-            if (type == 'minus' && input > 0) {
-                input--;
-            }
-            var subtotal = getData();
+//         function updateOrderDetails(type) {
+//             var input = parseInt(document.getElementById('CurrentQty').value);
+//             if (type == 'plus') {
+//                 input++;
+//             }
+//             if (type == 'minus' && input > 0) {
+//                 input--;
+//             }
+//             var subtotal = getData();
 
-            if (checkShipping == 1) {
-                let shippingCharge = 60;
-                var grandTotal = subtotal + shippingCharge;
-                document.getElementById('grandTotal').innerText = '৳ ' + grandTotal;
-                document.getElementById('subtotal').innerText = '৳ ' + (subtotal + shippingCharge);
-            } else if (checkShipping == 2) {
-                var deliveryCharge = 120;
-                var grandTotal = subtotal + deliveryCharge;
-                document.getElementById('grandTotal').innerText = '৳ ' + grandTotal;
-                document.getElementById('subtotal').innerText = '৳ ' + (subtotal + deliveryCharge);
-            }
-        }
+//             if (checkShipping == 1) {
+//                 let shippingCharge = 60;
+//                 var grandTotal = subtotal + shippingCharge;
+//                 document.getElementById('grandTotal').innerText = '৳ ' + grandTotal;
+//                 document.getElementById('subtotal').innerText = '৳ ' + (subtotal + shippingCharge);
+//             } else if (checkShipping == 2) {
+//                 var deliveryCharge = 120;
+//                 var grandTotal = subtotal + deliveryCharge;
+//                 document.getElementById('grandTotal').innerText = '৳ ' + grandTotal;
+//                 document.getElementById('subtotal').innerText = '৳ ' + (subtotal + deliveryCharge);
+//             }
+//         }
 
 
-        function getData() {
-            var quantity = $("#CurrentQty").val();
-            var discountAmount = $("#Discount").val();
-            var price = parseFloat(document.getElementById('productPrice').innerText);
-            var subtotal = quantity * (price - discountAmount);
-            return subtotal;
-        }
+//         function getData() {
+//             var quantity = $("#CurrentQty").val();
+//             var discountAmount = $("#Discount").val();
+//             var price = parseFloat(document.getElementById('productPrice').innerText);
+//             var subtotal = quantity * (price - discountAmount);
+//             return subtotal;
+//         }
     </script>
 @endsection

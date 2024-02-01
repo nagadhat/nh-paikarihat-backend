@@ -261,7 +261,11 @@
                                 <i class="fa fa-shopping-cart">
                                     <span class="cart-label">Cart</span>
                                 </i>
-                                <span id="cart-items" class="count-badge count-zero">0</span>
+                                @if ($product_count >= 1)
+                                    <span id="cart-items" class="count-badge">{{ $product_count }}</span>
+                                @else
+                                    <span id="cart-items" class="count-badge count-zero">0</span>
+                                @endif
                             </a>
                         </div>
                     </div>

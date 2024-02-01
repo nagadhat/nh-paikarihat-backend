@@ -18,53 +18,49 @@ class OrderDetailsController extends Controller
 {
     public function checkoutDetails($checkout)
     {
-        $user = Auth::user()->id;
-
-         $cartItems = ProductCart::where('user_id', $user)->get(); // Add 'get()' to retrieve the results
+        $user = Auth::user();
+        $user_id = Auth::user()->id;
+        $cartItems = ProductCart::where('user_id', $user_id)->with('product')->get(); // Add 'get()' to retrieve the results
         // $products = Product::where('slug', $checkout)->firstOrFail();
-        return view('front-end.order.checkout-details', compact('cartItems'));
-
+        $userdata = [
+            'name' => $user->name,
+            'phone' => $user->phone,
+            'address' => $user->address,
+        ];
+        $totalprice = ProductCart::where('user_id', $user_id)->sum('unit_price');
+        $totaldiscount = ProductCart::where('user_id', $user_id)
+            ->with('product')
+            ->get()
+            ->sum(function ($item) {
+                return $item->product ? $item->product->discount_amount : 0;
+            });
+        // dd($totaldiscount);
+        return view('front-end.order.checkout-details', compact('cartItems', 'userdata', 'totalprice','totaldiscount'));
     }
 
     public function orderProduct(Request $request)
     {
+
         // Check if 'customer_name' is provided
-        // Alert::success('success','Order ');
-        // if (!$request->has('customer_name') || empty($request->customer_name)) {
-        //     return redirect()->back();
-        // }
+        Alert::success('success', 'Order ');
+        if (!$request->has('customer_name') || empty($request->customer_name)) {
+            return redirect()->back();
+        }
 
-        // Rest of your code remains unchanged
-        // $user = User::create([
-        //     "name" => $request->customer_name,
-        //     "phone" => $request->customer_phone,
-        //     "username" => $request->customer_name,
-        //     "email" => 'customer@gmail.com',
-        //     "address" => $request->customer_address,
-        //     "password" => Hash::make('1234567'),
-        // ]);
-
-
-    // Check if 'customer_name' is provided
-    Alert::success('success', 'Order ');
-    if (!$request->has('customer_name') || empty($request->customer_name)) {
-        return redirect()->back();
-    }
-
-    // Check if the user is logged in
-    if (auth()->check()) {
-        $user = auth()->user();
-    } else {
-        // Create a new user if not logged in
-        $user = User::create([
-            "name" => $request->customer_name,
-            "phone" => $request->customer_phone,
-            "username" => $request->customer_name,
-            "email" => 'customer@gmail.com',
-            "address" => $request->customer_address,
-            "password" => Hash::make('1234567'),
-        ]);
-    }
+        // Check if the user is logged in
+        if (auth()->check()) {
+            $user = auth()->user();
+        } else {
+            // Create a new user if not logged in
+            $user = User::create([
+                "name" => $request->customer_name,
+                "phone" => $request->customer_phone,
+                "username" => $request->customer_name,
+                "email" => 'customer@gmail.com',
+                "address" => $request->customer_address,
+                "password" => Hash::make('1234567'),
+            ]);
+        }
 
         $orderPrefix = 'REG';
         // $totalOrderProductPrice = $request->total_quantity * $request->price;
@@ -74,12 +70,10 @@ class OrderDetailsController extends Controller
 
         $product_shipping = Product::find($request->product_id);
         $shipping_amount = 0;
-        if ($request->delivery_area=='inside_dhaka') {
-            $shipping_amount =$product_shipping->inside_dhaka;
-
-        }elseif($request->delivery_area=='outside_dhaka') {
-            $shipping_amount =$product_shipping->outside_dhaka;
-
+        if ($request->delivery_area == 'inside_dhaka') {
+            $shipping_amount = $product_shipping->inside_dhaka;
+        } elseif ($request->delivery_area == 'outside_dhaka') {
+            $shipping_amount = $product_shipping->outside_dhaka;
         }
         $totalOrderProductPrice += $shipping_amount;
 
@@ -122,7 +116,8 @@ class OrderDetailsController extends Controller
     }
 
     // function to order invoice
-    public function invoiceOrder($id) {
+    public function invoiceOrder($id)
+    {
         $orderDetails = Order::where('id', $id)->first();
         $orderProductsDetailslist = OrderProduct::where('order_id', $id)->get();
         return view('front-end.invoice.order-invoice', compact('orderDetails', 'orderProductsDetailslist'));

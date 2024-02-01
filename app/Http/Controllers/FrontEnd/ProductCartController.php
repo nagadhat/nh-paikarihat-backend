@@ -8,6 +8,7 @@ use App\Models\ProductCart;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -17,7 +18,8 @@ class ProductCartController extends Controller
     {
         $user_id = auth()->user()->id;
         $carts = ProductCart::where('user_id', $user_id)->with('product')->get();
-        return view('front-end.cart.add-to-cart', compact('carts'));
+        $totalprice = ProductCart::where('user_id', $user_id)->sum('unit_price');
+        return view('front-end.cart.add-to-cart', compact('carts','totalprice'));
     }
 
     public function productAddCart(Request $request)
@@ -36,9 +38,8 @@ class ProductCartController extends Controller
             $cart->user_id = $user->id;
             $cart->product_id = $product->id;
             $cart->quantity = 1;
-
             if ($product->discount_amount != null) {
-                $cart->unit_price = $product->discount_amount * 1;
+                $cart->unit_price = ($product->price * 1) - $product->discount_amount;
             } else {
                 $cart->unit_price = $product->price * 1;
             }
@@ -58,46 +59,37 @@ class ProductCartController extends Controller
     }
     public function productIncrement(Request $request) {
         $data = $request->all();
+
         // $user = Auth::user();
         // $product = Product::findOrFail(intval($data['productid']));
-        $existingCartItem = ProductCart::where('user_id', intval($data['userid']))
-            ->where('product_id', intval($data['productid']))
-            ->first();
+        // nicer query ta null ase
+        $existingCartItem = ProductCart::where('user_id', intval($data['userid']))->where('product_id', intval($data['productid']))->first();
+
         if ($existingCartItem) {
             if ('increment'==$data['type']) {
+                $unitPrice = $existingCartItem->unit_price / $existingCartItem->quantity;
                 $existingCartItem->quantity += 1;
+                $existingCartItem->unit_price += $unitPrice;
                 $existingCartItem->save();
-                return response()->json(['message' => 'working','quantity' =>$existingCartItem->quantity]);
+                $totalprice = ProductCart::where('user_id', intval($data['userid']))->sum('unit_price');
+                return response()->json(['message' => 'working','quantity' =>$existingCartItem->quantity,'totalprice' =>$totalprice]);
             }elseif('decrement'==$data['type']) {
-
                 if ($existingCartItem->quantity<=1) {
                     return response()->json(['message' => 'invalid','quantity' =>$existingCartItem->quantity]);
                 }
+                $unitPrice = $existingCartItem->unit_price / $existingCartItem->quantity;
                 $existingCartItem->quantity -= 1;
+                $existingCartItem->unit_price -= $unitPrice;
                 $existingCartItem->save();
-                return response()->json(['message' => 'working','quantity' =>$existingCartItem->quantity]);
+                $totalprice = ProductCart::where('user_id', intval($data['userid']))->sum('unit_price');
+                return response()->json(['message' => 'working','quantity' =>$existingCartItem->quantity,'totalprice' =>$totalprice]);
             }else {
-
                 return response()->json(['message' => 'invalid','quantity' =>$existingCartItem->quantity]);
             }
-
         } else {
+
             return response()->json(['message' => 'Not working']);
-            // $cart = new ProductCart();
-            // $cart->user_id = $user->id;
-            // $cart->product_id = $product->id;
-            // $cart->quantity = 1;
-
-            // if ($product->discount_amount != null) {
-            //     $cart->unit_price = $product->discount_amount * 1;
-            // } else {
-            //     $cart->unit_price = $product->price * 1;
-            // }
-            // $cart->order_type = 'REG';
-            // $cart->save();
         }
-        // $product_count = ProductCart::where('user_id', $user->id)->count();
-
 
     }
 }

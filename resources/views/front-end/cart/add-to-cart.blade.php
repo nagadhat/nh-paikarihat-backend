@@ -55,7 +55,7 @@
 
                 <div class="cart-page nh--paikarihat">
                     {{-- <form action="#" method="post" enctype="multipart/form-data" class="cart-table"> --}}
-                    <div class="cart-table">
+                    <div class="cart-table custom--cart-page">
                         @if ($carts->isNotEmpty())
                             <div class="table-responsive">
                                 <table class="table table-bordered">
@@ -121,16 +121,16 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="text-right"><strong>প্রোডাক্টের মূল্য:</strong></td>
-                                                    <td class="text-right">2,550 TAKA</td>
+                                                    <td class="text-right">{{ $totalprice }} TAKA</td>
                                                 </tr>
-                                                <tr>
+                                                {{-- <tr>
                                                     <td class="text-right"><strong><b>ডেলিভারী চার্জ</b>:</strong></td>
                                                     <td class="text-right">150 TAKA</td>
-                                                </tr>
-                                                <tr>
+                                                </tr> --}}
+                                                {{-- <tr>
                                                     <td class="text-right"><strong>মোট বিল:</strong></td>
-                                                    <td class="text-right">2,700 TAKA</td>
-                                                </tr>
+                                                    <td class="text-right">{{ $totalprice }} TAKA</td>
+                                                </tr> --}}
                                             </tbody>
                                         </table>
                                     </div>
@@ -190,9 +190,7 @@
                             // console.log($(that).parent('span').prev('input[name="quantity"]').html());
                             $(that).parent('span').prev('input[name="quantity"]').val(quantity);
                             location.reload();
-
                         }
-
                     },
                     error: function(error) {
                         console.log('error1st', error);

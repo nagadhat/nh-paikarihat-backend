@@ -42406,6 +42406,24 @@ input[type="radio"] {
 div#account-edit {
   padding-bottom: 50px;
 }
+
+.custom--cart-page {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+.custom--cart-page .table-responsive {
+    flex-shrink: 1;
+    flex: 1;
+}
+.custom--cart-page  .cart-bottom {
+    margin-left: 0 !important;
+    flex-shrink: 1;
+    flex: 1;
+}
+#checkout-cart {
+    padding-bottom: 50px;
+}
 @media (max-width: 767px) {
   .customer__orders{
       flex-direction: column;

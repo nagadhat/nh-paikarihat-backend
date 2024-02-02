@@ -153,6 +153,7 @@
                                                             @foreach ($cartItems as $products)
                                                                 <tr>
                                                                     <td class="">
+                                                                        <input type="hidden" name="product_id[]" value="{{ $products->product->id }}">
                                                                         @if (isset($products->product->photo))
                                                                             <div class=" ph__checkout__photo">
                                                                                 <img src="{{ asset('storage/products/' . $products->product->photo) }}"
@@ -200,11 +201,13 @@
                                                                         style="background-color: red;margin-left:5px">
                                                                         <i class="fa fa-chevron-up"></i>
                                                                     </button>
+
                                                                 </div>
+
                                                             </div>
                                                         </td>
-                                                        <td class="qc-price hidden-xs hidden">
-                                                            {{ isset($products->price) ? $products->price : '' }}
+                                                        <td class="qc-price  ">
+                                                            {{ isset($products->unit_price) ? $products->unit_price : '' }}
                                                             TAKA</td>
                                                         {{-- <td class="qc-total hidden">850 TAKA</td> --}}
                                                     </tr>
@@ -278,6 +281,7 @@
                                                                 style="font-weight: bold">
                                                                 মোট বিল
                                                             </label>
+                                                            <input type="hidden" name="order_total" value="{{ $totalprice + $totaldiscount }}">
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right" id="grandTotal">
                                                                 {{ isset($totalprice ) && isset($totaldiscount) ? ($totalprice + $totaldiscount + 60) :'' }}
                                                             </div>
@@ -326,7 +330,22 @@
                     } = data;
                     if ('working'===message) {
                         $('#CurrentQty_'+i).val(quantity);
-                        $('#grandTotal').html(totalprice);
+                        let delivery_area  = $('input[name="delivery_area"]:checked').val();
+                        if (delivery_area) {
+                            if (delivery_area=='inside_dhaka') {
+                                $('#grandTotal').html(+totalprice + 60);
+                                $('input[name="order_total"]').val(+totalprice + 60);
+                            }else if(delivery_area=='outside_dhaka') {
+                                $('#grandTotal').html(+totalprice + 120);
+                                $('input[name="order_total"]').val(+totalprice + 120);
+                            }
+                        }else {
+                            $('#grandTotal').html(+totalprice + 60);
+                            $('input[name="order_total"]').val(+totalprice + 60);
+                        }
+
+                        $('#productPriceval').val(totalprice);
+                        $('#productPrice').html(totalprice + ' TAKA');
                     }
                 },
                 error: function(error) {
@@ -334,7 +353,6 @@
                 }
             });
         };
-
         (function($) {
             $.ajaxSetup({
                 headers: {
@@ -342,6 +360,26 @@
                 }
             });
         })(jQuery);
+        // delivery area functoin
+        function showInsideDhaka() {
+            //Inside
+            checkShipping = 1;
+            let discount = document.getElementById('Discount').value;
+            let productPriceval = document.getElementById('productPriceval').value;
+            document.getElementById('grandTotal').innerText = '৳ ' +(+productPriceval + +discount + 60);
+            document.getElementById("insideDhakaCharge").style.display = "block";
+            document.getElementById("outsideDhakaCharge").style.display = "none";
+        }
+        function showOutsideDhaka() {
+            // Outside
+            checkShipping = 2;
+            var deliveryCharge = 120;
+            let discount = document.getElementById('Discount').value;
+            let productPriceval = document.getElementById('productPriceval').value;
+            document.getElementById('grandTotal').innerText = '৳ ' +( +productPriceval + +discount + deliveryCharge);
+            document.getElementById("insideDhakaCharge").style.display = "none";
+            document.getElementById("outsideDhakaCharge").style.display = "block";
+        }
 
 // -----------------------------------------------------------------------------------------
 // var buttonPlus = $(".qty-btn-plus");
@@ -376,33 +414,7 @@
 
 //         var checkShipping = 1;
 
-        function showInsideDhaka() {
-            //Inside
-            checkShipping = 1;
-            // var subtotal = getData();
-            let discount = document.getElementById('Discount').value;
-            let productPriceval = document.getElementById('productPriceval').value;
-            document.getElementById('grandTotal').innerText = '৳ ' +(+productPriceval + +discount + 60);
-            // document.getElementById('subtotal').innerText = subtotal + 60;
-            // document.getElementById('subtotal').innerText = subtotal;
-            document.getElementById("insideDhakaCharge").style.display = "block";
-            document.getElementById("outsideDhakaCharge").style.display = "none";
-        }
-        function showOutsideDhaka() {
-            // Outside
-            checkShipping = 2;
-            // var subtotal = getData();
-            var deliveryCharge = 120;
-            let discount = document.getElementById('Discount').value;
-            let productPriceval = document.getElementById('productPriceval').value;
-            // document.getElementById('grandTotal').innerText = '৳ ' +(+productPriceval + +discount + 60);
 
-            document.getElementById('grandTotal').innerText = '৳ ' +( +productPriceval + +discount + deliveryCharge);
-            // document.getElementById('subtotal').innerText = subtotal;
-
-            document.getElementById("insideDhakaCharge").style.display = "none";
-            document.getElementById("outsideDhakaCharge").style.display = "block";
-        }
 
 
 //         function updateOrderDetails(type) {

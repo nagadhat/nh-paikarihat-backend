@@ -27,7 +27,12 @@ class OrderDetailsController extends Controller
             'phone' => $user->phone,
             'address' => $user->address,
         ];
-        $totalprice = ProductCart::where('user_id', $user_id)->sum('unit_price');
+        $totalprice = ProductCart::where('user_id', Auth::id())
+            ->get()
+            ->sum(function ($item) {
+                return $item->unit_price * $item->quantity;
+            });
+
         $totaldiscount = ProductCart::where('user_id', $user_id)
             ->with('product')
             ->get()
@@ -35,7 +40,7 @@ class OrderDetailsController extends Controller
                 return $item->product ? $item->product->discount_amount : 0;
             });
         // dd($totaldiscount);
-        return view('front-end.order.checkout-details', compact('cartItems', 'userdata', 'totalprice','totaldiscount'));
+        return view('front-end.order.checkout-details', compact('cartItems', 'userdata', 'totalprice', 'totaldiscount'));
     }
 
     public function orderProduct(Request $request)
@@ -71,18 +76,22 @@ class OrderDetailsController extends Controller
         $product_shipping = Product::find($request->product_id);
         $shipping_amount = 0;
         if ($request->delivery_area == 'inside_dhaka') {
-            $shipping_amount = $product_shipping->inside_dhaka;
+            // $shipping_amount = $product_shipping->inside_dhaka;
+            $shipping_amount = 60;
         } elseif ($request->delivery_area == 'outside_dhaka') {
-            $shipping_amount = $product_shipping->outside_dhaka;
+            // $shipping_amount = $product_shipping->outside_dhaka;
+            $shipping_amount = 120;
         }
         $totalOrderProductPrice += $shipping_amount;
 
 
         $shipping_charge = Product::find($request->product_id);
         if ($request->delivery_area == "inside_dhaka") {
-            $deliveryCharge = $shipping_charge->inside_dhaka;
+            $deliveryCharge = 60;
+            // $deliveryCharge = $shipping_charge->inside_dhaka;
         } else {
-            $deliveryCharge = $shipping_charge->outside_dhaka;
+            // $deliveryCharge = $shipping_charge->outside_dhaka;
+            $deliveryCharge = 120;
         }
 
         $orderDetails = Order::create([
@@ -100,16 +109,20 @@ class OrderDetailsController extends Controller
             "delivery_area" => $deliveryCharge,
             "discount_amount" => $discountAmount,
         ]);
+        $products = Product::whereIn('id', $request->product_id)->get();
+        foreach ($products as $product) {
+            $lineItem = ProductCart::where('product_id', $product->id)->first();
+            OrderProduct::create([
+                "order_id" => $orderDetails->id,
+                "product_id" => $product->id,
+                "product_name" => $product->title,
+                "photo" => $product->photo,
+                "quantity" => $lineItem->quantity,
+                "unit_price" => $lineItem->unit_price,
+            ]);
+        }
+        // $product = Product::find($request->product_id);
 
-        $product = Product::find($request->product_id);
-        OrderProduct::create([
-            "order_id" => $orderDetails->id,
-            "product_id" => $product->id,
-            "product_name" => $product->title,
-            "photo" => $product->photo,
-            "quantity" => $orderDetails->total_quantity,
-            "unit_price" => $request->price,
-        ]);
 
         Alert::success('Success', "Thank You For Your Order");
         return redirect()->route('invoice_order', $orderDetails->id);
@@ -120,6 +133,7 @@ class OrderDetailsController extends Controller
     {
         $orderDetails = Order::where('id', $id)->first();
         $orderProductsDetailslist = OrderProduct::where('order_id', $id)->get();
+        ProductCart::where('user_id', Auth::id())->delete();
         return view('front-end.invoice.order-invoice', compact('orderDetails', 'orderProductsDetailslist'));
     }
 }

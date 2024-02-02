@@ -70,7 +70,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($carts as $cart)
+                                        @forelse ($carts as $key => $cart)
                                             <tr>
                                                 <td class=" td-image">
                                                     <div class="" style="padding-bottom:10px">
@@ -89,10 +89,15 @@
                                                         <div class="stepper">
                                                             <input type="text" name="quantity"
                                                                 value="{{ $cart->quantity }}" size="1"
-                                                                class="form-control" min="1">
+                                                                id="product_id_{{ $key }}" class="form-control"
+                                                                min="1">
                                                             <span>
-                                                                <i class="fa fa-angle-up" data-product_id="{{ $cart->product_id }}"></i>
-                                                                <i class="fa fa-angle-down" data-product_id="{{ $cart->product_id }}"></i>
+                                                                <i class="fa fa-angle-up"
+                                                                    onClick="incrementQuanty({{ $key }}, 'increment')"
+                                                                    data-product_id="{{ $cart->product_id }}"></i>
+                                                                <i class="fa fa-angle-down"
+                                                                    onClick="incrementQuanty({{ $key }}, 'decrement')"
+                                                                    data-product_id="{{ $cart->product_id }}"></i>
                                                             </span>
                                                         </div>
                                                         <span class="input-group-btn">
@@ -144,8 +149,9 @@
                             </div>
                         @else
                             <h5 style="padding-bottom: 30px; color: black;">Your shopping cart is empty!</h5>
-                            <div class="pull-left" style="padding-bottom: 30px;"><a href="{{ route('home_page') }}" class="btn btn-default"><span>
-                                Continue Shopping</span></a>
+                            <div class="pull-left" style="padding-bottom: 30px;"><a href="{{ route('home_page') }}"
+                                    class="btn btn-default"><span>
+                                        Continue Shopping</span></a>
                             </div>
                         @endif
                     </div>
@@ -157,7 +163,46 @@
 
 @section('scripts')
     <script>
+        function incrementQuanty(i, type) {
+            let productid = $('#product_id_' + i).val();
+            $.ajax({
+                url: "/product-increment",
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    productid,
+                    type: type
+                }),
+                success: function(data) {
+                    let {
+                        totalprice,
+                        message,
+                        quantity
+                    } = data;
+                    if ('working' === message) {
+                        if($("#checkout-cart").length) {
+                            $('#product_id_' + i).val(quantity);
+                        }else {
+                            $('#CurrentQty_' + i).val(quantity);
+                            $('#grandTotal').html(totalprice);
+                        }
+
+                    }
+                },
+                error: function(error) {
+                    console.log('error1st', error);
+                }
+            });
+        };
         (function($) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            });
+        })(jQuery);
+
+        /*(function($) {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
@@ -233,5 +278,6 @@
                 });
             });
         })(jQuery);
+        */
     </script>
 @endsection

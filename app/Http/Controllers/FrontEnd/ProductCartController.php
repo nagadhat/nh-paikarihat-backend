@@ -18,8 +18,13 @@ class ProductCartController extends Controller
     {
         $user_id = auth()->user()->id;
         $carts = ProductCart::where('user_id', $user_id)->with('product')->get();
-        $totalprice = ProductCart::where('user_id', $user_id)->sum('unit_price');
-        return view('front-end.cart.add-to-cart', compact('carts','totalprice'));
+        $totalprice = ProductCart::where('user_id', Auth::id())
+            ->get()
+            ->sum(function ($item) {
+                return $item->unit_price * $item->quantity;
+            });
+
+        return view('front-end.cart.add-to-cart', compact('carts', 'totalprice'));
     }
 
     public function productAddCart(Request $request)
@@ -57,30 +62,43 @@ class ProductCartController extends Controller
         Alert::success('Product Cart Deleted Successfuly!!!');
         return redirect()->back();
     }
-    public function productIncrement(Request $request) {
+    public function productIncrement(Request $request)
+    {
         $data = $request->all();
-        $existingCartItem = ProductCart::where('user_id',Auth::id())->where('id', $data['productid'])->first();
-        $unitPrice = $existingCartItem->unit_price / $existingCartItem->quantity;
+        $existingCartItem = ProductCart::where('user_id', Auth::id())->where('id', $data['productid'])->first();
+        // $existingCartItem returns null
+        // $unitPrice = $existingCartItem->unit_price / $existingCartItem->quantity;
+        $unitPrice = $existingCartItem->unit_price;
         if ($existingCartItem) {
-            if ('increment'==$data['type']) {
+            if ('increment' == $data['type']) {
                 $existingCartItem->quantity += 1;
-                $existingCartItem->unit_price += $unitPrice;
+                // $existingCartItem->unit_price += $unitPrice;
                 $existingCartItem->save();
-                $totalprice = ProductCart::where('user_id',Auth::id())->sum('unit_price');
-            }else {
-                if ($existingCartItem->quantity<=1) {
-                    return response()->json(['message' => 'invalid','quantity' =>$existingCartItem->quantity]);
+                // $totalprice = ProductCart::where('user_id',Auth::id())->sum('unit_price');
+                $totalprice = ProductCart::where('user_id', Auth::id())
+                    ->get()
+                    ->sum(function ($item) {
+                        return $item->unit_price * $item->quantity;
+                    });
+            } else {
+                if ($existingCartItem->quantity <= 1) {
+                    return response()->json(['message' => 'invalid', 'quantity' => $existingCartItem->quantity]);
                 }
                 $existingCartItem->quantity -= 1;
-                $existingCartItem->unit_price -= $unitPrice;
+                // $existingCartItem->unit_price -= $unitPrice;
                 $existingCartItem->save();
-                $totalprice = ProductCart::where('user_id', Auth::id())->sum('unit_price');
+                // $totalprice = ProductCart::where('user_id', Auth::id())->sum('unit_price');
+                $totalprice = ProductCart::where('user_id', Auth::id())
+                    ->get()
+                    ->sum(function ($item) {
+                        return $item->unit_price * $item->quantity;
+                    });
             }
-            return response()->json(['message' => 'working','quantity' =>$existingCartItem->quantity,'totalprice' =>$totalprice]);
+
+            return response()->json(['message' => 'working', 'quantity' => $existingCartItem->quantity, 'totalprice' => $totalprice, 'unitPrice' => $unitPrice]);
         } else {
 
             return response()->json(['message' => 'Not working']);
         }
-
     }
 }

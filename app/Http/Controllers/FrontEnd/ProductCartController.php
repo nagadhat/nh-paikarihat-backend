@@ -69,15 +69,11 @@ class ProductCartController extends Controller
     {
         $data = $request->all();
         $existingCartItem = ProductCart::where('user_id', Auth::id())->where('id', $data['productid'])->first();
-        // $existingCartItem returns null
-        // $unitPrice = $existingCartItem->unit_price / $existingCartItem->quantity;
         $unitPrice = $existingCartItem->unit_price;
         if ($existingCartItem) {
             if ('increment' == $data['type']) {
                 $existingCartItem->quantity += 1;
-                // $existingCartItem->unit_price += $unitPrice;
                 $existingCartItem->save();
-                // $totalprice = ProductCart::where('user_id',Auth::id())->sum('unit_price');
                 $totalprice = ProductCart::where('user_id', Auth::id())
                     ->get()
                     ->sum(function ($item) {
@@ -88,17 +84,28 @@ class ProductCartController extends Controller
                     return response()->json(['message' => 'invalid', 'quantity' => $existingCartItem->quantity]);
                 }
                 $existingCartItem->quantity -= 1;
-                // $existingCartItem->unit_price -= $unitPrice;
                 $existingCartItem->save();
-                // $totalprice = ProductCart::where('user_id', Auth::id())->sum('unit_price');
                 $totalprice = ProductCart::where('user_id', Auth::id())
                     ->get()
                     ->sum(function ($item) {
                         return $item->unit_price * $item->quantity;
                     });
             }
+            $user_id = Auth::user()->id;
+            $totaldiscount = ProductCart::where('user_id', $user_id)
+            ->with('product')
+            ->get()
+            ->sum(function ($item) {
+                if ($item->product) {
+                    $discountPerItem = $item->product->discount_amount;
+                    $quantity = $item->quantity;
+                    return $discountPerItem * $quantity;
+                } else {
+                    return 0;
+                }
+            });
 
-            return response()->json(['message' => 'working', 'quantity' => $existingCartItem->quantity, 'totalprice' => $totalprice, 'unitPrice' => $unitPrice]);
+            return response()->json(['message' => 'working', 'quantity' => $existingCartItem->quantity, 'totalprice' => $totalprice, 'unitPrice' => $unitPrice ,'totaldiscount'=>$totaldiscount]);
         } else {
 
             return response()->json(['message' => 'Not working']);

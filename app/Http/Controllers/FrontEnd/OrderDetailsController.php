@@ -37,12 +37,26 @@ class OrderDetailsController extends Controller
                 return $item->unit_price * $item->quantity;
             });
 
+        // $totaldiscount = ProductCart::where('user_id', $user_id)
+        //     ->with('product')
+        //     ->get()
+        //     ->sum(function ($item) {
+        //         return $item->product ? $item->product->discount_amount : 0;
+        //     });
+        
         $totaldiscount = ProductCart::where('user_id', $user_id)
             ->with('product')
             ->get()
             ->sum(function ($item) {
-                return $item->product ? $item->product->discount_amount : 0;
+                if ($item->product) {
+                    $discountPerItem = $item->product->discount_amount;
+                    $quantity = $item->quantity;
+                    return $discountPerItem * $quantity;
+                } else {
+                    return 0;
+                }
             });
+
         return view('front-end.order.checkout-details', compact('cartItems', 'userdata', 'totalprice', 'totaldiscount'));
     }
 

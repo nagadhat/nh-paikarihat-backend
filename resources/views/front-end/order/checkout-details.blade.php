@@ -152,7 +152,9 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <?php $i = 1; ?>
+                                                            <?php $i = 1;
+    //dd($totaldiscount);
+                                   ?>
                                                             @foreach ($cartItems as $products)
                                                                 <tr>
                                                                     <td class="">
@@ -238,11 +240,7 @@
                                                             <label class="col-sm-9 col-xs-6 control-label">
                                                                 <b>ডিসকাউন্ট</b>
                                                             </label>
-                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right">
-                                                                {{-- @php
-                                                                    $dis = isset($products->discount_amount) ? $products->discount_amount : '0';
-                                                                @endphp --}}
-                                                                {{-- <del>{{ $dis }} TAKA</del> --}}
+                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right" id="discount_increment">
                                                                 {{ isset($totaldiscount) ? $totaldiscount : '' }} TAKA
 
                                                                 <input type="hidden" id="Discount"
@@ -340,7 +338,8 @@
                     let {
                         totalprice,
                         message,
-                        quantity
+                        quantity,
+                        totaldiscount
                     } = data;
 
                     if ('working' === message) {
@@ -358,7 +357,8 @@
                         $('input[name="order_total"]').val(grandTotal);
 
                         $('#productPriceval').val(totalprice);
-                        $('#productPrice').html(totalprice +' ');
+                        $('#productPrice').html(totalprice +' TAKA');
+                        $("#discount_increment").html(parseFloat(totaldiscount + 'TAKA'));
                     }
                 },
                 error: function(error) {
@@ -366,7 +366,6 @@
                 }
             });
         };
-
 
         // delivery area functoin
         function showInsideDhaka() {
@@ -384,7 +383,6 @@
         function showOutsideDhaka() {
             var discount = $("#Discount").val();
             var productPriceval = $("#productPriceval").val();
-
             var grandTotal = (parseFloat(productPriceval) + 120) - discount;
             $('#grandTotal').html(grandTotal);
             $('input[name="order_total"]').val(grandTotal);

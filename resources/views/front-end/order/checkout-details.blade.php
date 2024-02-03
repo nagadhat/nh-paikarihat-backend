@@ -144,16 +144,20 @@
                                                                 <td class="qc-image" style="font-weight: bold">নাম ও ছবি:
                                                                 </td>
                                                                 <td class="qc-quantity" style="font-weight: bold">
+                                                                    ইউনিট প্রাইস:
+                                                                </td>
+                                                                <td class="qc-quantity" style="font-weight: bold; text-align:center">
                                                                     কোয়ান্টিটি:
                                                                 </td>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <?php $i=1;?>
+                                                            <?php $i = 1; ?>
                                                             @foreach ($cartItems as $products)
                                                                 <tr>
                                                                     <td class="">
-                                                                        <input type="hidden" name="product_id[]" value="{{ $products->product->id }}">
+                                                                        <input type="hidden" name="product_id[]"
+                                                                            value="{{ $products->product->id }}">
                                                                         @if (isset($products->product->photo))
                                                                             <div class=" ph__checkout__photo">
                                                                                 <img src="{{ asset('storage/products/' . $products->product->photo) }}"
@@ -173,49 +177,45 @@
 
                                                                         </p>
                                                                     </td>
-                                                                    <td class="qc-quantity" style="padding-bottom: 70px;">
+                                                                    <td class="qc-price  ">
+                                                                        {{ isset($products->unit_price) ? $products->unit_price : '' }}
+                                                                        TAKA
+                                                                    </td>
+                                                                    <td class="qc-quantity" >
                                                                         <div class="input-group input-group-sm">
-                                                                            {{-- <input type="text" name="stock" value="1"
-                                                                        class="qc-product-qantity form-control text-center">
-                                                                    <span class="input-group-btn">
-                                                                        <button class="btn btn-danger delete">
-                                                                            <i class="fa fa-times"></i>
-                                                                        </button>
-                                                                </span> --}}
-                                                                <div class="qty-container">
-                                                                    <input type="hidden" id="product_id_{{ $i }}" value="{{ $products->id }}">
-                                                                    <button
-                                                                        class="qty-btn-minus btn-danger btn-cornered mr-2" onClick="incrementQuanty({{ $i }}, 'decrement')"
-                                                                        type="button"
-                                                                        style="background-color: red; margin-right: 5px">
-                                                                        <i class="fa fa-chevron-down"></i>
-                                                                    </button>
-                                                                    <input type="number" id="CurrentQty_{{ $i}}"
-                                                                        name="total_quantity" min="1"
-                                                                        value="{{ $products->quantity }}"
-                                                                        class="input-qty input-cornered" />
-                                                                    <button
-                                                                        class="qty-btn-plus btn-danger btn-cornered ml-1" onClick="incrementQuanty({{ $i }}, 'increment')"
-                                                                        type="button"
-                                                                        data-product_id="{{ $products->id }}"
-                                                                        style="background-color: red;margin-left:5px">
-                                                                        <i class="fa fa-chevron-up"></i>
-                                                                    </button>
 
-                                                                </div>
-
-                                                            </div>
-                                                        </td>
-                                                        <td class="qc-price  ">
-                                                            {{ isset($products->unit_price) ? $products->unit_price : '' }}
-                                                            TAKA</td>
-                                                        {{-- <td class="qc-total hidden">850 TAKA</td> --}}
-                                                    </tr>
-                                                    <?php
-                                                        $i++;
-                                                    ?>
-                                                @endforeach
-
+                                                                            <div class="qty-container " style="width:100%;">
+                                                                                <input type="hidden"
+                                                                                    id="product_id_{{ $i }}"
+                                                                                    value="{{ $products->id }}">
+                                                                                <button
+                                                                                    class="qty-btn-minus btn-danger btn-cornered mr-2"
+                                                                                    onClick="manageQuantity({{ $i }}, 'decrement')"
+                                                                                    type="button"
+                                                                                    style="background-color: red; margin-right: 5px">
+                                                                                    <i class="fa fa-chevron-down"></i>
+                                                                                </button>
+                                                                                <input type="number"
+                                                                                    id="CurrentQty_{{ $i }}"
+                                                                                    name="total_quantity" min="1"
+                                                                                    value="{{ $products->quantity }}"
+                                                                                    class="input-qty input-cornered" />
+                                                                                <button
+                                                                                    class="qty-btn-plus btn-danger btn-cornered ml-1"
+                                                                                    onClick="manageQuantity({{ $i }}, 'increment')"
+                                                                                    type="button"
+                                                                                    data-product_id="{{ $products->id }}"
+                                                                                    style="background-color: red;margin-left:5px">
+                                                                                    <i class="fa fa-chevron-up"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <?php
+                                                                $i++;
+                                                                ?>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -230,7 +230,8 @@
                                                                 <span id="productPrice">
                                                                     {{ isset($totalprice) ? $totalprice : '' }}
                                                                     TAKA</span>
-                                                                <input id="productPriceval" type="hidden" name="price" value="{{ isset($totalprice) ? $totalprice : ''  }}">
+                                                                <input id="productPriceval" type="hidden" name="price"
+                                                                    value="{{ isset($totalprice) ? $totalprice : '' }}">
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -245,7 +246,8 @@
                                                                 {{ isset($totaldiscount) ? $totaldiscount : '' }} TAKA
 
                                                                 <input type="hidden" id="Discount"
-                                                                    name="discount_amount" value="{{ isset($totaldiscount) ? $totaldiscount : '' }}">
+                                                                    name="discount_amount"
+                                                                    value="{{ isset($totaldiscount) ? $totaldiscount : '' }}">
                                                             </div>
                                                         </div>
                                                         {{-- <div class="row">
@@ -281,9 +283,13 @@
                                                                 style="font-weight: bold">
                                                                 মোট বিল
                                                             </label>
-                                                            <input type="hidden" name="order_total" value="{{ $totalprice + $totaldiscount }}">
-                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right" id="grandTotal">
-                                                                {{ isset($totalprice ) && isset($totaldiscount) ? ($totalprice + $totaldiscount + 60) :'' }}
+                                                            <input type="hidden" name="order_total"
+                                                                value="{{ $totalprice + $totaldiscount }}">
+                                                            <input type="hidden" id="discount_amount"
+                                                                name="discount_amount" value="{{ $totaldiscount }}">
+                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right"
+                                                                id="grandTotal">
+                                                                {{ isset($totalprice) && isset($totaldiscount) ? $totalprice + 60 - $totaldiscount : '' }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -312,47 +318,6 @@
 @endsection
 @section('scripts')
     <script>
-       function incrementQuanty(i, type){
-            let productid = $('#product_id_'+i).val();
-            $.ajax({
-                url: "/product-increment",
-                type: 'post',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                    productid,
-                    type:type
-                }),
-                success: function(data) {
-                    let {
-                        totalprice,
-                        message,
-                        quantity
-                    } = data;
-                    if ('working'===message) {
-                        $('#CurrentQty_'+i).val(quantity);
-                        let delivery_area  = $('input[name="delivery_area"]:checked').val();
-                        if (delivery_area) {
-                            if (delivery_area=='inside_dhaka') {
-                                $('#grandTotal').html(+totalprice + 60);
-                                $('input[name="order_total"]').val(+totalprice + 60);
-                            }else if(delivery_area=='outside_dhaka') {
-                                $('#grandTotal').html(+totalprice + 120);
-                                $('input[name="order_total"]').val(+totalprice + 120);
-                            }
-                        }else {
-                            $('#grandTotal').html(+totalprice + 60);
-                            $('input[name="order_total"]').val(+totalprice + 60);
-                        }
-
-                        $('#productPriceval').val(totalprice);
-                        $('#productPrice').html(totalprice + ' TAKA');
-                    }
-                },
-                error: function(error) {
-                    console.log('error1st', error);
-                }
-            });
-        };
         (function($) {
             $.ajaxSetup({
                 headers: {
@@ -360,93 +325,72 @@
                 }
             });
         })(jQuery);
+
+        function manageQuantity(i, type) {
+            let productid = $('#product_id_' + i).val();
+            $.ajax({
+                url: "/product-increment",
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    productid,
+                    type: type
+                }),
+                success: function(data) {
+                    let {
+                        totalprice,
+                        message,
+                        quantity
+                    } = data;
+
+                    if ('working' === message) {
+                        $('#CurrentQty_' + i).val(quantity);
+                        let delivery_area = $('input[name="delivery_area"]:checked').val();
+                        var discount_amount = $('#discount_amount').val();
+
+                        if (delivery_area == 'inside_dhaka') {
+                            var grandTotal = (parseFloat(totalprice) + 60) - parseFloat(discount_amount);
+                        } else {
+                            var grandTotal = (parseFloat(totalprice) + 120) - parseFloat(discount_amount);
+                        }
+
+                        $('#grandTotal').html(grandTotal + ' TAKA');
+                        $('input[name="order_total"]').val(grandTotal);
+
+                        $('#productPriceval').val(totalprice);
+                        $('#productPrice').html(totalprice +' ');
+                    }
+                },
+                error: function(error) {
+                    console.log('error1st', error);
+                }
+            });
+        };
+
+
         // delivery area functoin
         function showInsideDhaka() {
-            //Inside
-            checkShipping = 1;
-            let discount = document.getElementById('Discount').value;
-            let productPriceval = document.getElementById('productPriceval').value;
-            document.getElementById('grandTotal').innerText = '৳ ' +(+productPriceval + +discount + 60);
+            var discount = $("#Discount").val();
+            var productPriceval = $("#productPriceval").val();
+
+            var grandTotal = (parseFloat(productPriceval) + 60) - discount;
+            $('#grandTotal').html(grandTotal);
+            $('input[name="order_total"]').val(grandTotal);
+
             document.getElementById("insideDhakaCharge").style.display = "block";
             document.getElementById("outsideDhakaCharge").style.display = "none";
         }
+
         function showOutsideDhaka() {
-            // Outside
-            checkShipping = 2;
-            var deliveryCharge = 120;
-            let discount = document.getElementById('Discount').value;
-            let productPriceval = document.getElementById('productPriceval').value;
-            document.getElementById('grandTotal').innerText = '৳ ' +( +productPriceval + +discount + deliveryCharge);
+            var discount = $("#Discount").val();
+            var productPriceval = $("#productPriceval").val();
+
+            var grandTotal = (parseFloat(productPriceval) + 120) - discount;
+            $('#grandTotal').html(grandTotal);
+            $('input[name="order_total"]').val(grandTotal);
+
             document.getElementById("insideDhakaCharge").style.display = "none";
             document.getElementById("outsideDhakaCharge").style.display = "block";
         }
-
-// -----------------------------------------------------------------------------------------
-// var buttonPlus = $(".qty-btn-plus");
-//         var buttonMinus = $(".qty-btn-minus");
-
-//         var incrementPlus = buttonPlus.click(function() {
-//             var $n = $(this)
-//                 .parent(".qty-container")
-//                 .find(".input-qty");
-//             $n.val(Number($n.val()) + 1);
-//         });
-
-//         var incrementMinus = buttonMinus.click(function() {
-//             var $n = $(this)
-//                 .parent(".qty-container")
-//                 .find(".input-qty");
-//             var amount = Number($n.val());
-//             if (amount > 0) {
-//                 $n.val(amount - 1);
-//             }
-//         });
-//         function placeOrder() {
-//             alert("Order Placed Sucessfully");
-//         }
-
-//         // Global Start
-//         var subtotal = getData();
-//         document.getElementById('grandTotal').innerText = '৳ ' + (subtotal + 60);
-//         document.getElementById('subtotal').innerText = subtotal + 60;
-//         document.getElementById('subtotal').innerText = subtotal;
-//         // Global end
-
-//         var checkShipping = 1;
-
-
-
-
-//         function updateOrderDetails(type) {
-//             var input = parseInt(document.getElementById('CurrentQty').value);
-//             if (type == 'plus') {
-//                 input++;
-//             }
-//             if (type == 'minus' && input > 0) {
-//                 input--;
-//             }
-//             var subtotal = getData();
-
-//             if (checkShipping == 1) {
-//                 let shippingCharge = 60;
-//                 var grandTotal = subtotal + shippingCharge;
-//                 document.getElementById('grandTotal').innerText = '৳ ' + grandTotal;
-//                 document.getElementById('subtotal').innerText = '৳ ' + (subtotal + shippingCharge);
-//             } else if (checkShipping == 2) {
-//                 var deliveryCharge = 120;
-//                 var grandTotal = subtotal + deliveryCharge;
-//                 document.getElementById('grandTotal').innerText = '৳ ' + grandTotal;
-//                 document.getElementById('subtotal').innerText = '৳ ' + (subtotal + deliveryCharge);
-//             }
-//         }
-
-
-//         function getData() {
-//             var quantity = $("#CurrentQty").val();
-//             var discountAmount = $("#Discount").val();
-//             var price = parseFloat(document.getElementById('productPrice').innerText);
-//             var subtotal = quantity * (price - discountAmount);
-//             return subtotal;
-//         }
     </script>
 @endsection

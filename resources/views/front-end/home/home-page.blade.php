@@ -187,7 +187,7 @@
                         let {
                             product_count
                         } = data;
-                        // $("#cart-items").show().html(product_count);
+                        alert('Product Added To Your Cart');
                         $("#cart-items").removeClass("count-zero").html(product_count);
                         console.log(product_count);
                     },

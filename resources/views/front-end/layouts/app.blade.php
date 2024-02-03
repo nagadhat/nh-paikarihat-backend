@@ -123,9 +123,6 @@
      {{-- data table css --}}
      <link href="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
 
-
-
-
     <style>
         header::before {
             background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(68 188 157) 0%, rgb(68 188 157) 90%);

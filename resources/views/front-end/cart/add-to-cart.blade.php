@@ -50,7 +50,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="cart-page nh--paikarihat">
@@ -65,7 +64,7 @@
                                             {{-- <td class="text-left td-name">Product Name</td> --}}
 
                                             <td class="text-center td-qty">কোয়ান্টিটি</td>
-                                            {{-- <td class="text-center td-price">Unit Price</td> --}}
+                                            <td class="text-center td-price">Unit Price</td>
                                             <td class="text-center td-total">মোট বিল</td>
                                         </tr>
                                     </thead>
@@ -82,22 +81,20 @@
                                                     <p>{{ Str::limit($cart->product->title, $limit = 10, $end = '...') }}
                                                     </p>
                                                 </td>
-
-
                                                 <td class="text-center td-qty">
                                                     <div class="input-group btn-block cart--quantity--btn">
                                                         <div class="stepper">
+                                                            <input type="hidden" name=""  id="unit_price_{{ $key }}"  value="{{ $cart->unit_price }}">
+                                                            <input type="hidden" name=""  id="product_id_{{ $key }}"  value="{{ $cart->id }}">
                                                             <input type="text" name="quantity"
                                                                 value="{{ $cart->quantity }}" size="1"
-                                                                id="product_id_{{ $key }}" class="form-control"
+                                                                id="CurrentQty_{{ $key }}" class="form-control"
                                                                 min="1">
                                                             <span>
                                                                 <i class="fa fa-angle-up"
-                                                                    onClick="incrementQuanty({{ $key }}, 'increment')"
-                                                                    data-product_id="{{ $cart->product_id }}"></i>
+                                                                    onClick="manageQuantity({{ $key }}, 'increment')"></i>
                                                                 <i class="fa fa-angle-down"
-                                                                    onClick="incrementQuanty({{ $key }}, 'decrement')"
-                                                                    data-product_id="{{ $cart->product_id }}"></i>
+                                                                    onClick="manageQuantity({{ $key }}, 'decrement')"></i>
                                                             </span>
                                                         </div>
                                                         <span class="input-group-btn">
@@ -108,8 +105,8 @@
                                                         </span>
                                                     </div>
                                                 </td>
-                                                {{-- <td class="text-center td-price">{{ $cart->unit_price }} TAKA</td> --}}
-                                                <td class="text-center td-total">{{ $cart->unit_price }} TAKA</td>
+                                                <td class="text-center td-price">{{ $cart->unit_price }} TAKA</td>
+                                                <td class="text-center td-total" id="subTotal_{{ $key }}">{{ $cart->unit_price * $cart->quantity }} TAKA</td>
                                             </tr>
                                         @empty
                                             <p>Your shopping cart is empty!</p>
@@ -126,7 +123,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="text-right"><strong>প্রোডাক্টের মূল্য:</strong></td>
-                                                    <td class="text-right">{{ $totalprice }} TAKA</td>
+                                                    <td class="text-right" id="totalPrice">{{ $totalprice }} TAKA</td>
                                                 </tr>
                                                 {{-- <tr>
                                                     <td class="text-right"><strong><b>ডেলিভারী চার্জ</b>:</strong></td>
@@ -141,15 +138,15 @@
                                     </div>
                                 </div>
                                 <div class="buttons clearfix">
-                                    <div class="pull-left"><a href="#" class="btn btn-default"><span>Continue
+                                    <div class="pull-left"><a href="{{ route('home_page') }}" class="btn btn-default"><span>Continue
                                                 Shopping</span></a></div>
                                     <div class="pull-right"><a href="{{ route('checkout_details', $cart->product_id) }}"
                                             class="btn btn-primary"><span>Checkout</span></a></div>
                                 </div>
                             </div>
                         @else
-                            <h5 style="padding-bottom: 30px; color: black;">Your shopping cart is empty!</h5>
-                            <div class="pull-left" style="padding-bottom: 30px;"><a href="{{ route('home_page') }}"
+                            <h4 style="margin-top: 20px;color: black;">Your shopping cart is empty!</h4>
+                            <div class="back__to__hom" style="padding-bottom: 30px;"><a href="{{ route('home_page') }}"
                                     class="btn btn-default"><span>
                                         Continue Shopping</span></a>
                             </div>
@@ -163,8 +160,25 @@
 
 @section('scripts')
     <script>
-        function incrementQuanty(i, type) {
+         (function($) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            });
+        })(jQuery);
+
+        function manageQuantity(i, type) {
             let productid = $('#product_id_' + i).val();
+            let unit_price = $('#unit_price_' + i).val();
+
+            let qty = $('#CurrentQty_' + i).val();
+
+            (type=="increment") ? qty++ : qty--;
+
+            let subTotal = unit_price * qty;
+            $("#subTotal_"+i).html(subTotal + ' TAKA');
+
             $.ajax({
                 url: "/product-increment",
                 type: 'post',
@@ -181,10 +195,11 @@
                     } = data;
                     if ('working' === message) {
                         if($("#checkout-cart").length) {
-                            $('#product_id_' + i).val(quantity);
+                            $('#CurrentQty_' + i).val(quantity);
+                            $('#totalPrice').html(totalprice);
                         }else {
                             $('#CurrentQty_' + i).val(quantity);
-                            $('#grandTotal').html(totalprice);
+                            $('#totalPrice').html(totalprice);
                         }
 
                     }
@@ -194,90 +209,5 @@
                 }
             });
         };
-        (function($) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                }
-            });
-        })(jQuery);
-
-        /*(function($) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                }
-            });
-            $("body").on("click", '.fa-angle-up', function(e) {
-                e.preventDefault();
-
-                let that = this;
-                let productid = $(that).data('product_id');
-                if ('' === productid) {
-                    return;
-                }
-                $.ajax({
-                    url: "/product-increment",
-                    type: 'post',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        productid,
-                        userid: {{ optional(Auth::user())->id }},
-                        type:"increment"
-                    }),
-                    success: function(data) {
-                        console.log(data);
-                        let {
-                            message,
-                            quantity
-                        } = data;
-                        if ('working'===message) {
-                            // console.log($(that).parent('span').prev('input[name="quantity"]').html());
-                           // alert(quantity);
-                            $(that).parent('span').prev('input[name="quantity"]').val(quantity);
-                            location.reload();
-                        }
-                    },
-                    error: function(error) {
-                        console.log('error1st', error);
-                    }
-                });
-            });
-            $("body").on("click", '.fa-angle-down', function(e) {
-                e.preventDefault();
-
-                let that = this;
-                let productid = $(that).data('product_id');
-                if ('' === productid) {
-                    return;
-                }
-                $.ajax({
-                    url: "/product-increment",
-                    type: 'post',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        productid,
-                        userid: {{ optional(Auth::user())->id }},
-                        type:"decrement"
-                    }),
-                    success: function(data) {
-                        console.log(data);
-                        let {
-                            message,
-                            quantity
-                        } = data;
-                        if ('working'===message) {
-                            // console.log($(that).parent('span').prev('input[name="quantity"]').html());
-                            $(that).parent('span').prev('input[name="quantity"]').val(quantity);
-                            location.reload();
-                        }
-                    },
-                    error: function(error) {
-                        console.log('error1st', error);
-                    }
-                });
-            });
-        })(jQuery);
-        */
     </script>
 @endsection

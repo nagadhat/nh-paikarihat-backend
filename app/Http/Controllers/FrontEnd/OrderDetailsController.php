@@ -18,9 +18,13 @@ class OrderDetailsController extends Controller
 {
     public function checkoutDetails($checkout)
     {
+        if (!Auth::check()) {
+            Alert::error('Please Login First');
+            return redirect()->route('customer_login');
+        }
         $user = Auth::user();
         $user_id = Auth::user()->id;
-        $cartItems = ProductCart::where('user_id', $user_id)->with('product')->get(); // Add 'get()' to retrieve the results
+        $cartItems = ProductCart::where('user_id', $user_id)->with('product')->get();
         // $products = Product::where('slug', $checkout)->firstOrFail();
         $userdata = [
             'name' => $user->name,
@@ -39,14 +43,11 @@ class OrderDetailsController extends Controller
             ->sum(function ($item) {
                 return $item->product ? $item->product->discount_amount : 0;
             });
-        // dd($totaldiscount);
         return view('front-end.order.checkout-details', compact('cartItems', 'userdata', 'totalprice', 'totaldiscount'));
     }
 
     public function orderProduct(Request $request)
     {
-
-        // Check if 'customer_name' is provided
         Alert::success('success', 'Order ');
         if (!$request->has('customer_name') || empty($request->customer_name)) {
             return redirect()->back();

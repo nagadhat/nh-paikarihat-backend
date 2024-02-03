@@ -58,6 +58,16 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group required account-email">
+                                <label class="col-sm-2 control-label" for="input-address">Address</label>
+                                <div class="col-sm-10">
+                                    <input type="email" name="address" placeholder="Address"
+                                        id="input-address" class="form-control col-md-12 {{ $errors->has('address') ? 'is-invalid' : '' }} " value="{{ old('address') }}">
+                                        @error('address')
+                                        <div class="alert alert-danger col-md-12" style="margin-top:10px">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="form-group required account-telephone">
                                 <label class="col-sm-2 control-label" for="input-telephone">Phone</label>
                                 <div class="col-sm-10 ">

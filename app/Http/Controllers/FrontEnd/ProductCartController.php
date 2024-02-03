@@ -16,6 +16,10 @@ class ProductCartController extends Controller
 {
     public function addToCart()
     {
+        if (!Auth::check()) {
+            Alert::error('Please Login First');
+            return redirect()->route('customer_login');
+        }
         $user_id = auth()->user()->id;
         $carts = ProductCart::where('user_id', $user_id)->with('product')->get();
         $totalprice = ProductCart::where('user_id', Auth::id())
@@ -23,7 +27,6 @@ class ProductCartController extends Controller
             ->sum(function ($item) {
                 return $item->unit_price * $item->quantity;
             });
-
         return view('front-end.cart.add-to-cart', compact('carts', 'totalprice'));
     }
 
@@ -44,7 +47,7 @@ class ProductCartController extends Controller
             $cart->product_id = $product->id;
             $cart->quantity = 1;
             if ($product->discount_amount != null) {
-                $cart->unit_price = ($product->price * 1) - $product->discount_amount;
+                $cart->unit_price = ($product->price * 1);
             } else {
                 $cart->unit_price = $product->price * 1;
             }

@@ -287,7 +287,7 @@
                                                                 name="discount_amount" value="{{ $totaldiscount }}">
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right"
                                                                 id="grandTotal">
-                                                                {{ isset($totalprice) && isset($totaldiscount) ? $totalprice + 60 - $totaldiscount : '' }}
+                                                                {{ isset($totalprice) && isset($totaldiscount) ? $totalprice + 60 - $totaldiscount : '' }} TAKA
                                                             </div>
                                                         </div>
                                                     </div>
@@ -373,7 +373,7 @@
             var productPriceval = $("#productPriceval").val();
 
             var grandTotal = (parseFloat(productPriceval) + 60) - discount;
-            $('#grandTotal').html(grandTotal);
+            $('#grandTotal').html(grandTotal + ' TAKA');
             $('input[name="order_total"]').val(grandTotal);
 
             document.getElementById("insideDhakaCharge").style.display = "block";
@@ -384,7 +384,7 @@
             var discount = $("#Discount").val();
             var productPriceval = $("#productPriceval").val();
             var grandTotal = (parseFloat(productPriceval) + 120) - discount;
-            $('#grandTotal').html(grandTotal);
+            $('#grandTotal').html(grandTotal + ' TAKA');
             $('input[name="order_total"]').val(grandTotal);
 
             document.getElementById("insideDhakaCharge").style.display = "none";

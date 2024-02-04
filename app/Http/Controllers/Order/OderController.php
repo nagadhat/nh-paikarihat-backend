@@ -22,7 +22,7 @@ class OderController extends Controller
     // order Status change
     public function orderStatus($id, $status)
     {
-        $order = Order::findOrFail($id);
+        $order = Order::findOrFail($id);                    
         $currentStatus = $order->status;
         if ($currentStatus == $status) {
             toast('Already updated.', 'error');

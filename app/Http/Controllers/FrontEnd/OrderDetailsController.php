@@ -60,7 +60,7 @@ class OrderDetailsController extends Controller
             "password" => Hash::make('1234567'),
         ]);
     }
-
+              
         $orderPrefix = 'REG';
         // $totalOrderProductPrice = $request->total_quantity * $request->price;
         $totalOrderProductPrice = $request->total_quantity  * $request->price - $request->discount_amount;

@@ -137,8 +137,6 @@
                                                                         class="btn btn-extra btn-extra-46 add--to--cart-btn"
                                                                         data-product_id="{{ $product->id }}"
                                                                         data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
-
-
                                                                         <span class="btn-text">অর্ডার করুণ</span>
                                                                     </a>
                                                                 </div>

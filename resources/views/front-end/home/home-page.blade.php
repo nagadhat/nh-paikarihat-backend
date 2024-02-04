@@ -110,7 +110,8 @@
                                                         </div>
                                                         <div class="caption">
                                                             <div class="name">
-                                                                <a href="{{ route('product_details', ['slug' => $product->slug]) }}">
+                                                                <a
+                                                                    href="{{ route('product_details', ['slug' => $product->slug]) }}">
                                                                     {{ Str::limit($product->title, 30, '...') }}
                                                                 </a>
                                                             </div>
@@ -133,8 +134,11 @@
                                                             <div class="extra-group">
                                                                 <div>
                                                                     <a href="{{ route('checkout_details', ['checkout' => $product->slug]) }}"
-                                                                        class="btn btn-extra btn-extra-46"
+                                                                        class="btn btn-extra btn-extra-46 add--to--cart-btn"
+                                                                        data-product_id="{{ $product->id }}"
                                                                         data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
+
+
                                                                         <span class="btn-text">অর্ডার করুণ</span>
                                                                     </a>
                                                                 </div>
@@ -153,4 +157,44 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        (function($) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            });
+            $("body").on("click", '.add--to--cart-btn', function(e) {
+                e.preventDefault();
+                let that = this;
+                let productid = $(that).data('product_id');
+                if ('' === productid) {
+                    return;
+                }
+                $.ajax({
+                    url: "/product-add-cart",
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        productid,
+                        userid: {{ optional(Auth::user())->id }}
+                    }),
+                    success: function(data) {
+                        console.log(data);
+                        let {
+                            product_count
+                        } = data;
+                        alert('Product Added To Your Cart');
+                        $("#cart-items").removeClass("count-zero").html(product_count);
+                        console.log(product_count);
+                    },
+                    error: function(error) {
+                        console.log('error1st', error);
+                    }
+                });
+            });
+        })(jQuery);
+    </script>
 @endsection

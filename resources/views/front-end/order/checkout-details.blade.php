@@ -1,11 +1,12 @@
 @php
     $title = 'checkout';
+
 @endphp
 
 @extends('front-end.layouts.app')
 @section('page_content')
-
     <div class="container" id="container">
+
         <ul class="breadcrumb qc-breadcrumb" style="padding: 8px">
             <li><a href="#"><i class="fa fa-home"></i> </a></li>
             <li><a href="#"><b style="font-size: 20px">অর্ডার ইনফরমেশন</b> </a></li>
@@ -64,7 +65,7 @@
                                                 </div>
                                                 <div class="col-xs-12">
                                                     <input type="text" name="customer_name" class="form-control"
-                                                        placeholder="আপনার নাম লিখুন" value="{{ isset(auth()->user()->name) ? auth()->user()->name: ''}}" required>
+                                                        placeholder="আপনার নাম লিখুন" value="{{ auth()->user()->name }}" required>
                                                 </div>
                                             </div>
                                             <div class="text-input form-group required">
@@ -74,7 +75,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="text" name="customer_phone" value="{{ isset(auth()->user()->phone) ? auth()->user()->phone: '' }}"
+                                                    <input type="text" name="customer_phone" value="{{ auth()->user()->phone }}"
                                                         class="form-control" placeholder="মোবাইল নম্বর লিখুন" required>
                                                 </div>
                                             </div>
@@ -85,7 +86,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="text" name="customer_address" value="{{ isset(auth()->user()->address) ? auth()->user()->address: ''}}"
+                                                    <input type="text" name="customer_address" value="{{ auth()->user()->address }}"
                                                         class="form-control" autocomplete="on"
                                                         placeholder="ডেলিভারী ঠিকানা লিখুন" required>
                                                 </div>
@@ -107,7 +108,8 @@
 
                                                     <label class="radio-inline" for="outsideDhaka">
                                                         <input type="radio" name="delivery_area" id="outsideDhaka"
-                                                            value="outside_dhaka" onclick="showOutsideDhaka()">Outside Dhaka
+                                                            value="outside_dhaka" onclick="showOutsideDhaka()">Outside
+                                                        Dhaka
                                                     </label>
                                                 </div>
                                             </div>
@@ -127,7 +129,7 @@
                                                         <i class=""></i>
                                                     </span>
                                                     <span class="text">অর্ডার ইনফরমেশন </span>
-                                                    <input type="hidden" name="product_id" value="{{ $products->id }}">
+                                                    {{-- <input type="hidden" name="product_id" value="{{ $cartItems->id }}"> --}}
                                                 </h4>
                                             </div>
                                             <div class="qc-checkout-product panel-body">
@@ -138,67 +140,80 @@
                                                                 <td class="qc-image" style="font-weight: bold">নাম ও ছবি:
                                                                 </td>
                                                                 <td class="qc-quantity" style="font-weight: bold">
+                                                                    ইউনিট প্রাইস:
+                                                                </td>
+                                                                <td class="qc-quantity" style="font-weight: bold; text-align:center">
                                                                     কোয়ান্টিটি:
                                                                 </td>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td class="">
-                                                                    @if (isset($products->photo))
-                                                                        <div class=" ph__checkout__photo">
-                                                                            <img src="{{ asset('storage/products/' . $products->photo) }}"
-                                                                                class="img-responsive mobile-image"
-                                                                                alt="product image" />
+                                                            <?php $i = 1;
+    //dd($totaldiscount);
+                                   ?>
+                                                            @foreach ($cartItems as $products)
+                                                                <tr>
+                                                                    <td class="">
+                                                                        <input type="hidden" name="product_id[]"
+                                                                            value="{{ $products->product->id }}">
+                                                                        @if (isset($products->product->photo))
+                                                                            <div class=" ph__checkout__photo">
+                                                                                <img src="{{ asset('storage/products/' . $products->product->photo) }}"
+                                                                                    class="img-responsive mobile-image"
+                                                                                    style="width:120px; height:100px !important;object-fit: cover;"
+                                                                                    alt="product image" />
+                                                                            </div>
+                                                                        @else
+                                                                            <div class="ph__checkout__photo ">
+                                                                                <img src="{{ asset('assets/images/others/error.png') }}"
+                                                                                    class="img-responsive mobile-image"
+                                                                                    alt="product image" />
+                                                                            </div>
+                                                                        @endif
+                                                                        <br>
+                                                                        <p>{{ Str::limit($products->product->title, 30, '...') ? Str::limit($products->product->title, 30, '...') : '' }}
+
+                                                                        </p>
+                                                                    </td>
+                                                                    <td class="qc-price  ">
+                                                                        {{ isset($products->unit_price) ? $products->unit_price : '' }}
+                                                                        TAKA
+                                                                    </td>
+                                                                    <td class="qc-quantity" >
+                                                                        <div class="input-group input-group-sm">
+
+                                                                            <div class="qty-container " style="width:100%;">
+                                                                                <input type="hidden"
+                                                                                    id="product_id_{{ $i }}"
+                                                                                    value="{{ $products->id }}">
+                                                                                <button
+                                                                                    class="qty-btn-minus btn-danger btn-cornered mr-2"
+                                                                                    onClick="manageQuantity({{ $i }}, 'decrement')"
+                                                                                    type="button"
+                                                                                    style="background-color: red; margin-right: 5px">
+                                                                                    <i class="fa fa-chevron-down"></i>
+                                                                                </button>
+                                                                                <input type="number"
+                                                                                    id="CurrentQty_{{ $i }}"
+                                                                                    name="total_quantity" min="1"
+                                                                                    value="{{ $products->quantity }}"
+                                                                                    class="input-qty input-cornered" />
+                                                                                <button
+                                                                                    class="qty-btn-plus btn-danger btn-cornered ml-1"
+                                                                                    onClick="manageQuantity({{ $i }}, 'increment')"
+                                                                                    type="button"
+                                                                                    data-product_id="{{ $products->id }}"
+                                                                                    style="background-color: red;margin-left:5px">
+                                                                                    <i class="fa fa-chevron-up"></i>
+                                                                                </button>
+                                                                            </div>
                                                                         </div>
-                                                                    @else
-                                                                        <div class="ph__checkout__photo ">
-                                                                            <img src="{{ asset('assets/images/others/error.png') }}"
-                                                                                class="img-responsive mobile-image"
-                                                                                alt="product image" />
-                                                                        </div>
-                                                                    @endif
-                                                                    <br>
-                                                                    <p>{{ isset($products->title) ? $products->title : '' }}
-                                                                    </p>
-                                                                </td>
-                                                                <td class="qc-quantity" style="padding-bottom: 70px;">
-                                                                    <div class="input-group input-group-sm">
-                                                                        {{-- <input type="text" name="stock" value="1"
-                                                                        class="qc-product-qantity form-control text-center">
-                                                                    <span class="input-group-btn">
-                                                                        <button class="btn btn-danger delete">
-                                                                            <i class="fa fa-times"></i>
-                                                                        </button>
-                                                                    </span> --}}
-                                                                        <div class="qty-container">
-                                                                            {{-- <button
-                                                                                class="qty-btn-minus btn-danger btn-cornered mr-2"
-                                                                                onclick="updateOrderDetails('minus')"
-                                                                                type="button"
-                                                                                style="background-color: red; margin-right: 5px">
-                                                                                <i class="fa fa-chevron-down"></i>
-                                                                            </button> --}}
-                                                                            <input type="number" id="CurrentQty"
-                                                                                name="total_quantity" min="1"
-                                                                                value="1"
-                                                                                onchange="updateOrderDetails('input')"
-                                                                                class="input-qty input-cornered" />
-                                                                            {{-- <button
-                                                                                class="qty-btn-plus btn-danger btn-cornered ml-1"
-                                                                                onclick="updateOrderDetails('plus')"
-                                                                                type="button"
-                                                                                style="background-color: red;margin-left:5px">
-                                                                                <i class="fa fa-chevron-up"></i>
-                                                                            </button> --}}
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="qc-price hidden-xs hidden">
-                                                                    {{ isset($products->price) ? $products->price : '' }}
-                                                                    TAKA</td>
-                                                                {{-- <td class="qc-total hidden">850 TAKA</td> --}}
-                                                            </tr>
+                                                                    </td>
+                                                                </tr>
+                                                                <?php
+                                                                $i++;
+                                                                ?>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -211,26 +226,25 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <span id="productPrice">
-                                                                    {{ isset($products->price) ? $products->price : '' }}
+                                                                    {{ isset($totalprice) ? $totalprice : '' }}
                                                                     TAKA</span>
-                                                                <input type="hidden" name="price"
-                                                                    value="{{ $products->price }}">
+                                                                <input id="productPriceval" type="hidden" name="price"
+                                                                    value="{{ isset($totalprice) ? $totalprice : '' }}">
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <label class="col-sm-9 col-xs-6 control-label">
                                                                 <b>ডিসকাউন্ট</b>
                                                             </label>
-                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right">
-                                                                @php
-                                                                    $dis = isset($products->discount_amount) ? $products->discount_amount : '0';
-                                                                @endphp
-                                                                <del>{{ $dis }} TAKA</del>
+                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right" id="discount_increment">
+                                                                {{ isset($totaldiscount) ? $totaldiscount : '' }} TAKA
+
                                                                 <input type="hidden" id="Discount"
-                                                                    name="discount_amount" value="{{ $dis }}">
+                                                                    name="discount_amount"
+                                                                    value="{{ isset($totaldiscount) ? $totaldiscount : '' }}">
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        {{-- <div class="row">
                                                             <label class="col-sm-9 col-xs-6 control-label">
                                                                 <b>সাবটোটাল</b>
                                                             </label>
@@ -241,19 +255,19 @@
                                                                 </span>
                                                                 TAKA
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                         <div class="row">
                                                             <label class="col-sm-9 col-xs-6 control-label">
                                                                 <b>ডেলিভারী চার্জ</b>
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <p id="insideDhakaCharge" class="text-white">
-                                                                    <span>{{ $products->inside_dhaka }} TAKA</span>
+                                                                    <span> 60 TAKA</span>
+
                                                                 </p>
                                                                 <p id="outsideDhakaCharge" class="text-white"
                                                                     style="display: none">
-                                                                    <span id="abc">{{ $products->outside_dhaka }}
-                                                                        TAKA</span>
+                                                                    <span> 120 TAKA</span>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -263,11 +277,13 @@
                                                                 style="font-weight: bold">
                                                                 মোট বিল
                                                             </label>
-                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right">
-                                                                <span id="grandTotal">
-                                                                    {{ $products->quantity * ($products->price - $products->discount_amount) }}
-                                                                    TAKA
-                                                                </span>
+                                                            <input type="hidden" name="order_total"
+                                                                value="{{ $totalprice + $totaldiscount }}">
+                                                            <input type="hidden" id="discount_amount"
+                                                                name="discount_amount" value="{{ $totaldiscount }}">
+                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right"
+                                                                id="grandTotal">
+                                                                {{ isset($totalprice) && isset($totaldiscount) ? $totalprice + 60 - $totaldiscount : '' }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -296,97 +312,79 @@
 @endsection
 @section('scripts')
     <script>
-        var buttonPlus = $(".qty-btn-plus");
-        var buttonMinus = $(".qty-btn-minus");
+        (function($) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            });
+        })(jQuery);
 
-        var incrementPlus = buttonPlus.click(function() {
-            var $n = $(this)
-                .parent(".qty-container")
-                .find(".input-qty");
-            $n.val(Number($n.val()) + 1);
-        });
+        function manageQuantity(i, type) {
+            let productid = $('#product_id_' + i).val();
+            $.ajax({
+                url: "/product-increment",
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    productid,
+                    type: type
+                }),
+                success: function(data) {
+                    let {
+                        totalprice,
+                        message,
+                        quantity,
+                        totaldiscount
+                    } = data;
 
-        var incrementMinus = buttonMinus.click(function() {
-            var $n = $(this)
-                .parent(".qty-container")
-                .find(".input-qty");
-            var amount = Number($n.val());
-            if (amount > 0) {
-                $n.val(amount - 1);
-            }
-        });
-    </script>
-    <script>
-        function placeOrder() {
-            alert("Order Placed Sucessfully");
-        }
+                    if ('working' === message) {
+                        $('#CurrentQty_' + i).val(quantity);
+                        let delivery_area = $('input[name="delivery_area"]:checked').val();
+                        var discount_amount = $('#discount_amount').val();
 
-        // Global Start
-        var subtotal = getData();
-        document.getElementById('grandTotal').innerText = '৳ ' + (subtotal + 60);
-        document.getElementById('subtotal').innerText = subtotal + 60;
-        document.getElementById('subtotal').innerText = subtotal;
-        // Global end
+                        if (delivery_area == 'inside_dhaka') {
+                            var grandTotal = (parseFloat(totalprice) + 60) - parseFloat(discount_amount);
+                        } else {
+                            var grandTotal = (parseFloat(totalprice) + 120) - parseFloat(discount_amount);
+                        }
 
-        var checkShipping = 1;
+                        $('#grandTotal').html(grandTotal + ' TAKA');
+                        $('input[name="order_total"]').val(grandTotal);
 
+                        $('#productPriceval').val(totalprice);
+                        $('#productPrice').html(totalprice +' TAKA');
+                        $("#discount_increment").html(parseFloat(totaldiscount + 'TAKA'));
+                    }
+                },
+                error: function(error) {
+                    console.log('error1st', error);
+                }
+            });
+        };
+
+        // delivery area functoin
         function showInsideDhaka() {
-            //Inside
-            checkShipping = 1;
-            var subtotal = getData();
+            var discount = $("#Discount").val();
+            var productPriceval = $("#productPriceval").val();
 
-            document.getElementById('grandTotal').innerText = '৳ ' + (subtotal + 60);
-            document.getElementById('subtotal').innerText = subtotal + 60;
-            document.getElementById('subtotal').innerText = subtotal;
+            var grandTotal = (parseFloat(productPriceval) + 60) - discount;
+            $('#grandTotal').html(grandTotal);
+            $('input[name="order_total"]').val(grandTotal);
 
             document.getElementById("insideDhakaCharge").style.display = "block";
             document.getElementById("outsideDhakaCharge").style.display = "none";
         }
 
         function showOutsideDhaka() {
-            // Outside
-            checkShipping = 2;
-            var subtotal = getData();
-            var deliveryCharge = 120;
-
-            document.getElementById('grandTotal').innerText = '৳ ' + (subtotal + deliveryCharge);
-            document.getElementById('subtotal').innerText = subtotal;
+            var discount = $("#Discount").val();
+            var productPriceval = $("#productPriceval").val();
+            var grandTotal = (parseFloat(productPriceval) + 120) - discount;
+            $('#grandTotal').html(grandTotal);
+            $('input[name="order_total"]').val(grandTotal);
 
             document.getElementById("insideDhakaCharge").style.display = "none";
             document.getElementById("outsideDhakaCharge").style.display = "block";
-        }
-
-
-        function updateOrderDetails(type) {
-            var input = parseInt(document.getElementById('CurrentQty').value);
-            if (type == 'plus') {
-                input++;
-            }
-            if (type == 'minus' && input > 0) {
-                input--;
-            }
-            var subtotal = getData();
-
-            if (checkShipping == 1) {
-                let shippingCharge = 60;
-                var grandTotal = subtotal + shippingCharge;
-                document.getElementById('grandTotal').innerText = '৳ ' + grandTotal;
-                document.getElementById('subtotal').innerText = '৳ ' + (subtotal + shippingCharge);
-            } else if (checkShipping == 2) {
-                var deliveryCharge = 120;
-                var grandTotal = subtotal + deliveryCharge;
-                document.getElementById('grandTotal').innerText = '৳ ' + grandTotal;
-                document.getElementById('subtotal').innerText = '৳ ' + (subtotal + deliveryCharge);
-            }
-        }
-
-
-        function getData() {
-            var quantity = $("#CurrentQty").val();
-            var discountAmount = $("#Discount").val();
-            var price = parseFloat(document.getElementById('productPrice').innerText);
-            var subtotal = quantity * (price - discountAmount);
-            return subtotal;
         }
     </script>
 @endsection

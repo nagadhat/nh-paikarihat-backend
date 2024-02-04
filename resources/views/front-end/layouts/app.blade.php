@@ -116,15 +116,12 @@
 
     <link href="{{ asset('front-end/assets/theme/lib/masterslider/style/mastersliderf13b.css') }}" type="text/css"
         rel="stylesheet" media="all" />
-   
+
     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product_carousel.css') }}" />
-    
+
      {{-- data table css --}}
      <link href="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
-
-
-
 
     <style>
         header::before {
@@ -261,7 +258,11 @@
                                 <i class="fa fa-shopping-cart">
                                     <span class="cart-label">Cart</span>
                                 </i>
-                                <span id="cart-items" class="count-badge count-zero">0</span>
+                                @if ($product_count >= 1)
+                                    <span id="cart-items" class="count-badge">{{ $product_count }}</span>
+                                @else
+                                    <span id="cart-items" class="count-badge count-zero">0</span>
+                                @endif
                             </a>
                         </div>
                     </div>

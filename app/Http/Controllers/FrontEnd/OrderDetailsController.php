@@ -98,6 +98,25 @@ class OrderDetailsController extends Controller
             $deliveryCharge = 120;
         }
 
+        // $product_shipping = Product::find($request->product_id);
+        // $shipping_amount = 0;
+        // if ($request->delivery_area=='inside_dhaka') {
+        //     $shipping_amount =$product_shipping->inside_dhaka;
+
+        // }elseif($request->delivery_area=='outside_dhaka') {
+        //     $shipping_amount =$product_shipping->outside_dhaka;
+
+        // }
+        // $totalOrderProductPrice += $shipping_amount;
+
+
+        // $shipping_charge = Product::find($request->product_id);
+        // if ($request->delivery_area == "inside_dhaka") {
+        //     $deliveryCharge = $shipping_charge->inside_dhaka;
+        // } else {
+        //     $deliveryCharge = $shipping_charge->outside_dhaka;
+        // }
+
         $orderDetails = Order::create([
             "order_prefix" => $orderPrefix,
             "order_code" => rand(11111, 99999),

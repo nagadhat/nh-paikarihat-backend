@@ -95,23 +95,22 @@
                                     placeholder="selling price" id="" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
-                                <label for="" class="form-label">Inside Side Dhaka<span
-                                        class="text-danger"></span> :</label>
-                                <input type="text" name="inside_dhaka" value="{{ $product->inside_dhaka }}" id=""
-                                    class="form-control">
+                                <label for="" class="form-label">Product Type:<span
+                                    class="text-danger"><sup>*</sup></span></label>
+                                <div class="row align-items-center">
+                                    <div class="col-md-10">
+                                        <select name="product_type" id="" class="form-control">
+                                            <option value="0">Choose Type</option>
+                                            <option value="Reg" {{ old('product_type', $product->product_type) == 'Reg' ? 'selected' : '' }}>Reg</option>
+                                            <option value="Pre" {{ old('product_type', $product->product_type) == 'Pre' ? 'selected' : '' }}>Pre</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="" class="form-label">Outside Side Dhaka<span
-                                        class="text-danger"></span> :</label>
-                                <input type="text" name="outside_dhaka" value="{{ $product->outside_dhaka }}" id=""
-                                    class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="" class="form-label">Discount Type:</label>
                                 <div class="row align-items-center">
@@ -128,12 +127,28 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="" class="form-label">Discount Amount<span class="text-danger"></span>
                                     :</label>
                                 <input type="number" name="discount_amount" value="{{ $product->discount_amount }}"
                                     id="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="" class="form-label">Inside Side Dhaka<span
+                                        class="text-danger"></span> :</label>
+                                <input type="text" name="inside_dhaka" value="{{ $product->inside_dhaka }}" id=""
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="" class="form-label">Outside Side Dhaka<span
+                                        class="text-danger"></span> :</label>
+                                <input type="text" name="outside_dhaka" value="{{ $product->outside_dhaka }}" id=""
+                                    class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">

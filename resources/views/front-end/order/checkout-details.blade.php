@@ -153,8 +153,8 @@
                                                         </thead>
                                                         <tbody>
                                                             <?php $i = 1;
-    //dd($totaldiscount);
-                                   ?>
+                                                            //dd($totaldiscount);
+                                                            ?>
                                                             @foreach ($cartItems as $products)
                                                                 <tr>
                                                                     <td class="">

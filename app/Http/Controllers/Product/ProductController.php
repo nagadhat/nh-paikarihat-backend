@@ -17,8 +17,8 @@ class ProductController extends Controller
     // function to show product page list
     public function index()
     {
-        Paginator::useBootstrap();
-        $products = Product::where('user_id', auth()->id())->latest()->paginate(10);
+        // Paginator::useBootstrap();
+        $products = Product::where('user_id', auth()->id())->orderBy('id', 'desc')->get();
         return view('customer.product.products', compact('products'));
     }
 
@@ -38,6 +38,7 @@ class ProductController extends Controller
             'photo' => 'required|mimes:png,jpg,jpeg|max:1000',
             'sku' => 'required|numeric',
             'price' => 'required|numeric',
+            'product_type' => 'required',
             'purchase_amount' => 'required|numeric',
             // 'brand' => 'nullable|exists:brands,id',
             // 'category' => 'required|exists:categories,id'
@@ -50,6 +51,7 @@ class ProductController extends Controller
         $product->slug = Str::slug($request->input('title'));
         $product->sku = $request->input('sku');
         $product->price = $request->input('price');
+        $product->product_type = $request->input('product_type');
         $product->purchase_amount = $request->input('purchase_amount');
         $product->brand_id = $request->input('brand');
         $product->category_id = $request->input('category');
@@ -109,6 +111,7 @@ class ProductController extends Controller
             'photo' => 'nullable|mimes:png,jpg,jpeg|max:1000',
             'sku' => 'required',
             'price' => 'required|numeric',
+            'product_type' => 'required',
             'purchase_amount' => 'required|numeric',
             // 'brand' => 'nullable|exists:brands,id',
             // 'category' => 'required|exists:categories,id'
@@ -119,6 +122,7 @@ class ProductController extends Controller
         $product->slug = Str::slug($request->input('title'));
         $product->sku = $request->input('sku');
         $product->price = $request->input('price');
+        $product->product_type = $request->input('product_type');
         $product->purchase_amount = $request->input('purchase_amount');
         $product->brand_id = $request->input('brand');
         $product->category_id = $request->input('category');

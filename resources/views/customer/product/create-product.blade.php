@@ -66,7 +66,22 @@
                                     class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="" class="form-label">Product Type:<span
+                                    class="text-danger"><sup>*</sup></span></label>
+                                <div class="row align-items-center">
+                                    <div class="col-md-10">
+                                        <select name="product_type" id="" class="form-control">
+                                            <option value="0">Choose Type</option>
+                                            <option value="Reg">Reg</option>
+                                            <option value="Pre">Pre</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="" class="form-label">Discount Type:</label>
                                 <div class="row align-items-center">
@@ -80,7 +95,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="" class="form-label">Discount Amount<span
                                         class="text-danger"></span> :</label>

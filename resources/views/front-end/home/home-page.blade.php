@@ -101,11 +101,12 @@
                                                                     </div>
                                                                 @endif
                                                             </a>
-                                                            {{-- <div class="product-labels">
+                                                            <div class="product-labels">
                                                                 <span
-                                                                    class="product-label product-label-28 product-label-diagonal"><b>-26
-                                                                        %</b></span>
-                                                            </div> --}}
+                                                                    class="product-label product-label-28 product-label-diagonal">
+                                                                    <b>{{ isset($product->product_type) ? $product->product_type: ''}}</b>
+                                                                </span>
+                                                            </div>
                                                         </div>
 
                                                         <div class="caption">

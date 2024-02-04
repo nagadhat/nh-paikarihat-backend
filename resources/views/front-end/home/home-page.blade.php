@@ -101,14 +101,14 @@
                                                                     </div>
                                                                 @endif
                                                             </a>
-                                                            <div class="product-labels">
-                                                                <span
-                                                                    class="product-label product-label-28 product-label-diagonal">
-                                                                    <b>{{ isset($product->product_type) ? $product->product_type: ''}}</b>
-                                                                </span>
-                                                            </div>
+                                                            @if(isset($product->product_type))
+                                                                <div class="product-labels">
+                                                                    <span class="product-label product-label-28 product-label-diagonal">
+                                                                        <b>{{ $product->product_type }}</b>
+                                                                    </span>
+                                                                </div>
+                                                            @endif
                                                         </div>
-
                                                         <div class="caption">
                                                             <div class="name">
                                                                 <a

@@ -122,6 +122,7 @@
 
      {{-- data table css --}}
      <link href="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+     <link rel="stylesheet" href="{{ asset('front-end/assets/css/toastr.min.css') }}">
 
     <style>
         header::before {
@@ -413,6 +414,7 @@
         @endphp
             <script src="{{ asset('front-end/assets/theme/lib/modernizr/modernizr-customf13b.js') }}"></script>
             <script src="{{ asset('front-end/assets/theme/lib/jquery/jquery-2.1.1.minf13b.js') }}"></script>
+            <script src="{{ asset('front-end/assets/javascript/toastr.min.js') }}"></script>
             <script src="{{ asset('front-end/assets/javascript/script.js') }}" type="text/javascript"></script>
             <script src="{{ asset('front-end/sweetalert2/sweetalert2.all.min.js') }}"></script>
 

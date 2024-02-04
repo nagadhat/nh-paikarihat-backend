@@ -86,9 +86,9 @@ class OrderDetailsController extends Controller
         $product_shipping = Product::find($request->product_id);
         $shipping_amount = 0;
         if ($request->delivery_area == 'inside_dhaka') {
-            $shipping_amount = 60;
+            // $shipping_amount = 60;
         } elseif ($request->delivery_area == 'outside_dhaka') {
-            $shipping_amount = 120;
+            // $shipping_amount = 120;
         }
         $totalOrderProductPrice += $shipping_amount;
 

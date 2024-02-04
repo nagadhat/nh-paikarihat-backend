@@ -42424,6 +42424,9 @@ div#account-edit {
 #checkout-cart {
     padding-bottom: 50px;
 }
+.cart_item__remove {
+    min-height: 36px !important;
+}
 @media (max-width: 767px) {
   .customer__orders{
       flex-direction: column;

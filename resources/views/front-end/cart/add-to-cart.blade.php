@@ -99,7 +99,7 @@
                                                         </div>
                                                         <span class="input-group-btn">
                                                             <a href="{{ route('product_delete_cart', $cart->id) }}"
-                                                                class="btn btn-remove">
+                                                                class="btn btn-remove cart_item__remove">
                                                                 <i class="fa fa-times-circle"></i>
                                                             </a>
                                                         </span>
@@ -196,10 +196,10 @@
                     if ('working' === message) {
                         if($("#checkout-cart").length) {
                             $('#CurrentQty_' + i).val(quantity);
-                            $('#totalPrice').html(totalprice);
+                            $('#totalPrice').html(totalprice + ' TAKA');
                         }else {
                             $('#CurrentQty_' + i).val(quantity);
-                            $('#totalPrice').html(totalprice);
+                            $('#totalPrice').html(totalprice + ' TAKA');
                         }
 
                     }

@@ -153,8 +153,8 @@
                                                         </thead>
                                                         <tbody>
                                                             <?php $i = 1;
-                                                            //dd($totaldiscount);
-                                                            ?>
+    //dd($totaldiscount);
+                                   ?>
                                                             @foreach ($cartItems as $products)
                                                                 <tr>
                                                                     <td class="">
@@ -357,8 +357,8 @@
                         $('input[name="order_total"]').val(grandTotal);
 
                         $('#productPriceval').val(totalprice);
-                        $('#productPrice').html(totalprice +' TAKA');
-                        $("#discount_increment").html(parseFloat(totaldiscount + 'TAKA'));
+                        $('#productPrice').html(totalprice + ' TAKA');
+                        $("#discount_increment").html(parseFloat(totaldiscount) + ' TAKA');
                     }
                 },
                 error: function(error) {

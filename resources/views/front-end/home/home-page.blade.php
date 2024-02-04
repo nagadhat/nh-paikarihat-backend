@@ -138,8 +138,6 @@
                                                                         class="btn btn-extra btn-extra-46 add--to--cart-btn"
                                                                         data-product_id="{{ $product->id }}"
                                                                         data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
-
-
                                                                         <span class="btn-text">অর্ডার করুণ</span>
                                                                     </a>
                                                                 </div>
@@ -188,7 +186,13 @@
                         let {
                             product_count
                         } = data;
-                        alert('Product Added To Your Cart');
+                        toastr.success('Product Added to Your Cart','');
+                        toastr.options = {
+                            "closeButton": true,
+                            "progressBar": true,
+                            "timeOut": "3000",
+                        }
+
                         $("#cart-items").removeClass("count-zero").html(product_count);
                         console.log(product_count);
                     },

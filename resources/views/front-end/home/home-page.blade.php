@@ -186,6 +186,7 @@
                         let {
                             product_count
                         } = data;
+
                         toastr.success('Product Added to Your Cart','');
                         toastr.options = {
                             "closeButton": true,

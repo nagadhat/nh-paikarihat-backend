@@ -423,6 +423,7 @@
             <script src="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.js') }}"></script>
 
             @include('sweetalert::alert')
+            {!! Toastr::message() !!}
 
 
         <!-- Google Tag Manager (noscript) -->

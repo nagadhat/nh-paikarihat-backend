@@ -25,7 +25,7 @@ class OrderDetailsController extends Controller
         // }
         $sessionId = session()->getId();
 
-        $user = Auth::user();
+        $user = Auth::user() ?? null; 
         $user_id = Auth::user()->id?? null;
         $cartItems = ProductCart::where('session_id', $sessionId )->orWhere('user_id', $user_id ?? null)->with('product')->get();
 
@@ -83,7 +83,7 @@ class OrderDetailsController extends Controller
         $totalOrderProductQuantity = $request->total_quantity;
         $discountAmount = $request->total_quantity * $request->discount_amount;
 
-        $product_shipping = Product::find($request->product_id);
+        // $product_shipping = Product::find($request->product_id);
         $shipping_amount = 0;
         if ($request->delivery_area == 'inside_dhaka') {
             $shipping_amount = 60;

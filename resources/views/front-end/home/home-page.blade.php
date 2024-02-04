@@ -177,7 +177,7 @@
                     contentType: 'application/json',
                     data: JSON.stringify({
                         productid,
-                        userid: {{ optional(Auth::user())->id }}
+                        // userid: {{ optional(Auth::user())->id }}
                     }),
                     success: function(data) {
                         console.log(data);

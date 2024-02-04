@@ -185,7 +185,13 @@
                         let {
                             product_count
                         } = data;
-                        alert('Product Added To Your Cart');
+                        toastr.success('Product Added to Your Cart','');
+                        toastr.options = {
+                            "closeButton": true,
+                            "progressBar": true,
+                            "timeOut": "3000",
+                        }
+
                         $("#cart-items").removeClass("count-zero").html(product_count);
                         console.log(product_count);
                     },

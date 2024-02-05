@@ -19,29 +19,24 @@ class OrderDetailsController extends Controller
 {
     public function checkoutDetails($checkout)
     {
-        // if (!Auth::check()) {
-        //     Alert::error('Please Login First');
-        //     return redirect()->route('customer_login');
-        // }
+
         $sessionId = session()->getId();
-
         $user = Auth::user();
-        $user_id = Auth::user()->id ?? null;
-        $cartItems = ProductCart::where('session_id', $sessionId)->orWhere('user_id', $user_id ?? null)->with('product')->get();
-
+        $user_id = Auth::user()->id?? null;
+        $cartItems = ProductCart::where('session_id', $sessionId )->orWhere('user_id', $user_id ?? null)->with('product')->get();
         $userdata = [
             'name' => $user->name ?? null,
             'phone' => $user->phone ?? null,
             'address' => $user->address ?? null,
         ];
 
-        $totalprice = ProductCart::where('session_id', $sessionId)->orWhere('user_id', $user_id ?? null)
+        $totalprice = ProductCart::where('session_id', $sessionId )->orWhere('user_id', $user_id ?? null)
             ->get()
             ->sum(function ($item) {
                 return $item->unit_price * $item->quantity;
             });
 
-        $totaldiscount = ProductCart::where('session_id', $sessionId)->orWhere('user_id', $user_id ?? null)
+        $totaldiscount = ProductCart::where('session_id', $sessionId )->orWhere('user_id', $user_id ?? null)
             ->with('product')
             ->get()
             ->sum(function ($item) {
@@ -59,6 +54,7 @@ class OrderDetailsController extends Controller
 
     public function orderProduct(Request $request)
     {
+
         $sessionId = session()->getId();
         Alert::success('success', 'Order ');
         if (!$request->has('customer_name') || empty($request->customer_name)) {
@@ -78,28 +74,18 @@ class OrderDetailsController extends Controller
             ]);
         }
 
+        $products = Product::where('id', $request->product_id)->first();
         $totalOrderProductPrice = $request->total_quantity  * $request->price - $request->discount_amount;
-        $totalOrderProductQuantity = $request->total_quantity;
-        $discountAmount = $request->total_quantity * $request->discount_amount;
-
-        $product_shipping = Product::find($request->product_id);
         $shipping_amount = 0;
-        if ($request->delivery_area == 'inside_dhaka') {
-            // $shipping_amount = 60;
-        } elseif ($request->delivery_area == 'outside_dhaka') {
-            // $shipping_amount = 120;
-        }
         $totalOrderProductPrice += $shipping_amount;
-
         if ($request->delivery_area == "inside_dhaka") {
             $deliveryCharge = 60;
         } else {
             $deliveryCharge = 120;
         }
 
-        $products = Product::where('id', $request->product_id)->first();
         $orderDetails = Order::create([
-            "order_prefix" => $products->product_type,
+            "order_prefix" => $products,
             "order_code" => rand(11111, 99999),
             'session_id' => $sessionId,
             "user_id" => $user->id ?? null,
@@ -107,12 +93,11 @@ class OrderDetailsController extends Controller
             "customer_phone" => $user->phone,
             "customer_email" => $user->email,
             "customer_address" => $user->address,
-            // "payment_status	" => 1,
             "status" => 1,
-            "total_amount" => $totalOrderProductPrice,
-            "total_quantity" => $totalOrderProductQuantity,
+            "total_amount" => $request->price,
+            "total_quantity" =>  count($request->product_id),
             "delivery_area" => $deliveryCharge,
-            "discount_amount" => $discountAmount,
+            "discount_amount" => $request->discount_amount,
         ]);
 
         $products = Product::whereIn('id', $request->product_id)->get();
@@ -128,7 +113,6 @@ class OrderDetailsController extends Controller
                 "unit_price" => $lineItem->unit_price,
             ]);
         }
-
         Alert::success('Success', "Thank You For Your Order");
         return redirect()->route('invoice_order', $orderDetails->id);
     }
@@ -139,7 +123,7 @@ class OrderDetailsController extends Controller
         $sessionId = session()->getId();
         $orderDetails = Order::where('id', $id)->first();
         $orderProductsDetailslist = OrderProduct::where('order_id', $id)->get();
-        ProductCart::where('session_id', $sessionId)->orWhere('user_id', Auth::id())->delete();
+        ProductCart::where('session_id', $sessionId)->orWhere('user_id',Auth::id())->delete();
         return view('front-end.invoice.order-invoice', compact('orderDetails', 'orderProductsDetailslist'));
     }
 }

@@ -152,25 +152,26 @@
                                         <tr>
                                             <td style="font-weight:bold">Subtotal</td>
                                             <td style="text-align: right">৳
-                                               {{ $orderDetails->total_amount - (is_numeric($orderDetails->delivery_area) ? $orderDetails->delivery_area : 0) }}
-
+                                                {{ $orderDetails->total_amount  }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight:bold">Shipping</td>
                                             <td style="text-align: right">৳
-                                                {{ isset($orderDetails->delivery_area) ? $orderDetails->delivery_area : ''}}
+                                                {{ isset($orderDetails->delivery_area) ? $orderDetails->delivery_area : '' }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight:bold">Discount</td>
                                             <td style="text-align: right">৳
-                                                {{ isset($orderDetails->discount_amount) ? $orderDetails->discount_amount : ''}}
+                                                {{ isset($orderDetails->discount_amount) ? $orderDetails->discount_amount : '' }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight:bold">Total</td>
-                                            <td style="text-align: right">৳ {{ isset($orderDetails->total_amount) ? $orderDetails->total_amount: '--' }}</td>
+                                            <td style="text-align: right">
+                                                ৳ {{ isset($orderDetails->total_amount ) ?  ($orderDetails->total_amount - $orderDetails->discount_amount) + $orderDetails->delivery_area : '--' }}
+                                            </td>
                                         </tr>
                                         {{-- <tr>
                                             <td style="font-weight:bold">Paid</td>

@@ -236,7 +236,7 @@
                                     <td class="text-right">
                                         <span class="strong-600">
                                             &#2547;
-                                            {{ $order->total_amount - (is_numeric($order->delivery_area) ? $order->delivery_area : 0) }}
+                                            {{ $order->total_amount  }}
                                         </span>
                                     </td>
                                 </tr>
@@ -244,7 +244,7 @@
                                     <td class="w-50 fw-600">Shipping</td>
                                     <td class="text-right">
                                         <span class="text-italic">&#2547;
-                                            {{ isset($order->delivery_area) ? $order->delivery_area : ''}}
+                                            {{ isset($order->delivery_area) ? $order->delivery_area : '' }}
                                         </span>
                                     </td>
                                 </tr>
@@ -252,7 +252,7 @@
                                     <td class="w-50 fw-600">Discount</td>
                                     <td class="text-right">
                                         <span class="text-italic">&#2547;
-                                            {{ isset($order->discount_amount) ? $order->discount_amount : ''}}
+                                            {{ isset($order->discount_amount) ? $order->discount_amount : '' }}
                                         </span>
                                     </td>
                                 </tr>
@@ -261,7 +261,7 @@
                                     <td class="text-right">
                                         <strong>
                                             <span>&#2547;
-                                                {{ isset($order->total_amount) ? $order->total_amount: '--' }}
+                                                {{ isset($order->total_amount ) ?  ($order->total_amount - $order->discount_amount) + $order->delivery_area : '--' }}
                                             </span>
                                         </strong>
                                     </td>

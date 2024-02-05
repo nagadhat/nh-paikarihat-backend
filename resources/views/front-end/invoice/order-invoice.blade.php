@@ -23,9 +23,7 @@
 
 <body>
     <div class="cs-container">
-        <div class="">
-        </div>
-        @if(session('status'))
+        @if (session('status'))
             <div class="alert alert-success">{{ session('status') }}</div>
         @endif
 
@@ -42,7 +40,8 @@
                         </p>
                     </div>
                     <div class="cs-invoice_right cs-text_right" style="padding-bottom: 0%">
-                        <div class="cs-logo"><img src="{{ asset('front-end/assets/image/Paikari-Hat-logo-260-X-114.png') }}"
+                        <div class="cs-logo"><img
+                                src="{{ asset('front-end/assets/image/Paikari-Hat-logo-260-X-114.png') }}"
                                 style="height: 72px;" alt="Brand Logo"></div>
                     </div>
                 </div>
@@ -50,21 +49,22 @@
                     <div class="cs-invoice_left">
                         <p style="color: black;">
                             <span style="color: black;font-weight: bold;">Name:</span>
-                                {{ isset($orderDetails->customer_name) ? $orderDetails->customer_name : ''}}
-                                <br><span style="color: black;font-weight: bold;">Phone:</span>
-                                {{ isset($orderDetails->customer_phone) ? $orderDetails->customer_phone : ''}}
-                                <br><span style="color: black;font-weight: bold;">Shipping Address:</span>
-                                {{ isset($orderDetails->customer_address) ? $orderDetails->customer_address : ''}}
+                            {{ isset($orderDetails->customer_name) ? $orderDetails->customer_name : '' }}
+                            <br><span style="color: black;font-weight: bold;">Phone:</span>
+                            {{ isset($orderDetails->customer_phone) ? $orderDetails->customer_phone : '' }}
+                            <br><span style="color: black;font-weight: bold;">Shipping Address:</span>
+                            {{ isset($orderDetails->customer_address) ? $orderDetails->customer_address : '' }}
                             </span>
                         </p>
                     </div>
                     <div class="cs-invoice_right">
                         <p class="cs-invoice_number cs-primary_color cs-mb0"><b class="cs-primary_color">Invoice
                                 No:</b>
-                                  # {{ $orderDetails->order_prefix .  $orderDetails->order_code}}
+                            # {{ $orderDetails->order_prefix . $orderDetails->order_code }}
                         </p>
                         <p class="cs-invoice_date cs-primary_color cs-m0"><b class="cs-primary_color">Date:
-                            </b>{{ isset($orderDetails->created_at) ? $orderDetails->created_at->format('d/m/y g:i A') : ''}}</p>
+                            </b>{{ isset($orderDetails->created_at) ? $orderDetails->created_at->format('d/m/y g:i A') : '' }}
+                        </p>
                         <p class="cs-invoice_date cs-primary_color cs-m0"><b class="cs-primary_color">Payment Status:
                             </b>
                             <span
@@ -72,14 +72,12 @@
                                 padding-bottom:1px; padding-left: 10px;  border: 2px;
                                 border-radius: 25px; font-weight: bold;">
 
-                                    @if ($orderDetails->payment_status == 1)
-                                        <span
-                                            class="badge bg-primary text-white">Unpaid</span>
-                                    @else
-                                        <span
-                                            class="badge bg-success text-white">Paid</span>
-                                    @endif
-                            <span>
+                                @if ($orderDetails->payment_status == 1)
+                                    <span class="badge bg-primary text-white">Unpaid</span>
+                                @else
+                                    <span class="badge bg-success text-white">Paid</span>
+                                @endif
+                                <span>
                         </p>
                         <p class="cs-invoice_date cs-primary_color cs-m0"><b class="cs-primary_color">Order Status:
                             </b>
@@ -102,8 +100,8 @@
                                 style="background: #a4e208; padding-top:1px; padding-right:10px;
                                 padding-bottom:1px; padding-left: 10px; border: 2px;
                                 border-radius: 25px; font-weight: bold;">
-                                {{ $status}}
-                            <span>
+                                {{ $status }}
+                                <span>
                         </p>
                     </div>
                 </div>
@@ -117,7 +115,8 @@
                                             <th class="cs-width_1 cs-semi_bold cs-primary_color cs-focus_bg">#SL</th>
                                             <th class="cs-width_1 cs-semi_bold cs-primary_color cs-focus_bg">Image
                                             </th>
-                                            <th class="cs-width_1 cs-semi_bold cs-primary_color cs-focus_bg">Product Name
+                                            <th class="cs-width_1 cs-semi_bold cs-primary_color cs-focus_bg">Product
+                                                Name
                                             </th>
                                             <th class="cs-width_1 cs-semi_bold cs-primary_color cs-focus_bg">Qty</th>
                                             <th class="cs-width_3 cs-semi_bold cs-primary_color cs-focus_bg">Price</th>
@@ -132,16 +131,16 @@
                                                 <td style="color: #0d0101">{{ $loop->index + 1 }}</td>
                                                 <td class="cs-width_3" style="color: #0d0101">
                                                     <img class="img-fit rounded" style="width:50%;"
-                                                        src="{{$image}}">
+                                                        src="{{ $image }}">
                                                 </td>
                                                 <td class="cs-width_4" style="color: black">
-                                                    {{ isset($product->product_name) ? $product->product_name: ''}}
+                                                    {{ isset($product->product_name) ? $product->product_name : '' }}
                                                 </td>
                                                 <td class="cs-width_2" style="color: black">
-                                                    {{ isset($product->quantity) ? $product->quantity: ''}}
+                                                    {{ isset($product->quantity) ? $product->quantity : '' }}
                                                 </td>
                                                 <td class="cs-width_1" style="color: black">
-                                                    ৳  {{ isset($product->unit_price) ? $product->unit_price: ''}}
+                                                    ৳ {{ isset($product->unit_price) ? $product->unit_price : '' }}
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -158,25 +157,26 @@
                                         <tr>
                                             <td style="font-weight:bold">Subtotal</td>
                                             <td style="text-align: right">৳
-                                               {{ $orderDetails->total_amount - (is_numeric($orderDetails->delivery_area) ? $orderDetails->delivery_area : 0) }}
-
+                                                {{ $orderDetails->total_amount  }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight:bold">Shipping</td>
                                             <td style="text-align: right">৳
-                                                {{ isset($orderDetails->delivery_area) ? $orderDetails->delivery_area : ''}}
+                                                {{ isset($orderDetails->delivery_area) ? $orderDetails->delivery_area : '' }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight:bold">Discount</td>
                                             <td style="text-align: right">৳
-                                                {{ isset($orderDetails->discount_amount) ? $orderDetails->discount_amount : ''}}
+                                                {{ isset($orderDetails->discount_amount) ? $orderDetails->discount_amount : '' }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight:bold">Total</td>
-                                            <td style="text-align: right">৳ {{ isset($orderDetails->total_amount) ? $orderDetails->total_amount: '--' }}</td>
+                                            <td style="text-align: right">৳
+                                                {{ isset($orderDetails->total_amount ) ?  ($orderDetails->total_amount - $orderDetails->discount_amount) + $orderDetails->delivery_area : '--' }}
+                                            </td>
                                         </tr>
                                         {{-- <tr>
                                             <td style="font-weight:bold">Paid</td>
@@ -228,7 +228,7 @@
                     </svg> --}}
                     <span>Download</span>
                 </a>
-                <a href="{{  route('home_page') }}" class="cs-invoice_btn cs-color3">
+                <a href="{{ route('home_page') }}" class="cs-invoice_btn cs-color3">
                     <span>Go Back</span>
                 </a>
             </div>

@@ -244,7 +244,7 @@
                                                                 {{ isset($totaldiscount) ? $totaldiscount : '' }} TAKA
 
                                                                 <input type="hidden" id="Discount"
-                                                                    name="discount_amount"
+                                                                    name="discount_amount_old"
                                                                     value="{{ isset($totaldiscount) ? $totaldiscount : '' }}">
                                                             </div>
                                                         </div>
@@ -287,7 +287,7 @@
                                                                 name="discount_amount" value="{{ $totaldiscount }}">
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right"
                                                                 id="grandTotal">
-                                                                {{ isset($totalprice) && isset($totaldiscount) ? $totalprice + 60 - $totaldiscount : '' }} TAKA
+                                                                {{ isset($totalprice) && isset($totaldiscount) ? ($totalprice + 60) - $totaldiscount : '' }} TAKA
                                                             </div>
                                                         </div>
                                                     </div>
@@ -348,11 +348,12 @@
                         var discount_amount = $('#discount_amount').val();
 
                         if (delivery_area == 'inside_dhaka') {
-                            var grandTotal = (parseFloat(totalprice) + 60) - parseFloat(discount_amount);
+                            var grandTotal = (parseFloat(totalprice) + 60) - parseFloat(totaldiscount);
                         } else {
-                            var grandTotal = (parseFloat(totalprice) + 120) - parseFloat(discount_amount);
+                            var grandTotal = (parseFloat(totalprice) + 120) - parseFloat(totaldiscount);
                         }
-
+                        $('#Discount').val(totaldiscount);
+                        $("#discount_amount").val(totaldiscount);
                         $('#grandTotal').html(grandTotal + ' TAKA');
                         $('input[name="order_total"]').val(grandTotal);
 
@@ -369,10 +370,12 @@
 
         // delivery area functoin
         function showInsideDhaka() {
-            var discount = $("#Discount").val();
+            var discount = $("#discount_amount").val();
             var productPriceval = $("#productPriceval").val();
-
-            var grandTotal = (parseFloat(productPriceval) + 60) - discount;
+            var grandTotal = (parseInt(productPriceval) + 60) - +discount;
+            console.log(grandTotal,"grand total");
+            console.log(discount,"discount");
+            console.log(productPriceval,"productPriceval");
             $('#grandTotal').html(grandTotal + ' TAKA');
             $('input[name="order_total"]').val(grandTotal);
 
@@ -381,9 +384,12 @@
         }
 
         function showOutsideDhaka() {
-            var discount = $("#Discount").val();
+            var discount = $("#discount_amount").val();
             var productPriceval = $("#productPriceval").val();
-            var grandTotal = (parseFloat(productPriceval) + 120) - discount;
+            var grandTotal = (parseInt(productPriceval) + 120) - +discount;
+            console.log(grandTotal,"grand total");
+            console.log(discount,"discount");
+            console.log(productPriceval,"productPriceval");
             $('#grandTotal').html(grandTotal + ' TAKA');
             $('input[name="order_total"]').val(grandTotal);
 

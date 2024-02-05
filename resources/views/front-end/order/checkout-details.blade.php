@@ -153,8 +153,8 @@
                                                         </thead>
                                                         <tbody>
                                                             <?php $i = 1;
-    //dd($totaldiscount);
-                                   ?>
+                                                               //dd($totaldiscount);
+                                                            ?>
                                                             @foreach ($cartItems as $products)
                                                                 <tr>
                                                                     <td class="">
@@ -197,7 +197,7 @@
                                                                                     style="background-color: red; margin-right: 5px">
                                                                                     <i class="fa fa-chevron-down"></i>
                                                                                 </button>
-                                                                                <input type="number"
+                                                                                <input type="text"
                                                                                     id="CurrentQty_{{ $i }}"
                                                                                     name="total_quantity" min="1"
                                                                                     value="{{ $products->quantity }}"

@@ -26,8 +26,8 @@ class OrderDetailsController extends Controller
         $sessionId = session()->getId();
 
         $user = Auth::user();
-        $user_id = Auth::user()->id?? null;
-        $cartItems = ProductCart::where('session_id', $sessionId )->orWhere('user_id', $user_id ?? null)->with('product')->get();
+        $user_id = Auth::user()->id ?? null;
+        $cartItems = ProductCart::where('session_id', $sessionId)->orWhere('user_id', $user_id ?? null)->with('product')->get();
 
         $userdata = [
             'name' => $user->name ?? null,
@@ -35,13 +35,13 @@ class OrderDetailsController extends Controller
             'address' => $user->address ?? null,
         ];
 
-        $totalprice = ProductCart::where('session_id', $sessionId )->orWhere('user_id', $user_id ?? null)
+        $totalprice = ProductCart::where('session_id', $sessionId)->orWhere('user_id', $user_id ?? null)
             ->get()
             ->sum(function ($item) {
                 return $item->unit_price * $item->quantity;
             });
 
-        $totaldiscount = ProductCart::where('session_id', $sessionId )->orWhere('user_id', $user_id ?? null)
+        $totaldiscount = ProductCart::where('session_id', $sessionId)->orWhere('user_id', $user_id ?? null)
             ->with('product')
             ->get()
             ->sum(function ($item) {
@@ -78,7 +78,6 @@ class OrderDetailsController extends Controller
             ]);
         }
 
-        $orderPrefix = 'REG';
         $totalOrderProductPrice = $request->total_quantity  * $request->price - $request->discount_amount;
         $totalOrderProductQuantity = $request->total_quantity;
         $discountAmount = $request->total_quantity * $request->discount_amount;
@@ -98,27 +97,9 @@ class OrderDetailsController extends Controller
             $deliveryCharge = 120;
         }
 
-        // $product_shipping = Product::find($request->product_id);
-        // $shipping_amount = 0;
-        // if ($request->delivery_area=='inside_dhaka') {
-        //     $shipping_amount =$product_shipping->inside_dhaka;
-
-        // }elseif($request->delivery_area=='outside_dhaka') {
-        //     $shipping_amount =$product_shipping->outside_dhaka;
-
-        // }
-        // $totalOrderProductPrice += $shipping_amount;
-
-
-        // $shipping_charge = Product::find($request->product_id);
-        // if ($request->delivery_area == "inside_dhaka") {
-        //     $deliveryCharge = $shipping_charge->inside_dhaka;
-        // } else {
-        //     $deliveryCharge = $shipping_charge->outside_dhaka;
-        // }
-
+        $products = Product::where('id', $request->product_id)->first();
         $orderDetails = Order::create([
-            "order_prefix" => $orderPrefix,
+            "order_prefix" => $products->product_type,
             "order_code" => rand(11111, 99999),
             'session_id' => $sessionId,
             "user_id" => $user->id ?? null,
@@ -133,6 +114,7 @@ class OrderDetailsController extends Controller
             "delivery_area" => $deliveryCharge,
             "discount_amount" => $discountAmount,
         ]);
+
         $products = Product::whereIn('id', $request->product_id)->get();
         foreach ($products as $product) {
             $lineItem = ProductCart::where('product_id', $product->id)->first();
@@ -157,7 +139,7 @@ class OrderDetailsController extends Controller
         $sessionId = session()->getId();
         $orderDetails = Order::where('id', $id)->first();
         $orderProductsDetailslist = OrderProduct::where('order_id', $id)->get();
-        ProductCart::where('session_id', $sessionId)->orWhere('user_id',Auth::id())->delete();
+        ProductCart::where('session_id', $sessionId)->orWhere('user_id', Auth::id())->delete();
         return view('front-end.invoice.order-invoice', compact('orderDetails', 'orderProductsDetailslist'));
     }
 }

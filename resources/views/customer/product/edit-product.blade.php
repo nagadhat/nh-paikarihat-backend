@@ -103,8 +103,8 @@
                                     <div class="col-md-10">
                                         <select name="product_type" id="" class="form-control">
                                             <option value="0">Choose Type</option>
-                                            <option value="Reg" {{ old('product_type', $product->product_type) == 'Reg' ? 'selected' : '' }}>Reg</option>
-                                            <option value="Pre" {{ old('product_type', $product->product_type) == 'Pre' ? 'selected' : '' }}>Pre</option>
+                                            <option value="Reg" {{ old('product_type', $product->product_type) == 'REG' ? 'selected' : '' }}>Reg</option>
+                                            <option value="Pre" {{ old('product_type', $product->product_type) == 'PRE' ? 'selected' : '' }}>Pre</option>
                                         </select>
                                     </div>
                                 </div>

@@ -74,8 +74,8 @@
                                     <div class="col-md-10">
                                         <select name="product_type" id="" class="form-control">
                                             <option value="0">Choose Type</option>
-                                            <option value="Reg">Reg</option>
-                                            <option value="Pre">Pre</option>
+                                            <option value="REG">Reg</option>
+                                            <option value="PRE">Pre</option>
                                         </select>
                                     </div>
                                 </div>

@@ -89,10 +89,8 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="text" name="customer_address"
-                                                        value="{{ !empty($userdata['address']) ? $userdata['address'] : '' }}"
-                                                        class="form-control" autocomplete="on"
-                                                        placeholder="ডেলিভারী ঠিকানা লিখুন" required>
+                                                    <textarea name="customer_address" class="form-control nh__customer__address" autocomplete="on" placeholder="ডেলিভারী ঠিকানা লিখুন" required>{{ !empty($userdata['address']) ? $userdata['address'] : '' }}
+                                                    </textarea>
                                                 </div>
                                             </div>
                                             <div class="text-input form-group required" data-sort="16">
@@ -115,6 +113,17 @@
                                                             value="outside_dhaka" onclick="showOutsideDhaka()">Outside
                                                         Dhaka
                                                     </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="qc-col-4 col-md-12">
+                                            <div id="payment_view" class="qc-step" data-col="4" data-row="0">
+                                                <div class="buttons">
+                                                    <div class="pull-right">
+                                                        <input type="submit" value="অর্ডার কনফার্ম করুণ"
+                                                            id="button-confirm" data-loading-text="Loading..."
+                                                            class="btn btn-primary">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -146,14 +155,15 @@
                                                                 <td class="qc-quantity" style="font-weight: bold">
                                                                     ইউনিট প্রাইস:
                                                                 </td>
-                                                                <td class="qc-quantity" style="font-weight: bold; text-align:center">
+                                                                <td class="qc-quantity"
+                                                                    style="font-weight: bold; text-align:center">
                                                                     কোয়ান্টিটি:
                                                                 </td>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <?php $i = 1;
-                                                               //dd($totaldiscount);
+                                                            //dd($totaldiscount);
                                                             ?>
                                                             @foreach ($cartItems as $products)
                                                                 <tr>
@@ -183,10 +193,11 @@
                                                                         {{ isset($products->unit_price) ? $products->unit_price : '' }}
                                                                         TAKA
                                                                     </td>
-                                                                    <td class="qc-quantity" >
+                                                                    <td class="qc-quantity">
                                                                         <div class="input-group input-group-sm">
 
-                                                                            <div class="qty-container " style="width:100%;">
+                                                                            <div class="qty-container "
+                                                                                style="width:100%;">
                                                                                 <input type="hidden"
                                                                                     id="product_id_{{ $i }}"
                                                                                     value="{{ $products->id }}">
@@ -240,7 +251,8 @@
                                                             <label class="col-sm-9 col-xs-6 control-label">
                                                                 <b>ডিসকাউন্ট</b>
                                                             </label>
-                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right" id="discount_increment">
+                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right"
+                                                                id="discount_increment">
                                                                 {{ isset($totaldiscount) ? $totaldiscount : '' }} TAKA
 
                                                                 <input type="hidden" id="Discount"
@@ -287,7 +299,8 @@
                                                                 name="discount_amount" value="{{ $totaldiscount }}">
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right"
                                                                 id="grandTotal">
-                                                                {{ isset($totalprice) && isset($totaldiscount) ? ($totalprice + 60) - $totaldiscount : '' }} TAKA
+                                                                {{ isset($totalprice) && isset($totaldiscount) ? $totalprice + 60 - $totaldiscount : '' }}
+                                                                TAKA
                                                             </div>
                                                         </div>
                                                     </div>
@@ -296,16 +309,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="qc-col-4 col-md-12">
-                                    <div id="payment_view" class="qc-step" data-col="4" data-row="0">
-                                        <div class="buttons">
-                                            <div class="pull-right">
-                                                <input type="submit" value="অর্ডার কনফার্ম করুণ" id="button-confirm"
-                                                    data-loading-text="Loading..." class="btn btn-primary">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </form>
@@ -373,9 +377,9 @@
             var discount = $("#discount_amount").val();
             var productPriceval = $("#productPriceval").val();
             var grandTotal = (parseInt(productPriceval) + 60) - +discount;
-            console.log(grandTotal,"grand total");
-            console.log(discount,"discount");
-            console.log(productPriceval,"productPriceval");
+            console.log(grandTotal, "grand total");
+            console.log(discount, "discount");
+            console.log(productPriceval, "productPriceval");
             $('#grandTotal').html(grandTotal + ' TAKA');
             $('input[name="order_total"]').val(grandTotal);
 
@@ -387,9 +391,9 @@
             var discount = $("#discount_amount").val();
             var productPriceval = $("#productPriceval").val();
             var grandTotal = (parseInt(productPriceval) + 120) - +discount;
-            console.log(grandTotal,"grand total");
-            console.log(discount,"discount");
-            console.log(productPriceval,"productPriceval");
+            console.log(grandTotal, "grand total");
+            console.log(discount, "discount");
+            console.log(productPriceval, "productPriceval");
             $('#grandTotal').html(grandTotal + ' TAKA');
             $('input[name="order_total"]').val(grandTotal);
 

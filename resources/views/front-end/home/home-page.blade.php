@@ -132,14 +132,17 @@
                                                                     @endif
                                                                 </div>
                                                             </div>
-                                                            <div class="extra-group">
-                                                                <div>
+                                                            <div class="extra-group nh__order__confirm">
+                                                                <div class="nh__order__confirm__btn">
                                                                     <a href="{{ route('checkout_details', ['checkout' => $product->slug]) }}"
                                                                         class="btn btn-extra btn-extra-46 add--to--cart-btn"
                                                                         data-product_id="{{ $product->id }}"
                                                                         data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
                                                                         <span class="btn-text">অর্ডার করুণ</span>
                                                                     </a>
+                                                                    <div class="nh__cart__icon">
+                                                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>

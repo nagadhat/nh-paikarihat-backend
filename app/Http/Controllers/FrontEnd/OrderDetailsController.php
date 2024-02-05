@@ -75,6 +75,7 @@ class OrderDetailsController extends Controller
         }
 
         $products = Product::where('id', $request->product_id)->first();
+        // dd($products);
         $totalOrderProductPrice = $request->total_quantity  * $request->price - $request->discount_amount;
         $shipping_amount = 0;
         $totalOrderProductPrice += $shipping_amount;
@@ -85,7 +86,7 @@ class OrderDetailsController extends Controller
         }
 
         $orderDetails = Order::create([
-            "order_prefix" => $products,
+            "order_prefix" => $products->product_type,
             "order_code" => rand(11111, 99999),
             'session_id' => $sessionId,
             "user_id" => $user->id ?? null,

@@ -16,10 +16,7 @@ class ProductCartController extends Controller
 {
     public function addToCart()
     {
-        // if (!Auth::check()) {
-        //     Alert::error('Please Login First');
-        //     return redirect()->route('customer_login');
-        // }
+
         $user_id = auth()->user()->id ?? null;
         $carts = ProductCart::where('user_id', $user_id)->with('product')->get();
         $totalprice = ProductCart::where('user_id', Auth::id())

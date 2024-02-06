@@ -19,7 +19,6 @@ class OrderDetailsController extends Controller
 {
     public function checkoutDetails($checkout)
     {
-        $products = Product::where('slug', $checkout)->firstOrFail();
         $sessionId = session()->getId();
         $user = Auth::user();
         $user_id = Auth::user()->id?? null;
@@ -49,7 +48,7 @@ class OrderDetailsController extends Controller
                 }
             });
 
-        return view('front-end.order.checkout-details', compact('cartItems', 'userdata', 'totalprice', 'totaldiscount', 'products'));
+        return view('front-end.order.checkout-details', compact('cartItems', 'userdata', 'totalprice', 'totaldiscount'));
     }
 
     public function orderProduct(Request $request)

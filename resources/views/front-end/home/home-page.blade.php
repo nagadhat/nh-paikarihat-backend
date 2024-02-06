@@ -136,8 +136,8 @@
                                                             <div class="extra-group nh__order__confirm">
                                                                 <div class="nh__order__confirm__btn">
                                                                     <a href="{{ route('checkout_details', ['checkout' => $product->slug]) }}"
-                                                                        class="btn btn-extra btn-extra-46 add--to--cart-btn"
-                                                                        data-product_id="{{ $product->id }}"
+                                                                        class="btn btn-extra btn-extra-46 add--to--checkout-btn "
+                                                                        data-checkout_id="{{ $product->id }}"
                                                                         data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
                                                                         @if ($product->product_type == 'REG')
                                                                             <span class="btn-text">অর্ডার করুণ</span>
@@ -146,7 +146,9 @@
                                                                         @endif
                                                                     </a>
                                                                     <div class="nh__cart__icon">
-                                                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                                                        <i class="fa fa-cart-plus add--to--cart-btn"
+                                                                            data-product_id="{{ $product->id }}"
+                                                                            aria-hidden="true"></i>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -204,6 +206,37 @@
 
                         $("#cart-items").removeClass("count-zero").html(product_count);
                         console.log(product_count);
+                    },
+                    error: function(error) {
+                        console.log('error1st', error);
+                    }
+                });
+            });
+
+            // After clicking order now button redirect checkout page
+            $("body").on("click", '.add--to--checkout-btn ', function(e) {
+                e.preventDefault();
+                let that = this;
+                let productid = $(that).data('checkout_id');
+                if ('' === productid) {
+                    return;
+                }
+                $.ajax({
+                    url: "/product-add-cart",
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        productid,
+                        // userid: {{ optional(Auth::user())->id }}
+                    }),
+                    success: function(data) {
+                        console.log(data);
+                        let {
+                            productid,
+                        } = data;
+                        console.log(productid);
+                        // Redirect to the checkout_details page
+                        window.location.href = '/checkout-details/{productid}';
                     },
                     error: function(error) {
                         console.log('error1st', error);

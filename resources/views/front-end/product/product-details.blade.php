@@ -12,13 +12,15 @@
                             <div class="product-image-wrapper">
                                 @if (isset($products->photo))
                                     <div class="ph__feature__image">
-                                        <img class="xzoom img-fluid" id="xzoom-default" src="{{ asset('storage/products/' . $products->photo) }}"
+                                        <img class="xzoom img-fluid" id="xzoom-default"
+                                            src="{{ asset('storage/products/' . $products->photo) }}"
                                             xoriginal="{{ asset('storage/products/' . $products->photo) }}"
                                             alt="product image" />
                                     </div>
                                 @else
-                                    <div class="ph__feature__image " >
-                                        <img src="{{ asset('assets/images/others/error.png') }}" class="img-fluid" alt="product image" />
+                                    <div class="ph__feature__image ">
+                                        <img src="{{ asset('assets/images/others/error.png') }}" class="img-fluid"
+                                            alt="product image" />
                                     </div>
                                 @endif
                             </div>
@@ -111,7 +113,11 @@
                                                 href="{{ route('checkout_details', ['checkout' => $products->slug]) }}"
                                                 data-quick-buy
                                                 data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
-                                                <span class="btn-text">অর্ডার করুণ</span>
+                                                @if ($products->product_type == 'REG')
+                                                    <span class="btn-text">অর্ডার করুণ</span>
+                                                @else
+                                                    <span class="btn-text">প্রি অর্ডার করুণ</span>
+                                                @endif
                                             </a>
                                         </div>
                                     </div>
@@ -182,7 +188,8 @@
                                                                         <div class="product-layout  has-extra-button">
                                                                             <div class="product-thumb">
                                                                                 <div class="image">
-                                                                                    <a href="{{ route('product_details', ['slug' => $product->slug]) }}" class="product-img ">
+                                                                                    <a href="{{ route('product_details', ['slug' => $product->slug]) }}"
+                                                                                        class="product-img ">
                                                                                         @if (isset($product->photo))
                                                                                             <div
                                                                                                 class="ph__product__img__related">
@@ -206,7 +213,8 @@
                                                                                 </div>
                                                                                 <div class="caption">
                                                                                     <div class="name">
-                                                                                        <a href="{{ route('product_details', ['slug' => $product->slug]) }}">
+                                                                                        <a
+                                                                                            href="{{ route('product_details', ['slug' => $product->slug]) }}">
                                                                                             {{ Str::limit($product->title, 30, '...') }}
                                                                                         </a>
                                                                                     </div>
@@ -229,14 +237,20 @@
                                                                                             @endif
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="extra-group">
-                                                                                        <div>
+                                                                                    <div class="extra-group nh__order__confirm">
+                                                                                        <div class="nh__order__confirm__btn">
                                                                                             <a class="btn btn-extra btn-extra-46"
                                                                                                 href="{{ route('checkout_details', ['checkout' => $product->slug]) }}">
-                                                                                                <span
-                                                                                                    class="btn-text">অর্ডার
-                                                                                                    করুণ</span>
+                                                                                                @if ($product->product_type == 'REG')
+                                                                                                    <span class="btn-text">অর্ডার করুণ</span>
+                                                                                                @else
+                                                                                                    <span
+                                                                                                        class="btn-text">প্রি অর্ডার করুণ</span>
+                                                                                                @endif
                                                                                             </a>
+                                                                                            <div class="nh__cart__icon">
+                                                                                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -281,7 +295,8 @@
                                                                         <div class="product-layout  has-extra-button">
                                                                             <div class="product-thumb">
                                                                                 <div class="image">
-                                                                                    <a href="{{ route('product_details', ['slug' => $product->slug]) }}" class="product-img ">
+                                                                                    <a href="{{ route('product_details', ['slug' => $product->slug]) }}"
+                                                                                        class="product-img ">
                                                                                         @if (isset($product->photo))
                                                                                             <div
                                                                                                 class="ph__product__img__related">
@@ -305,7 +320,8 @@
                                                                                 </div>
                                                                                 <div class="caption">
                                                                                     <div class="name">
-                                                                                        <a href="{{ route('product_details', ['slug' => $product->slug]) }}">
+                                                                                        <a
+                                                                                            href="{{ route('product_details', ['slug' => $product->slug]) }}">
                                                                                             {{ Str::limit($product->title, 30, '...') }}
                                                                                         </a>
                                                                                     </div>
@@ -328,14 +344,20 @@
                                                                                             @endif
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="extra-group">
-                                                                                        <div>
+                                                                                    <div class="extra-group nh__order__confirm">
+                                                                                        <div class="nh__order__confirm__btn">
                                                                                             <a class="btn btn-extra btn-extra-46"
                                                                                                 href="{{ route('checkout_details', ['checkout' => $product->slug]) }}">
-                                                                                                <span
-                                                                                                    class="btn-text">অর্ডার
-                                                                                                    করুণ</span>
+                                                                                                @if ($product->product_type == 'REG')
+                                                                                                    <span class="btn-text">অর্ডার করুণ</span>
+                                                                                                @else
+                                                                                                    <span
+                                                                                                        class="btn-text">প্রি অর্ডার করুণ</span>
+                                                                                                @endif
                                                                                             </a>
+                                                                                            <div class="nh__cart__icon">
+                                                                                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -372,4 +394,3 @@
         });
     </script>
 @endsection
-

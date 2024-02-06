@@ -176,6 +176,7 @@
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 }
             });
+
             $("body").on("click", '.add--to--cart-btn', function(e) {
                 e.preventDefault();
                 let that = this;
@@ -201,7 +202,7 @@
                         toastr.options = {
                             "closeButton": true,
                             "progressBar": true,
-                            "timeOut": "3000",
+                            "timeOut": "1500",
                         }
 
                         $("#cart-items").removeClass("count-zero").html(product_count);

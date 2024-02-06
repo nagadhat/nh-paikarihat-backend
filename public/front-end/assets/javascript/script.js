@@ -125,14 +125,6 @@ $(document).ready(function () {
 			$('#collapse-checkout-option #button-login').trigger('click');
 		}
 	});
-
-	// tooltips on hover
-	// $('[data-toggle=\'tooltip\']').tooltip({ container: 'body' });
-
-	// Makes tooltips work on ajax generated content
-	// $(document).ajaxStop(function () {
-	// 	$('[data-toggle=\'tooltip\']').tooltip({ container: 'body' });
-	// });
 });
 
 // Cart add remove functions
@@ -597,15 +589,7 @@ jQuery(function ($) {
 		}
 	});
 
-	// Datepicker class
-	$(document).on('dp.show', function (e) {
-		var $target = $(e.target);
-		var cls = $target.data('pickerClass');
 
-		if (cls) {
-			$target.data('DateTimePicker').widget.addClass(cls);
-		}
-	});
 
 	// Dropdowns animation
 	$(document).on('shown.bs.dropdown', function (e) {
@@ -1484,25 +1468,6 @@ jQuery(function ($) {
 
 	// Contact Form
 	$('.module-form').each(function () {
-		if ($.fn.datetimepicker) {
-			var language = $('form', this).data('language');
-
-			$('.date', this).datetimepicker({
-				language: language,
-				pickTime: false
-			});
-
-			$('.datetime', this).datetimepicker({
-				language: language,
-				pickDate: true,
-				pickTime: true
-			});
-
-			$('.time', this).datetimepicker({
-				language: language,
-				pickDate: false
-			});
-		}
 
 		$('.upload-btn', this).on('click', function () {
 			var node = this;

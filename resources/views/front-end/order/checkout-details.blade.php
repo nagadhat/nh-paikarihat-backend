@@ -309,7 +309,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </form>
@@ -399,6 +398,6 @@
 
             document.getElementById("insideDhakaCharge").style.display = "none";
             document.getElementById("outsideDhakaCharge").style.display = "block";
-        }
+        };
     </script>
 @endsection

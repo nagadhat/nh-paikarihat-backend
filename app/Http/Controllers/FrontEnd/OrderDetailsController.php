@@ -114,6 +114,7 @@ class OrderDetailsController extends Controller
                 "unit_price" => $lineItem->unit_price,
             ]);
         }
+        
         Alert::success('Success', "Thank You For Your Order");
         return redirect()->route('invoice_order', $orderDetails->id);
     }

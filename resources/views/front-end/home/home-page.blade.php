@@ -101,9 +101,10 @@
                                                                     </div>
                                                                 @endif
                                                             </a>
-                                                            @if(isset($product->product_type))
+                                                            @if (isset($product->product_type))
                                                                 <div class="product-labels">
-                                                                    <span class="product-label product-label-28 product-label-diagonal">
+                                                                    <span
+                                                                        class="product-label product-label-28 product-label-diagonal">
                                                                         <b>{{ $product->product_type }}</b>
                                                                     </span>
                                                                 </div>
@@ -138,7 +139,11 @@
                                                                         class="btn btn-extra btn-extra-46 add--to--cart-btn"
                                                                         data-product_id="{{ $product->id }}"
                                                                         data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
-                                                                        <span class="btn-text">অর্ডার করুণ</span>
+                                                                        @if ($product->product_type == 'Reg')
+                                                                            <span class="btn-text">অর্ডার করুণ</span>
+                                                                        @else
+                                                                            <span class="btn-text">প্রি অর্ডার করুণ</span>
+                                                                        @endif
                                                                     </a>
                                                                     <div class="nh__cart__icon">
                                                                         <i class="fa fa-cart-plus" aria-hidden="true"></i>
@@ -190,7 +195,7 @@
                             product_count
                         } = data;
 
-                        toastr.success('Product Added to Your Cart','');
+                        toastr.success('Product Added to Your Cart', '');
                         toastr.options = {
                             "closeButton": true,
                             "progressBar": true,

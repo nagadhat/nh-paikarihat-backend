@@ -1,0 +1,28 @@
+.extra-group.nh__order__confirm{
+    padding: 0;
+}
+.extra-group.nh__order__confirm .nh__order__confirm__btn {
+    background-image: -o-radial-gradient(-1% 57.5%, circle farthest-corner, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%) !important;
+    background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%) !important;
+    gap: 10px;
+    border-radius: 3px;
+}
+.extra-group.nh__order__confirm .nh__order__confirm__btn a {
+    background: transparent !important;
+    min-width: -webkit-max-content !important;
+    min-width: -moz-max-content !important;
+    min-width: max-content !important;
+    padding: 10px 0 !important;
+}
+.extra-group.nh__order__confirm .nh__order__confirm__btn i {
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 0;
+}
+textarea.form-control.nh__customer__address {
+    height: 60px;
+}
+.nh__order__confirm .nh__order__confirm__btn :is(a:active, a:hover) {
+    background: transparent !important;
+}

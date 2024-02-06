@@ -42385,11 +42385,10 @@ input[type="radio"] {
   }
 }
 
-.customer__orders{
+.extra-group.customer__orders {
   display: flex;
   gap: 15px;
 }
-
 
 .customer__orderitem{
   flex-basis: 50%;
@@ -42435,38 +42434,6 @@ div#account-edit {
   .customer__orderitem{
     flex-basis: 100;
   }
-}
-
-/****** home page order confirm button  ********/
-.nh__order__confirm {
-    padding: 0 !important;
-}
-
-.nh__order__confirm__btn {
-    background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%) !important;
-    gap: 10px;
-    border-radius: 3px;
-}
-
-.nh__order__confirm__btn a {
-    background: transparent !important;
-    min-width: max-content !important;
-    padding: 10px 0 !important;
-}
-
-.nh__order__confirm__btn i {
-    cursor: pointer;
-    color: #fff;
-    font-size: 20px;
-    padding: 10px 0;
-}
-
-textarea.form-control.nh__customer__address {
-    height: 60px !important;
-}
-
-.nh__order__confirm .nh__order__confirm__btn :is(a:active, a:hover) {
-    background: transparent !important;
 }
 
 

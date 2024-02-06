@@ -242,8 +242,10 @@
                                                                                             @endif
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="extra-group nh__order__confirm">
-                                                                                        <div class="nh__order__confirm__btn">
+                                                                                    <div
+                                                                                        class="extra-group nh__order__confirm">
+                                                                                        <div
+                                                                                            class="nh__order__confirm__btn">
                                                                                             <a class="btn btn-extra btn-extra-46 add--to--checkout-btn"
                                                                                                 href="{{ route('checkout_details', ['checkout' => $product->slug]) }}"
                                                                                                 data-checkout_id="{{ $product->id }}">
@@ -643,4 +645,9 @@
 
         })(jQuery);
     </script>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 49537da73f70bcd7f2af745ac4c3807fd5523d0c
 @endsection

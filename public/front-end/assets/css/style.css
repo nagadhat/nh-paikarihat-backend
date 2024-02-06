@@ -42439,7 +42439,7 @@ div#account-edit {
 
 /****** home page order confirm button  ********/
 .nh__order__confirm {
-    padding: 0 15px;
+    padding: 0;
 }
 .nh__order__confirm__btn {
     background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%) !important;

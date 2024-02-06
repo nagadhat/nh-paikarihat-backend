@@ -408,7 +408,6 @@
                 @endphp
                 <script src="{{ asset('front-end/assets/theme/lib/modernizr/modernizr-customf13b.js') }}"></script>
                 <script src="{{ asset('front-end/assets/theme/lib/jquery/jquery-2.1.1.minf13b.js') }}"></script>
-                <script src="{{ asset('front-end/assets/javascript/script.js') }}" type="text/javascript"></script>
                 <script src="{{ asset('front-end/assets/javascript/bootstrap/js/bootstrap.minf13b.js') }}"></script>
                @php
             }

@@ -645,9 +645,4 @@
 
         })(jQuery);
     </script>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 49537da73f70bcd7f2af745ac4c3807fd5523d0c
 @endsection

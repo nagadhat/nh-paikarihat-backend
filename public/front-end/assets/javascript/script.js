@@ -362,7 +362,6 @@ $(document).delegate('.agree', 'click', function (e) {
 	});
 });
 
-// Autocomplete */
 (function ($) {
 	$.fn.autocomplete = function (option) {
 		return this.each(function () {
@@ -583,13 +582,6 @@ jQuery(function ($) {
 	var $column_right = $('#column-right');
 	var $panel_group = $('.panel-group');
 	var $main_products = $('.main-products');
-
-	// lazyload
-	// Journal.lazyLoadInstance = new LazyLoad({
-	// 	elements_selector: '.lazyload',
-	// 	class_loading: 'lazyloading',
-	// 	class_loaded: 'lazyloaded'
-	// });
 
 	// Popover class
 	$(document).on('show.bs.popover', function (e) {

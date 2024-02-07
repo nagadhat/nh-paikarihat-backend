@@ -124,6 +124,7 @@
      <link href="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
      <link rel="stylesheet" href="{{ asset('front-end/assets/css/toastr.min.css') }}">
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product-button.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/redesign.css') }}" />
 
     <style>
         header::before {

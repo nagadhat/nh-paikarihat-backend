@@ -288,6 +288,10 @@ textarea.form-control.nh__customer__address {
     font-weight: 700;
 }
 
+.module-products-253 .product-grid .product-thumb .extra-group .btn.btn:hover {
+  font-size: 14px !important;
+}
+
   @media (max-width:767px) {
     .module-products-169 .product-layout:not(.swiper-slide) {
         padding: 5px;
@@ -335,8 +339,6 @@ textarea.form-control.nh__customer__address {
     .extra-group.nh__order__confirm .nh__order__confirm__btn i {
         padding: 6px 8px;
     }
-<<<<<<< HEAD
-=======
     #content-bottom-last .nh__order__confirm__btn span,
     #content-bottom .module-products-253 .product-grid .product-thumb .extra-group .btn:first-child .btn-text {
         padding: 3px 8px;
@@ -356,7 +358,6 @@ textarea.form-control.nh__customer__address {
         padding-top: 8px;
         padding-bottom: 8px;
     }
->>>>>>> e4008245ca1bdf6937d9e5ff535dafd60e04df38
   }
 
   /* mobile header end */

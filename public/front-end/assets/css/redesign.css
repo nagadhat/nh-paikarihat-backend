@@ -278,15 +278,6 @@ div#content {
     font-size: 14px !important;
 }
 
-.btn:hover {
-    font-size: 18px !important;
-    color: rgba(255, 255, 255, 1) !important;
-    font-weight: 700 !important;
-    font-style: normal !important;
-    text-align: center !important;
-    background: rgba(58, 188, 155) !important
-  }
-
 @media (max-width:767px) {
     .module-products-169 .product-layout:not(.swiper-slide) {
         padding: 5px;

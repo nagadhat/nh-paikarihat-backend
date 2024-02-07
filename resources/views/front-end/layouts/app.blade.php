@@ -117,8 +117,6 @@
     <link href="{{ asset('front-end/assets/theme/lib/masterslider/style/mastersliderf13b.css') }}" type="text/css"
         rel="stylesheet" media="all" />
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product-button.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/redesign.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product_carousel.css') }}" />
 
@@ -136,6 +134,8 @@
             padding: 20px;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product-button.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/redesign.css') }}" />
 
 </head>
 

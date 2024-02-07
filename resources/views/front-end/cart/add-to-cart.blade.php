@@ -60,11 +60,9 @@
                                     <thead>
                                         <tr>
                                             <td class="text-center td-image">নাম ও ছবি</td>
-                                            {{-- <td class="text-left td-name">Product Name</td> --}}
-
+                                            <td class="text-center td-image">প্রোডাক্টের মূল্য</td>
                                             <td class="text-center td-qty">কোয়ান্টিটি</td>
-                                            <td class="text-center td-price">Unit Price</td>
-                                            <td class="text-center td-total">প্রোডাক্টের মূল্য</td>
+                                            <td class="text-center td-total">মোট প্রোডাক্টের মূল্য</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -77,7 +75,21 @@
                                                             style="width: 60px;height:60px">
                                                     </div>
 
-                                                    <p>{{ Str::limit($cart->product->title, $limit = 10, $end = '...') }}
+                                                    <p>
+                                                        {{-- {{ Str::limit($cart->product->title, $limit = 10, $end = '...') }} --}}
+                                                        {{  $cart->product->title }}
+                                                    </p>
+                                                    <p>
+                                                        @if($cart->product->product_type ==  'REG')
+                                                            Regular Product
+                                                        @else
+                                                            Pre Product
+                                                        @endif
+                                                    </p>
+                                                </td>
+                                                <td class=" td-image">
+                                                    <p>
+                                                        {{ $cart->product->price }} TAKA
                                                     </p>
                                                 </td>
                                                 <td class="text-center td-qty">

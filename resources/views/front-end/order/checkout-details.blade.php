@@ -188,8 +188,9 @@
                                                                             </div>
                                                                         @endif
                                                                         <br>
-                                                                        <p>{{ Str::limit($products->product->title, 30, '...') ? Str::limit($products->product->title, 30, '...') : '' }}
-
+                                                                        <p>
+                                                                            {{-- {{ Str::limit($products->product->title, 30, '...') ? Str::limit($products->product->title, 30, '...') : '' }} --}}
+                                                                            {{ $products->product->title}}
                                                                         </p>
                                                                     </td>
                                                                     <td class="">

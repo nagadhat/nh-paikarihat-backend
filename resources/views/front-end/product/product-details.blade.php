@@ -120,6 +120,7 @@
                                                 @endif
                                             </a>
                                         </div>
+
                                     </div>
                                     <div class="wishlist-compare">
                                         <a class="btn main__add__to__cart"
@@ -131,6 +132,11 @@
                                             </span>
                                         </a>
                                     </div>
+                                </div>
+                                <div class="hotline_number">
+                                    <strong>
+                                        HOTLINE : 09647 444 444 , 01906 198 502
+                                    </strong>
                                 </div>
                             </div>
                         </div>
@@ -413,6 +419,14 @@
             tint: '#333',
             Xoffset: 15
         });
+
+        $(window).resize(function(){
+        var windowWidth = $(window).width();
+        // If width is 1024px, remove the class
+        if(windowWidth === 1024) {
+            $('body').removeClass('xzoom-preview');
+        }
+    });
     </script>
     <script>
         (function($) {

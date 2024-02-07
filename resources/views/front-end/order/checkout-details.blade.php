@@ -153,6 +153,9 @@
                                                                 <td class="qc-image" style="font-weight: bold">নাম ও ছবি:
                                                                 </td>
                                                                 <td class="qc-quantity" style="font-weight: bold">
+                                                                   প্রোডাক্ট টাইপ:
+                                                                </td>
+                                                                <td class="qc-quantity" style="font-weight: bold">
                                                                     ইউনিট প্রাইস:
                                                                 </td>
                                                                 <td class="qc-quantity"
@@ -188,6 +191,13 @@
                                                                         <p>{{ Str::limit($products->product->title, 30, '...') ? Str::limit($products->product->title, 30, '...') : '' }}
 
                                                                         </p>
+                                                                    </td>
+                                                                    <td class="">
+                                                                        @if($products->product->product_type == "REG")
+                                                                            Regular Product
+                                                                        @else
+                                                                            Pre Product
+                                                                        @endif
                                                                     </td>
                                                                     <td class="qc-price  ">
                                                                         {{ isset($products->unit_price) ? $products->unit_price : '' }}

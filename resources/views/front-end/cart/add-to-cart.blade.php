@@ -64,7 +64,7 @@
 
                                             <td class="text-center td-qty">কোয়ান্টিটি</td>
                                             <td class="text-center td-price">Unit Price</td>
-                                            <td class="text-center td-total">মোট বিল</td>
+                                            <td class="text-center td-total">প্রোডাক্টের মূল্য</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -121,7 +121,7 @@
                                         <table class="table table-bordered">
                                             <tbody>
                                                 <tr>
-                                                    <td class="text-right"><strong>প্রোডাক্টের মূল্য:</strong></td>
+                                                    <td class="text-right"><strong>মোট বিল:</strong></td>
                                                     <td class="text-right" id="totalPrice">{{ $totalprice }} TAKA</td>
                                                 </tr>
                                                 {{-- <tr>

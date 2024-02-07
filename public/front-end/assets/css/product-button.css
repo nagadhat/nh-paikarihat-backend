@@ -252,7 +252,7 @@ textarea.form-control.nh__customer__address {
     text-overflow: initial;
     text-align: center
   }
-  
+
   div#content {
     padding-bottom: 50px;
   }
@@ -272,6 +272,21 @@ textarea.form-control.nh__customer__address {
       flex-direction: column;
   }
   }
+#content-bottom-last .nh__order__confirm__btn span,
+#content-bottom .module-products-253 .product-grid .product-thumb .extra-group .btn.btn, .module-products-253 .product-grid .product-thumb .extra-group .btn.btn:visited {
+    font-size: 14px;
+}
+#content-bottom-last .nh__cart__icon i,
+#content-bottom .extra-group.nh__order__confirm .nh__order__confirm__btn i {
+    padding: 7px 12px;
+}
+.hotline_number {
+    padding-top: 15px;
+}
+.hotline_number strong {
+    font-size: 20px;
+    font-weight: 700;
+}
 
   @media (max-width:767px) {
     .module-products-169 .product-layout:not(.swiper-slide) {
@@ -290,6 +305,13 @@ textarea.form-control.nh__customer__address {
     footer .grid-col:last-child {
         padding-bottom: 0;
     }
+    .product-info .product-left {
+        width: 100%
+      }
+
+      .product-info .product-right {
+        width: 100%
+      }
   }
 
   @media (max-width: 470px) {
@@ -313,6 +335,28 @@ textarea.form-control.nh__customer__address {
     .extra-group.nh__order__confirm .nh__order__confirm__btn i {
         padding: 6px 8px;
     }
+<<<<<<< HEAD
+=======
+    #content-bottom-last .nh__order__confirm__btn span,
+    #content-bottom .module-products-253 .product-grid .product-thumb .extra-group .btn:first-child .btn-text {
+        padding: 3px 8px;
+    }
+    .nh__order__confirm__btn span {
+        font-size: 13px;
+    }
+    #content-bottom-last .nh__cart__icon i,
+    #content-bottom .extra-group.nh__order__confirm .nh__order__confirm__btn i {
+        padding: 7px 6px;
+    }
+    #content-bottom-last .module-products-253 .product-grid .product-thumb .extra-group .btn:first-child .btn-text {
+        display: inline-block;
+        padding: 1.5px  10px;
+    }
+    .ph__cart__group .main__add__to__cart {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+>>>>>>> e4008245ca1bdf6937d9e5ff535dafd60e04df38
   }
 
   /* mobile header end */

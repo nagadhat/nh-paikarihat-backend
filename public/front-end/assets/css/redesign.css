@@ -91,6 +91,13 @@
     border-radius: 3px;
 }
 
+.btn:hover {
+    font-family: 'Hind Siliguri' !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    color: rgba(255, 255, 255, 1) !important
+}
+
 textarea.form-control.nh__customer__address {
     height: 60px;
 }

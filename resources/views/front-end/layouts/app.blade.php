@@ -117,13 +117,15 @@
     <link href="{{ asset('front-end/assets/theme/lib/masterslider/style/mastersliderf13b.css') }}" type="text/css"
         rel="stylesheet" media="all" />
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/style.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product_carousel.css') }}" />
 
      {{-- data table css --}}
      <link href="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
      <link rel="stylesheet" href="{{ asset('front-end/assets/css/toastr.min.css') }}">
 
+     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/redesign.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product-button.css') }}" />
     <style>
         header::before {
             background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(58,188,155) 0%, rgb(58,188,155) 90%);
@@ -134,13 +136,9 @@
             padding: 20px;
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product-button.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/redesign.css') }}" />
-
 </head>
 
 <body class="">
-
     <div class="mobile-container mobile-main-menu-container">
         <div class="mobile-wrapper-header">
             <span>সকল ক্যাটেগরিস</span>

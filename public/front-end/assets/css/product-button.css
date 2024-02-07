@@ -188,6 +188,70 @@ textarea.form-control.nh__customer__address {
     padding-top: 4px;
   }
 
+  .login-box .title {
+    font-family: 'Hind Siliguri';
+    font-weight: 700;
+    font-size: 26px;
+    color: rgba(255, 255, 255, 1);
+    font-style: normal;
+    text-align: center;
+    text-transform: none;
+    text-decoration: none;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
+    ;
+    border-radius: 3px;
+    padding: 7px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+    text-align: center
+  }
+
+  legend {
+    font-family: 'Hind Siliguri';
+    font-weight: 700;
+    font-size: 26px;
+    color: rgba(255, 255, 255, 1);
+    font-style: normal;
+    text-align: center;
+    text-transform: none;
+    text-decoration: none;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
+    ;
+    border-radius: 3px;
+    padding: 7px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+    text-align: center;
+    font-family: 'Hind Siliguri';
+    font-weight: 700;
+    font-size: 26px;
+    color: rgba(255, 255, 255, 1);
+    font-style: normal;
+    text-align: center;
+    text-transform: none;
+    text-decoration: none;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
+    ;
+    border-radius: 3px;
+    padding: 7px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+    text-align: center
+  }
+  
+  div#content {
+    padding-bottom: 50px;
+  }
+
   @media (max-width:1199px) {
     .module-products-169 .product-layout:not(.swiper-slide) {
         padding: 5px;

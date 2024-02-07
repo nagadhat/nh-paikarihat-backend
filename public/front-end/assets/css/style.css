@@ -28083,44 +28083,6 @@ body {
   margin-top: -10px
 }
 
-legend {
-  font-family: 'Hind Siliguri';
-  font-weight: 700;
-  font-size: 26px;
-  color: rgba(255, 255, 255, 1);
-  font-style: normal;
-  text-align: center;
-  text-transform: none;
-  text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
-  ;
-  border-radius: 3px;
-  padding: 7px;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: initial;
-  text-align: center;
-  font-family: 'Hind Siliguri';
-  font-weight: 700;
-  font-size: 26px;
-  color: rgba(255, 255, 255, 1);
-  font-style: normal;
-  text-align: center;
-  text-transform: none;
-  text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
-  ;
-  border-radius: 3px;
-  padding: 7px;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: initial;
-  text-align: center
-}
 
 legend::after {
   content: '';
@@ -28177,7 +28139,7 @@ legend.page-title>span::after {
   text-align: center;
   text-transform: none;
   text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   border-radius: 3px;
   padding: 7px;
@@ -28275,7 +28237,7 @@ html:not(.popup) .page-title.page-title>span::after {
   font-weight: 700 !important;
   font-style: normal !important;
   text-align: center !important;
-  background: rgba(0, 167, 10, 1) !important
+  background: rgba(58,188,155) !important
 }
 
 .btn:active,
@@ -28758,7 +28720,7 @@ ul.nav-tabs>li.active>a:focus {
 }
 
 .breadcrumb::before {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   box-shadow: 0 5px 50px -10px rgba(0, 0, 0, 0.05);
   border-style: none
@@ -30521,26 +30483,7 @@ select.form-control::placeholder {
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1))
 }
 
-.login-box .title {
-  font-family: 'Hind Siliguri';
-  font-weight: 700;
-  font-size: 26px;
-  color: rgba(255, 255, 255, 1);
-  font-style: normal;
-  text-align: center;
-  text-transform: none;
-  text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
-  ;
-  border-radius: 3px;
-  padding: 7px;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: initial;
-  text-align: center
-}
+
 
 .login-box .title::after {
   content: '';

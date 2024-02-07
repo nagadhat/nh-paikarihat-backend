@@ -4,11 +4,13 @@
 @extends('front-end.layouts.app')
 @section('page_content')
     <div id="account-login" class="container">
-        <ul class="breadcrumb">
-            <li><a href="{{ route('home_page') }}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{{ route('customer_login') }}">Account</a></li>
-            <li><a href="javascript:void(0)">Login</a></li>
-        </ul>
+        <div>
+            <ul class="breadcrumb">
+                <li><a href="{{ route('home_page') }}"><i class="fa fa-home"></i></a></li>
+                <li><a href="{{ route('customer_login') }}">Account</a></li>
+                <li><a href="javascript:void(0)">Login</a></li>
+            </ul>
+        </div>
         <div class="row">
             <div id="content" class="col-sm-9">
                 <h1 class="title page-title" style="color: black; margin: 30px 0 15px 0">Account Login</h1>

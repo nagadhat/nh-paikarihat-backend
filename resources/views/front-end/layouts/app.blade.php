@@ -127,14 +127,12 @@
 
     <style>
         header::before {
-            background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(68 188 157) 0%, rgb(68 188 157) 90%);
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+            background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(58,188,155) 0%, rgb(58,188,155) 90%);
         }
 
         footer .grid-row-4 {
-            background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(68 188 157) 0%, rgba(68 188 157) 90%);
+            background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
             padding: 20px;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
         }
     </style>
 
@@ -170,44 +168,36 @@
         <header class="header-classic">
             <div class="header header-classic header-lg">
                 <div class="top-bar navbar-nav">
-                    <div class="top-menu top-menu-13">
+                    <div class="top-menu top-menu-13 nh__top__header">
                         @if (Route::has('customer_login'))
                             @auth
-                                <ul class="j-menu">
-                                    <li class="menu-item top-menu-item top-menu-item-1">
+                                <ul class="j-menu nh__logout_header">
+                                    <li class="menu-item top-menu-item top-menu-item-2">
                                         <a href="{{ route('customer_dashboard') }}"><span class="links-text">Account</span></a>
                                     </li>
-                                    <li class="menu-item top-menu-item top-menu-item-2">
+                                    <li class="menu-item top-menu-item">
                                         <a href="{{ route('customer_logout') }}">
-                                            <span class="links-text">Logout</span>
+                                            <span class="links-text">
+                                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                            <strong>Logout</strong>
+                                           </span>
                                         </a>
                                     </li>
                                 </ul>
                             @else
                                 <ul class="j-menu">
-                                    <li class="menu-item top-menu-item top-menu-item-1">
-                                        <a href="{{ route('home_page') }}"><span class="links-text">HOME</span></a>
+                                    <li class="menu-item top-menu-item top-menu-item-6">
+                                        <a href="tel:09647 444 444"><span class="links-text">HOTLINE : 09647 444 444</span></a>
                                     </li>
                                     <li class="menu-item top-menu-item top-menu-item-2">
                                         <a href="{{ route('customer_login') }}">
                                             <span class="links-text">MY ACCOUNT</span>
                                         </a>
                                     </li>
-                                    <li class="menu-item top-menu-item top-menu-item-6">
-                                        <a href="tel:09647 444 444"><span class="links-text">HOTLINE : 09647 444 444</span></a>
-                                    </li>
                                 </ul>
                             @endauth
                         @endif
                     </div>
-
-                    <div class="language-currency top-menu">
-                        <div class="desktop-language-wrapper">
-                        </div>
-                        <div class="desktop-currency-wrapper">
-                        </div>
-                    </div>
-                    <div class="third-menu"></div>
                 </div>
                 <div class="mid-bar navbar-nav">
                     <div class="desktop-logo-wrapper">
@@ -233,27 +223,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="classic-cart-wrapper">
-                        <div class="top-menu secondary-menu"></div>
-                        <div class="desktop-cart-wrapper default-cart-wrapper">
-                            <div id="cart" class="dropdown">
-                                <a data-toggle="dropdown" data-loading-text="Loading..."
-                                    class="dropdown-toggle cart-heading" href="{{ route('add_to_cart') }}">
-                                    <i class="fa fa-shopping-cart">
-                                        <span class="cart-label">Cart</span>
-                                    </i>
-                                    <span id="cart-items" class="count-badge count-zero">0</span>
-                                </a>
-                                <div id="cart-content" class="dropdown-menu cart-content j-dropdown">
-                                    <ul>
-                                        <li>
-                                            <p class="text-center cart-empty">Your shopping cart is empty!</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                     <div class="desktop-cart-wrapper default-cart-wrapper">
                         <div id="cart" class="dropdown">
                             <a class="dropdown-toggle cart-heading" href="{{ route('add_to_cart') }}">
@@ -283,22 +252,24 @@
                                             <a href="{{ route('customer_dashboard') }}"><span class="links-text">
                                                     Account</span></a>
                                         </li>
-                                        <li class="menu-item top-menu-item top-menu-item-1">
-                                            <a href="{{ route('customer_logout') }}"><span class="links-text">Logout</span></a>
+                                        <li class="menu-item top-menu-item">
+                                            <a href="{{ route('customer_logout') }}">
+                                                <span class="links-text">
+                                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                                <strong>Logout</strong>
+                                               </span>
+                                            </a>
                                         </li>
                                     </ul>
                                 @else
                                     <ul class="j-menu">
-                                        <li class="menu-item top-menu-item top-menu-item-1">
-                                            <a href="{{ route('home_page') }}"><span class="links-text">HOME</span></a>
+                                        <li class="menu-item top-menu-item top-menu-item-6">
+                                            <a href="tel:09647 444 444"><span class="links-text">HOTLINE :
+                                                09647 444 444</span></a>
                                         </li>
                                         <li class="menu-item top-menu-item top-menu-item-2">
                                             <a href="{{ route('customer_login') }}"><span class="links-text">MY
                                                     ACCOUNT</span></a>
-                                        </li>
-                                        <li class="menu-item top-menu-item top-menu-item-6">
-                                            <a href="tel:09647 444 444"><span class="links-text">HOTLINE :
-                                                09647 444 444</span></a>
                                         </li>
                                     </ul>
                                 @endauth
@@ -341,13 +312,13 @@
                             <div class="grid-items">
                                 <div class="grid-item grid-item-1">
                                     <div class="links-menu links-menu-294">
-                                        <ul class="module-body">
-                                            <li class="menu-item links-menu-item links-menu-item-1">
-                                                <a>
-                                                    <span class="links-text">Paikarihat © 2023 - 2024</span>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        <div class="nh__footer__address">
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                            <span class="links-text">
+                                            Khaja Super Market, 2nd to 7th Floor, Kallyanpur <br> <span>Bus Stop,
+                                                Mirpur Road, Dhaka-1207.</span>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -389,7 +360,7 @@
                                     <div class="links-menu links-menu-77">
                                         <ul class="module-body">
                                             <li class="menu-item links-menu-item links-menu-item-1">
-                                                <a href="javascript:void(0)">
+                                                <a href="https://globalfastcoder.com/" target="_blank">
                                                     <span class="links-text">ওয়েবসাইট তৈরি করেছে Global Fast Coder</span>
                                                 </a>
                                             </li>
@@ -398,6 +369,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="nh__footer__copyright">
+                        <span class="links-text">© 2023 - 2024 All Rights Reserved Designed by Paikarihat Bangladesh</span>
                     </div>
                 </div>
             </div>

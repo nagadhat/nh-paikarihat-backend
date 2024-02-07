@@ -13,16 +13,16 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="front-end/assets/image/slider/slider.jpg" alt="" width="100%">
+                    <img src="front-end/assets/image/slider/slider-1.png" alt="" width="100%">
                 </div>
                 <div class="item">
-                    <img src="front-end/assets/image/slider/slider.jpg" alt="" width="100%">
+                    <img src="front-end/assets/image/slider/slider-1.png" alt="" width="100%">
                 </div>
                 <div class="item">
-                    <img src="front-end/assets/image/slider/slider.jpg" alt="" width="100%">
+                    <img src="front-end/assets/image/slider/slider-1.png" alt="" width="100%">
                 </div>
                 <div class="item">
-                    <img src="front-end/assets/image/slider/slider.jpg" alt="" width="100%">
+                    <img src="front-end/assets/image/slider/slider-1.png" alt="" width="100%">
                 </div>
             </div>
         </div>

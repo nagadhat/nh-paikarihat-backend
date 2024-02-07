@@ -62,19 +62,51 @@ Route::domain('{shop}.' . env('APP_URL'))->group(function () {
     Route::get('/{slug}', [ShopController::class, 'index'])->name('user_shop');
 });
 
+/*
+|--------------------------------------------------------------------------
+|   # front end home page product order and add to cart routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/', [HomeController::class, 'homePage'])->name('home_page');
+Route::get('/search-product',[HomeController::class,'searchProduct'])->name('search_product');
+Route::get('/product-details/{slug}', [ProductDetialsController::class, 'productDetails'])->name('product_details');
+Route::get('/checkout-details/{checkout}', [OrderDetailsController::class, 'checkoutDetails'])->name('checkout_details');
+// Route::post('/order-product', [OrderDetailsController::class, 'orderProduct'])->name('order_product');
+Route::match(['get', 'post'], '/order-product', [OrderDetailsController::class, 'orderProduct'])->name('order_product');
+Route::get('/invoice-order/{id}', [OrderDetailsController::class, 'invoiceOrder'])->name('invoice_order');
+Route::get("/add-to-cart", [ProductCartController::class,'addToCart'])->name('add_to_cart');
+Route::post('/product-add-cart',[ProductCartController::class,'productAddCart'])->name('product_add_cart');
+Route::get('/product-delete-cart/{id}',[ProductCartController::class,'productDeleteCart'])->name('product_delete_cart');
+Route::post('/product-increment',[ProductCartController::class,'productIncrement'])->name('product_increment');
 
-// front-end auth routes
+/*
+|--------------------------------------------------------------------------
+|   # front end customer login and registration routes
+|--------------------------------------------------------------------------
+*/
 Route::get('/customer-login', [AuthController::class, 'login'])->name('customer_login');
 Route::get('/customer-register', [AuthController::class, 'register'])->name('customer_register');
 Route::post('/customer-registered', [AuthController::class, 'registeredUser'])->name('customer_registered');
 Route::post('/login-customer', [AuthController::class, 'loginCustomer'])->name('login_customer');
 Route::get('/customer-logout', [AuthController::class, 'logoutCustomer'])->name('customer_logout');
 
-// add to Cart Routes
-Route::get("/add-to-cart", [ProductCartController::class,'addToCart'])->name('add_to_cart');
-Route::post('/product-add-cart',[ProductCartController::class,'productAddCart'])->name('product_add_cart');
-Route::get('/product-delete-cart/{id}',[ProductCartController::class,'productDeleteCart'])->name('product_delete_cart');
-Route::post('/product-increment',[ProductCartController::class,'productIncrement'])->name('product_increment');
+
+/*
+|--------------------------------------------------------------------------
+|   # landing page routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/p/wireless-induction-car-holder', [LandingPageController::class, 'showLandingPage'])->name('show_landing_page');
+Route::get('/p/light-wireless-charger', [LandingPageController::class, 'showLandingPageTwo'])->name('show_landing_page_two');
+Route::get('/p/multifunction-wireless-charger', [LandingPageController::class, 'showLandingPageThree'])->name('show_landing_page_three');
+Route::get('/p/portable-charging-power-bank', [LandingPageController::class, 'showLandingPageFour'])->name('show_landing_page_four');
+Route::get('/p/magnetic-wireless-power-bank', [LandingPageController::class, 'showLandingPageFive'])->name('show_landing_page_five');
+Route::get('/p/car-headrest-holder', [LandingPageController::class, 'showLandingPagesix'])->name('show_landing_page_six');
+Route::get('/p/water-bottle-travel-flask', [LandingPageController::class, 'showLandingPageSev'])->name('show_landing_page_seven');
+Route::get('/p/wireless-bracket-charger', [LandingPageController::class, 'showLandingPageEig'])->name('show_landing_page_eight');
+Route::get('/landing-invoice-order/{id}', [LandingPageController::class, 'LandinginvoiceOrder'])->name('landing_invoice_order');
+Route::match(['get', 'post'], '/order-landing-product', [LandingPageController::class, 'orderLandingProduct'])->name('order_landing_product');
+
 
 // customer routes
 Route::prefix('/customer')->middleware('customer')->group(function () {
@@ -94,31 +126,6 @@ Route::prefix('/customer')->middleware('customer')->group(function () {
 });
 
 
-
-
-
-Route::get('/', [HomeController::class, 'homePage'])->name('home_page');
-Route::get('/product-details/{slug}', [ProductDetialsController::class, 'productDetails'])->name('product_details');
-Route::get('/checkout-details/{checkout}', [OrderDetailsController::class, 'checkoutDetails'])->name('checkout_details');
-// Route::post('/order-product', [OrderDetailsController::class, 'orderProduct'])->name('order_product');
-Route::match(['get', 'post'], '/order-product', [OrderDetailsController::class, 'orderProduct'])->name('order_product');
-Route::get('/invoice-order/{id}', [OrderDetailsController::class, 'invoiceOrder'])->name('invoice_order');
-
-
-// landing page routes
-Route::get('/p/wireless-induction-car-holder', [LandingPageController::class, 'showLandingPage'])->name('show_landing_page');
-Route::get('/p/light-wireless-charger', [LandingPageController::class, 'showLandingPageTwo'])->name('show_landing_page_two');
-Route::get('/p/multifunction-wireless-charger', [LandingPageController::class, 'showLandingPageThree'])->name('show_landing_page_three');
-Route::get('/p/portable-charging-power-bank', [LandingPageController::class, 'showLandingPageFour'])->name('show_landing_page_four');
-Route::get('/p/magnetic-wireless-power-bank', [LandingPageController::class, 'showLandingPageFive'])->name('show_landing_page_five');
-Route::get('/p/car-headrest-holder', [LandingPageController::class, 'showLandingPagesix'])->name('show_landing_page_six');
-Route::get('/p/water-bottle-travel-flask', [LandingPageController::class, 'showLandingPageSev'])->name('show_landing_page_seven');
-Route::get('/p/wireless-bracket-charger', [LandingPageController::class, 'showLandingPageEig'])->name('show_landing_page_eight');
-Route::get('/landing-invoice-order/{id}', [LandingPageController::class, 'LandinginvoiceOrder'])->name('landing_invoice_order');
-
-
-Route::match(['get', 'post'], '/order-landing-product', [LandingPageController::class, 'orderLandingProduct'])->name('order_landing_product');
-
 // package route
 Route::get('/web-packages', [FrontEnd_PackageController::class, 'index'])->name('web_packages');
 Route::get('/select-package/{id}', [FrontEnd_PackageController::class, 'select_package'])->name('select_package');
@@ -136,7 +143,7 @@ Route::get('/sign-out', [UserController::class, 'sign_out'])->name('sign_out');
 
 /*
 |--------------------------------------------------------------------------
-|   # customer routes
+|   # master admin routes
 |--------------------------------------------------------------------------
 */
 
@@ -154,7 +161,6 @@ Route::prefix('/user')->middleware('user')->group(function () {
 
     // product routes
     Route::resource('/products', ProductController::class);
-    Route::get('/search-product',[HomeController::class,'searchProduct'])->name('search_product');
 
     // variation routes
     Route::controller(ProductVariationController::class)->group(function () {

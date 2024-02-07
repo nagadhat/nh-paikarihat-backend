@@ -12,7 +12,7 @@
 
 
   .header-search .search-button {
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
     min-width: 45px
   }
 
@@ -151,7 +151,7 @@
     text-align: center;
     text-transform: none;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
     ;
     border-radius: 3px;
     padding: 7px;
@@ -190,7 +190,7 @@
     text-align: center;
     text-transform: none;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
     ;
     border-radius: 3px;
     padding: 7px;

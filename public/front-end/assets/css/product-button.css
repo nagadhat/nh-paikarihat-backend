@@ -30,22 +30,7 @@
 
 
 
-.extra-group.nh__order__confirm .nh__order__confirm__btn i {
-    cursor: pointer;
-    color: #fff;
-    font-size: 20px;
-    padding: 10px 12px;
-    background-color: #eb0000;
-    border-radius: 3px;
-}
 
-textarea.form-control.nh__customer__address {
-    height: 60px;
-}
-
-.nh__order__confirm .nh__order__confirm__btn :is(a:active, a:hover) {
-    background: transparent !important;
-}
 
 
 

@@ -278,6 +278,15 @@ div#content {
     font-size: 14px !important;
 }
 
+.btn:hover {
+    font-size: 18px !important;
+    color: rgba(255, 255, 255, 1) !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
+    text-align: center !important;
+    background: rgba(58, 188, 155) !important
+  }
+
 @media (max-width:767px) {
     .module-products-169 .product-layout:not(.swiper-slide) {
         padding: 5px;
@@ -349,6 +358,7 @@ div#content {
     #content-bottom .extra-group.nh__order__confirm .nh__order__confirm__btn i {
         padding: 7px 6px;
     }
+
 
     #content-bottom-last .module-products-253 .product-grid .product-thumb .extra-group .btn:first-child .btn-text {
         display: inline-block;

@@ -43,7 +43,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 @php
-                                    $uniqueNumericId = mt_rand(10000000, 99999999);
+                                    $uniqueNumericId = mt_rand(10000, 99999);
                                 @endphp
                                 <label for="" class="form-label">SKU<span class="text-danger"><sup>*</sup></span>
                                     :</label>

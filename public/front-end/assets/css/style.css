@@ -38461,10 +38461,10 @@ header::before {
 }
 
 
-
+/* 
 .mobile-cart-wrapper #cart>a>i {
   background: none
-}
+} */
 
 .mobile-header-active #cart>a>i {
   width: 60px;

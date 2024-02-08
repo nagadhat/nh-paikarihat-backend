@@ -59,6 +59,17 @@
                                             <p class="description"> </p>
                                             <div class="text-input form-group required">
                                                 <div class="col-xs-12">
+                                                    <label class="radio-inline" for="">
+                                                        <input type="radio" name="user_check" id="" value="" checked>
+                                                        Without Register 
+                                                    </label>
+
+                                                    <label class="radio-inline" for="">
+                                                        <input type="radio" name="user_check" id="" value="">
+                                                            Register 
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-12" style="padding-top:10px">
                                                     <label class="control-label" for="name">
                                                         <span class="text" title=""><b>আপনার নাম</b></span>
                                                     </label>

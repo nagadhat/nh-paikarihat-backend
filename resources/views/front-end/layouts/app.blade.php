@@ -154,17 +154,17 @@
         <div class="mobile-filter-wrapper"></div>
     </div>
 
-    <div class="mobile-container mobile-cart-content-container">
+    {{-- <div class="mobile-container mobile-cart-content-container">
         <div class="mobile-wrapper-header">
             <span>Your Cart</span>
             <a class="x"></a>
         </div>
         <div class="mobile-cart-content-wrapper cart-content"></div>
-    </div>
+    </div> --}}
 
     <div class="site-wrapper">
         {{-- header start --}}
-        <header class="header-classic">
+        <header class="header-classic custom__mobile__icon__position">
             <div class="header header-classic header-lg">
                 <div class="top-bar navbar-nav">
                     <div class="top-menu top-menu-13 nh__top__header">
@@ -237,6 +237,7 @@
                         </div>
                     </div>
                 </div>
+               
                 <div class="desktop-main-menu-wrapper menu-default  navbar-nav">
                 </div>
             </div>
@@ -288,12 +289,24 @@
                     </div> --}}
                     <div class="mobile-logo-wrapper">
                     </div>
-                    <div class="mobile-cart-wrapper mini-cart">
-                    </div>
+                    {{-- <div class="mobile-cart-wrapper mini-cart">
+                    </div> --}}
                 </div>
                 <div class="mobile-bar-group mobile-search-group">
                     <div class="mobile-search-wrapper full-search">
 
+                    </div>
+                </div>
+                <div class="mobile__cart__icon__wrapper">
+                    <div id="" class="mobile__cart__icon">
+                        <a class="mobile__cart__icon_route" href="{{ route('add_to_cart') }}">
+                            <i class="fa fa-shopping-cart"></i>
+                            @if ($product_count >= 1)
+                                <span id="mobile__cart__icon_count" class="">{{ $product_count }}</span>
+                            @else
+                                <span id="mobile__cart__icon_default" class=" count-zero">0</span>
+                            @endif
+                        </a>
                     </div>
                 </div>
             </div>

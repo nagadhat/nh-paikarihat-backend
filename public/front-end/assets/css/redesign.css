@@ -365,3 +365,46 @@ div#content {
 }
 
 /* mobile header end */
+
+/* custom mobile add to cart */
+.custom__mobile__icon__position {
+    position: relative;
+
+}
+.mobile__cart__icon__wrapper {
+    position: absolute;
+    height: calc(100vh - 43px);
+    top: 43px;
+    right: 15px;
+    z-index: 99999999;
+}
+.mobile__cart__icon__wrapper .fa-shopping-cart {
+   color: white;
+   font-size: 25px;
+}
+.mobile__cart__icon_route {
+    width: 40px;
+    height: 40px;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    position: relative;
+}
+#mobile__cart__icon_count {
+    position: absolute;
+    background: rgba(221, 14, 28, 1);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    color: #fff;
+    top: -5px;
+    right: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fff;
+    font-size: 10px;
+}

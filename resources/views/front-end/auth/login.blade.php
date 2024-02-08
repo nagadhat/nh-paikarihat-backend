@@ -17,7 +17,7 @@
                 <div class="row login-box">
                     <div class="col-sm-6">
                         <div class="well">
-                            <h2 class="title" style="margin-bottom: 15px;">New Customer</h2>
+                            <h2 class="title" style="margin-bottom: 15px;">Register Account</h2>
                             <p><strong>Register Account</strong></p>
                             <p>By creating an account you will be able to shop faster, be up to date on an order's status,
                                 and keep track of the orders you have previously made.</p>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="well">
-                            <h2 class="title" style="margin-bottom: 15px;">Returning Customer</h2>
+                            <h2 class="title" style="margin-bottom: 15px;">Login Customer</h2>
                             <p><strong>I am a returning customer</strong></p>
                             <form action="{{ route('login_customer') }}" method="post" enctype="multipart/form-data"
                                 class="form-horizontal login-form">

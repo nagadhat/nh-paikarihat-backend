@@ -442,5 +442,15 @@
             document.getElementById("insideDhakaCharge").style.display = "none";
             document.getElementById("outsideDhakaCharge").style.display = "block";
         };
+
+        $(document).ready(function() {
+            $('#UserCheck').change(function() {
+                if ($(this).is(':checked')) {
+                    window.location.href = "/customer-login";
+                }
+            });
+        });
     </script>
+
+
 @endsection

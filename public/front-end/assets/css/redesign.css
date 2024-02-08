@@ -305,7 +305,6 @@ div#content {
     .extra-group.nh__order__confirm .nh__order__confirm__btn {
         gap: 5px;
     }
-
     .extra-group.nh__order__confirm .nh__order__confirm__btn i {
         padding: 6px 8px;
     }
@@ -424,7 +423,7 @@ border-right: 0;
 }
 .footer__widget__item a:first-child{
     background-color: #00A2FF;
-}  
+}
 .footer__social__link {
     display: flex;
     gap: 10px;

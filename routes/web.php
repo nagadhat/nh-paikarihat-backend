@@ -78,7 +78,7 @@ Route::get("/add-to-cart", [ProductCartController::class,'addToCart'])->name('ad
 Route::post('/product-add-cart',[ProductCartController::class,'productAddCart'])->name('product_add_cart');
 Route::get('/product-delete-cart/{id}',[ProductCartController::class,'productDeleteCart'])->name('product_delete_cart');
 Route::post('/product-increment',[ProductCartController::class,'productIncrement'])->name('product_increment');
-
+// Route::get('/customer-with-register',[OrderDetailsController::class,'customerWithRegister'])->name('customer_with_register');
 /*
 |--------------------------------------------------------------------------
 |   # front end customer login and registration routes

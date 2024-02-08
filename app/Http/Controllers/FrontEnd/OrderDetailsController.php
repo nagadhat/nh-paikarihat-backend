@@ -127,4 +127,12 @@ class OrderDetailsController extends Controller
         ProductCart::where('session_id', $sessionId)->orWhere('user_id',Auth::id())->delete();
         return view('front-end.invoice.order-invoice', compact('orderDetails', 'orderProductsDetailslist'));
     }
+
+
+    public function customerWithRegister()
+    {
+        return view('front-end.auth.register');
+    }
+
+
 }

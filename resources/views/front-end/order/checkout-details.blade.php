@@ -58,19 +58,21 @@
                                         <div class="panel-body">
                                             <p class="description"> </p>
                                             <div class="text-input form-group required">
+                                            @if (!Auth::check())
                                                 <div class="col-xs-12">
-                                                    <label class="radio-inline" for="">
-                                                        <input type="radio" name="user_check" id=""
+                                                    <label class="radio-inline" for="notUserCheck">
+                                                        <input type="radio" name="user_check" id="notUserCheck"
                                                             value="" checked>
                                                         Without Register
                                                     </label>
 
-                                                    <label class="radio-inline" for="">
-                                                        <input type="radio" name="user_check" id=""
+                                                    <label class="radio-inline" for="UserCheck">
+                                                        <input type="radio" name="user_check" id="UserCheck"
                                                             value="">
-                                                        Register
+                                                            With Register
                                                     </label>
                                                 </div>
+                                            @endif
                                                 <div class="col-xs-12" style="padding-top:10px">
                                                     <label class="control-label" for="name">
                                                         <span class="text" title=""><b>আপনার নাম</b></span>
@@ -432,5 +434,15 @@
             document.getElementById("insideDhakaCharge").style.display = "none";
             document.getElementById("outsideDhakaCharge").style.display = "block";
         };
+
+        $(document).ready(function() {
+            $('#UserCheck').change(function() {
+                if ($(this).is(':checked')) {
+                    window.location.href = "/customer-login";
+                }
+            });
+        });
     </script>
+
+
 @endsection

@@ -73,8 +73,6 @@
                                                         </label>
                                                     </div>
                                                 @endif
-
-
                                                 <div class="col-xs-12" style="padding-top:10px">
                                                     <label class="control-label" for="name">
                                                         <span class="text" title=""><b>আপনার নাম</b></span>
@@ -364,7 +362,13 @@
             let productid = $('#product_id_' + i).val();
             let unit_price = $('#unit_price_' + i).val();
             let qty = $('#CurrentQty_' + i).val();
-            (type == "increment") ? qty++ : qty--;
+            if(type == "increment"){
+                qty++ ;
+            }else{
+                if(qty > 1){
+                    qty--;
+                }            
+            }
             let subTotal = unit_price * qty;
             $("#subTotal_" + i).html(subTotal + ' TAKA');
             $.ajax({

@@ -193,7 +193,13 @@
 
             let qty = $('#CurrentQty_' + i).val();
 
-            (type == "increment") ? qty++ : qty--;
+            if(type == "increment"){
+                qty++ ;
+            }else{
+                if(qty > 1){
+                    qty--;
+                }            
+            }
 
             let subTotal = unit_price * qty;
             $("#subTotal_" + i).html(subTotal + ' TAKA');

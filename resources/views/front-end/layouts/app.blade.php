@@ -320,70 +320,43 @@
             <div class="grid-rows">
                 <div class="grid-row grid-row-4">
                     <div class="grid-cols">
-                        <div class="grid-col grid-col-1">
-                            <div class="grid-items">
-                                <div class="grid-item grid-item-1">
-                                    <div class="links-menu links-menu-294">
-                                        <div class="nh__footer__address">
-                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <span class="links-text">
-                                            Khaja Super Market, 2nd to 7th Floor, Kallyanpur <br> <span>Bus Stop,
-                                                Mirpur Road, Dhaka-1207.</span>
-                                            </span>
-                                        </div>
-                                    </div>
+                        <div class="footer__widget">
+                            <div class="footer__widget__item">
+                                <div class="nh__footer__address">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <span class="links-text">
+                                    Khaja Super Market, 2nd to 7th Floor, Kallyanpur <br> <span>Bus Stop,
+                                        Mirpur Road, Dhaka-1207.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="footer__widget__item widget__link__icon">
+                                <div class="footer__social__link">
+                                    <a class="links-text" href="https://www.facebook.com/paikarihat.nagadhat" target="__blank">
+                                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="links-text" href="#" target="__blank">
+                                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="links-text" href="#" target="__blank">
+                                        <i class="fa fa-youtube" aria-hidden="true"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="grid-col grid-col-2">
-                            <div class="grid-items">
-                                <div class="grid-item grid-item-1">
-                                    <div class="icons-menu icons-menu-61">
-                                        <ul>
-                                            <li class="menu-item icons-menu-item icons-menu-item-1 icon-menu-icon">
-                                                <a data-toggle="tooltip" data-tooltip-class="icons-menu-tooltip-61"
-                                                    data-placement="top" title="Facebook"
-                                                    href="javascript:void(0)">
-                                                    <span class="links-text">Facebook</span>
-                                                </a>
-                                            </li>
-                                            <li class="menu-item icons-menu-item icons-menu-item-3 icon-menu-icon">
-                                                <a data-toggle="tooltip" data-tooltip-class="icons-menu-tooltip-61"
-                                                    data-placement="top" title="Instagram"
-                                                    href="javascript:void(0)">
-                                                    <span class="links-text">Instagram</span>
-                                                </a>
-                                            </li>
-                                            <li class="menu-item icons-menu-item icons-menu-item-5 icon-menu-icon">
-                                                <a data-toggle="tooltip" data-tooltip-class="icons-menu-tooltip-61"
-                                                    data-placement="top" title="YouTube"
-                                                    href="javascript:void(0)">
-                                                    <span class="links-text">YouTube</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-col grid-col-3">
-                            <div class="grid-items">
-                                <div class="grid-item grid-item-1">
-                                    <div class="links-menu links-menu-77">
-                                        <ul class="module-body">
-                                            <li class="menu-item links-menu-item links-menu-item-1">
-                                                <a href="https://globalfastcoder.com/" target="_blank">
-                                                    <span class="links-text">ওয়েবসাইট তৈরি করেছে Global Fast Coder</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
-                    <div class="nh__footer__copyright">
-                        <span class="links-text">© 2023 - 2024 All Rights Reserved Paikarihat. Member of Nagadhat Bangladesh Limited</span>
+                    <div class="grid-cols">
+                        <div class="footer__copyright__area">
+                            <div class="nh__footer__copyright">
+                                <span class="links-text">© 2023 - 2024 All Rights Reserved Paikarihat. Member of Nagadhat Bangladesh Limited</span>
+                            </div>
+                            <div class="nh__footer__copyright">
+                                <a href="https://globalfastcoder.com/" target="_blank">
+                                    <span class="links-text">ওয়েবসাইট তৈরি করেছে Global Fast Coder</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

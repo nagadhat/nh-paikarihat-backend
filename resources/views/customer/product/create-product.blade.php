@@ -43,7 +43,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 @php
-                                    $uniqueNumericId = time() . mt_rand(1000, 9999);
+                                    $uniqueNumericId = mt_rand(10000, 99999);
                                 @endphp
                                 <label for="" class="form-label">SKU<span class="text-danger"><sup>*</sup></span>
                                     :</label>
@@ -74,8 +74,8 @@
                                     <div class="col-md-10">
                                         <select name="product_type" id="" class="form-control">
                                             <option value="0">Choose Type</option>
-                                            <option value="REG">Reg</option>
-                                            <option value="PRE">Pre</option>
+                                            <option value="REG">REG</option>
+                                            <option value="PRE">PRE</option>
                                         </select>
                                     </div>
                                 </div>

@@ -12,13 +12,15 @@
                             <div class="product-image-wrapper">
                                 @if (isset($products->photo))
                                     <div class="ph__feature__image">
-                                        <img class="xzoom img-fluid" id="xzoom-default" src="{{ asset('storage/products/' . $products->photo) }}"
+                                        <img class="xzoom img-fluid" id="xzoom-default"
+                                            src="{{ asset('storage/products/' . $products->photo) }}"
                                             xoriginal="{{ asset('storage/products/' . $products->photo) }}"
                                             alt="product image" />
                                     </div>
                                 @else
-                                    <div class="ph__feature__image " >
-                                        <img src="{{ asset('assets/images/others/error.png') }}" class="img-fluid" alt="product image" />
+                                    <div class="ph__feature__image ">
+                                        <img src="{{ asset('assets/images/others/error.png') }}" class="img-fluid"
+                                            alt="product image" />
                                     </div>
                                 @endif
                             </div>
@@ -107,19 +109,34 @@
                                             </span>
                                         </div> --}}
                                         <div class="extra-group">
-                                            <a class="btn btn-extra btn-extra-46 btn-1-extra"
+                                            <a class="btn btn-extra btn-extra-46 btn-1-extra nh__product__detail"
                                                 href="{{ route('checkout_details', ['checkout' => $products->slug]) }}"
-                                                data-quick-buy
+                                                data-detail_id="{{ $products->id }}"
                                                 data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
-                                                <span class="btn-text">অর্ডার করুণ</span>
+                                                @if ($products->product_type == 'REG')
+                                                    <span class="btn-text">অর্ডার করুণ</span>
+                                                @else
+                                                    <span class="btn-text">প্রি অর্ডার করুণ</span>
+                                                @endif
                                             </a>
                                         </div>
+
                                     </div>
                                     <div class="wishlist-compare">
-                                        <a class="btn btn-wishlist" onclick="parent.wishlist.add(154);">
-                                            <span class="btn-text">Add to Wish List</span>
+                                        <a class="btn main__add__to__cart"
+                                            data-main_add_cart_product="{{ $products->id }}"
+                                            href="{{ route('checkout_details', ['checkout' => $products->slug]) }}">
+                                            <span class="btn-text ">
+                                                <i class="fa fa-cart-plus " aria-hidden="true"></i>
+                                                Add to Cart
+                                            </span>
                                         </a>
                                     </div>
+                                </div>
+                                <div class="hotline_number">
+                                    <strong>
+                                        HOTLINE : 09647 444 444 , 01906 198 502
+                                    </strong>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +199,8 @@
                                                                         <div class="product-layout  has-extra-button">
                                                                             <div class="product-thumb">
                                                                                 <div class="image">
-                                                                                    <a href="{{ route('product_details', ['slug' => $product->slug]) }}" class="product-img ">
+                                                                                    <a href="{{ route('product_details', ['slug' => $product->slug]) }}"
+                                                                                        class="product-img ">
                                                                                         @if (isset($product->photo))
                                                                                             <div
                                                                                                 class="ph__product__img__related">
@@ -206,7 +224,8 @@
                                                                                 </div>
                                                                                 <div class="caption">
                                                                                     <div class="name">
-                                                                                        <a href="{{ route('product_details', ['slug' => $product->slug]) }}">
+                                                                                        <a
+                                                                                            href="{{ route('product_details', ['slug' => $product->slug]) }}">
                                                                                             {{ Str::limit($product->title, 30, '...') }}
                                                                                         </a>
                                                                                     </div>
@@ -229,14 +248,28 @@
                                                                                             @endif
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="extra-group">
-                                                                                        <div>
-                                                                                            <a class="btn btn-extra btn-extra-46"
-                                                                                                href="{{ route('checkout_details', ['checkout' => $product->slug]) }}">
-                                                                                                <span
-                                                                                                    class="btn-text">অর্ডার
-                                                                                                    করুণ</span>
+                                                                                    <div
+                                                                                        class="extra-group nh__order__confirm">
+                                                                                        <div
+                                                                                            class="nh__order__confirm__btn">
+                                                                                            <a class="btn btn-extra btn-extra-46 add--to--checkout-btn"
+                                                                                                href="{{ route('checkout_details', ['checkout' => $product->slug]) }}"
+                                                                                                data-checkout_id="{{ $product->id }}">
+                                                                                                @if ($product->product_type == 'REG')
+                                                                                                    <span
+                                                                                                        class="btn-text">অর্ডার
+                                                                                                        করুণ</span>
+                                                                                                @else
+                                                                                                    <span
+                                                                                                        class="btn-text">প্রি
+                                                                                                        অর্ডার করুণ</span>
+                                                                                                @endif
                                                                                             </a>
+                                                                                            <div class="nh__cart__icon">
+                                                                                                <i class="fa fa-cart-plus add--to--cart-btn"
+                                                                                                    data-product_id="{{ $product->id }}"
+                                                                                                    aria-hidden="true"></i>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -281,7 +314,8 @@
                                                                         <div class="product-layout  has-extra-button">
                                                                             <div class="product-thumb">
                                                                                 <div class="image">
-                                                                                    <a href="{{ route('product_details', ['slug' => $product->slug]) }}" class="product-img ">
+                                                                                    <a href="{{ route('product_details', ['slug' => $product->slug]) }}"
+                                                                                        class="product-img ">
                                                                                         @if (isset($product->photo))
                                                                                             <div
                                                                                                 class="ph__product__img__related">
@@ -305,7 +339,8 @@
                                                                                 </div>
                                                                                 <div class="caption">
                                                                                     <div class="name">
-                                                                                        <a href="{{ route('product_details', ['slug' => $product->slug]) }}">
+                                                                                        <a
+                                                                                            href="{{ route('product_details', ['slug' => $product->slug]) }}">
                                                                                             {{ Str::limit($product->title, 30, '...') }}
                                                                                         </a>
                                                                                     </div>
@@ -328,14 +363,28 @@
                                                                                             @endif
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="extra-group">
-                                                                                        <div>
-                                                                                            <a class="btn btn-extra btn-extra-46"
-                                                                                                href="{{ route('checkout_details', ['checkout' => $product->slug]) }}">
-                                                                                                <span
-                                                                                                    class="btn-text">অর্ডার
-                                                                                                    করুণ</span>
+                                                                                    <div
+                                                                                        class="extra-group nh__order__confirm">
+                                                                                        <div
+                                                                                            class="nh__order__confirm__btn">
+                                                                                            <a class="btn btn-extra btn-extra-46 add--to--recent--product"
+                                                                                                href="{{ route('checkout_details', ['checkout' => $product->slug]) }}"
+                                                                                                data-recent_product_id="{{ $product->id }}">
+                                                                                                @if ($product->product_type == 'REG')
+                                                                                                    <span
+                                                                                                        class="btn-text">অর্ডার
+                                                                                                        করুণ</span>
+                                                                                                @else
+                                                                                                    <span
+                                                                                                        class="btn-text">প্রি
+                                                                                                        অর্ডার করুণ</span>
+                                                                                                @endif
                                                                                             </a>
+                                                                                            <div class="nh__cart__icon">
+                                                                                                <i class="fa fa-cart-plus add--cart--recent--product"
+                                                                                                    data-recent_cart_id="{{ $product->id }}"
+                                                                                                    aria-hidden="true"></i>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -370,6 +419,244 @@
             tint: '#333',
             Xoffset: 15
         });
+
+        $(window).resize(function(){
+        var windowWidth = $(window).width();
+        // If width is 1024px, remove the class
+        if(windowWidth === 1024) {
+            $('body').removeClass('xzoom-preview');
+        }
+    });
+    </script>
+    <script>
+        (function($) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            });
+
+            /***********Start product detils right side button **********/
+
+            // function to product details to checkout page
+            $("body").on("click", '.nh__product__detail', function(e) {
+                e.preventDefault();
+                let that = this;
+                let productid = $(that).data('detail_id');
+                if ('' === productid) {
+                    return;
+                }
+                $.ajax({
+                    url: "/product-add-cart",
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        productid,
+                        // userid: {{ optional(Auth::user())->id }}
+                    }),
+                    success: function(data) {
+                        console.log(data);
+                        let {
+                            productid
+                        } = data;
+
+                        console.log(productid);
+                        window.location.href = '/checkout-details/{productid}';
+                    },
+                    error: function(error) {
+                        console.log('error1st', error);
+                    }
+                });
+            });
+
+             // function to product details to cart page
+            $("body").on("click", '.main__add__to__cart', function(e) {
+                e.preventDefault();
+                let that = this;
+                let productid = $(that).data('main_add_cart_product');
+                if ('' === productid) {
+                    return;
+                }
+                $.ajax({
+                    url: "/product-add-cart",
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        productid,
+                        // userid: {{ optional(Auth::user())->id }}
+                    }),
+                    success: function(data) {
+                        console.log(data);
+                        let {
+                            product_count
+                        } = data;
+
+                        toastr.success('Product Added to Your Cart', '');
+                        toastr.options = {
+                            "closeButton": true,
+                            "progressBar": true,
+                            "timeOut": "1500",
+                        }
+
+                        $("#cart-items").removeClass("count-zero").html(product_count);
+                        console.log(product_count);
+                    },
+                    error: function(error) {
+                        console.log('error1st', error);
+                    }
+                });
+            });
+
+
+            /***********End product detils right side button **********/
+
+            /***********Start related product **********/
+
+            // function to related product after clicking  order button redirect to checkout page
+            $("body").on("click", '.add--to--cart-btn', function(e) {
+                e.preventDefault();
+                let that = this;
+                let productid = $(that).data('product_id');
+                if ('' === productid) {
+                    return;
+                }
+                $.ajax({
+                    url: "/product-add-cart",
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        productid,
+                        // userid: {{ optional(Auth::user())->id }}
+                    }),
+                    success: function(data) {
+                        console.log(data);
+                        let {
+                            product_count
+                        } = data;
+
+                        toastr.success('Product Added to Your Cart', '');
+                        toastr.options = {
+                            "closeButton": true,
+                            "progressBar": true,
+                            "timeOut": "1500",
+                        }
+
+                        $("#cart-items").removeClass("count-zero").html(product_count);
+                        console.log(product_count);
+                    },
+                    error: function(error) {
+                        console.log('error1st', error);
+                    }
+                });
+            });
+
+            // After clicking add to cart button product added to cart
+            $("body").on("click", '.add--to--checkout-btn ', function(e) {
+                e.preventDefault();
+                let that = this;
+                let productid = $(that).data('checkout_id');
+                if ('' === productid) {
+                    return;
+                }
+                $.ajax({
+                    url: "/product-add-cart",
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        productid,
+                        // userid: {{ optional(Auth::user())->id }}
+                    }),
+                    success: function(data) {
+                        console.log(data);
+                        let {
+                            productid,
+                        } = data;
+                        console.log(productid);
+                        // Redirect to the checkout_details page
+                        window.location.href = '/checkout-details/{productid}';
+                    },
+                    error: function(error) {
+                        console.log('error1st', error);
+                    }
+                });
+            });
+
+            /***********End related product **********/
+
+            /***********Start recent product **********/
+
+            // After clicking recent product order now button
+            $("body").on("click", '.add--to--recent--product ', function(e) {
+                e.preventDefault();
+                let that = this;
+                let productid = $(that).data('recent_product_id');
+                if ('' === productid) {
+                    return;
+                }
+                $.ajax({
+                    url: "/product-add-cart",
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        productid,
+                        // userid: {{ optional(Auth::user())->id }}
+                    }),
+                    success: function(data) {
+                        console.log(data);
+                        let {
+                            productid,
+                        } = data;
+                        console.log(productid);
+                        // Redirect to the checkout_details page
+                        window.location.href = '/checkout-details/{productid}';
+                    },
+                    error: function(error) {
+                        console.log('error1st', error);
+                    }
+                });
+            });
+
+            // After clicking recent product add cart icon
+            $("body").on("click", '.add--cart--recent--product', function(e) {
+                e.preventDefault();
+                let that = this;
+                let productid = $(that).data('recent_cart_id');
+                if ('' === productid) {
+                    return;
+                }
+                $.ajax({
+                    url: "/product-add-cart",
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        productid,
+                        // userid: {{ optional(Auth::user())->id }}
+                    }),
+                    success: function(data) {
+                        console.log(data);
+                        let {
+                            product_count
+                        } = data;
+
+                        toastr.success('Product Added to Your Cart', '');
+                        toastr.options = {
+                            "closeButton": true,
+                            "progressBar": true,
+                            "timeOut": "1500",
+                        }
+
+                        $("#cart-items").removeClass("count-zero").html(product_count);
+                        console.log(product_count);
+                    },
+                    error: function(error) {
+                        console.log('error1st', error);
+                    }
+                });
+            });
+
+            /***********End recent product **********/
+
+
+        })(jQuery);
     </script>
 @endsection
-

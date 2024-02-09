@@ -19,7 +19,6 @@ class OrderDetailsController extends Controller
 {
     public function checkoutDetails($checkout)
     {
-
         $sessionId = session()->getId();
         $user = Auth::user();
         $user_id = Auth::user()->id?? null;
@@ -114,6 +113,7 @@ class OrderDetailsController extends Controller
                 "unit_price" => $lineItem->unit_price,
             ]);
         }
+
         Alert::success('Success', "Thank You For Your Order");
         return redirect()->route('invoice_order', $orderDetails->id);
     }
@@ -127,4 +127,5 @@ class OrderDetailsController extends Controller
         ProductCart::where('session_id', $sessionId)->orWhere('user_id',Auth::id())->delete();
         return view('front-end.invoice.order-invoice', compact('orderDetails', 'orderProductsDetailslist'));
     }
+
 }

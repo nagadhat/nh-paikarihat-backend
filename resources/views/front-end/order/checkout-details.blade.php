@@ -58,7 +58,22 @@
                                         <div class="panel-body">
                                             <p class="description"> </p>
                                             <div class="text-input form-group required">
-                                                <div class="col-xs-12">
+                                                @if (!Auth::check())
+                                                    <div class="col-xs-12">
+                                                        <label class="radio-inline" for="notUserCheck">
+                                                            <input type="radio" name="user_check" id="notUserCheck"
+                                                                value="" checked>
+                                                            Without Register
+                                                        </label>
+
+                                                        <label class="radio-inline" for="UserCheck">
+                                                            <input type="radio" name="user_check" id="UserCheck"
+                                                                value="">
+                                                            Register
+                                                        </label>
+                                                    </div>
+                                                @endif
+                                                <div class="col-xs-12" style="padding-top:10px">
                                                     <label class="control-label" for="name">
                                                         <span class="text" title=""><b>আপনার নাম</b></span>
                                                     </label>
@@ -89,7 +104,8 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <textarea name="customer_address" class="form-control nh__customer__address" autocomplete="on" placeholder="ডেলিভারী ঠিকানা লিখুন" required>{{ !empty($userdata['address']) ? $userdata['address'] : '' }}
+                                                    <textarea name="customer_address" class="form-control nh__customer__address" autocomplete="on"
+                                                        placeholder="ডেলিভারী ঠিকানা লিখুন" required>{{ !empty($userdata['address']) ? $userdata['address'] : '' }}
                                                     </textarea>
                                                 </div>
                                             </div>
@@ -104,7 +120,8 @@
                                                 <div class="col-xs-12">
                                                     <label class="radio-inline" for="insideDhaka">
                                                         <input type="radio" id="insideDhaka" name="delivery_area"
-                                                            value="inside_dhaka" onclick="showInsideDhaka()" checked>Inside
+                                                            value="inside_dhaka" onclick="showInsideDhaka()"
+                                                            checked>Inside
                                                         Dhaka
                                                     </label>
 
@@ -147,7 +164,7 @@
                                             </div>
                                             <div class="qc-checkout-product panel-body">
                                                 <div class="table-responsive">
-                                                    <table class="table table-bordered qc-cart">
+                                                    <table class="table table-bordered qc-cart checkout__border__color">
                                                         <thead>
                                                             <tr>
                                                                 <td class="qc-image" style="font-weight: bold">নাম ও ছবি:
@@ -159,6 +176,7 @@
                                                                     style="font-weight: bold; text-align:center">
                                                                     কোয়ান্টিটি:
                                                                 </td>
+                                                                <td class="text-center td-total">মোট প্রোডাক্টের মূল্য</td>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -166,7 +184,7 @@
                                                             //dd($totaldiscount);
                                                             ?>
                                                             @foreach ($cartItems as $products)
-                                                                <tr>
+                                                                <tr class="checkout__br__color">
                                                                     <td class="">
                                                                         <input type="hidden" name="product_id[]"
                                                                             value="{{ $products->product->id }}">
@@ -185,8 +203,15 @@
                                                                             </div>
                                                                         @endif
                                                                         <br>
-                                                                        <p>{{ Str::limit($products->product->title, 30, '...') ? Str::limit($products->product->title, 30, '...') : '' }}
-
+                                                                        <p>
+                                                                            {{-- {{ Str::limit($products->product->title, 30, '...') ? Str::limit($products->product->title, 30, '...') : '' }} --}}
+                                                                            {{ $products->product->title }}
+                                                                        </p>
+                                                                        <p
+                                                                            style="background:{{ $products->product->product_type == 'PRE' ? '#FED430' : 'none' }}; color:#000; width:max-content; padding:2px 8px;font-weight:700 ">
+                                                                            @if ($products->product->product_type != 'REG')
+                                                                                Pre Product
+                                                                            @endif
                                                                         </p>
                                                                     </td>
                                                                     <td class="qc-price  ">
@@ -195,12 +220,14 @@
                                                                     </td>
                                                                     <td class="qc-quantity">
                                                                         <div class="input-group input-group-sm">
-
                                                                             <div class="qty-container "
                                                                                 style="width:100%;">
                                                                                 <input type="hidden"
                                                                                     id="product_id_{{ $i }}"
                                                                                     value="{{ $products->id }}">
+                                                                                <input type="hidden" name=""
+                                                                                    id="unit_price_{{ $i }}"
+                                                                                    value="{{ $products->unit_price }}">
                                                                                 <button
                                                                                     class="qty-btn-minus btn-danger btn-cornered mr-2"
                                                                                     onClick="manageQuantity({{ $i }}, 'decrement')"
@@ -224,6 +251,10 @@
                                                                             </div>
                                                                         </div>
                                                                     </td>
+                                                                    <td class="text-center td-total"
+                                                                        id="subTotal_{{ $i }}">
+                                                                        {{ $products->unit_price * $products->quantity }}
+                                                                        TAKA</td>
                                                                 </tr>
                                                                 <?php
                                                                 $i++;
@@ -309,7 +340,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </form>
@@ -330,6 +360,17 @@
 
         function manageQuantity(i, type) {
             let productid = $('#product_id_' + i).val();
+            let unit_price = $('#unit_price_' + i).val();
+            let qty = $('#CurrentQty_' + i).val();
+            if(type == "increment"){
+                qty++ ;
+            }else{
+                if(qty > 1){
+                    qty--;
+                }            
+            }
+            let subTotal = unit_price * qty;
+            $("#subTotal_" + i).html(subTotal + ' TAKA');
             $.ajax({
                 url: "/product-increment",
                 type: 'post',
@@ -363,6 +404,7 @@
 
                         $('#productPriceval').val(totalprice);
                         $('#productPrice').html(totalprice + ' TAKA');
+
                         $("#discount_increment").html(parseFloat(totaldiscount) + ' TAKA');
                     }
                 },
@@ -399,6 +441,16 @@
 
             document.getElementById("insideDhakaCharge").style.display = "none";
             document.getElementById("outsideDhakaCharge").style.display = "block";
-        }
+        };
+
+        $(document).ready(function() {
+            $('#UserCheck').change(function() {
+                if ($(this).is(':checked')) {
+                    window.location.href = "/customer-login";
+                }
+            });
+        });
     </script>
+
+
 @endsection

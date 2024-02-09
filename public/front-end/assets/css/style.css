@@ -12335,14 +12335,14 @@ html[dir='rtl'] .popup-close {
   font-weight: 700 !important;
   font-style: normal !important;
   text-align: center !important;
-  background: rgba(0, 167, 10, 1) !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .reply-btn.btn:active,
 .reply-btn.btn:hover:active,
 .reply-btn.btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background: rgba(0, 167, 10, 1) !important;
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1)
 }
 
@@ -13044,7 +13044,7 @@ legend {
   text-align: center;
   text-transform: none;
   text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   border-radius: 3px;
   padding: 7px;
@@ -13062,7 +13062,7 @@ legend {
   text-align: center;
   text-transform: none;
   text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   border-radius: 3px;
   padding: 7px;
@@ -13129,7 +13129,7 @@ legend.page-title>span::after {
   text-align: center;
   text-transform: none;
   text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   border-radius: 3px;
   padding: 7px;
@@ -13227,14 +13227,14 @@ html:not(.popup) .page-title.page-title>span::after {
   font-weight: 700 !important;
   font-style: normal !important;
   text-align: center !important;
-  background: rgba(0, 167, 10, 1) !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .btn:active,
 .btn:hover:active,
 .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background: rgba(0, 167, 10, 1) !important;
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1)
 }
 
@@ -13296,8 +13296,7 @@ html:not(.popup) .page-title.page-title>span::after {
   text-align: center !important;
   text-transform: uppercase !important;
   text-decoration: none !important;
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .btn-success.btn {
@@ -13337,16 +13336,14 @@ html:not(.popup) .page-title.page-title>span::after {
 
 .btn-danger.btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .btn-danger.btn:active,
 .btn-danger.btn:hover:active,
 .btn-danger.btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .btn-danger.btn {
@@ -13433,16 +13430,14 @@ html:not(.popup) .page-title.page-title>span::after {
 
 .buttons .pull-right .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .buttons .pull-right .btn:active,
 .buttons .pull-right .btn:hover:active,
 .buttons .pull-right .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .buttons .pull-right .btn {
@@ -13471,16 +13466,14 @@ html:not(.popup) .page-title.page-title>span::after {
 
 .buttons .pull-left .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .buttons .pull-left .btn:active,
 .buttons .pull-left .btn:hover:active,
 .buttons .pull-left .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .buttons .pull-left .btn {
@@ -13710,7 +13703,7 @@ ul.nav-tabs>li.active>a:focus {
 }
 
 .breadcrumb::before {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   box-shadow: 0 5px 50px -10px rgba(0, 0, 0, 0.05);
   border-style: none
@@ -15286,8 +15279,7 @@ select.form-control::placeholder {
   text-align: center !important;
   text-transform: uppercase !important;
   text-decoration: none !important;
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-product.popup-quickview .product-info .button-group-page .btn-more-details.btn {
@@ -15301,8 +15293,7 @@ select.form-control::placeholder {
 .route-product-product.popup-quickview .product-info .button-group-page .btn-more-details.btn:active,
 .route-product-product.popup-quickview .product-info .button-group-page .btn-more-details.btn:hover:active,
 .route-product-product.popup-quickview .product-info .button-group-page .btn-more-details.btn:focus:active {
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-product.popup-quickview .product-info .button-group-page .btn-more-details.btn:focus {
@@ -15354,16 +15345,14 @@ select.form-control::placeholder {
 
 .route-product-product.popup-quickview .product-info .button-group-page .btn-wishlist.btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-product.popup-quickview .product-info .button-group-page .btn-wishlist.btn:active,
 .route-product-product.popup-quickview .product-info .button-group-page .btn-wishlist.btn:hover:active,
 .route-product-product.popup-quickview .product-info .button-group-page .btn-wishlist.btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-product.popup-quickview .product-info .button-group-page .btn-wishlist.btn {
@@ -15411,14 +15400,14 @@ select.form-control::placeholder {
   font-weight: 700 !important;
   font-style: normal !important;
   text-align: center !important;
-  background: rgba(0, 167, 10, 1) !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-product.popup-quickview .product-info .button-group-page .btn-compare.btn:active,
 .route-product-product.popup-quickview .product-info .button-group-page .btn-compare.btn:hover:active,
 .route-product-product.popup-quickview .product-info .button-group-page .btn-compare.btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background: rgba(0, 167, 10, 1) !important;
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1)
 }
 
@@ -15482,7 +15471,7 @@ select.form-control::placeholder {
   text-align: center;
   text-transform: none;
   text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   border-radius: 3px;
   padding: 7px;
@@ -16028,14 +16017,14 @@ select.form-control::placeholder {
   font-weight: 700 !important;
   font-style: normal !important;
   text-align: center !important;
-  background: rgba(0, 167, 10, 1) !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-cart .cart-panels .input-group .input-group-btn .btn:active,
 .route-checkout-cart .cart-panels .input-group .input-group-btn .btn:hover:active,
 .route-checkout-cart .cart-panels .input-group .input-group-btn .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background: rgba(0, 167, 10, 1) !important;
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1)
 }
 
@@ -16090,16 +16079,14 @@ select.form-control::placeholder {
 
 .route-checkout-cart .cart-panels .buttons .pull-right .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-cart .cart-panels .buttons .pull-right .btn:active,
 .route-checkout-cart .cart-panels .buttons .pull-right .btn:hover:active,
 .route-checkout-cart .cart-panels .buttons .pull-right .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-cart .cart-panels .buttons .pull-right .btn {
@@ -16128,16 +16115,14 @@ select.form-control::placeholder {
 
 .route-checkout-cart .cart-panels .buttons .pull-left .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-cart .cart-panels .buttons .pull-left .btn:active,
 .route-checkout-cart .cart-panels .buttons .pull-left .btn:hover:active,
 .route-checkout-cart .cart-panels .buttons .pull-left .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-cart .cart-panels .buttons .pull-left .btn {
@@ -16505,16 +16490,14 @@ select.form-control::placeholder {
 
 .route-checkout-checkout #content .buttons .pull-right .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-checkout #content .buttons .pull-right .btn:active,
 .route-checkout-checkout #content .buttons .pull-right .btn:hover:active,
 .route-checkout-checkout #content .buttons .pull-right .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-checkout #content .buttons .pull-right .btn {
@@ -16543,16 +16526,14 @@ select.form-control::placeholder {
 
 .route-checkout-checkout #content .buttons .pull-left .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-checkout #content .buttons .pull-left .btn:active,
 .route-checkout-checkout #content .buttons .pull-left .btn:hover:active,
 .route-checkout-checkout #content .buttons .pull-left .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-checkout #content .buttons .pull-left .btn {
@@ -16627,7 +16608,7 @@ select.form-control::placeholder {
   text-align: center;
   text-transform: none;
   text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   border-radius: 3px;
   padding: 7px;
@@ -16786,7 +16767,7 @@ select.form-control::placeholder {
   text-align: center;
   text-transform: none;
   text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   border-radius: 3px;
   padding: 7px;
@@ -16898,16 +16879,14 @@ select.form-control::placeholder {
 
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-right .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-right .btn:active,
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-right .btn:hover:active,
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-right .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-right .btn {
@@ -16936,16 +16915,14 @@ select.form-control::placeholder {
 
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-left .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-left .btn:active,
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-left .btn:hover:active,
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-left .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-left .btn {
@@ -17253,16 +17230,14 @@ select.form-control::placeholder {
 
 .route-product-search #content .buttons .pull-right .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-search #content .buttons .pull-right .btn:active,
 .route-product-search #content .buttons .pull-right .btn:hover:active,
 .route-product-search #content .buttons .pull-right .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-search #content .buttons .pull-right .btn {
@@ -17291,16 +17266,14 @@ select.form-control::placeholder {
 
 .route-product-search #content .buttons .pull-left .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-search #content .buttons .pull-left .btn:active,
 .route-product-search #content .buttons .pull-left .btn:hover:active,
 .route-product-search #content .buttons .pull-left .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-search #content .buttons .pull-left .btn {
@@ -18135,7 +18108,7 @@ select.form-control::placeholder {
   text-align: center;
   text-transform: none;
   text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   border-radius: 3px;
   padding: 7px;
@@ -18533,13 +18506,11 @@ select.form-control::placeholder {
   text-align: center !important;
   text-transform: uppercase !important;
   text-decoration: none !important;
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
 }
 
 .product-info .button-group-page .btn-extra.btn {
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  ;
+background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
   padding: 10px;
   box-shadow: none;
   min-width: 175px
@@ -18548,12 +18519,11 @@ select.form-control::placeholder {
 .product-info .button-group-page .btn-extra.btn:active,
 .product-info .button-group-page .btn-extra.btn:hover:active,
 .product-info .button-group-page .btn-extra.btn:focus:active {
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
 }
 
 .product-info .button-group-page .btn-extra.btn:focus {
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%)
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
 }
 
 .product-info .button-group-page .btn-extra.btn.btn.disabled::after {
@@ -20937,7 +20907,7 @@ select.form-control::placeholder {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px;
     font-family: 'Hind Siliguri';
@@ -20948,7 +20918,7 @@ select.form-control::placeholder {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px
   }
@@ -20962,7 +20932,7 @@ select.form-control::placeholder {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px
   }
@@ -21162,7 +21132,7 @@ select.form-control::placeholder {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px
   }
@@ -21259,7 +21229,7 @@ select.form-control::placeholder {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px
   }
@@ -21289,7 +21259,7 @@ select.form-control::placeholder {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px
   }
@@ -21408,7 +21378,7 @@ select.form-control::placeholder {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px
   }
@@ -22739,17 +22709,16 @@ div.cart-content .cart-buttons .btn {
 }
 
 .header-search .search-button {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
-  ;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   min-width: 45px
 }
 
 .header-search .search-button:active {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%)
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%)
 }
 
 .desktop .header-search .search-button:hover {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%)
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%)
 }
 
 #search input::-webkit-input-placeholder {
@@ -24063,17 +24032,17 @@ header::before {
 }
 
 .mobile-header-active .header-search .search-button {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   min-width: 45px
 }
 
 .mobile-header-active .header-search .search-button:active {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%)
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%)
 }
 
 .desktop .mobile-header-active .header-search .search-button:hover {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%)
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%)
 }
 
 .mobile-header-active #search input::-webkit-input-placeholder {
@@ -24300,7 +24269,7 @@ header::before {
   height: 28px;
   padding-right: 7px;
   padding-left: 7px;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   box-shadow: none;
   justify-content: center
@@ -24820,7 +24789,7 @@ div.links-menu-75 .title.module-title {
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   border-width: 2px;
   border-style: none;
@@ -24932,7 +24901,7 @@ div.links-menu-75 .count-badge {
     color: rgba(255, 255, 255, 1);
     font-weight: 700;
     text-transform: uppercase;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
     padding-top: 4px;
@@ -25164,26 +25133,6 @@ div.links-menu-75 .links-menu-item-11 .menu-label {
   }
 }
 
-.module-products-169 .title.module-title {
-  font-family: 'Hind Siliguri';
-  font-weight: 700;
-  font-size: 26px;
-  color: rgba(255, 255, 255, 1);
-  font-style: normal;
-  text-align: center;
-  text-transform: none;
-  text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
-  ;
-  border-radius: 3px;
-  padding: 7px;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: initial;
-  text-align: center
-}
 
 .module-products-169 .title.module-title::after {
   content: '';
@@ -26783,7 +26732,7 @@ div.links-menu-75 .links-menu-item-11 .menu-label {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px
   }
@@ -26850,9 +26799,9 @@ div.links-menu-75 .links-menu-item-11 .menu-label {
   }
 
   .module-products-169 .product-grid .product-thumb .extra-group .btn.btn {
-    padding: 1px;
-    padding-top: 8px;
-    padding-bottom: 8px
+    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px
   }
 }
 
@@ -26931,7 +26880,7 @@ div.links-menu-75 .links-menu-item-11 .menu-label {
 }
 
 footer .grid-row-4 {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   padding: 20px;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1)
@@ -28104,44 +28053,6 @@ body {
   margin-top: -10px
 }
 
-legend {
-  font-family: 'Hind Siliguri';
-  font-weight: 700;
-  font-size: 26px;
-  color: rgba(255, 255, 255, 1);
-  font-style: normal;
-  text-align: center;
-  text-transform: none;
-  text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
-  ;
-  border-radius: 3px;
-  padding: 7px;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: initial;
-  text-align: center;
-  font-family: 'Hind Siliguri';
-  font-weight: 700;
-  font-size: 26px;
-  color: rgba(255, 255, 255, 1);
-  font-style: normal;
-  text-align: center;
-  text-transform: none;
-  text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
-  ;
-  border-radius: 3px;
-  padding: 7px;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: initial;
-  text-align: center
-}
 
 legend::after {
   content: '';
@@ -28198,7 +28109,7 @@ legend.page-title>span::after {
   text-align: center;
   text-transform: none;
   text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   border-radius: 3px;
   padding: 7px;
@@ -28296,7 +28207,7 @@ html:not(.popup) .page-title.page-title>span::after {
   font-weight: 700 !important;
   font-style: normal !important;
   text-align: center !important;
-  background: rgba(0, 167, 10, 1) !important
+  background: rgba(58,188,155) !important
 }
 
 .btn:active,
@@ -28406,16 +28317,14 @@ html:not(.popup) .page-title.page-title>span::after {
 
 .btn-danger.btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .btn-danger.btn:active,
 .btn-danger.btn:hover:active,
 .btn-danger.btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .btn-danger.btn {
@@ -28502,16 +28411,14 @@ html:not(.popup) .page-title.page-title>span::after {
 
 .buttons .pull-right .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .buttons .pull-right .btn:active,
 .buttons .pull-right .btn:hover:active,
 .buttons .pull-right .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .buttons .pull-right .btn {
@@ -28540,16 +28447,14 @@ html:not(.popup) .page-title.page-title>span::after {
 
 .buttons .pull-left .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .buttons .pull-left .btn:active,
 .buttons .pull-left .btn:hover:active,
 .buttons .pull-left .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .buttons .pull-left .btn {
@@ -28779,7 +28684,7 @@ ul.nav-tabs>li.active>a:focus {
 }
 
 .breadcrumb::before {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   box-shadow: 0 5px 50px -10px rgba(0, 0, 0, 0.05);
   border-style: none
@@ -30423,16 +30328,14 @@ select.form-control::placeholder {
 
 .route-product-product.popup-quickview .product-info .button-group-page .btn-wishlist.btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-product.popup-quickview .product-info .button-group-page .btn-wishlist.btn:active,
 .route-product-product.popup-quickview .product-info .button-group-page .btn-wishlist.btn:hover:active,
 .route-product-product.popup-quickview .product-info .button-group-page .btn-wishlist.btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-product.popup-quickview .product-info .button-group-page .btn-wishlist.btn {
@@ -30542,26 +30445,7 @@ select.form-control::placeholder {
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1))
 }
 
-.login-box .title {
-  font-family: 'Hind Siliguri';
-  font-weight: 700;
-  font-size: 26px;
-  color: rgba(255, 255, 255, 1);
-  font-style: normal;
-  text-align: center;
-  text-transform: none;
-  text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
-  ;
-  border-radius: 3px;
-  padding: 7px;
-  padding-top: 7px;
-  padding-bottom: 7px;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: initial;
-  text-align: center
-}
+
 
 .login-box .title::after {
   content: '';
@@ -31155,16 +31039,14 @@ select.form-control::placeholder {
 
 .route-checkout-cart .cart-panels .buttons .pull-right .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-cart .cart-panels .buttons .pull-right .btn:active,
 .route-checkout-cart .cart-panels .buttons .pull-right .btn:hover:active,
 .route-checkout-cart .cart-panels .buttons .pull-right .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-cart .cart-panels .buttons .pull-right .btn {
@@ -31193,16 +31075,14 @@ select.form-control::placeholder {
 
 .route-checkout-cart .cart-panels .buttons .pull-left .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-cart .cart-panels .buttons .pull-left .btn:active,
 .route-checkout-cart .cart-panels .buttons .pull-left .btn:hover:active,
 .route-checkout-cart .cart-panels .buttons .pull-left .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-cart .cart-panels .buttons .pull-left .btn {
@@ -31570,16 +31450,14 @@ select.form-control::placeholder {
 
 .route-checkout-checkout #content .buttons .pull-right .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-checkout #content .buttons .pull-right .btn:active,
 .route-checkout-checkout #content .buttons .pull-right .btn:hover:active,
 .route-checkout-checkout #content .buttons .pull-right .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-checkout #content .buttons .pull-right .btn {
@@ -31608,16 +31486,14 @@ select.form-control::placeholder {
 
 .route-checkout-checkout #content .buttons .pull-left .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-checkout #content .buttons .pull-left .btn:active,
 .route-checkout-checkout #content .buttons .pull-left .btn:hover:active,
 .route-checkout-checkout #content .buttons .pull-left .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-checkout-checkout #content .buttons .pull-left .btn {
@@ -31692,7 +31568,7 @@ select.form-control::placeholder {
   text-align: center;
   text-transform: none;
   text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   border-radius: 3px;
   padding: 7px;
@@ -31851,7 +31727,7 @@ select.form-control::placeholder {
   text-align: center;
   text-transform: none;
   text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   border-radius: 3px;
   padding: 7px;
@@ -31963,16 +31839,14 @@ select.form-control::placeholder {
 
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-right .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-right .btn:active,
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-right .btn:hover:active,
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-right .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-right .btn {
@@ -32001,16 +31875,14 @@ select.form-control::placeholder {
 
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-left .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-left .btn:active,
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-left .btn:hover:active,
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-left .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .quick-checkout-wrapper .right .confirm-section .buttons .pull-left .btn {
@@ -32318,16 +32190,14 @@ select.form-control::placeholder {
 
 .route-product-search #content .buttons .pull-right .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-search #content .buttons .pull-right .btn:active,
 .route-product-search #content .buttons .pull-right .btn:hover:active,
 .route-product-search #content .buttons .pull-right .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-search #content .buttons .pull-right .btn {
@@ -32356,16 +32226,14 @@ select.form-control::placeholder {
 
 .route-product-search #content .buttons .pull-left .btn:hover {
   color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-search #content .buttons .pull-left .btn:active,
 .route-product-search #content .buttons .pull-left .btn:hover:active,
 .route-product-search #content .buttons .pull-left .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .route-product-search #content .buttons .pull-left .btn {
@@ -33200,7 +33068,7 @@ select.form-control::placeholder {
   text-align: center;
   text-transform: none;
   text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   border-radius: 3px;
   padding: 7px;
@@ -33598,13 +33466,11 @@ select.form-control::placeholder {
   text-align: center !important;
   text-transform: uppercase !important;
   text-decoration: none !important;
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
 }
 
 .product-info .button-group-page .btn-extra.btn {
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  ;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
   padding: 10px;
   box-shadow: none;
   min-width: 175px
@@ -33613,12 +33479,11 @@ select.form-control::placeholder {
 .product-info .button-group-page .btn-extra.btn:active,
 .product-info .button-group-page .btn-extra.btn:hover:active,
 .product-info .button-group-page .btn-extra.btn:focus:active {
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
 }
 
 .product-info .button-group-page .btn-extra.btn:focus {
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%)
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
 }
 
 .product-info .button-group-page .btn-extra.btn.btn.disabled::after {
@@ -33647,8 +33512,7 @@ select.form-control::placeholder {
   text-align: center !important;
   text-transform: uppercase !important;
   text-decoration: none !important;
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .product-info .button-group-page .btn-extra+.btn-extra.btn {
@@ -33662,8 +33526,7 @@ select.form-control::placeholder {
 .product-info .button-group-page .btn-extra+.btn-extra.btn:active,
 .product-info .button-group-page .btn-extra+.btn-extra.btn:hover:active,
 .product-info .button-group-page .btn-extra+.btn-extra.btn:focus:active {
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .product-info .button-group-page .btn-extra+.btn-extra.btn:focus {
@@ -34888,8 +34751,7 @@ select.form-control::placeholder {
   text-align: center !important;
   text-transform: uppercase !important;
   text-decoration: none !important;
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
 }
 
 .main-products.product-grid .product-thumb .extra-group .btn.btn {
@@ -34903,8 +34765,7 @@ select.form-control::placeholder {
 .main-products.product-grid .product-thumb .extra-group .btn.btn:active,
 .main-products.product-grid .product-thumb .extra-group .btn.btn:hover:active,
 .main-products.product-grid .product-thumb .extra-group .btn.btn:focus:active {
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
 }
 
 .main-products.product-grid .product-thumb .extra-group .btn.btn:focus {
@@ -35649,13 +35510,6 @@ select.form-control::placeholder {
     display: none !important
   }
 
-  .product-info .product-left {
-    width: 100%
-  }
-
-  .product-info .product-right {
-    width: 100%
-  }
 
   .product-image .swiper .swiper-controls {
     display: block
@@ -36002,7 +35856,7 @@ select.form-control::placeholder {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px;
     font-family: 'Hind Siliguri';
@@ -36013,7 +35867,7 @@ select.form-control::placeholder {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px
   }
@@ -36027,7 +35881,7 @@ select.form-control::placeholder {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px
   }
@@ -36227,7 +36081,7 @@ select.form-control::placeholder {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px
   }
@@ -36324,7 +36178,7 @@ select.form-control::placeholder {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px
   }
@@ -36354,7 +36208,7 @@ select.form-control::placeholder {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px
   }
@@ -36473,7 +36327,7 @@ select.form-control::placeholder {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px
   }
@@ -36872,8 +36726,7 @@ div.cart-content .btn-checkout.btn:hover {
   text-align: center !important;
   text-transform: uppercase !important;
   text-decoration: none !important;
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
 }
 
 div.cart-content .btn-checkout.btn {
@@ -36887,8 +36740,7 @@ div.cart-content .btn-checkout.btn {
 div.cart-content .btn-checkout.btn:active,
 div.cart-content .btn-checkout.btn:hover:active,
 div.cart-content .btn-checkout.btn:focus:active {
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
 }
 
 div.cart-content .btn-checkout.btn:focus {
@@ -37804,17 +37656,17 @@ div.cart-content .cart-buttons .btn {
 }
 
 .header-search .search-button {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   min-width: 45px
 }
 
 .header-search .search-button:active {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%)
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%)
 }
 
 .desktop .header-search .search-button:hover {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%)
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%)
 }
 
 #search input::-webkit-input-placeholder {
@@ -38391,7 +38243,7 @@ div.cart-content .cart-buttons .btn {
 }
 
 header::before {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1)
 }
@@ -38608,16 +38460,11 @@ header::before {
   }
 }
 
-.mobile-header-active #cart>a>i::before {
-  content: '\f290' !important;
-  font-family: icomoon !important;
-  font-size: 32px;
-  color: rgba(0, 158, 84, 1)
-}
 
+/*
 .mobile-cart-wrapper #cart>a>i {
   background: none
-}
+} */
 
 .mobile-header-active #cart>a>i {
   width: 60px;
@@ -39128,18 +38975,14 @@ header::before {
   border-color: rgba(1, 191, 102, 1)
 }
 
-.mobile-header-active .header-search .search-button {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
-  ;
-  min-width: 45px
-}
+
 
 .mobile-header-active .header-search .search-button:active {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%)
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%)
 }
 
 .desktop .mobile-header-active .header-search .search-button:hover {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%)
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%)
 }
 
 .mobile-header-active #search input::-webkit-input-placeholder {
@@ -39361,16 +39204,6 @@ header::before {
   margin-top: -10px
 }
 
-.mobile-header-active .mobile-header .mobile-top-bar {
-  display: flex;
-  height: 28px;
-  padding-right: 7px;
-  padding-left: 7px;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
-  ;
-  box-shadow: none;
-  justify-content: center
-}
 
 .mobile-header-active .top-menu .j-menu>li>a {
   flex-direction: row;
@@ -39541,17 +39374,6 @@ header::before {
   }
 }
 
-@media (max-width: 470px) {
-  .mobile-header-active .header-search {
-    border-width: 2px;
-    border-style: solid;
-    border-color: rgba(0, 148, 88, 1)
-  }
-
-  .mobile-header-active .header-search input {
-    font-size: 10px
-  }
-}
 
 /*No top bar not over*/
 
@@ -40251,7 +40073,7 @@ header::before {
   text-align: center;
   text-transform: none;
   text-decoration: none;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   border-radius: 3px;
   padding: 7px;
@@ -40286,9 +40108,9 @@ header::before {
 
 .product_extra-242 .title::after,
 .product_extra-242 .title.page-title>span::after {
-  width: 70px;
-  height: 1px;
-  background: rgba(255, 205, 8, 1)
+  width: 8%;
+  height: 2px;
+  background: rgba(255, 255, 255, 1)
 }
 
 @media (max-width: 470px) {
@@ -40306,7 +40128,7 @@ header::before {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+      background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     ;
     margin-bottom: 15px
   }
@@ -41462,8 +41284,7 @@ header::before {
 .module-products-253 .product-grid .product-thumb .extra-group .btn.btn:active,
 .module-products-253 .product-grid .product-thumb .extra-group .btn.btn:hover:active,
 .module-products-253 .product-grid .product-thumb .extra-group .btn.btn:focus:active {
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
 }
 
 .module-products-253 .product-grid .product-thumb .extra-group .btn.btn:focus {
@@ -41760,7 +41581,7 @@ header::before {
 }
 
 footer .grid-row-4 {
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
   ;
   padding: 20px;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1)
@@ -41880,6 +41701,7 @@ div.links-menu-294 .links-menu-item-1 a .links-text {
   text-transform: none;
   text-decoration: none
 }
+
 
 div.links-menu-294 .links-menu-item-1:hover a .links-text {
   color: rgba(44, 54, 64, 1)
@@ -42121,7 +41943,7 @@ div.links-menu-77 .links-menu-item-1:hover a .links-text {
 
 .ph__price__group_item {
   display: flex;
-  gap: 50px;
+  gap: 10px;
   align-items: center;
 }
 
@@ -42263,7 +42085,9 @@ input[type="radio"] {
         width: 100% !important;
       }
       .ph__feature__image img {
-        height: 200px !important;
+        height: 300px !important;
+        object-fit: unset;
+        width: 100% !important;
     }
   }
 
@@ -42279,6 +42103,9 @@ input[type="radio"] {
 @media (max-width: 1024px) {
     .ph__feature__image img {
         width: auto !important;
+    }
+    .xzoom-preview {
+        display: none !important;
     }
 }
 
@@ -42330,7 +42157,7 @@ input[type="radio"] {
   text-align: center;
   text-transform: none;
   text-decoration: none;
-  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(14,174,87,1) 0%, rgba(12,116,117,1) 90% );
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(58,188,155) 0%, rgba(58,188,155) 90% );
   border-radius: 3px;
   padding: 7px;
   padding-top: 7px;
@@ -42385,11 +42212,10 @@ input[type="radio"] {
   }
 }
 
-.customer__orders{
+.extra-group.customer__orders {
   display: flex;
   gap: 15px;
 }
-
 
 .customer__orderitem{
   flex-basis: 50%;
@@ -42437,31 +42263,6 @@ div#account-edit {
   }
 }
 
-/****** home page order confirm button  ********/
-.nh__order__confirm {
-    padding: 0 15px;
-}
-.nh__order__confirm__btn {
-    background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%) !important;
-    gap: 10px;
-    border-radius: 3px;
-}
-.nh__order__confirm__btn a {
-    background: transparent !important;
-    min-width: max-content !important;
-    padding: 10px 0 !important;
-}
-.nh__order__confirm__btn i {
-    cursor: pointer;
-    color: #fff;
-    font-size: 20px;
-    padding: 10px 0;
-}
-textarea.form-control.nh__customer__address {
-    height: 60px;
-}
-.nh__order__confirm .nh__order__confirm__btn :is(a:active, a:hover) {
-    background: transparent !important;
-}
+
 
 

@@ -117,30 +117,28 @@
     <link href="{{ asset('front-end/assets/theme/lib/masterslider/style/mastersliderf13b.css') }}" type="text/css"
         rel="stylesheet" media="all" />
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/style.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product_carousel.css') }}" />
 
      {{-- data table css --}}
      <link href="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
      <link rel="stylesheet" href="{{ asset('front-end/assets/css/toastr.min.css') }}">
 
+     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/redesign.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product-button.css') }}" />
     <style>
         header::before {
-            background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(68 188 157) 0%, rgb(68 188 157) 90%);
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+            background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(58,188,155) 0%, rgb(58,188,155) 90%);
         }
 
         footer .grid-row-4 {
-            background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(68 188 157) 0%, rgba(68 188 157) 90%);
+            background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
             padding: 20px;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
         }
     </style>
-
 </head>
 
 <body class="">
-
     <div class="mobile-container mobile-main-menu-container">
         <div class="mobile-wrapper-header">
             <span>সকল ক্যাটেগরিস</span>
@@ -156,57 +154,49 @@
         <div class="mobile-filter-wrapper"></div>
     </div>
 
-    <div class="mobile-container mobile-cart-content-container">
+    {{-- <div class="mobile-container mobile-cart-content-container">
         <div class="mobile-wrapper-header">
             <span>Your Cart</span>
             <a class="x"></a>
         </div>
         <div class="mobile-cart-content-wrapper cart-content"></div>
-    </div>
+    </div> --}}
 
     <div class="site-wrapper">
         {{-- header start --}}
-        <header class="header-classic">
+        <header class="header-classic custom__mobile__icon__position">
             <div class="header header-classic header-lg">
                 <div class="top-bar navbar-nav">
-                    <div class="top-menu top-menu-13">
+                    <div class="top-menu top-menu-13 nh__top__header">
                         @if (Route::has('customer_login'))
                             @auth
-                                <ul class="j-menu">
-                                    <li class="menu-item top-menu-item top-menu-item-1">
+                                <ul class="j-menu nh__logout_header">
+                                    <li class="menu-item top-menu-item top-menu-item-2">
                                         <a href="{{ route('customer_dashboard') }}"><span class="links-text">Account</span></a>
                                     </li>
-                                    <li class="menu-item top-menu-item top-menu-item-2">
+                                    <li class="menu-item top-menu-item">
                                         <a href="{{ route('customer_logout') }}">
-                                            <span class="links-text">Logout</span>
+                                            <span class="links-text">
+                                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                            <strong>Logout</strong>
+                                           </span>
                                         </a>
                                     </li>
                                 </ul>
                             @else
                                 <ul class="j-menu">
-                                    <li class="menu-item top-menu-item top-menu-item-1">
-                                        <a href="{{ route('home_page') }}"><span class="links-text">HOME</span></a>
+                                    <li class="menu-item top-menu-item top-menu-item-6">
+                                        <a href="tel:09647 444 444"><span class="links-text">HOTLINE : 09647 444 444</span></a>
                                     </li>
                                     <li class="menu-item top-menu-item top-menu-item-2">
                                         <a href="{{ route('customer_login') }}">
                                             <span class="links-text">MY ACCOUNT</span>
                                         </a>
                                     </li>
-                                    <li class="menu-item top-menu-item top-menu-item-6">
-                                        <a href="tel:09647 444 444"><span class="links-text">HOTLINE : 09647 444 444</span></a>
-                                    </li>
                                 </ul>
                             @endauth
                         @endif
                     </div>
-
-                    <div class="language-currency top-menu">
-                        <div class="desktop-language-wrapper">
-                        </div>
-                        <div class="desktop-currency-wrapper">
-                        </div>
-                    </div>
-                    <div class="third-menu"></div>
                 </div>
                 <div class="mid-bar navbar-nav">
                     <div class="desktop-logo-wrapper">
@@ -232,27 +222,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="classic-cart-wrapper">
-                        <div class="top-menu secondary-menu"></div>
-                        <div class="desktop-cart-wrapper default-cart-wrapper">
-                            <div id="cart" class="dropdown">
-                                <a data-toggle="dropdown" data-loading-text="Loading..."
-                                    class="dropdown-toggle cart-heading" href="{{ route('add_to_cart') }}">
-                                    <i class="fa fa-shopping-cart">
-                                        <span class="cart-label">Cart</span>
-                                    </i>
-                                    <span id="cart-items" class="count-badge count-zero">0</span>
-                                </a>
-                                <div id="cart-content" class="dropdown-menu cart-content j-dropdown">
-                                    <ul>
-                                        <li>
-                                            <p class="text-center cart-empty">Your shopping cart is empty!</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                     <div class="desktop-cart-wrapper default-cart-wrapper">
                         <div id="cart" class="dropdown">
                             <a class="dropdown-toggle cart-heading" href="{{ route('add_to_cart') }}">
@@ -268,6 +237,7 @@
                         </div>
                     </div>
                 </div>
+               
                 <div class="desktop-main-menu-wrapper menu-default  navbar-nav">
                 </div>
             </div>
@@ -282,22 +252,24 @@
                                             <a href="{{ route('customer_dashboard') }}"><span class="links-text">
                                                     Account</span></a>
                                         </li>
-                                        <li class="menu-item top-menu-item top-menu-item-1">
-                                            <a href="{{ route('customer_logout') }}"><span class="links-text">Logout</span></a>
+                                        <li class="menu-item top-menu-item">
+                                            <a href="{{ route('customer_logout') }}">
+                                                <span class="links-text">
+                                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                                <strong>Logout</strong>
+                                               </span>
+                                            </a>
                                         </li>
                                     </ul>
                                 @else
                                     <ul class="j-menu">
-                                        <li class="menu-item top-menu-item top-menu-item-1">
-                                            <a href="{{ route('home_page') }}"><span class="links-text">HOME</span></a>
+                                        <li class="menu-item top-menu-item top-menu-item-6">
+                                            <a href="tel:09647 444 444"><span class="links-text">HOTLINE :
+                                                09647 444 444</span></a>
                                         </li>
                                         <li class="menu-item top-menu-item top-menu-item-2">
                                             <a href="{{ route('customer_login') }}"><span class="links-text">MY
                                                     ACCOUNT</span></a>
-                                        </li>
-                                        <li class="menu-item top-menu-item top-menu-item-6">
-                                            <a href="tel:09647 444 444"><span class="links-text">HOTLINE :
-                                                09647 444 444</span></a>
                                         </li>
                                     </ul>
                                 @endauth
@@ -317,12 +289,24 @@
                     </div> --}}
                     <div class="mobile-logo-wrapper">
                     </div>
-                    <div class="mobile-cart-wrapper mini-cart">
-                    </div>
+                    {{-- <div class="mobile-cart-wrapper mini-cart">
+                    </div> --}}
                 </div>
                 <div class="mobile-bar-group mobile-search-group">
                     <div class="mobile-search-wrapper full-search">
 
+                    </div>
+                </div>
+                <div class="mobile__cart__icon__wrapper">
+                    <div id="" class="mobile__cart__icon">
+                        <a class="mobile__cart__icon_route" href="{{ route('add_to_cart') }}">
+                            <i class="fa fa-shopping-cart"></i>
+                            @if ($product_count >= 1)
+                                <span id="mobile__cart__icon_count" class="">{{ $product_count }}</span>
+                            @else
+                                <span id="mobile__cart__icon_default" class=" count-zero">0</span>
+                            @endif
+                        </a>
                     </div>
                 </div>
             </div>
@@ -336,65 +320,41 @@
             <div class="grid-rows">
                 <div class="grid-row grid-row-4">
                     <div class="grid-cols">
-                        <div class="grid-col grid-col-1">
-                            <div class="grid-items">
-                                <div class="grid-item grid-item-1">
-                                    <div class="links-menu links-menu-294">
-                                        <ul class="module-body">
-                                            <li class="menu-item links-menu-item links-menu-item-1">
-                                                <a>
-                                                    <span class="links-text">Paikarihat © 2023 - 2024</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                        <div class="footer__widget">
+                            <div class="footer__widget__item">
+                                <div class="nh__footer__address">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <span class="links-text">
+                                    Khaja Super Market, 2nd to 7th Floor, Kallyanpur <br> <span>Bus Stop,
+                                        Mirpur Road, Dhaka-1207.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="footer__widget__item widget__link__icon">
+                                <div class="footer__social__link">
+                                    <a class="links-text" href="https://www.facebook.com/paikarihat.nagadhat" target="__blank">
+                                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="links-text" href="#" target="__blank">
+                                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                                    </a>
+                                    <a class="links-text" href="#" target="__blank">
+                                        <i class="fa fa-youtube" aria-hidden="true"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="grid-col grid-col-2">
-                            <div class="grid-items">
-                                <div class="grid-item grid-item-1">
-                                    <div class="icons-menu icons-menu-61">
-                                        <ul>
-                                            <li class="menu-item icons-menu-item icons-menu-item-1 icon-menu-icon">
-                                                <a data-toggle="tooltip" data-tooltip-class="icons-menu-tooltip-61"
-                                                    data-placement="top" title="Facebook"
-                                                    href="javascript:void(0)">
-                                                    <span class="links-text">Facebook</span>
-                                                </a>
-                                            </li>
-                                            <li class="menu-item icons-menu-item icons-menu-item-3 icon-menu-icon">
-                                                <a data-toggle="tooltip" data-tooltip-class="icons-menu-tooltip-61"
-                                                    data-placement="top" title="Instagram"
-                                                    href="javascript:void(0)">
-                                                    <span class="links-text">Instagram</span>
-                                                </a>
-                                            </li>
-                                            <li class="menu-item icons-menu-item icons-menu-item-5 icon-menu-icon">
-                                                <a data-toggle="tooltip" data-tooltip-class="icons-menu-tooltip-61"
-                                                    data-placement="top" title="YouTube"
-                                                    href="javascript:void(0)">
-                                                    <span class="links-text">YouTube</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                        
+                    </div>
+                    <div class="grid-cols">
+                        <div class="footer__copyright__area">
+                            <div class="nh__footer__copyright">
+                                <span class="links-text">© 2023 - 2024 All Rights Reserved Paikarihat. Member of Nagadhat Bangladesh Limited</span>
                             </div>
-                        </div>
-                        <div class="grid-col grid-col-3">
-                            <div class="grid-items">
-                                <div class="grid-item grid-item-1">
-                                    <div class="links-menu links-menu-77">
-                                        <ul class="module-body">
-                                            <li class="menu-item links-menu-item links-menu-item-1">
-                                                <a href="javascript:void(0)">
-                                                    <span class="links-text">ওয়েবসাইট তৈরি করেছে Global Fast Coder</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div class="nh__footer__copyright">
+                                <a href="https://globalfastcoder.com/" target="_blank">
+                                    <span class="links-text">ওয়েবসাইট তৈরি করেছে Global Fast Coder</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -407,7 +367,6 @@
                 @endphp
                 <script src="{{ asset('front-end/assets/theme/lib/modernizr/modernizr-customf13b.js') }}"></script>
                 <script src="{{ asset('front-end/assets/theme/lib/jquery/jquery-2.1.1.minf13b.js') }}"></script>
-                <script src="{{ asset('front-end/assets/javascript/script.js') }}" type="text/javascript"></script>
                 <script src="{{ asset('front-end/assets/javascript/bootstrap/js/bootstrap.minf13b.js') }}"></script>
                @php
             }

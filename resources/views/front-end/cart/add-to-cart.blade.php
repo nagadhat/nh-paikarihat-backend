@@ -30,12 +30,14 @@
                                                                 <div class="block-content  block-html">
                                                                     <div style="text-align: justify;"><b>
                                                                             <font color="#ff0000">সম্মানিত ক্রেতা</font>,
-                                                                            অর্ডারটি কনফার্ম করতে আপনার নাম, সম্পূর্ণ
-                                                                            ঠিকানা, মোবাইল নাম্বার লিখে <font
-                                                                                color="#ff0000">অর্ডার কনফার্ম করুন</font>
-                                                                            বাটনে ক্লিক করুন, ২৪ ঘন্টার মধ্যে আপনার সাথে
-                                                                            যোগাযোগ করা হবে । ধন্যবাদ
-                                                                        </b></div>
+                                                                            অর্ডারটি কনফার্ম করতে <font color="#ff0000">
+                                                                                Checkout</font>
+                                                                            বাটনে ক্লিক করে পরবর্তী স্টেপে প্রবেশ করুন ,
+                                                                            অথবা আপনি যদি আরও প্রোডাক্ট
+                                                                            ক্রয় করতে চান তাহলে <font color="#ff0000">
+                                                                                Continue Shopping</font> বাটনে ক্লিক করুন।
+                                                                        </b>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -43,7 +45,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -57,20 +58,18 @@
                     <div class="cart-table custom--cart-page">
                         @if ($carts->isNotEmpty())
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered nh__cart__table">
                                     <thead>
                                         <tr>
                                             <td class="text-center td-image">নাম ও ছবি</td>
-                                            {{-- <td class="text-left td-name">Product Name</td> --}}
-
+                                            <td class="text-center td-image">প্রোডাক্টের মূল্য</td>
                                             <td class="text-center td-qty">কোয়ান্টিটি</td>
-                                            <td class="text-center td-price">Unit Price</td>
-                                            <td class="text-center td-total">মোট বিল</td>
+                                            <td class="text-center td-total">মোট প্রোডাক্টের মূল্য</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @forelse ($carts as $key => $cart)
-                                            <tr>
+                                            <tr class="cart__tr_bg_color">
                                                 <td class=" td-image">
                                                     <div class="" style="padding-bottom:10px">
                                                         <img src="{{ asset('storage/products/' . $cart->product->photo) }}"
@@ -78,14 +77,32 @@
                                                             style="width: 60px;height:60px">
                                                     </div>
 
-                                                    <p>{{ Str::limit($cart->product->title, $limit = 10, $end = '...') }}
+                                                    <p>
+                                                        {{-- {{ Str::limit($cart->product->title, $limit = 10, $end = '...') }} --}}
+                                                        {{ $cart->product->title }}
+                                                    </p>
+                                                    <p
+                                                        style="background:{{ $cart->product->product_type == 'PRE' ? '#FED430' : 'none' }}; color:#000; width:max-content; padding:2px 8px;font-weight:700 ">
+                                                        @if ($cart->product->product_type != 'REG')
+                                                            Pre Product
+                                                        @endif
+                                                    </p>
+
+                                                </td>
+                                                <td class=" td-image">
+                                                    <p>
+                                                        {{ $cart->product->price }} TAKA
                                                     </p>
                                                 </td>
                                                 <td class="text-center td-qty">
                                                     <div class="input-group btn-block cart--quantity--btn">
                                                         <div class="stepper">
-                                                            <input type="hidden" name=""  id="unit_price_{{ $key }}"  value="{{ $cart->unit_price }}">
-                                                            <input type="hidden" name=""  id="product_id_{{ $key }}"  value="{{ $cart->id }}">
+                                                            <input type="hidden" name=""
+                                                                id="unit_price_{{ $key }}"
+                                                                value="{{ $cart->unit_price }}">
+                                                            <input type="hidden" name=""
+                                                                id="product_id_{{ $key }}"
+                                                                value="{{ $cart->id }}">
                                                             <input type="text" name="quantity"
                                                                 value="{{ $cart->quantity }}" size="1"
                                                                 id="CurrentQty_{{ $key }}" class="form-control"
@@ -106,7 +123,8 @@
                                                     </div>
                                                 </td>
                                                 <td class="text-center td-price">{{ $cart->unit_price }} TAKA</td>
-                                                <td class="text-center td-total" id="subTotal_{{ $key }}">{{ $cart->unit_price * $cart->quantity }} TAKA</td>
+                                                <td class="text-center td-total" id="subTotal_{{ $key }}">
+                                                    {{ $cart->unit_price * $cart->quantity }} TAKA</td>
                                             </tr>
                                         @empty
                                             <p>Your shopping cart is empty!</p>
@@ -122,7 +140,7 @@
                                         <table class="table table-bordered">
                                             <tbody>
                                                 <tr>
-                                                    <td class="text-right"><strong>প্রোডাক্টের মূল্য:</strong></td>
+                                                    <td class="text-right"><strong>মোট বিল:</strong></td>
                                                     <td class="text-right" id="totalPrice">{{ $totalprice }} TAKA</td>
                                                 </tr>
                                                 {{-- <tr>
@@ -138,7 +156,8 @@
                                     </div>
                                 </div>
                                 <div class="buttons clearfix">
-                                    <div class="pull-left"><a href="{{ route('home_page') }}" class="btn btn-default"><span>Continue
+                                    <div class="pull-left"><a href="{{ route('home_page') }}"
+                                            class="btn btn-default"><span>Continue
                                                 Shopping</span></a></div>
                                     <div class="pull-right"><a href="{{ route('checkout_details', $cart->product_id) }}"
                                             class="btn btn-primary"><span>Checkout</span></a></div>
@@ -160,7 +179,7 @@
 
 @section('scripts')
     <script>
-         (function($) {
+        (function($) {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
@@ -174,10 +193,16 @@
 
             let qty = $('#CurrentQty_' + i).val();
 
-            (type=="increment") ? qty++ : qty--;
+            if(type == "increment"){
+                qty++ ;
+            }else{
+                if(qty > 1){
+                    qty--;
+                }            
+            }
 
             let subTotal = unit_price * qty;
-            $("#subTotal_"+i).html(subTotal + ' TAKA');
+            $("#subTotal_" + i).html(subTotal + ' TAKA');
 
             $.ajax({
                 url: "/product-increment",
@@ -194,10 +219,10 @@
                         quantity
                     } = data;
                     if ('working' === message) {
-                        if($("#checkout-cart").length) {
+                        if ($("#checkout-cart").length) {
                             $('#CurrentQty_' + i).val(quantity);
                             $('#totalPrice').html(totalprice + ' TAKA');
-                        }else {
+                        } else {
                             $('#CurrentQty_' + i).val(quantity);
                             $('#totalPrice').html(totalprice + ' TAKA');
                         }

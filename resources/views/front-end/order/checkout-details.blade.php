@@ -431,6 +431,7 @@ if(isset($product_count)){
                         $('#productPrice').html(totalprice + ' TAKA');
 
                         $("#discount_increment").html(parseFloat(totaldiscount) + ' TAKA');
+                        location.reload();
                     }
                 },
                 error: function(error) {

@@ -198,7 +198,7 @@
             }else{
                 if(qty > 1){
                     qty--;
-                }            
+                }
             }
 
             let subTotal = unit_price * qty;
@@ -226,7 +226,7 @@
                             $('#CurrentQty_' + i).val(quantity);
                             $('#totalPrice').html(totalprice + ' TAKA');
                         }
-
+                        location.reload();
                     }
                 },
                 error: function(error) {

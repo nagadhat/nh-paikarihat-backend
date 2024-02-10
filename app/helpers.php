@@ -14,7 +14,12 @@ if(!function_exists("product_count")){
     function product_count() {
 
         $ipdaddress = $_SERVER['REMOTE_ADDR'];
-        $product_count = ProductCart::where('session_id', $ipdaddress)->count();
+
+        $product_count = ProductCart::where('session_id', $ipdaddress)
+            ->get()
+            ->sum(function ($item) {
+                return $item->quantity;
+            });
         return $product_count ? $product_count : 0;
     }
 }

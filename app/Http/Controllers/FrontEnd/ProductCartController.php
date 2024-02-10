@@ -6,10 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductCart;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductCartController extends Controller
@@ -17,8 +14,13 @@ class ProductCartController extends Controller
     public function addToCart()
     {
 
+        $sessionId = $_SERVER['REMOTE_ADDR'];
         $user_id = auth()->user()->id ?? null;
-        $carts = ProductCart::where('user_id', $user_id)->with('product')->get();
+        if($user_id){
+            $carts = ProductCart::where('user_id',$user_id)->with('product')->get();
+        }else{
+            $carts = ProductCart::where('session_id',$sessionId)->with('product')->get();
+        }
         $totalprice = ProductCart::where('user_id', Auth::id())
             ->get()
             ->sum(function ($item) {
@@ -30,7 +32,8 @@ class ProductCartController extends Controller
     public function productAddCart(Request $request)
     {
 
-        $sessionId = session()->getId();
+        // $sessionId = session()->getId();
+        $sessionId = $_SERVER['REMOTE_ADDR'];
         $data = $request->all();
         $user = Auth::user() ?? null;
         $product = Product::findOrFail(intval($data['productid']));
@@ -67,33 +70,45 @@ class ProductCartController extends Controller
     }
     public function productIncrement(Request $request)
     {
-        $sessionId = session()->getId();
+       // $sessionId = session()->getId();
+       $ipdaddress = $_SERVER['REMOTE_ADDR'];
         $data = $request->all();
-        $existingCartItem = ProductCart::where('session_id', $sessionId )->where('id', $data['productid'])->first();
+
+        $existingCartItem = ProductCart::where('session_id', $ipdaddress )->where('id', $data['productid'])->first();
         $unitPrice = $existingCartItem->unit_price;
+        $exqty = $existingCartItem->quantity;
         if ($existingCartItem) {
             if ('increment' == $data['type']) {
                 $existingCartItem->quantity += 1;
+                $exqty +=1;
                 $existingCartItem->save();
-                $totalprice = ProductCart::where('session_id', $sessionId )
+                $totalprice = ProductCart::where('session_id', $ipdaddress )
                     ->get()
                     ->sum(function ($item) {
                         return $item->unit_price * $item->quantity;
                     });
-            } else {
+            } else if('manual' == $data['type']){
+                $data = $request->all();
+                $existingCartItem->quantity = $data['qty'];
+                $existingCartItem->save();
+                $unitPrice = $data['unit_price'];
+                $exqty =  $data['qty'];
+                $totalprice = $data['unit_price'] *  $data['qty'];
+            }else {
                 if ($existingCartItem->quantity <= 1) {
                     return response()->json(['message' => 'invalid', 'quantity' => $existingCartItem->quantity]);
                 }
                 $existingCartItem->quantity -= 1;
+                $exqty -=1;
                 $existingCartItem->save();
-                $totalprice = ProductCart::where('session_id', $sessionId )
+                $totalprice = ProductCart::where('session_id', $ipdaddress )
                     ->get()
                     ->sum(function ($item) {
                         return $item->unit_price * $item->quantity;
                     });
             }
             // $user_id = Auth::user()->id ?? null;
-            $totaldiscount = ProductCart::where('session_id', $sessionId )
+            $totaldiscount = ProductCart::where('session_id', $ipdaddress )
             ->with('product')
             ->get()
             ->sum(function ($item) {
@@ -106,7 +121,7 @@ class ProductCartController extends Controller
                 }
             });
 
-            return response()->json(['message' => 'working', 'quantity' => $existingCartItem->quantity, 'totalprice' => $totalprice, 'unitPrice' => $unitPrice ,'totaldiscount'=>$totaldiscount]);
+            return response()->json(['message' => 'working', 'quantity' => $exqty, 'totalprice' => $totalprice, 'unitPrice' => $unitPrice ,'totaldiscount'=>$totaldiscount]);
         } else {
 
             return response()->json(['message' => 'Not working']);

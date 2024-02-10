@@ -3,6 +3,7 @@
 @endphp
 @extends('front-end.layouts.app')
 @section('page_content')
+{{-- @dd($product_count) --}}
     <div id="account-login" class="container">
         <div>
             <ul class="breadcrumb">

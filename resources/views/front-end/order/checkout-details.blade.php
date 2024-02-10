@@ -5,6 +5,11 @@
 
 @extends('front-end.layouts.app')
 @section('page_content')
+<?php
+if(isset($product_count)){
+    // dd($product_count);
+}
+?>
     <div class="container" id="container">
 
         <ul class="breadcrumb qc-breadcrumb" style="padding: 8px">
@@ -67,12 +72,17 @@
                                                         </label>
 
                                                         <label class="radio-inline" for="UserCheck">
+
                                                             <input type="radio" name="user_check" id="UserCheck"
                                                                 value="">
                                                             Register
                                                         </label>
                                                     </div>
                                                 @endif
+                                                {{-- @if (isset($productCart))
+                                                    <input type="hidden" id="session_id"
+                                                        value="{{ $productCar }}">
+                                                @endif --}}
                                                 <div class="col-xs-12" style="padding-top:10px">
                                                     <label class="control-label" for="name">
                                                         <span class="text" title=""><b>আপনার নাম</b></span>
@@ -239,7 +249,8 @@
                                                                                     id="CurrentQty_{{ $i }}"
                                                                                     name="total_quantity" min="1"
                                                                                     value="{{ $products->quantity }}"
-                                                                                    class="input-qty input-cornered" />
+                                                                                    onChange="manualIncrement(this.value,  {{ $products->id }}, {{ $products->unit_price }}, {{ $i }})"
+                                                                                    class="input-qty input-cornered"/>
                                                                                 <button
                                                                                     class="qty-btn-plus btn-danger btn-cornered ml-1"
                                                                                     onClick="manageQuantity({{ $i }}, 'increment')"
@@ -358,26 +369,40 @@
             });
         })(jQuery);
 
+        function manualIncrement(p_qty, p_id, p_up, i){
+            let subTotal = p_up * p_qty;
+            $("#subTotal_" + i).html(subTotal + ' TAKA');
+            orderSubmit(p_id, 'manual', i, p_qty, p_up);
+        }
+
         function manageQuantity(i, type) {
             let productid = $('#product_id_' + i).val();
             let unit_price = $('#unit_price_' + i).val();
             let qty = $('#CurrentQty_' + i).val();
-            if(type == "increment"){
-                qty++ ;
-            }else{
-                if(qty > 1){
+            if (type == "increment") {
+                qty++;
+            } else {
+                if (qty > 1) {
                     qty--;
-                }            
+                }
             }
             let subTotal = unit_price * qty;
             $("#subTotal_" + i).html(subTotal + ' TAKA');
+
+            orderSubmit(productid, type, i, qty, unit_price);
+        };
+
+        function orderSubmit(productid, type, i, qty, unit_price){
+
             $.ajax({
                 url: "/product-increment",
                 type: 'post',
                 contentType: 'application/json',
                 data: JSON.stringify({
                     productid,
-                    type: type
+                    type: type,
+                    qty: qty,
+                    unit_price: unit_price
                 }),
                 success: function(data) {
                     let {
@@ -412,16 +437,16 @@
                     console.log('error1st', error);
                 }
             });
-        };
+        }
 
         // delivery area functoin
         function showInsideDhaka() {
             var discount = $("#discount_amount").val();
             var productPriceval = $("#productPriceval").val();
             var grandTotal = (parseInt(productPriceval) + 60) - +discount;
-            console.log(grandTotal, "grand total");
-            console.log(discount, "discount");
-            console.log(productPriceval, "productPriceval");
+            // console.log(grandTotal, "grand total");
+            // console.log(discount, "discount");
+            // console.log(productPriceval, "productPriceval");
             $('#grandTotal').html(grandTotal + ' TAKA');
             $('input[name="order_total"]').val(grandTotal);
 
@@ -433,9 +458,9 @@
             var discount = $("#discount_amount").val();
             var productPriceval = $("#productPriceval").val();
             var grandTotal = (parseInt(productPriceval) + 120) - +discount;
-            console.log(grandTotal, "grand total");
-            console.log(discount, "discount");
-            console.log(productPriceval, "productPriceval");
+            // console.log(grandTotal, "grand total");
+            // console.log(discount, "discount");
+            // console.log(productPriceval, "productPriceval");
             $('#grandTotal').html(grandTotal + ' TAKA');
             $('input[name="order_total"]').val(grandTotal);
 
@@ -443,14 +468,14 @@
             document.getElementById("outsideDhakaCharge").style.display = "block";
         };
 
+
+
         $(document).ready(function() {
-            $('#UserCheck').change(function() {
-                if ($(this).is(':checked')) {
+            $('input[name="user_check"]').change(function() {
+                if ($(this).attr('id') === 'UserCheck') {
                     window.location.href = "/customer-login";
                 }
             });
         });
     </script>
-
-
 @endsection

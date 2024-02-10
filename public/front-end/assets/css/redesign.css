@@ -465,3 +465,14 @@ border-right: 0;
         padding-top: 5px;
     }
 }
+
+/* product details page css */
+.block-content.ph__long_text {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.login-box .title::after, .login-box .title.page-title>span::after {
+    width: 14%;
+    height: 2px;
+    background: #fff;
+}

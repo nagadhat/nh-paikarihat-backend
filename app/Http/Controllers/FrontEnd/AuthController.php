@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLoginRequest;
 use App\Http\Requests\StoreRegisterRequest;
 use App\Http\Requests\UpdateCustomerProfileRequest;
+use App\Models\ProductCart;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -53,9 +54,15 @@ class AuthController extends Controller
     {
         $request->validated();
         $customerAuth = $request->only('phone', 'password');
+        $product_count =0;
         if (Auth::attempt($customerAuth, true)) {
-            $request->session()->regenerate();
+            // $request->session()->regenerate();
+            $ipdaddress = $_SERVER['REMOTE_ADDR'];
+            $product_count = ProductCart::where('session_id', $ipdaddress)->count();
             Alert::success("Logging Successfuly!!");
+            if($product_count > 0){
+                return redirect()->route('checkout_details',['checkout'=>'checkout','product_count'=>$product_count]);
+            }
             return redirect()->route('customer_dashboard');
         } else {
             Alert::error("Invalid Phone & Password");
@@ -63,9 +70,33 @@ class AuthController extends Controller
         }
     }
 
+
+//     public function loginCustomer(StoreLoginRequest $request)
+// {
+//     $request->validated();
+//     $customerAuth = $request->only('phone', 'password');
+//     if (Auth::attempt($customerAuth, true)) {
+//         $request->session()->regenerate();
+//         $session_id = session()->getId();
+//         $productCart = ProductCart::where('session_id', $session_id)->first();
+//         dd($productCart);
+//         if ($productCart) {
+//             session(['session_id' => $productCart]);
+//             return redirect()->route('checkout_details')->with('success', 'Logging Successfuly!!');
+//         } else {
+
+//             return redirect()->route('customer_dashboard')->with('warning', 'No product cart data found.');
+//         }
+//     } else {
+
+//         return redirect()->back()->with('error', 'Invalid Phone & Password');
+//     }
+// }
+
     //  Function to logout Customer
     public function logoutCustomer()
     {
+        ProductCart::where('user_id',Auth::id())->delete();
         Auth::logout();
         return to_route('home_page');
     }

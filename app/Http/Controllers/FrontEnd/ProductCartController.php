@@ -80,6 +80,7 @@ class ProductCartController extends Controller
         if ($existingCartItem) {
             if ('increment' == $data['type']) {
                 $existingCartItem->quantity += 1;
+                $exqty +=1;
                 $existingCartItem->save();
                 $totalprice = ProductCart::where('session_id', $ipdaddress )
                     ->get()
@@ -98,6 +99,7 @@ class ProductCartController extends Controller
                     return response()->json(['message' => 'invalid', 'quantity' => $existingCartItem->quantity]);
                 }
                 $existingCartItem->quantity -= 1;
+                $exqty -=1;
                 $existingCartItem->save();
                 $totalprice = ProductCart::where('session_id', $ipdaddress )
                     ->get()

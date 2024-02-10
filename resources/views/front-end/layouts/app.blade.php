@@ -228,8 +228,8 @@
                                 <i class="fa fa-shopping-cart">
                                     <span class="cart-label">Cart</span>
                                 </i>
-                                @if ($product_count >= 1)
-                                    <span id="cart-items" class="count-badge">{{ $product_count }}</span>
+                                @if (product_count() >= 1)
+                                    <span id="cart-items" class="count-badge">{{ product_count() }}</span>
                                 @else
                                     <span id="cart-items" class="count-badge count-zero">0</span>
                                 @endif
@@ -237,7 +237,7 @@
                         </div>
                     </div>
                 </div>
-               
+
                 <div class="desktop-main-menu-wrapper menu-default  navbar-nav">
                 </div>
             </div>
@@ -301,11 +301,11 @@
                     <div id="" class="mobile__cart__icon">
                         <a class="mobile__cart__icon_route" href="{{ route('add_to_cart') }}">
                             <i class="fa fa-shopping-cart"></i>
-                            @if ($product_count >= 1)
+                            {{-- @if ($product_count >= 1)
                                 <span id="mobile__cart__icon_count" class="">{{ $product_count }}</span>
                             @else
                                 <span id="mobile__cart__icon_default" class=" count-zero">0</span>
-                            @endif
+                            @endif --}}
                         </a>
                     </div>
                 </div>
@@ -344,7 +344,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="grid-cols">
                         <div class="footer__copyright__area">

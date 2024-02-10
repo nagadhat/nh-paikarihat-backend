@@ -17,25 +17,31 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class OrderDetailsController extends Controller
 {
-    public function checkoutDetails($checkout)
+    public function checkoutDetails($checkout, $product_count=0)
     {
-        $sessionId = session()->getId();
+
+        $product_count = isset($_GET['product_count']) ? $_GET['product_count'] : 0;
+        // $sessionId = session()->getId();
+        $ipdaddress = $_SERVER['REMOTE_ADDR'];
         $user = Auth::user();
         $user_id = Auth::user()->id?? null;
-        $cartItems = ProductCart::where('session_id', $sessionId )->orWhere('user_id', $user_id ?? null)->with('product')->get();
+        if($user_id){
+            ProductCart::where('session_id', $ipdaddress)
+            ->update(['user_id' => $user_id]);
+        }
+        $cartItems = ProductCart::where('session_id', $ipdaddress )->orWhere('user_id', $user_id ?? null)->with('product')->get();
         $userdata = [
             'name' => $user->name ?? null,
             'phone' => $user->phone ?? null,
             'address' => $user->address ?? null,
         ];
-
-        $totalprice = ProductCart::where('session_id', $sessionId )->orWhere('user_id', $user_id ?? null)
+        $totalprice = ProductCart::where('session_id', $ipdaddress )->orWhere('user_id', $user_id ?? null)
             ->get()
             ->sum(function ($item) {
                 return $item->unit_price * $item->quantity;
             });
 
-        $totaldiscount = ProductCart::where('session_id', $sessionId )->orWhere('user_id', $user_id ?? null)
+        $totaldiscount = ProductCart::where('session_id', $ipdaddress )->orWhere('user_id', $user_id ?? null)
             ->with('product')
             ->get()
             ->sum(function ($item) {
@@ -48,13 +54,14 @@ class OrderDetailsController extends Controller
                 }
             });
 
-        return view('front-end.order.checkout-details', compact('cartItems', 'userdata', 'totalprice', 'totaldiscount'));
+        return view('front-end.order.checkout-details', compact('cartItems', 'userdata', 'totalprice', 'totaldiscount', 'product_count'));
     }
 
     public function orderProduct(Request $request)
     {
 
-        $sessionId = session()->getId();
+        // $sessionId = session()->getId();
+        $ipdaddress = $_SERVER['REMOTE_ADDR'];
         Alert::success('success', 'Order ');
         if (!$request->has('customer_name') || empty($request->customer_name)) {
             return redirect()->back();
@@ -87,7 +94,7 @@ class OrderDetailsController extends Controller
         $orderDetails = Order::create([
             "order_prefix" => $products->product_type,
             "order_code" => rand(11111, 99999),
-            'session_id' => $sessionId,
+            'session_id' => $ipdaddress,
             "user_id" => $user->id ?? null,
             "customer_name" => $user->name,
             "customer_phone" => $user->phone,
@@ -106,7 +113,7 @@ class OrderDetailsController extends Controller
             OrderProduct::create([
                 "order_id" => $orderDetails->id,
                 "product_id" => $product->id,
-                'session_id' => $sessionId,
+                'session_id' => $ipdaddress,
                 "product_name" => $product->title,
                 "photo" => $product->photo,
                 "quantity" => $lineItem->quantity,
@@ -121,11 +128,16 @@ class OrderDetailsController extends Controller
     // function to order invoice
     public function invoiceOrder($id)
     {
-        $sessionId = session()->getId();
+       // $sessionId = session()->getId();
+        $ipdaddress = $_SERVER['REMOTE_ADDR'];
         $orderDetails = Order::where('id', $id)->first();
         $orderProductsDetailslist = OrderProduct::where('order_id', $id)->get();
-        ProductCart::where('session_id', $sessionId)->orWhere('user_id',Auth::id())->delete();
+        ProductCart::where('session_id', $ipdaddress)->orWhere('user_id',Auth::id())->delete();
         return view('front-end.invoice.order-invoice', compact('orderDetails', 'orderProductsDetailslist'));
     }
+
+
+
+
 
 }

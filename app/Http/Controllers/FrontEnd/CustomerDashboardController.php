@@ -9,6 +9,7 @@ class CustomerDashboardController extends Controller
 {
     public function customerDashboard()
     {
+        //dd($product_count);
         return view('front-end.dashboard.customer-dashboard');
     }
 }

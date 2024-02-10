@@ -70,7 +70,7 @@ Route::domain('{shop}.' . env('APP_URL'))->group(function () {
 Route::get('/', [HomeController::class, 'homePage'])->name('home_page');
 Route::get('/search-product',[HomeController::class,'searchProduct'])->name('search_product');
 Route::get('/product-details/{slug}', [ProductDetialsController::class, 'productDetails'])->name('product_details');
-Route::get('/checkout-details/{checkout}', [OrderDetailsController::class, 'checkoutDetails'])->name('checkout_details');
+Route::get('/checkout-details/{checkout}/{count?}', [OrderDetailsController::class, 'checkoutDetails'])->name('checkout_details');
 // Route::post('/order-product', [OrderDetailsController::class, 'orderProduct'])->name('order_product');
 Route::match(['get', 'post'], '/order-product', [OrderDetailsController::class, 'orderProduct'])->name('order_product');
 Route::get('/invoice-order/{id}', [OrderDetailsController::class, 'invoiceOrder'])->name('invoice_order');
@@ -78,13 +78,13 @@ Route::get("/add-to-cart", [ProductCartController::class,'addToCart'])->name('ad
 Route::post('/product-add-cart',[ProductCartController::class,'productAddCart'])->name('product_add_cart');
 Route::get('/product-delete-cart/{id}',[ProductCartController::class,'productDeleteCart'])->name('product_delete_cart');
 Route::post('/product-increment',[ProductCartController::class,'productIncrement'])->name('product_increment');
-// Route::get('/customer-with-register',[OrderDetailsController::class,'customerWithRegister'])->name('customer_with_register');
+Route::get('/customer-with-register',[OrderDetailsController::class,'customerWithRegister'])->name('customer_with_register');
 /*
 |--------------------------------------------------------------------------
 |   # front end customer login and registration routes
 |--------------------------------------------------------------------------
 */
-                           
+
 Route::get('/customer-login', [AuthController::class, 'login'])->name('customer_login');
 Route::get('/customer-register', [AuthController::class, 'register'])->name('customer_register');
 Route::post('/customer-registered', [AuthController::class, 'registeredUser'])->name('customer_registered');
@@ -111,7 +111,7 @@ Route::match(['get', 'post'], '/order-landing-product', [LandingPageController::
 
 // customer routes
 Route::prefix('/customer')->middleware('customer')->group(function () {
-    Route::get('/', [CustomerDashboardController::class, 'customerDashboard'])->name('customer_dashboard');
+    Route::get('/{id?}', [CustomerDashboardController::class, 'customerDashboard'])->name('customer_dashboard');
     Route::get('/customer-profile-update', [AuthController::class, 'profileUpdate'])->name('customer_profile_update');
     Route::post('/customer-profile-update-save', [AuthController::class, 'profileSave'])->name('customer_profile_update_save');
     Route::get('/customer-password-change', [AuthController::class, 'customerPassword'])->name('customer_password');

@@ -92,7 +92,7 @@
                                                 </td>
                                                 <td class=" td-image">
                                                     <p>
-                                                        {{ $cart->product->price }} TAKA
+                                                        ৳ {{ $cart->product->price }}
                                                     </p>
                                                 </td>
                                                 <td class="text-center td-qty">
@@ -118,9 +118,9 @@
 
                                                     </div>
                                                 </td>
-                                                <td class="text-center td-price">{{ $cart->unit_price }} TAKA</td>
+                                                <td class="text-center td-price">৳ {{ $cart->unit_price }}</td>
                                                 <td class="text-center td-total" id="subTotal_{{ $key }}">
-                                                    {{ $cart->unit_price * $cart->quantity }} TAKA
+                                                    ৳ {{ $cart->unit_price * $cart->quantity }}
                                                 </td>
                                                 <td>
                                                     <span class="input-group-btn">
@@ -146,7 +146,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="text-right"><strong>মোট বিল:</strong></td>
-                                                    <td class="text-right" id="totalPrice">{{ $totalprice }} TAKA</td>
+                                                    <td class="text-right" id="totalPrice">৳ {{ $totalprice }}</td>
                                                 </tr>
                                                 {{-- <tr>
                                                     <td class="text-right"><strong><b>ডেলিভারী চার্জ</b>:</strong></td>

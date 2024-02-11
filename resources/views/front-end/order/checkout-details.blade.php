@@ -68,14 +68,14 @@
                                                         <label class="radio-inline" for="notUserCheck">
                                                             <input type="radio" name="user_check" id="notUserCheck"
                                                                 value="" checked>
-                                                            Without Register
+                                                            New User
                                                         </label>
 
                                                         <label class="radio-inline" for="UserCheck">
 
                                                             <input type="radio" name="user_check" id="UserCheck"
                                                                 value="">
-                                                            Register
+                                                            Existing User
                                                         </label>
                                                     </div>
                                                 @endif
@@ -226,8 +226,7 @@
                                                                         </p>
                                                                     </td>
                                                                     <td class="qc-price  ">
-                                                                        {{ isset($products->unit_price) ? $products->unit_price : '' }}
-                                                                        TAKA
+                                                                        ৳ {{ isset($products->unit_price) ? $products->unit_price : '' }}
                                                                     </td>
                                                                     <td class="qc-quantity">
                                                                         <div class="input-group input-group-sm">
@@ -273,8 +272,8 @@
                                                                     </td>
                                                                     <td class="text-center td-total"
                                                                         id="subTotal_{{ $i }}">
-                                                                        {{ $products->unit_price * $products->quantity }}
-                                                                        TAKA</td>
+                                                                        ৳ {{ $products->unit_price * $products->quantity }}
+                                                                    </td>
                                                                     <td style="text-align: center">
                                                                         <span class="input-group-btn">
                                                                             <a href="{{ route('product_delete_cart', $products->id) }}"
@@ -300,8 +299,8 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <span id="productPrice">
-                                                                    {{ isset($totalprice) ? $totalprice : '' }}
-                                                                    TAKA</span>
+                                                                    ৳ {{ isset($totalprice) ? $totalprice : '' }}
+                                                                </span>
                                                                 <input id="productPriceval" type="hidden" name="price"
                                                                     value="{{ isset($totalprice) ? $totalprice : '' }}">
                                                             </div>
@@ -312,7 +311,7 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right"
                                                                 id="discount_increment">
-                                                                {{ isset($totaldiscount) ? $totaldiscount : '' }} TAKA
+                                                                ৳ {{ isset($totaldiscount) ? $totaldiscount : '' }}
 
                                                                 <input type="hidden" id="Discount"
                                                                     name="discount_amount_old"
@@ -328,7 +327,7 @@
                                                                     {{ $products->quantity * ($products->price - $products->discount_amount) }}
 
                                                                 </span>
-                                                                TAKA
+                                                                ৳
                                                             </div>
                                                         </div> --}}
                                                         <div class="row">
@@ -337,12 +336,12 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <p id="insideDhakaCharge" class="text-white">
-                                                                    <span> 60 TAKA</span>
+                                                                    <span> ৳ 60</span>
 
                                                                 </p>
                                                                 <p id="outsideDhakaCharge" class="text-white"
                                                                     style="display: none">
-                                                                    <span> 120 TAKA</span>
+                                                                    <span> ৳ 120</span>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -358,8 +357,7 @@
                                                                 name="discount_amount" value="{{ $totaldiscount }}">
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right"
                                                                 id="grandTotal">
-                                                                {{ isset($totalprice) && isset($totaldiscount) ? $totalprice + 60 - $totaldiscount : '' }}
-                                                                TAKA
+                                                                ৳ {{ isset($totalprice) && isset($totaldiscount) ? $totalprice + 60 - $totaldiscount : '' }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -388,7 +386,7 @@
 
         function manualIncrement(p_qty, p_id, p_up, i) {
             let subTotal = p_up * p_qty;
-            $("#subTotal_" + i).html(subTotal + ' TAKA');
+            $("#subTotal_" + i).html(subTotal + ' ৳');
             orderSubmit(p_id, 'manual', i, p_qty, p_up);
         }
 
@@ -404,7 +402,7 @@
                 }
             }
             let subTotal = unit_price * qty;
-            $("#subTotal_" + i).html(subTotal + ' TAKA');
+            $("#subTotal_" + i).html(subTotal + ' ৳');
 
             orderSubmit(productid, type, i, qty, unit_price);
         };
@@ -441,13 +439,13 @@
                         }
                         $('#Discount').val(totaldiscount);
                         $("#discount_amount").val(totaldiscount);
-                        $('#grandTotal').html(grandTotal + ' TAKA');
+                        $('#grandTotal').html(grandTotal + ' ৳');
                         $('input[name="order_total"]').val(grandTotal);
 
                         $('#productPriceval').val(totalprice);
-                        $('#productPrice').html(totalprice + ' TAKA');
+                        $('#productPrice').html(totalprice + ' ৳');
 
-                        $("#discount_increment").html(parseFloat(totaldiscount) + ' TAKA');
+                        $("#discount_increment").html(parseFloat(totaldiscount) + ' ৳');
                         location.reload();
                     }
                 },
@@ -465,7 +463,7 @@
             // console.log(grandTotal, "grand total");
             // console.log(discount, "discount");
             // console.log(productPriceval, "productPriceval");
-            $('#grandTotal').html(grandTotal + ' TAKA');
+            $('#grandTotal').html(grandTotal + ' ৳');
             $('input[name="order_total"]').val(grandTotal);
 
             document.getElementById("insideDhakaCharge").style.display = "block";
@@ -479,7 +477,7 @@
             // console.log(grandTotal, "grand total");
             // console.log(discount, "discount");
             // console.log(productPriceval, "productPriceval");
-            $('#grandTotal').html(grandTotal + ' TAKA');
+            $('#grandTotal').html(grandTotal + ' ৳');
             $('input[name="order_total"]').val(grandTotal);
 
             document.getElementById("insideDhakaCharge").style.display = "none";

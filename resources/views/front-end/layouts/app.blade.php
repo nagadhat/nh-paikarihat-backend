@@ -349,13 +349,13 @@
                     <div class="grid-cols">
                         <div class="footer__copyright__area">
                             <div class="nh__footer__copyright">
-                                <span class="links-text">© 2023 - 2024 All Rights Reserved Paikarihat. Member of Nagadhat Bangladesh Limited</span>
+                                <span class="links-text">© 2023 - 2024 All Rights Reserved Paikarihat. Member of Nagadhat Bangladesh Limited.</span>
                             </div>
-                            <div class="nh__footer__copyright">
+                            {{-- <div class="nh__footer__copyright">
                                 <a href="https://globalfastcoder.com/" target="_blank">
                                     <span class="links-text">ওয়েবসাইট তৈরি করেছে Global Fast Coder</span>
                                 </a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

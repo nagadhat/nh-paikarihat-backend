@@ -16,7 +16,7 @@
                         Account</h1>
 
                     <p>If you already have an account with us, please login at the <a
-                            href="{{ route('customer_login') }}"><strong>login page</strong> </a>.</p>
+                            href="{{ route('customer_login') }}"><strong style="color:#F26933">login page</strong> </a>.</p>
                             @if (Session::has('success'))
                                 <div class="alert aler-success bg-success">{{ session()->get('success'); }}</div>
                             @endif
@@ -28,90 +28,93 @@
                         @csrf
                         <div id="account">
                             <legend>Your Personal Details</legend>
-
-                            <div class="form-group required account-firstname">
-                                <label class="col-sm-2 control-label" for="input-firstname">First Name</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="firstname" id="input-firstname" class="form-control col-md-12 {{ $errors->has('firstname') ? 'is-invalid' : '' }}" placeholder="First Name" value="{{ old('firstname') }}" >
-                                    @error('firstname')
-                                        <div class="alert alert-danger col-md-12" style="margin-top:10px">{{ $message }}</div>
-                                    @enderror
+                            <div class="register__form__top">
+                                <div class="form-group required account-firstname">
+                                    <label class="col-sm-2 control-label" for="input-firstname">First Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="firstname" id="input-firstname" class="form-control col-md-12 {{ $errors->has('firstname') ? 'is-invalid' : '' }}" placeholder="First Name" value="{{ old('firstname') }}" >
+                                        @error('firstname')
+                                            <div class="alert alert-danger col-md-12" style="margin-top:10px">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required account-lastname">
-                                <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="lastname" placeholder="Last Name"
-                                        id="input-lastname" class="form-control col-md-12 {{ $errors->has('lastname') ? 'is-invalid' : '' }}" value="{{ old('lastname') }}">
-                                        @error('lastname')
-                                        <div class="alert alert-danger col-md-12" style="margin-top:10px">{{ $message }}</div>
-                                    @enderror
+                                <div class="form-group required account-lastname">
+                                    <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="lastname" placeholder="Last Name"
+                                            id="input-lastname" class="form-control col-md-12 {{ $errors->has('lastname') ? 'is-invalid' : '' }}" value="{{ old('lastname') }}">
+                                            @error('lastname')
+                                            <div class="alert alert-danger col-md-12" style="margin-top:10px">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required account-email">
-                                <label class="col-sm-2 control-label" for="input-email">E-Mail</label>
-                                <div class="col-sm-10">
-                                    <input type="email" name="email" placeholder="E-Mail"
-                                        id="input-email" class="form-control col-md-12 {{ $errors->has('email') ? 'is-invalid' : '' }} " value="{{ old('email') }}">
-                                        @error('email')
-                                        <div class="alert alert-danger col-md-12" style="margin-top:10px">{{ $message }}</div>
-                                    @enderror
+                                <div class="form-group required account-email">
+                                    <label class="col-sm-2 control-label" for="input-email">E-Mail</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" name="email" placeholder="E-Mail"
+                                            id="input-email" class="form-control col-md-12 {{ $errors->has('email') ? 'is-invalid' : '' }} " value="{{ old('email') }}">
+                                            @error('email')
+                                            <div class="alert alert-danger col-md-12" style="margin-top:10px">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required account-email">
-                                <label class="col-sm-2 control-label" for="input-address">Address</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="address" placeholder="Address"
-                                        id="input-address" class="form-control col-md-12 {{ $errors->has('address') ? 'is-invalid' : '' }} " value="{{ old('address') }}">
-                                        @error('address')
-                                        <div class="alert alert-danger col-md-12" style="margin-top:10px">{{ $message }}</div>
-                                    @enderror
+                                <div class="form-group required account-email">
+                                    <label class="col-sm-2 control-label" for="input-address">Address</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="address" placeholder="Address"
+                                            id="input-address" class="form-control col-md-12 {{ $errors->has('address') ? 'is-invalid' : '' }} " value="{{ old('address') }}">
+                                            @error('address')
+                                            <div class="alert alert-danger col-md-12" style="margin-top:10px">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required account-telephone">
-                                <label class="col-sm-2 control-label" for="input-telephone">Phone</label>
-                                <div class="col-sm-10 ">
-                                    <input type="tel" name="phone" placeholder="Phone"
-                                        id="input-telephone" class="form-control col-md-12 {{ $errors->has('phone') ? 'is-invalid' : '' }} " value="{{ old('phone') }}">
-                                        @error('phone')
-                                        <div class="alert alert-danger col-md-12" style="margin-top:10px">{{ $message }}</div>
-                                    @enderror
+                                <div class="form-group required account-telephone">
+                                    <label class="col-sm-2 control-label" for="input-telephone">Phone</label>
+                                    <div class="col-sm-10 ">
+                                        <input type="tel" name="phone" placeholder="Phone"
+                                            id="input-telephone" class="form-control col-md-12 {{ $errors->has('phone') ? 'is-invalid' : '' }} " value="{{ old('phone') }}">
+                                            @error('phone')
+                                            <div class="alert alert-danger col-md-12" style="margin-top:10px">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <fieldset>
                             <legend>Your Password</legend>
-                            <div class="form-group required">
-                                <label class="col-sm-2 control-label account-pass" for="input-password">Password</label>
-                                <div class="col-sm-10 ">
-                                    <input type="password" name="password" placeholder="Password"
-                                        id="input-password" class="form-control col-md-12 {{ $errors->has('Password') ? 'is-invalid' : '' }} " value="{{ old('Password') }}">
-                                        @error('password')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
+                            <div class="register__form__top"> 
+                                <div class="form-group required">
+                                    <label class="col-sm-2 control-label account-pass" for="input-password">Password</label>
+                                    <div class="col-sm-10 ">
+                                        <input type="password" name="password" placeholder="Password"
+                                            id="input-password" class="form-control col-md-12 {{ $errors->has('Password') ? 'is-invalid' : '' }} " value="{{ old('Password') }}">
+                                            @error('password')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group required account-pass2">
-                                <label class="col-sm-2 control-label" for="input-confirm">Password Confirm</label>
-                                <div class="col-sm-10 ">
-                                    <input type="password" name="confirm" placeholder="Password Confirm"
-                                        id="input-confirm" class="form-control col-md-12">
-                                        @error('confirm')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
+                                <div class="form-group required account-pass2">
+                                    <label class="col-sm-2 control-label" for="input-confirm">Password Confirm</label>
+                                    <div class="col-sm-10 ">
+                                        <input type="password" name="confirm" placeholder="Password Confirm"
+                                            id="input-confirm" class="form-control col-md-12">
+                                            @error('confirm')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                         </fieldset>
-                        <div class="buttons">
-                            <div class="pull-right">I have read and agree to the <a href="javascript:void(0)"
+                        <div class="buttons register__btn__area">
+                            <div class="pull-right register__btn">
+                                   <input type="checkbox" name="agree" value="1" required>
+                                    I have read and agree to the <a href="javascript:void(0)"
                                     class="agree"><b>Privacy Policy</b></a>
-                                <input type="checkbox" name="agree" value="1" required>
                                 <button type="submit" class="btn btn-primary">Continue</button>
                             </div>
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>

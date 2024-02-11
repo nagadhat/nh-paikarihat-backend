@@ -31,22 +31,36 @@ class AuthController extends Controller
     public function registeredUser(StoreRegisterRequest $request)
     {
         $request->validated();
+
+        // Check if the phone number or email already exist
+        $existingUser = User::where('phone', $request->phone)
+                            ->orWhere('email', $request->email)
+                            ->first();
+        
+        if ($existingUser) {
+            Alert::error("Phone number or email already exists!");
+            return redirect()->back();
+        }
+        
+        // If the phone number and email are unique, proceed to create the new user
         $user = new User();
         $user->username    = $request->phone;
         $user->name        = $request->firstname . ' ' . $request->lastname;
         $user->phone       = $request->phone;
         $user->email       = $request->email;
-        $user->address       = $request->address;
+        $user->address     = $request->address;
         $user->password    = bcrypt($request->password);
         $user->user_type   = 'customer';
+        
         $res = $user->save();
+        
         if ($res) {
-            Alert::success("Registared Successfuly!!");
+            Alert::success("Registered Successfully!!");
             return redirect()->route('customer_login');
         } else {
-            Alert::error("Somthing Wrong!!");
+            Alert::error("Something Wrong!!");
             return redirect()->back();
-        }
+        }        
     }
 
     //  Resgister User Login

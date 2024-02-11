@@ -89,7 +89,7 @@
 }
 .btn:hover {
     font-family: 'Hind Siliguri' !important;
-    font-weight: 700 !important;
+    font-weight: 400 !important;
     font-size: 18px !important;
     color: rgba(255, 255, 255, 1) !important
 }
@@ -106,12 +106,11 @@ textarea.form-control.nh__customer__address {
 }
 .nh__footer__address i {
     font-size: 30px;
-    color: #fff;
+    color: #414142;
 }
 .nh__footer__address span {
-    color: #fff;
+    color: #414142;
     font-size: 15px;
-    font-weight: 700;
 }
 .nh__footer__copyright {
     display: flex;
@@ -120,9 +119,8 @@ textarea.form-control.nh__customer__address {
     padding-bottom: 0;
 }
 .nh__footer__copyright span {
-    color: #fff;
+    color: #414142;
     font-size: 15px;
-    font-weight: 700;
     letter-spacing: 1px;
 }
 .nh__top__header {
@@ -476,3 +474,43 @@ border-right: 0;
     height: 2px;
     background: #fff;
 }
+
+form.form-horizontal.login-form {
+    width: 630px;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0 15px 15px 15px;
+}
+.login__text,
+.pull-right.login__btn{
+    max-width: 450px;
+    margin: 0 auto;
+}
+.login__text{
+    text-align: center;
+    margin-top: -10px;
+}
+div#content {
+    padding-bottom: 55px;
+}
+.form-horizontal.login-form{
+    padding-top: 14px !important;
+}
+.register__form__top{
+    width: 630px;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 20px 15px 20px 15px;
+}
+.register__btn__area{
+    max-width: 600px;
+    margin: 0 auto !important;
+}
+.pull-right.register__btn{
+    max-width: 450px !important;
+    margin: 0 auto;
+}
+.pull-right.register__btn .btn.btn-primary {
+    margin-top: 15px;
+}
+

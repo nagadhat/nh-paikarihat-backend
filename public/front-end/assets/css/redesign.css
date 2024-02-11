@@ -673,3 +673,9 @@ border: 0;
     text-transform: capitalize !important;
     font-size: 20px;
  }
+ .wishlist-compare .btn.main__add__to__cart:active {
+    background-color: rgb(241,96,39) !important;
+ }
+ .ph__cart__group .wishlist-compare .btn.main__add__to__cart:focus {
+    background: rgb(241,96,39) !important;
+ }

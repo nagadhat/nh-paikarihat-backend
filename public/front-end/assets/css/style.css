@@ -21632,7 +21632,7 @@ background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188
 }
 
 .desktop #cart:hover>a>i::before {
-  color: rgba(255, 255, 255, 1)
+  color: rgba(241,96,39)
 }
 
 #cart>a>i {
@@ -21643,7 +21643,7 @@ background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188
 }
 
 .desktop #cart:hover>a>i {
-  background: rgba(221, 14, 28, 1)
+  background: rgba(241,96,39)
 }
 
 #cart-items.count-badge {
@@ -21652,7 +21652,7 @@ background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188
   font-size: 11px;
   color: rgba(255, 255, 255, 1);
   text-decoration: none;
-  background: rgba(221, 14, 28, 1);
+  background: rgba(241,96,39);
   border-width: 2px;
   border-style: solid;
   border-color: rgba(248, 248, 248, 1);
@@ -36593,7 +36593,7 @@ select.form-control::placeholder {
 }
 
 .desktop #cart:hover>a>i {
-  background: rgba(221, 14, 28, 1)
+  background: rgba(241,96,39)
 }
 
 #cart-items.count-badge {
@@ -36602,7 +36602,7 @@ select.form-control::placeholder {
   font-size: 11px;
   color: rgba(255, 255, 255, 1);
   text-decoration: none;
-  background: rgba(221, 14, 28, 1);
+  background: rgba(241,99,44);
   border-width: 2px;
   border-style: solid;
   border-color: rgba(248, 248, 248, 1);

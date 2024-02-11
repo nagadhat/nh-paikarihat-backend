@@ -301,11 +301,11 @@
                     <div id="" class="mobile__cart__icon">
                         <a class="mobile__cart__icon_route" href="{{ route('add_to_cart') }}">
                             <i class="fa fa-shopping-cart"></i>
-                            {{-- @if ($product_count >= 1)
-                                <span id="mobile__cart__icon_count" class="">{{ $product_count }}</span>
+                            @if (product_count() >= 1)
+                                <span id="mobile__cart__icon_count" class="">{{ product_count() }}</span>
                             @else
                                 <span id="mobile__cart__icon_default" class=" count-zero">0</span>
-                            @endif --}}
+                            @endif
                         </a>
                     </div>
                 </div>

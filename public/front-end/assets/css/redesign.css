@@ -656,3 +656,6 @@ border: 0;
 .nh__product__qty.nh--product--qty .nh__product__qty__inner:last-child {
     border-bottom: 0;
 }
+.checkout__border__color thead tr td {
+    color: #414142;
+}

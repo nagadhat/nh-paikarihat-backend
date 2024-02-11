@@ -177,16 +177,17 @@
                                                     <table class="table table-bordered qc-cart checkout__border__color">
                                                         <thead>
                                                             <tr>
-                                                                <td class="qc-image" style="font-weight: bold">নাম ও ছবি:
+                                                                <td class="qc-image" >নাম ও ছবি:
                                                                 </td>
-                                                                <td class="qc-quantity" style="font-weight: bold">
+                                                                <td class="qc-quantity" >
                                                                     ইউনিট প্রাইস:
                                                                 </td>
                                                                 <td class="qc-quantity"
-                                                                    style="font-weight: bold; text-align:center">
+                                                                    style=" text-align:center">
                                                                     কোয়ান্টিটি:
                                                                 </td>
                                                                 <td class="text-center td-total">মোট প্রোডাক্টের মূল্য</td>
+                                                                <td class="text-center td-total">ডিলিট প্রোডাক্ট</td>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -274,6 +275,14 @@
                                                                         id="subTotal_{{ $i }}">
                                                                         {{ $products->unit_price * $products->quantity }}
                                                                         TAKA</td>
+                                                                    <td style="text-align: center">
+                                                                        <span class="input-group-btn">
+                                                                            <a href="{{ route('product_delete_cart', $products->id) }}"
+                                                                                class="btn btn-remove cart_item__remove">
+                                                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </span>
+                                                                    </td>
                                                                 </tr>
                                                                 <?php
                                                                 $i++;

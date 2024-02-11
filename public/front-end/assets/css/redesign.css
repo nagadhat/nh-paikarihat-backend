@@ -679,3 +679,7 @@ border: 0;
  .ph__cart__group .wishlist-compare .btn.main__add__to__cart:focus {
     background: rgb(241,96,39) !important;
  }
+ .custom--cart-page .back__to__hom a.btn.btn-default,
+ .btn.btn-remove.cart_item__remove:active {
+    background: rgb(241,96,39) !important;
+ }

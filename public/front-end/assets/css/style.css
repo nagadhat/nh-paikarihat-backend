@@ -29024,7 +29024,7 @@ table {
   margin-bottom: 10px !important;
   border-width: 1px !important;
   border-style: solid !important;
-  border-color: rgba(254, 212, 48, 1) !important
+  border-color: rgba(242,105,51) !important
 }
 
 table thead td {
@@ -29055,7 +29055,7 @@ table tfoot th {
 .table-responsive {
   border-width: 1px;
   border-style: solid;
-  border-color: rgba(254, 212, 48, 1)
+  border-color: rgba(242,105,51)
 }
 
 .table-responsive>table {

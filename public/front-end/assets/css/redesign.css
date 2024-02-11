@@ -671,4 +671,5 @@ border: 0;
  .btn:visited {
     font-weight: 400 !important;
     text-transform: capitalize !important;
+    font-size: 20px;
  }

@@ -5,11 +5,11 @@
 
 @extends('front-end.layouts.app')
 @section('page_content')
-<?php
-if(isset($product_count)){
-    // dd($product_count);
-}
-?>
+    <?php
+    if (isset($product_count)) {
+        // dd($product_count);
+    }
+    ?>
     <div class="container" id="container">
 
         <ul class="breadcrumb qc-breadcrumb" style="padding: 8px">
@@ -230,35 +230,43 @@ if(isset($product_count)){
                                                                     </td>
                                                                     <td class="qc-quantity">
                                                                         <div class="input-group input-group-sm">
-                                                                            <div class="qty-container "
+                                                                            <div class="qty-container nh__product__qty__area"
                                                                                 style="width:100%;">
-                                                                                <input type="hidden"
-                                                                                    id="product_id_{{ $i }}"
-                                                                                    value="{{ $products->id }}">
-                                                                                <input type="hidden" name=""
-                                                                                    id="unit_price_{{ $i }}"
-                                                                                    value="{{ $products->unit_price }}">
-                                                                                <button
-                                                                                    class="qty-btn-minus btn-danger btn-cornered mr-2"
-                                                                                    onClick="manageQuantity({{ $i }}, 'decrement')"
-                                                                                    type="button"
-                                                                                    style="background-color: red; margin-right: 5px">
-                                                                                    <i class="fa fa-chevron-down"></i>
-                                                                                </button>
-                                                                                <input type="text"
-                                                                                    id="CurrentQty_{{ $i }}"
-                                                                                    name="total_quantity" min="1"
-                                                                                    value="{{ $products->quantity }}"
-                                                                                    onChange="manualIncrement(this.value,  {{ $products->id }}, {{ $products->unit_price }}, {{ $i }})"
-                                                                                    class="input-qty input-cornered"/>
-                                                                                <button
-                                                                                    class="qty-btn-plus btn-danger btn-cornered ml-1"
-                                                                                    onClick="manageQuantity({{ $i }}, 'increment')"
-                                                                                    type="button"
-                                                                                    data-product_id="{{ $products->id }}"
-                                                                                    style="background-color: red;margin-left:5px">
-                                                                                    <i class="fa fa-chevron-up"></i>
-                                                                                </button>
+                                                                                <div class="nh__product__qty">
+                                                                                    <input type="text"
+                                                                                        id="CurrentQty_{{ $i }}"
+                                                                                        name="total_quantity"
+                                                                                        min="1"
+                                                                                        value="{{ $products->quantity }}"
+                                                                                        onChange="manualIncrement(this.value,  {{ $products->id }}, {{ $products->unit_price }}, {{ $i }})"
+                                                                                        class="input-qty input-cornered" />
+                                                                                </div>
+                                                                                <div class="nh__product__qty nh--product--qty">
+                                                                                    <div class="nh__product__qty__inner">
+                                                                                        <button
+                                                                                            class="qty-btn-plus btn-danger btn-cornered ml-1"
+                                                                                            onClick="manageQuantity({{ $i }}, 'increment')"
+                                                                                            type="button"
+                                                                                            data-product_id="{{ $products->id }}">
+                                                                                            <i class="fa fa-chevron-up"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="nh__product__qty__inner">
+                                                                                        <input type="hidden"
+                                                                                            id="product_id_{{ $i }}"
+                                                                                            value="{{ $products->id }}">
+                                                                                        <input type="hidden"
+                                                                                            name=""
+                                                                                            id="unit_price_{{ $i }}"
+                                                                                            value="{{ $products->unit_price }}">
+                                                                                        <button
+                                                                                            class="qty-btn-minus btn-danger btn-cornered mr-2"
+                                                                                            onClick="manageQuantity({{ $i }}, 'decrement')"
+                                                                                            type="button">
+                                                                                            <i class="fa fa-chevron-down"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </td>
@@ -369,7 +377,7 @@ if(isset($product_count)){
             });
         })(jQuery);
 
-        function manualIncrement(p_qty, p_id, p_up, i){
+        function manualIncrement(p_qty, p_id, p_up, i) {
             let subTotal = p_up * p_qty;
             $("#subTotal_" + i).html(subTotal + ' TAKA');
             orderSubmit(p_id, 'manual', i, p_qty, p_up);
@@ -392,7 +400,7 @@ if(isset($product_count)){
             orderSubmit(productid, type, i, qty, unit_price);
         };
 
-        function orderSubmit(productid, type, i, qty, unit_price){
+        function orderSubmit(productid, type, i, qty, unit_price) {
 
             $.ajax({
                 url: "/product-increment",

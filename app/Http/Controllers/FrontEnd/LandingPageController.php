@@ -16,7 +16,7 @@ class LandingPageController extends Controller
     // function to get wireless car holder product
     public function showLandingPage()
     {
-        $sku = "17060050386127";
+        $sku = "17857";
         $product = Product::where('sku', $sku)->firstOrFail();
         return view('front-end.landing.show-landing-page', compact('product'));
     }
@@ -24,7 +24,7 @@ class LandingPageController extends Controller
     // function to get light lamp product
     public function showLandingPageTwo()
     {
-        $sku = "17060050386127";
+        $sku = "58551";
         $product = Product::where('sku', $sku)->firstOrFail();
         return view('front-end.landing.landing-page-two', compact('product'));
     }
@@ -32,7 +32,7 @@ class LandingPageController extends Controller
     // function to get multifunctional charger product
     public function showLandingPageThree()
     {
-        $sku = "17060125457710";
+        $sku = "91600";
         $product = Product::where('sku', $sku)->firstOrFail();
         return view('front-end.landing.landing-page-three', compact('product'));
     }
@@ -40,7 +40,7 @@ class LandingPageController extends Controller
     // function to get portable charging power bank          
     public function showLandingPageFour()
     {
-        $sku = "17060139572573";
+        $sku = "48028";
         $product = Product::where('sku', $sku)->firstOrFail();
         return view('front-end.landing.landing-page-four', compact('product'));
     }
@@ -48,7 +48,7 @@ class LandingPageController extends Controller
     // function to get magnetic charging powerbank
     public function showLandingPageFive()
     {
-        $sku = "17060165928093";
+        $sku = "80423";
         $product = Product::where('sku', $sku)->firstOrFail();
         return view('front-end.landing.landing-page-five', compact('product'));
     }
@@ -56,7 +56,7 @@ class LandingPageController extends Controller
     // function to get magnetic charging powerbank
     public function showLandingPagesix()
     {
-        $sku = "17060175106948";
+        $sku = "93686";
         $product = Product::where('sku', $sku)->firstOrFail();
         return view('front-end.landing.landing-page-six', compact('product'));
     }
@@ -64,7 +64,7 @@ class LandingPageController extends Controller
     // function to get water bottle flux
     public function showLandingPageSev()
     {
-        $sku = "17060184747778";
+        $sku = "64888";
         $product = Product::where('sku', $sku)->firstOrFail();
         return view('front-end.landing.landing-page-seven', compact('product'));
     }
@@ -72,7 +72,7 @@ class LandingPageController extends Controller
      // function to get water bottle flux
      public function showLandingPageEig()
      {
-         $sku = "17060184747778";
+         $sku = "30601";
          $product = Product::where('sku', $sku)->firstOrFail();
          return view('front-end.landing.landing-page-eight', compact('product'));
      }

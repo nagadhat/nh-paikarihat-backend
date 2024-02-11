@@ -660,3 +660,15 @@ border: 0;
 .checkout__border__color thead tr td {
     color: #414142;
 }
+.desktop .btn:hover
+ {
+    box-shadow: none !important;
+    min-width: auto !important;
+ }
+ .btn:focus {
+    background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90% ) !important;
+ }
+ .btn,
+ .btn:visited {
+    font-weight: 400 !important;
+ }

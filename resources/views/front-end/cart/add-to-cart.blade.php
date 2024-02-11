@@ -106,7 +106,7 @@
                                                             <input type="text" name="quantity"
                                                                 value="{{ $cart->quantity }}" size="1"
                                                                 id="CurrentQty_{{ $key }}" class="form-control"
-                                                                min="1">
+                                                                min="1" readonly >
                                                             <span>
                                                                 <i class="fa fa-angle-up"
                                                                     onClick="manageQuantity({{ $key }}, 'increment')"></i>
@@ -198,7 +198,7 @@
             }else{
                 if(qty > 1){
                     qty--;
-                }            
+                }
             }
 
             let subTotal = unit_price * qty;
@@ -226,7 +226,7 @@
                             $('#CurrentQty_' + i).val(quantity);
                             $('#totalPrice').html(totalprice + ' TAKA');
                         }
-
+                        location.reload();
                     }
                 },
                 error: function(error) {

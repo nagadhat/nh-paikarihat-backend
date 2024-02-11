@@ -3,19 +3,28 @@
 use App\Models\Product;
 use App\Models\ProductCart;
 
-if(!function_exists("getDiscountByProductId")){
-    function getDiscountByProductId($product_id) {
+if (!function_exists("getDiscountByProductId")) {
+    function getDiscountByProductId($product_id)
+    {
 
-        $product_info = Product::select('discount_amount')->where("id",$product_id)->first();
+        $product_info = Product::select('discount_amount')->where("id", $product_id)->first();
         return $product_info->discount_amount;
     }
 }
-if(!function_exists("product_count")){
-    function product_count() {
+if (!function_exists("product_count")) {
+    function product_count()
+    {
 
         $ipdaddress = $_SERVER['REMOTE_ADDR'];
-        $product_count = ProductCart::where('session_id', $ipdaddress)->count();
+
+        // $product_count = ProductCart::where('session_id', $ipdaddress)->count();
+        // header cart icon quantity count
+        $product_count = ProductCart::where('session_id', $ipdaddress)
+            ->get()
+            ->sum(function ($item) {
+                return $item->quantity;
+            });
+
         return $product_count ? $product_count : 0;
     }
 }
-?>

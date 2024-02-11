@@ -57,7 +57,14 @@ class ProductCartController extends Controller
             $cart->order_type = 'REG';
             $cart->save();
         }
-        $product_count = ProductCart::where('session_id',$sessionId)->orWhere('user_id', $user->id ?? null)->count();
+        // $product_count = ProductCart::where('session_id',$sessionId)->orWhere('user_id', $user->id ?? null)->count();
+
+        //product count with quantity
+        $product_count = ProductCart::where('session_id', $sessionId)->orWhere('user_id', $user->id ?? null)
+            ->get()
+            ->sum(function ($item) {
+                return $item->quantity;
+            });
 
         return response()->json(['message' => 'working','product_count'=> $product_count]);
     }

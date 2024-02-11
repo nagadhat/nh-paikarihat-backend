@@ -123,13 +123,10 @@
                                                             <div class="price">
                                                                 <div>
                                                                     @if ($product->discount_amount > 0)
-                                                                        <span class="price-new">{{ $disPrice }}
-                                                                            TAKA</span>
-                                                                        <span class="price-old">{{ $product->price }}
-                                                                            TAKA</span>
+                                                                        <span class="price-new">৳ {{ $disPrice }}</span>
+                                                                        <span class="price-old">৳ {{ $product->price }}</span>
                                                                     @else
-                                                                        <span class="price-new">{{ $product->price }}
-                                                                            TAKA</span>
+                                                                        <span class="price-new">৳ {{ $product->price }} </span>
                                                                     @endif
                                                                 </div>
                                                             </div>

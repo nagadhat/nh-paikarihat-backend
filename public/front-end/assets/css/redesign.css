@@ -84,7 +84,7 @@
     color: #fff;
     font-size: 20px;
     padding: 10px 12px;
-    background-color: #eb0000;
+    background-color: rgb(241,96,39);
     border-radius: 3px;
 }
 .btn:hover {
@@ -244,7 +244,9 @@ div#content {
 }
 .hotline_number strong {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 400;
+    color: #000;
+    font-family: 'Hind Siliguri';
 }
 .module-products-253 .product-grid .product-thumb .extra-group .btn.btn:hover {
     font-size: 14px !important;

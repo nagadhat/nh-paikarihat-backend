@@ -14,11 +14,13 @@
     min-width: -moz-max-content !important;
     min-width: max-content !important;
     color: #fff !important;
+    transition: all 200 ms linear;
     background-image: -o-radial-gradient(-1% 57.5%, circle farthest-corner, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
     background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
 }
 
 .extra-group.nh__order__confirm .nh__order__confirm__btn a:hover {
+    color: #000 !important;
     background-image: -o-radial-gradient(-1% 57.5%, circle farthest-corner, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
     background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
 }

@@ -68,7 +68,7 @@
                                                         <label class="radio-inline" for="notUserCheck">
                                                             <input type="radio" name="user_check" id="notUserCheck"
                                                                 value="" checked>
-                                                            New User
+                                                            Without Registration
                                                         </label>
 
                                                         <label class="radio-inline" for="UserCheck">

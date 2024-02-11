@@ -625,8 +625,9 @@ div#content {
 .nh__product__qty__area .nh__product__qty__inner .qty-btn-minus,
 .nh__product__qty__area .nh__product__qty__inner .qty-btn-plus {
     padding: 0;
-    height: 20px;
-    line-height: 20px;
+    height: 16px;
+    line-height: 16px;
+    width: 27px;
 }
 .nh__product__qty__area .nh__product__qty__inner .btn-danger {
     background-color: transparent;

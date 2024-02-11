@@ -618,3 +618,7 @@ div#content {
     font-weight: 400 !important;
 }
 
+.btn.btn-remove.cart_item__remove {
+    min-width: 40px;
+    background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(242,105,51) 0%, rgba(242,105,51) 90%);
+}

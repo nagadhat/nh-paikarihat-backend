@@ -622,3 +622,37 @@ div#content {
     min-width: 40px;
     background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(242,105,51) 0%, rgba(242,105,51) 90%);
 }
+.nh__product__qty__area .nh__product__qty__inner .qty-btn-minus,
+.nh__product__qty__area .nh__product__qty__inner .qty-btn-plus {
+    padding: 0;
+    height: 20px;
+    line-height: 20px;
+}
+.nh__product__qty__area .nh__product__qty__inner .btn-danger {
+    background-color: transparent;
+border: 0;
+}
+.nh__product__qty__area .nh__product__qty__inner {
+    border: 0;
+
+}
+.nh__product__qty.nh--product--qty {
+    background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(242,105,51) 0%, rgba(242,105,51) 90%);
+    /* border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px; */
+}
+.nh__product__qty .input-qty.input-cornered {
+    padding: 10px 10px;
+    border: 0;
+}
+.nh__product__qty__area {
+    border: 1px solid rgba(105, 105, 115, 1);
+    border-radius: 3px;
+}
+.nh__product__qty.nh--product--qty .nh__product__qty__inner {
+    border-left: 1px solid rgba(105, 105, 115, 1);
+    border-bottom: 1px solid rgba(105, 105, 115, 1);
+}
+.nh__product__qty.nh--product--qty .nh__product__qty__inner:last-child {
+    border-bottom: 0;
+}

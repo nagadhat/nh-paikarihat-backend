@@ -28436,7 +28436,7 @@ html:not(.popup) .page-title.page-title>span::after {
 .buttons .pull-left .btn,
 .buttons .pull-left .btn:visited {
   font-family: 'Hind Siliguri';
-  font-weight: 700;
+  font-weight: 400;
   font-size: 20px;
   color: rgba(255, 255, 255, 1);
   font-style: normal;
@@ -28446,23 +28446,23 @@ html:not(.popup) .page-title.page-title>span::after {
 }
 
 .buttons .pull-left .btn:hover {
-  color: rgba(26, 27, 29, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
+  color: rgba(255,255,255) !important;
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(241,96,39) 0%, rgba(241,96,39) 90%) !important
 }
 
 .buttons .pull-left .btn:active,
 .buttons .pull-left .btn:hover:active,
 .buttons .pull-left .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(241,96,39) 0%, rgba(241,96,39) 90%) !important
 }
 
 .buttons .pull-left .btn {
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%)
+  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(242,105,51) 0%, rgba(242,105,51) 90%)
 }
 
 .buttons .pull-left .btn:focus {
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251, 32, 86, 1) 0%, rgba(135, 2, 35, 1) 90%)
+  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(242,105,51) 0%, rgba(242,105,51) 90%)
 }
 
 .buttons .pull-left .btn.btn.disabled::after {

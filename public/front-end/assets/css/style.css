@@ -1741,7 +1741,7 @@ fieldset+fieldset {
 }
 
 .stepper span i:hover {
-  background: lightgrey;
+  background: #F26933;
 }
 
 .stepper span i:active {
@@ -29208,8 +29208,8 @@ select.form-control::placeholder {
 }
 
 .stepper span i {
-  color: rgba(105, 105, 115, 1);
-  background-color: rgba(238, 238, 238, 1)
+  color: rgba(255,255,255);
+  background-color: rgba(242,105,51)
 }
 
 .pagination-results {

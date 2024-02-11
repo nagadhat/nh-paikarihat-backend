@@ -65,7 +65,7 @@
                                             <td class="text-center td-image">প্রোডাক্টের মূল্য</td>
                                             <td class="text-center td-qty">কোয়ান্টিটি</td>
                                             <td class="text-center td-total">মোট প্রোডাক্টের মূল্য</td>
-                                            <td class="text-center td-total">Delete</td>
+                                            <td class="text-center td-total">ডিলিট প্রোডাক্ট</td>
                                         </tr>
                                     </thead>
                                     <tbody>

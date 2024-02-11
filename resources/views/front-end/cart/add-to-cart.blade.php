@@ -65,6 +65,7 @@
                                             <td class="text-center td-image">প্রোডাক্টের মূল্য</td>
                                             <td class="text-center td-qty">কোয়ান্টিটি</td>
                                             <td class="text-center td-total">মোট প্রোডাক্টের মূল্য</td>
+                                            <td class="text-center td-total">Delete</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -106,7 +107,7 @@
                                                             <input type="text" name="quantity"
                                                                 value="{{ $cart->quantity }}" size="1"
                                                                 id="CurrentQty_{{ $key }}" class="form-control"
-                                                                min="1" readonly >
+                                                                min="1" readonly>
                                                             <span>
                                                                 <i class="fa fa-angle-up"
                                                                     onClick="manageQuantity({{ $key }}, 'increment')"></i>
@@ -114,17 +115,21 @@
                                                                     onClick="manageQuantity({{ $key }}, 'decrement')"></i>
                                                             </span>
                                                         </div>
-                                                        <span class="input-group-btn">
-                                                            <a href="{{ route('product_delete_cart', $cart->id) }}"
-                                                                class="btn btn-remove cart_item__remove">
-                                                                <i class="fa fa-times-circle"></i>
-                                                            </a>
-                                                        </span>
+
                                                     </div>
                                                 </td>
                                                 <td class="text-center td-price">{{ $cart->unit_price }} TAKA</td>
                                                 <td class="text-center td-total" id="subTotal_{{ $key }}">
-                                                    {{ $cart->unit_price * $cart->quantity }} TAKA</td>
+                                                    {{ $cart->unit_price * $cart->quantity }} TAKA
+                                                </td>
+                                                <td>
+                                                    <span class="input-group-btn">
+                                                        <a href="{{ route('product_delete_cart', $cart->id) }}"
+                                                            class="btn btn-remove cart_item__remove">
+                                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                </td>
                                             </tr>
                                         @empty
                                             <p>Your shopping cart is empty!</p>
@@ -193,10 +198,10 @@
 
             let qty = $('#CurrentQty_' + i).val();
 
-            if(type == "increment"){
-                qty++ ;
-            }else{
-                if(qty > 1){
+            if (type == "increment") {
+                qty++;
+            } else {
+                if (qty > 1) {
                     qty--;
                 }
             }

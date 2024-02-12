@@ -62,8 +62,8 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <p class="description"> </p>
-                                            <div class="text-input form-group required">
-                                                @if (!Auth::check())
+                                            @if (!Auth::check()) 
+                                                <div class="text-input form-group required">
                                                     <div class="col-xs-12">
                                                         <label class="radio-inline" for="notUserCheck">
                                                             <input type="radio" name="user_check" id="notUserCheck"
@@ -78,70 +78,139 @@
                                                             Existing User
                                                         </label>
                                                     </div>
-                                                @endif
-                                                {{-- @if (isset($productCart))
-                                                    <input type="hidden" id="session_id"
-                                                        value="{{ $productCar }}">
-                                                @endif --}}
-                                                <div class="col-xs-12" style="padding-top:10px">
-                                                    <label class="control-label" for="name">
-                                                        <span class="text" title=""><b>আপনার নাম</b></span>
-                                                    </label>
                                                 </div>
-                                                <div class="col-xs-12">
-                                                    <input type="text" name="customer_name" class="form-control"
-                                                        placeholder="আপনার নাম লিখুন"
-                                                        value="{{ !empty($userdata['name']) ? $userdata['name'] : '' }}"
-                                                        required>
-                                                </div>
-                                            </div>
-                                            <div class="text-input form-group required">
-                                                <div class="col-xs-12">
-                                                    <label class="control-label" for="phone">
-                                                        <span class="text" title=""><b>মোবাইল নম্বর</b></span>
-                                                    </label>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <input type="text" name="customer_phone"
-                                                        value="{{ !empty($userdata['phone']) ? $userdata['phone'] : '' }}"
-                                                        class="form-control" placeholder="মোবাইল নম্বর লিখুন" required>
-                                                </div>
-                                            </div>
-                                            <div class="text-input form-group required">
-                                                <div class="col-xs-12">
-                                                    <label class="control-label" for="address">
-                                                        <span class="text" title=""><b>ডেলিভারী ঠিকানা</b></span>
-                                                    </label>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <textarea name="customer_address" class="form-control nh__customer__address" autocomplete="on"
-                                                        placeholder="ডেলিভারী ঠিকানা লিখুন" required>{{ !empty($userdata['address']) ? $userdata['address'] : '' }}
-                                                    </textarea>
-                                                </div>
-                                            </div>
-                                            <div class="text-input form-group required" data-sort="16">
-                                                <div class="col-xs-12">
-                                                    <label class="control-label" for="payment_address_zone_id">
-                                                        <span class="text" title="">
-                                                            <b>ডেলিভারী এরিয়া</b>
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <label class="radio-inline" for="insideDhaka">
-                                                        <input type="radio" id="insideDhaka" name="delivery_area"
-                                                            value="inside_dhaka" onclick="showInsideDhaka()"
-                                                            checked>Inside
-                                                        Dhaka
-                                                    </label>
+                                            @endif
 
-                                                    <label class="radio-inline" for="outsideDhaka">
-                                                        <input type="radio" name="delivery_area" id="outsideDhaka"
-                                                            value="outside_dhaka" onclick="showOutsideDhaka()">Outside
-                                                        Dhaka
-                                                    </label>
+                                            @if(Auth::check())
+                                                <div class="text-input form-group">
+                                                    <div class="col-xs-12">
+                                                        <label class="control-label" for="name">
+                                                            <span class="text" title=""><b>ডেলিভারী ইনফোরমেশন </b></span>
+                                                        </label>
+                                                    </div>
+                                                </div>                                            
+                                                <div class="text-input form-group required">
+                                                    <div class="col-xs-12" style="padding-top:10px">
+                                                        <label class="control-label" for="name">
+                                                            <span class="text" title=""><b>নাম</b></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <input type="text" name="customer_name" class="form-control"
+                                                            placeholder="আপনার নাম লিখুন"
+                                                            value="{{ !empty($userdata['name']) ? $userdata['name'] : '' }}"
+                                                            required>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <div class="text-input form-group required">
+                                                    <div class="col-xs-12">
+                                                        <label class="control-label" for="phone">
+                                                            <span class="text" title=""><b>মোবাইল</b></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <input type="text" name="customer_phone"
+                                                            value="{{ !empty($userdata['phone']) ? $userdata['phone'] : '' }}"
+                                                            class="form-control" placeholder="মোবাইল নম্বর লিখুন" required>
+                                                    </div>
+                                                </div>
+                                                <div class="text-input form-group required">
+                                                    <div class="col-xs-12">
+                                                        <label class="control-label" for="address">
+                                                            <span class="text" title=""><b>ঠিকানা</b></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <textarea name="customer_address" class="form-control nh__customer__address" autocomplete="on"
+                                                            placeholder="ডেলিভারী ঠিকানা লিখুন" required>{{ !empty($userdata['address']) ? $userdata['address'] : '' }}
+                                                        </textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="text-input form-group required" data-sort="16">
+                                                    <div class="col-xs-12">
+                                                        <label class="control-label" for="payment_address_zone_id">
+                                                            <span class="text" title="">
+                                                                <b>ডেলিভারী এরিয়া</b>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <label class="radio-inline" for="insideDhaka">
+                                                            <input type="radio" id="insideDhaka" name="delivery_area"
+                                                                value="inside_dhaka" onclick="showInsideDhaka()"
+                                                                checked>Inside
+                                                            Dhaka
+                                                        </label>
+
+                                                        <label class="radio-inline" for="outsideDhaka">
+                                                            <input type="radio" name="delivery_area" id="outsideDhaka"
+                                                                value="outside_dhaka" onclick="showOutsideDhaka()">Outside
+                                                            Dhaka
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <div class="text-input form-group required">
+                                                    <div class="col-xs-12" style="padding-top:10px">
+                                                        <label class="control-label" for="name">
+                                                            <span class="text" title=""><b>আপনার নাম</b></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <input type="text" name="customer_name" class="form-control"
+                                                            placeholder="আপনার নাম লিখুন"
+                                                            value=""
+                                                            required>
+                                                    </div>
+                                                </div>
+                                                <div class="text-input form-group required">
+                                                    <div class="col-xs-12">
+                                                        <label class="control-label" for="phone">
+                                                            <span class="text" title=""><b>মোবাইল নম্বর</b></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <input type="text" name="customer_phone"
+                                                            value=""
+                                                            class="form-control" placeholder="মোবাইল নম্বর লিখুন" required>
+                                                    </div>
+                                                </div>
+                                                <div class="text-input form-group required">
+                                                    <div class="col-xs-12">
+                                                        <label class="control-label" for="address">
+                                                            <span class="text" title=""><b>ডেলিভারী ঠিকানা</b></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <textarea name="customer_address" class="form-control nh__customer__address" autocomplete="on"
+                                                            placeholder="ডেলিভারী ঠিকানা লিখুন" required>
+                                                        </textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="text-input form-group required" data-sort="16">
+                                                    <div class="col-xs-12">
+                                                        <label class="control-label" for="payment_address_zone_id">
+                                                            <span class="text" title="">
+                                                                <b>ডেলিভারী এরিয়া</b>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <label class="radio-inline" for="insideDhaka">
+                                                            <input type="radio" id="insideDhaka" name="delivery_area"
+                                                                value="inside_dhaka" onclick="showInsideDhaka()"
+                                                                checked>Inside
+                                                            Dhaka
+                                                        </label>
+
+                                                        <label class="radio-inline" for="outsideDhaka">
+                                                            <input type="radio" name="delivery_area" id="outsideDhaka"
+                                                                value="outside_dhaka" onclick="showOutsideDhaka()">Outside
+                                                            Dhaka
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </div>
                                         <div class="qc-col-4 col-md-12">
                                             <div id="payment_view" class="qc-step" data-col="4" data-row="0">

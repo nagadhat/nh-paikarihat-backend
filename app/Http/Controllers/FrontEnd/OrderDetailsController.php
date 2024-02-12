@@ -4,6 +4,7 @@ namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderEditUser;
 use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Models\ProductCart;
@@ -81,7 +82,6 @@ class OrderDetailsController extends Controller
         }
 
         $products = Product::where('id', $request->product_id)->first();
-        // dd($products);
         $totalOrderProductPrice = $request->total_quantity  * $request->price - $request->discount_amount;
         $shipping_amount = 0;
         $totalOrderProductPrice += $shipping_amount;
@@ -96,17 +96,17 @@ class OrderDetailsController extends Controller
             "order_code" => rand(11111, 99999),
             'session_id' => $ipdaddress,
             "user_id" => $user->id ?? null,
-            "customer_name" => $user->name,
-            "customer_phone" => $user->phone,
-            "customer_email" => $user->email,
-            "customer_address" => $user->address,
+            "customer_name" => $request->customer_name ?? $user->name,
+            "customer_phone" => $request->customer_phone ?? $user->phone,
+            "customer_email" => $request->customer_email ?? $user->email,
+            "customer_address" => $request->customer_address ?? $user->address,
             "status" => 1,
             "total_amount" => $request->price,
-            "total_quantity" =>  count($request->product_id),
+            "total_quantity" => count($request->product_id),
             "delivery_area" => $deliveryCharge,
             "discount_amount" => $request->discount_amount,
         ]);
-
+        
         $products = Product::whereIn('id', $request->product_id)->get();
         foreach ($products as $product) {
             $lineItem = ProductCart::where('product_id', $product->id)->first();
@@ -120,6 +120,15 @@ class OrderDetailsController extends Controller
                 "unit_price" => $lineItem->unit_price,
             ]);
         }
+
+        OrderEditUser::create([
+            "user_id" => $user->id ?? null,
+            "order_id" => $orderDetails->id,
+            "customer_name" => $orderDetails->customer_name,
+            "customer_phone" => $orderDetails->customer_phone,
+            "customer_address" => $orderDetails->customer_address,
+            "customer_email" => $orderDetails->customer_email,
+        ]);
 
         Alert::success('Success', "Thank You For Your Order");
         return redirect()->route('invoice_order', $orderDetails->id);
@@ -135,9 +144,4 @@ class OrderDetailsController extends Controller
         ProductCart::where('session_id', $ipdaddress)->orWhere('user_id',Auth::id())->delete();
         return view('front-end.invoice.order-invoice', compact('orderDetails', 'orderProductsDetailslist'));
     }
-
-
-
-
-
 }

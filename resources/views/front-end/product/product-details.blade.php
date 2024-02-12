@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="hotline_number">
                                     <strong>
-                                        HOTLINE : 09647 444 444 , 01906 198 502
+                                        <i class="fa fa-phone-square" aria-hidden="true"></i> 09647 444 444
                                     </strong>
                                 </div>
                             </div>

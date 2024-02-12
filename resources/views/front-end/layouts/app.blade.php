@@ -126,14 +126,15 @@
 
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/redesign.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product-button.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/login_page.css') }}" />
     <style>
         header::before {
             background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(58,188,155) 0%, rgb(58,188,155) 90%);
         }
 
         footer .grid-row-4 {
-            background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
-            padding: 20px;
+            background:#414142;
+            padding-bottom: 10px
         }
     </style>
 </head>

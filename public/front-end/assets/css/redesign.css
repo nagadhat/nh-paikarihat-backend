@@ -84,7 +84,7 @@
     color: #fff;
     font-size: 20px;
     padding: 10px 12px;
-    background-color: rgb(241,96,39);
+    background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
     border-radius: 3px;
 }
 .btn:hover {
@@ -106,10 +106,10 @@ textarea.form-control.nh__customer__address {
 }
 .nh__footer__address i {
     font-size: 30px;
-    color: #414142;
+    color: #fff;
 }
 .nh__footer__address span {
-    color: #414142;
+    color: #fff;
     font-size: 15px;
 }
 .nh__footer__copyright {
@@ -117,11 +117,14 @@ textarea.form-control.nh__customer__address {
     justify-content: center;
     padding: 30px 0;
     padding-bottom: 0;
+    padding-top: 20px;
 }
 .nh__footer__copyright span {
-    color: #414142;
+    color: #fff;
     font-size: 15px;
     letter-spacing: 1px;
+    font-style: italic;
+    font-weight: 400;
 }
 .nh__top__header {
     width: 100%;
@@ -476,13 +479,6 @@ border-right: 0;
     height: 2px;
     background: #fff;
 }
-
-form.form-horizontal.login-form {
-    width: 630px;
-    margin: 0 auto;
-    max-width: 100%;
-    padding: 0 15px 15px 15px;
-}
 .login__text,
 .pull-right.login__btn{
     max-width: 450px;
@@ -495,9 +491,7 @@ form.form-horizontal.login-form {
 div#content {
     padding-bottom: 55px;
 }
-.form-horizontal.login-form{
-    padding-top: 14px !important;
-}
+
 .register__form__top{
     width: 630px;
     margin: 0 auto;
@@ -682,4 +676,10 @@ border: 0;
  .custom--cart-page .back__to__hom a.btn.btn-default,
  .btn.btn-remove.cart_item__remove:active {
     background: rgb(241,96,39) !important;
+ }
+
+
+ /* faisal */
+ .login-box .well {
+    padding-top: 0;
  }

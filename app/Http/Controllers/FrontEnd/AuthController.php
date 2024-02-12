@@ -36,12 +36,12 @@ class AuthController extends Controller
         $existingUser = User::where('phone', $request->phone)
                             ->orWhere('email', $request->email)
                             ->first();
-        
+
         if ($existingUser) {
             Alert::error("Phone number or email already exists!");
             return redirect()->back();
         }
-        
+
         // If the phone number and email are unique, proceed to create the new user
         $user = new User();
         $user->username    = $request->phone;
@@ -51,16 +51,16 @@ class AuthController extends Controller
         $user->address     = $request->address;
         $user->password    = bcrypt($request->password);
         $user->user_type   = 'customer';
-        
+
         $res = $user->save();
-        
+
         if ($res) {
             Alert::success("Registered Successfully!!");
             return redirect()->route('customer_login');
         } else {
             Alert::error("Something Wrong!!");
             return redirect()->back();
-        }        
+        }
     }
 
     //  Resgister User Login
@@ -69,10 +69,13 @@ class AuthController extends Controller
         $request->validated();
         $customerAuth = $request->only('phone', 'password');
         $product_count =0;
+
         if (Auth::attempt($customerAuth, true)) {
-            // $request->session()->regenerate();
-            $ipdaddress = $_SERVER['REMOTE_ADDR'];
-            $product_count = ProductCart::where('session_id', $ipdaddress)->count();
+
+            // $sessionId = session()->getId();
+            $sessionId = $_SERVER['REMOTE_ADDR'];
+            $product_count = ProductCart::where('session_id', $sessionId)->count();
+
             Alert::success("Logging Successfuly!!");
             if($product_count > 0){
                 return redirect()->route('checkout_details',['checkout'=>'checkout','product_count'=>$product_count]);
@@ -84,34 +87,12 @@ class AuthController extends Controller
         }
     }
 
-
-//     public function loginCustomer(StoreLoginRequest $request)
-// {
-//     $request->validated();
-//     $customerAuth = $request->only('phone', 'password');
-//     if (Auth::attempt($customerAuth, true)) {
-//         $request->session()->regenerate();
-//         $session_id = session()->getId();
-//         $productCart = ProductCart::where('session_id', $session_id)->first();
-//         dd($productCart);
-//         if ($productCart) {
-//             session(['session_id' => $productCart]);
-//             return redirect()->route('checkout_details')->with('success', 'Logging Successfuly!!');
-//         } else {
-
-//             return redirect()->route('customer_dashboard')->with('warning', 'No product cart data found.');
-//         }
-//     } else {
-
-//         return redirect()->back()->with('error', 'Invalid Phone & Password');
-//     }
-// }
-
     //  Function to logout Customer
     public function logoutCustomer()
     {
         ProductCart::where('user_id',Auth::id())->delete();
         Auth::logout();
+        // Auth::guard('web')->logout();
         return to_route('home_page');
     }
 

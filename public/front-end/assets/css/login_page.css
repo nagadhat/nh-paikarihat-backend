@@ -1,0 +1,145 @@
+
+
+
+.nh__login__redesign__area {
+    width: 500px;
+    max-width: 100%;
+    background-color:#fff;
+    margin: 0 auto;
+    padding: 20px 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 10px 29px 0px;
+    border-radius: 10px;
+}
+.nh__login__title {
+    text-align: center;
+    margin-bottom: 0;
+    font-family: 'Hind Siliguri';
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+.nh__login__section {
+    padding-top: 55px;
+}
+.nh__login__redesign__area .form-group .control-label {
+    max-width: 80px;
+}
+.nh__login__redesign__area label {
+    color: #000;
+    font-family: 'Hind Siliguri';
+    font-size: 15px;
+}
+.nh__login__btn__area {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.nh__login__null {
+    max-width: 78px;
+    flex: 1;
+    flex-shrink: 1;
+}
+.nh__login__btn_item {
+    flex: 1;
+}
+.nh__login__btn {
+    padding: 4px 20px;
+    background: rgb(241,96,39);
+    color: #fff;
+    font-family: 'Hind Siliguri';
+    text-align: center;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 400;
+    box-shadow: rgba(241,96,39, 0.3) 0px 10px 29px 0px;
+}
+
+.create__new__user {
+    text-align: center;
+    color: #000;
+    font-family: 'Hind Siliguri';
+}
+.nh--login--redesign--area {
+    width: 600px;
+    margin-top: 55px;
+}
+.nh--login--redesign--area .form-group .control-label {
+    max-width: 140px;
+}
+.nh--login--redesign--area form {
+    padding-top: 20px;
+}
+.nh--login--redesign--area .register__form__top .form-group {
+    margin-bottom: 15px;
+}
+.nh--login--redesign--area .register__form__top {
+    width: 100%;
+    padding: 0;
+}
+.nh--login--redesign--area .register__form__top label {
+    color: #000;
+    font-family: 'Hind Siliguri';
+    font-size: 15px;
+}
+
+.nh--login--redesign--area .register__btn__area {
+    max-width: 100%;
+}
+.nh--login--redesign--area .pull-right.register__btn {
+    max-width: 420px !important;
+    padding-top: 10px;
+}
+.nh--login--redesign--area .pull-right.register__btn button {
+    box-shadow: rgba(241,96,39, 0.3) 0px 10px 29px 0px;
+    font-size:16px;
+    font-weight: 400;
+}
+.nh--login--redesign--area .pull-right.register__btn button:hover {
+    font-size:16px !important;
+    font-weight: 400;
+    box-shadow: rgba(241,96,39, 0.3) 0px 10px 29px 0px !important;
+}
+.nh--login--redesign--area .pull-right.register__btn a {
+    color: #F26933;
+    font-weight: 600;
+}
+.nh--login--redesign--area form {
+    padding-bottom: 20px;
+}
+.nh__existing__user {
+    text-align: center;
+}
+.nh__existing__user p a {
+    font-weight: 600 !important;
+    color: #F26933;
+}
+.nh__forgot__password {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 15px;
+}
+.nh__forgot__password a {
+    font-weight: 500 !important;
+    color: #F26933;
+}
+
+.mobile__view.nh__checkout__page .control-label b {
+    font-weight: 400;
+}
+.mobile__view__overflow .table-responsive {
+    border: 0;
+}
+.mobile__view__overflow .panel-body {
+padding: 0;
+}
+
+@media (max-width:352px) {
+    .nh__login__btn__area {
+        flex-direction: column-reverse;
+    }
+}
+

@@ -126,14 +126,15 @@
 
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/redesign.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product-button.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/login_page.css') }}" />
     <style>
         header::before {
             background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(58,188,155) 0%, rgb(58,188,155) 90%);
         }
 
         footer .grid-row-4 {
-            background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
-            padding: 20px;
+            background:#414142;
+            padding-bottom: 10px
         }
     </style>
 </head>
@@ -301,11 +302,11 @@
                     <div id="" class="mobile__cart__icon">
                         <a class="mobile__cart__icon_route" href="{{ route('add_to_cart') }}">
                             <i class="fa fa-shopping-cart"></i>
-                            {{-- @if ($product_count >= 1)
-                                <span id="mobile__cart__icon_count" class="">{{ $product_count }}</span>
+                            @if (product_count() >= 1)
+                                <span id="mobile__cart__icon_count" class="">{{ product_count() }}</span>
                             @else
                                 <span id="mobile__cart__icon_default" class=" count-zero">0</span>
-                            @endif --}}
+                            @endif
                         </a>
                     </div>
                 </div>
@@ -349,13 +350,13 @@
                     <div class="grid-cols">
                         <div class="footer__copyright__area">
                             <div class="nh__footer__copyright">
-                                <span class="links-text">© 2023 - 2024 All Rights Reserved Paikarihat. Member of Nagadhat Bangladesh Limited</span>
+                                <span class="links-text">© 2023 - 2024 All Rights Reserved Paikarihat. Member of Nagadhat Bangladesh Limited.</span>
                             </div>
-                            <div class="nh__footer__copyright">
+                            {{-- <div class="nh__footer__copyright">
                                 <a href="https://globalfastcoder.com/" target="_blank">
                                     <span class="links-text">ওয়েবসাইট তৈরি করেছে Global Fast Coder</span>
                                 </a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

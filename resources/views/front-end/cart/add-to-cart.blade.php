@@ -29,12 +29,12 @@
                                                             <div class="block-wrapper">
                                                                 <div class="block-content  block-html">
                                                                     <div style="text-align: justify;"><b>
-                                                                            <font color="#ff0000">সম্মানিত ক্রেতা</font>,
-                                                                            অর্ডারটি কনফার্ম করতে <font color="#ff0000">
+                                                                            <font color="#f16027">সম্মানিত ক্রেতা</font>,
+                                                                            অর্ডারটি কনফার্ম করতে <font color="#f16027">
                                                                                 Checkout</font>
                                                                             বাটনে ক্লিক করে পরবর্তী স্টেপে প্রবেশ করুন ,
                                                                             অথবা আপনি যদি আরও প্রোডাক্ট
-                                                                            ক্রয় করতে চান তাহলে <font color="#ff0000">
+                                                                            ক্রয় করতে চান তাহলে <font color="#f16027">
                                                                                 Continue Shopping</font> বাটনে ক্লিক করুন।
                                                                         </b>
                                                                     </div>
@@ -65,6 +65,7 @@
                                             <td class="text-center td-image">প্রোডাক্টের মূল্য</td>
                                             <td class="text-center td-qty">কোয়ান্টিটি</td>
                                             <td class="text-center td-total">মোট প্রোডাক্টের মূল্য</td>
+                                            <td class="text-center td-total">ডিলিট প্রোডাক্ট</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -91,7 +92,7 @@
                                                 </td>
                                                 <td class=" td-image">
                                                     <p>
-                                                        {{ $cart->product->price }} TAKA
+                                                        ৳ {{ $cart->product->price }}
                                                     </p>
                                                 </td>
                                                 <td class="text-center td-qty">
@@ -106,7 +107,7 @@
                                                             <input type="text" name="quantity"
                                                                 value="{{ $cart->quantity }}" size="1"
                                                                 id="CurrentQty_{{ $key }}" class="form-control"
-                                                                min="1">
+                                                                min="1" readonly>
                                                             <span>
                                                                 <i class="fa fa-angle-up"
                                                                     onClick="manageQuantity({{ $key }}, 'increment')"></i>
@@ -114,17 +115,21 @@
                                                                     onClick="manageQuantity({{ $key }}, 'decrement')"></i>
                                                             </span>
                                                         </div>
-                                                        <span class="input-group-btn">
-                                                            <a href="{{ route('product_delete_cart', $cart->id) }}"
-                                                                class="btn btn-remove cart_item__remove">
-                                                                <i class="fa fa-times-circle"></i>
-                                                            </a>
-                                                        </span>
+
                                                     </div>
                                                 </td>
-                                                <td class="text-center td-price">{{ $cart->unit_price }} TAKA</td>
+                                                <td class="text-center td-price">৳ {{ $cart->unit_price }}</td>
                                                 <td class="text-center td-total" id="subTotal_{{ $key }}">
-                                                    {{ $cart->unit_price * $cart->quantity }} TAKA</td>
+                                                    ৳ {{ $cart->unit_price * $cart->quantity }}
+                                                </td>
+                                                <td>
+                                                    <span class="input-group-btn">
+                                                        <a href="{{ route('product_delete_cart', $cart->id) }}"
+                                                            class="btn btn-remove cart_item__remove">
+                                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                </td>
                                             </tr>
                                         @empty
                                             <p>Your shopping cart is empty!</p>
@@ -141,7 +146,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="text-right"><strong>মোট বিল:</strong></td>
-                                                    <td class="text-right" id="totalPrice">{{ $totalprice }} TAKA</td>
+                                                    <td class="text-right" id="totalPrice">৳ {{ $totalprice }}</td>
                                                 </tr>
                                                 {{-- <tr>
                                                     <td class="text-right"><strong><b>ডেলিভারী চার্জ</b>:</strong></td>
@@ -193,10 +198,10 @@
 
             let qty = $('#CurrentQty_' + i).val();
 
-            if(type == "increment"){
-                qty++ ;
-            }else{
-                if(qty > 1){
+            if (type == "increment") {
+                qty++;
+            } else {
+                if (qty > 1) {
                     qty--;
                 }
             }

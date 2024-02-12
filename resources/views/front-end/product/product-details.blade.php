@@ -55,7 +55,7 @@
                             <div class="product-price-group">
                                 <div class="price-wrapper">
                                     <div class=" ph__price__group">
-                                        <div class="ph__price__group_item">
+                                        <div class="ph__price__group_item product__sku">
                                             <span>Sku:</span>
                                             <strong>
                                                 {{ isset($products->sku) ? $products->sku : 'No Sku Found' }}
@@ -64,10 +64,10 @@
                                         {{-- <div class=" ph__price__group_item">
                                             <span>Price:</span>
                                             <strong>
-                                                {{ isset($products->price) ? $products->price : 'No Price Found' }} TAKA
+                                                {{ isset($products->price) ? $products->price : 'No Price Found' }} ৳
                                             </strong>
                                         </div>
-                                        <div class="product-price-old">1,200 TAKA</div> --}}
+                                        <div class="product-price-old">1,200 ৳ </div> --}}
                                         @php
                                             $disPrice = $products->price - $products->discount_amount;
                                         @endphp
@@ -76,18 +76,14 @@
                                                 <span>Price:</span>
                                                 @if ($products->discount_amount > 0)
                                                     <strong>
-                                                        <span class="price-new">{{ $disPrice }}
-                                                            TAKA</span>
+                                                        <span class="price-new">৳ {{ $disPrice }}</span>
                                                         <span class="price-old">
-                                                            <del style="color:  #8B9198">
-                                                                {{ $products->price }} TAKA
-                                                            </del>
+                                                            <del>৳  {{ $products->price }}</del>
                                                         </span>
                                                     </strong>
                                                 @else
                                                     <strong>
-                                                        <small class="price-new">{{ $products->price }}
-                                                            TAKA</small>
+                                                        <small class="price-new">৳ {{ $products->price }}</small>
                                                     </strong>
                                                 @endif
                                             </div>
@@ -135,7 +131,7 @@
                                 </div>
                                 <div class="hotline_number">
                                     <strong>
-                                        HOTLINE : 09647 444 444 , 01906 198 502
+                                        <i class="fa fa-phone-square" aria-hidden="true"></i> 09647 444 444
                                     </strong>
                                 </div>
                             </div>
@@ -147,7 +143,7 @@
                                         <div class="grid-col grid-col-58-1-1">
                                             <div class="grid-items">
                                                 <div class="grid-item grid-item-58-1-1-1">
-                                                    <div style="text-align: justify; padding:10px 0">
+                                                    <div  class="nh__product__long__text">
                                                         {{ isset($products->short_description) ? $products->short_description : '' }}
                                                     </div>
                                                 </div>
@@ -186,12 +182,12 @@
                                                 <div class="module-body">
                                                     <div class="tab-container">
                                                         <ul class="nav nav-tabs">
-                                                            <li class="tab-1 active">
+                                                            <li class="tab-1 active related__product__title">
                                                                 <a href="#products-6561913ab7033-tab-1"
                                                                     data-toggle="tab">Related Products</a>
                                                             </li>
                                                         </ul>
-                                                        <div class="tab-content">
+                                                        <div class="tab-content related__product__content">
                                                             <div class="module-item module-item-1 tab-pane active"
                                                                 id="products-6561913ab7033-tab-1">
                                                                 <div class="product-grid">
@@ -236,15 +232,12 @@
                                                                                         <div>
                                                                                             @if ($product->discount_amount > 0)
                                                                                                 <span
-                                                                                                    class="price-new">{{ $disPrice }}
-                                                                                                    TAKA</span>
+                                                                                                    class="price-new">৳ {{ $disPrice }} </span>
                                                                                                 <span
-                                                                                                    class="price-old">{{ $product->price }}
-                                                                                                    TAKA</span>
+                                                                                                    class="price-old">৳ {{ $product->price }}</span>
                                                                                             @else
                                                                                                 <span
-                                                                                                    class="price-new">{{ $product->price }}
-                                                                                                    TAKA</span>
+                                                                                                    class="price-new">৳ {{ $product->price }}</span>
                                                                                             @endif
                                                                                         </div>
                                                                                     </div>
@@ -299,7 +292,7 @@
                                         <div class="grid-item grid-item-content-bottom-1-1-1">
                                             <div class="module module-products module-products-253 module-products-grid">
                                                 <div class="module-body">
-                                                    <div class="tab-container">
+                                                    <div class="tab-container recent__view__product__area">
                                                         <ul class="nav nav-tabs">
                                                             <li class="tab-1 active">
                                                                 <a href="#products-6561913ab7033-tab-1"
@@ -351,15 +344,12 @@
                                                                                         <div>
                                                                                             @if ($product->discount_amount > 0)
                                                                                                 <span
-                                                                                                    class="price-new">{{ $disPrice }}
-                                                                                                    TAKA</span>
+                                                                                                    class="price-new">৳ {{ $disPrice }} </span>
                                                                                                 <span
-                                                                                                    class="price-old">{{ $product->price }}
-                                                                                                    TAKA</span>
+                                                                                                    class="price-old">৳ {{ $product->price }} </span>
                                                                                             @else
                                                                                                 <span
-                                                                                                    class="price-new">{{ $product->price }}
-                                                                                                    TAKA</span>
+                                                                                                    class="price-new">৳ {{ $product->price }} </span>
                                                                                             @endif
                                                                                         </div>
                                                                                     </div>

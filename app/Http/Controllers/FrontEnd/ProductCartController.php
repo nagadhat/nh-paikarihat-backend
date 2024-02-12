@@ -13,7 +13,7 @@ class ProductCartController extends Controller
 {
     public function addToCart()
     {
-
+        // $sessionId = session()->getId();
         $sessionId = $_SERVER['REMOTE_ADDR'];
         $user_id = auth()->user()->id ?? null;
         if($user_id){
@@ -77,11 +77,11 @@ class ProductCartController extends Controller
     }
     public function productIncrement(Request $request)
     {
-       // $sessionId = session()->getId();
-       $ipdaddress = $_SERVER['REMOTE_ADDR'];
+    //    $sessionId = session()->getId();
+       $sessionId = $_SERVER['REMOTE_ADDR'];
         $data = $request->all();
 
-        $existingCartItem = ProductCart::where('session_id', $ipdaddress )->where('id', $data['productid'])->first();
+        $existingCartItem = ProductCart::where('session_id', $sessionId )->where('id', $data['productid'])->first();
         $unitPrice = $existingCartItem->unit_price;
         $exqty = $existingCartItem->quantity;
         if ($existingCartItem) {
@@ -89,7 +89,7 @@ class ProductCartController extends Controller
                 $existingCartItem->quantity += 1;
                 $exqty +=1;
                 $existingCartItem->save();
-                $totalprice = ProductCart::where('session_id', $ipdaddress )
+                $totalprice = ProductCart::where('session_id', $sessionId )
                     ->get()
                     ->sum(function ($item) {
                         return $item->unit_price * $item->quantity;
@@ -108,14 +108,14 @@ class ProductCartController extends Controller
                 $existingCartItem->quantity -= 1;
                 $exqty -=1;
                 $existingCartItem->save();
-                $totalprice = ProductCart::where('session_id', $ipdaddress )
+                $totalprice = ProductCart::where('session_id', $sessionId )
                     ->get()
                     ->sum(function ($item) {
                         return $item->unit_price * $item->quantity;
                     });
             }
             // $user_id = Auth::user()->id ?? null;
-            $totaldiscount = ProductCart::where('session_id', $ipdaddress )
+            $totaldiscount = ProductCart::where('session_id', $sessionId )
             ->with('product')
             ->get()
             ->sum(function ($item) {

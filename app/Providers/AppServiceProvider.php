@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('*', function ($view) {
             // $sessionId = session()->getId();
-            $ipdaddress = $_SERVER['REMOTE_ADDR'];
+            // $ipdaddress = $_SERVER['REMOTE_ADDR'];
             // dd($ipdaddress);
 
             // dd($product_count);

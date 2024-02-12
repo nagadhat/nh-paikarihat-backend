@@ -56,9 +56,9 @@
                 <div class="row" style="padding: 25px 0">
                     <form class="form-horizontal" action="{{ route('order_product') }}" method="POST">
                         @csrf
-                        <div class="qc-col-1 col-md-4 mobile__view">
+                        <div class="qc-col-1 col-md-4 mobile__view nh__checkout__page">
                             <div id="payment_address" class="qc-step" data-col="1" data-row="0">
-                                <div class="">
+                                
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <p class="description"> </p>
@@ -155,7 +155,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
                             </div>
                         </div>
                         <div class="col-md-8 mobile__view">

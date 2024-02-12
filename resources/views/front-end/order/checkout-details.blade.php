@@ -31,11 +31,11 @@
                                                         <div class="block-body expand-block">
                                                             <div class="block-wrapper">
                                                                 <div class="block-content  block-html">
-                                                                    <div style="text-align: justify;"><b>
-                                                                            <font color="#ff0000">সম্মানিত ক্রেতা</font>,
+                                                                    <div style="text-align: justify;" class="add__to__carttop"><b>
+                                                                            <font color="#f16027">সম্মানিত ক্রেতা</font>,
                                                                             অর্ডারটি কনফার্ম করতে আপনার নাম, সম্পূর্ণ
                                                                             ঠিকানা, মোবাইল নাম্বার লিখে <font
-                                                                                color="#ff0000">অর্ডার কনফার্ম করুন</font>
+                                                                                color="#f16027">অর্ডার কনফার্ম করুন</font>
                                                                             বাটনে ক্লিক করুন, ২৪ ঘন্টার মধ্যে আপনার সাথে
                                                                             যোগাযোগ করা হবে । ধন্যবাদ
                                                                         </b>
@@ -58,11 +58,11 @@
                         @csrf
                         <div class="qc-col-1 col-md-4 mobile__view nh__checkout__page">
                             <div id="payment_address" class="qc-step" data-col="1" data-row="0">
-                                
+
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <p class="description"> </p>
-                                            @if (!Auth::check()) 
+                                            @if (!Auth::check())
                                                 <div class="text-input form-group required">
                                                     <div class="col-xs-12">
                                                         <label class="radio-inline" for="notUserCheck">
@@ -88,7 +88,7 @@
                                                             <span class="text" title=""><b>ডেলিভারী ইনফোরমেশন </b></span>
                                                         </label>
                                                     </div>
-                                                </div>                                            
+                                                </div>
                                                 <div class="text-input form-group required">
                                                     <div class="col-xs-12" style="padding-top:10px">
                                                         <label class="control-label" for="name">
@@ -360,10 +360,9 @@
                                                     </table>
                                                 </div>
                                                 <div class="form-horizontal">
-                                                    <div class="form-horizontal qc-totals">
+                                                    <div class="form-horizontal qc-totals checkout__details__price">
                                                         <div class="row">
-                                                            <label class="col-sm-9 col-xs-6 control-label"
-                                                                style="font-weight: bold">
+                                                            <label class="col-sm-9 col-xs-6 control-label">
                                                                 প্রোডাক্টের মূল্য
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
@@ -376,7 +375,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <label class="col-sm-9 col-xs-6 control-label">
-                                                                <b>ডিসকাউন্ট</b>
+                                                                ডিসকাউন্ট
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right"
                                                                 id="discount_increment">
@@ -389,7 +388,7 @@
                                                         </div>
                                                         {{-- <div class="row">
                                                             <label class="col-sm-9 col-xs-6 control-label">
-                                                                <b>সাবটোটাল</b>
+                                                                সাবটোটাল
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <span id="subtotal">
@@ -401,7 +400,7 @@
                                                         </div> --}}
                                                         <div class="row">
                                                             <label class="col-sm-9 col-xs-6 control-label">
-                                                                <b>ডেলিভারী চার্জ</b>
+                                                                ডেলিভারী চার্জ
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <p id="insideDhakaCharge" class="text-white">

@@ -29,12 +29,12 @@
                                                             <div class="block-wrapper">
                                                                 <div class="block-content  block-html">
                                                                     <div style="text-align: justify;"><b>
-                                                                            <font color="#ff0000">সম্মানিত ক্রেতা</font>,
-                                                                            অর্ডারটি কনফার্ম করতে <font color="#ff0000">
+                                                                            <font color="#f16027">সম্মানিত ক্রেতা</font>,
+                                                                            অর্ডারটি কনফার্ম করতে <font color="#f16027">
                                                                                 Checkout</font>
                                                                             বাটনে ক্লিক করে পরবর্তী স্টেপে প্রবেশ করুন ,
                                                                             অথবা আপনি যদি আরও প্রোডাক্ট
-                                                                            ক্রয় করতে চান তাহলে <font color="#ff0000">
+                                                                            ক্রয় করতে চান তাহলে <font color="#f16027">
                                                                                 Continue Shopping</font> বাটনে ক্লিক করুন।
                                                                         </b>
                                                                     </div>

@@ -136,7 +136,28 @@
 .mobile__view__overflow .panel-body {
 padding: 0;
 }
-
+.checkout__details__price .row {
+    padding: 0 15px;
+}
+.checkout__details__price .row label {
+    font-weight: 400 ;
+}
+.checkout__details__price {
+    padding-top: 15px;
+}
+.custom--cart-page .table-responsive {
+    border-color: rgba(226, 226, 226, 1);
+}
+.add__to__carttop {
+    border:1px solid rgba(58,188,155);
+    padding: 5px;
+    border-top: 2px solid rgba(58,188,155);
+    border-bottom: 2px solid rgba(58,188,155);
+    text-align: justify !important;
+    margin: 0 15px;
+    font-size: 13px;
+    letter-spacing: .3px;
+}
 @media (max-width:352px) {
     .nh__login__btn__area {
         flex-direction: column-reverse;

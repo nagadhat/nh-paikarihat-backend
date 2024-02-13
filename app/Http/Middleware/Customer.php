@@ -17,7 +17,7 @@ class Customer
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && auth()->user()->user_type == 'customer') {
+        if (Auth::check() && auth()->user()->user_type == 'public') {
             return $next($request);
         } else {
             Alert::error('You are not authorized.');

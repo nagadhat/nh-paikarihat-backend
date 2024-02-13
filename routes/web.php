@@ -79,6 +79,11 @@ Route::post('/product-add-cart',[ProductCartController::class,'productAddCart'])
 Route::get('/product-delete-cart/{id}',[ProductCartController::class,'productDeleteCart'])->name('product_delete_cart');
 Route::post('/product-increment',[ProductCartController::class,'productIncrement'])->name('product_increment');
 Route::get('/customer-with-register',[OrderDetailsController::class,'customerWithRegister'])->name('customer_with_register');
+
+
+Route::get("/product-add-to-cart", [ProductCartController::class,'ProductaddToCart'])->name('product_add_to_cart');
+Route::get("/remove-cart-item/{rowId}", [ProductCartController::class,'removeCartItem'])->name('remove_cart_item');
+
 /*
 |--------------------------------------------------------------------------
 |   # front end customer login and registration routes
@@ -90,6 +95,9 @@ Route::get('/customer-register', [AuthController::class, 'register'])->name('cus
 Route::post('/customer-registered', [AuthController::class, 'registeredUser'])->name('customer_registered');
 Route::post('/login-customer', [AuthController::class, 'loginCustomer'])->name('login_customer');
 Route::get('/customer-logout', [AuthController::class, 'logoutCustomer'])->name('customer_logout');
+Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])->name('forgot_password');
+Route::post('/forgot-password-update', [AuthController::class, 'forgotPasswordUpdate'])->name('forgot_password_update');
+
 
 
 /*

@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -66,7 +67,7 @@ class OrderDetailsController extends Controller
     {
 
         // $sessionId = session()->getId();
-         $sessionId = $_SERVER['REMOTE_ADDR'];
+        $sessionId = $_SERVER['REMOTE_ADDR'];
         Alert::success('success', 'Order ');
         if (!$request->has('customer_name') || empty($request->customer_name)) {
             return redirect()->back();
@@ -81,7 +82,10 @@ class OrderDetailsController extends Controller
                 "username" => $request->customer_name,
                 "email" => 'customer@gmail.com',
                 "address" => $request->customer_address,
-                "password" => Hash::make('1234567'),
+                "password" => Hash::make('12345678'),
+                "remember_token" => Str::random(120),
+                "created_at" => now(),
+                "updated_at" => now(),
             ]);
         }
 
@@ -142,7 +146,7 @@ class OrderDetailsController extends Controller
     public function invoiceOrder($id)
     {
     //    $sessionId = session()->getId();
-         $sessionId = $_SERVER['REMOTE_ADDR'];
+        $sessionId = $_SERVER['REMOTE_ADDR'];
         $orderDetails = Order::where('id', $id)->first();
         $orderProductsDetailslist = OrderProduct::where('order_id', $id)->get();
         ProductCart::where('session_id', $sessionId)->orWhere('user_id',Auth::id())->delete();

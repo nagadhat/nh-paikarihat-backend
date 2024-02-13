@@ -50,7 +50,7 @@ class AuthController extends Controller
         $user->email       = $request->email;
         $user->address     = $request->address;
         $user->password    = bcrypt($request->password);
-        $user->user_type   = 'customer';
+        $user->user_type   = 'public';
 
         $res = $user->save();
 
@@ -150,4 +150,33 @@ class AuthController extends Controller
         Alert::success('Password Update Successfuly!!!');
         return redirect()->back();
     }
+
+
+    //  function to view forgot password page
+    public function forgotPassword()
+    {
+        return view('front-end.auth.forgot-password');
+    }
+
+    public function forgotPasswordUpdate(Request $request)
+    {
+        $request->validate([
+            'phone' => 'required|exists:users,phone',
+            'new_password' => 'required|min:8|confirmed|different:current_password',
+            'new_password_confirmation' => 'required|same:new_password|min:8'
+        ]);
+        $user = User::where('phone', $request->phone)->first();
+        if (!$user) {
+            Alert::error('Phone Number Not Found');
+            return redirect()->back(); 
+        }
+        
+        $user->update([
+            'password' => bcrypt($request->new_password)
+        ]);    
+
+        Alert::success('Password updated successfully!');
+        return view('front-end.auth.login');
+    }
+    
 }

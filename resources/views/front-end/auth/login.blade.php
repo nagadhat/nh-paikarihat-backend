@@ -48,7 +48,7 @@
                                     </div> --}}
                                 </div>
                                 <div class="nh__forgot__password">
-                                    <a href="javascript:void(0)">Forgot Password ?</a>
+                                    <a href="{{ route('forgot_password') }}">Forgot Password ?</a>
                                 </div>
                                 <div class="nh__login__btn__area" >
                                     <div class="nh__login__null"></div>

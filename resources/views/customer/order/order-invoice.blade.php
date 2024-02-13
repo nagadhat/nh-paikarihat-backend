@@ -16,7 +16,7 @@
     <title>Product Invoice</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/invoice.css') }}">
+    <link rel="stylesheet" href="{{ asset('back-end/css/invoice.css') }}">
 </head>
 
 <body>
@@ -28,11 +28,9 @@
                 <div class="cs-invoice_head cs-type1 cs-mb25">
                     <div class="cs-invoice_left cs-text_left">
                         <p style="color: black">
-                            Address: Khaja Super Market, 2nd to 7th Floor,<br> Kallyanpur Bus Stop, Mirpur Road,
-                            Dhaka-1207<br>
-                            Call: 09647-444-444<br>
+                            Hotline: 09647-444-444<br>
                             Email: support@nagadhat.com.bd<br>
-                            Web: nagadhat.com.bd
+                            Web: paikarihat.nagadhat.com
                         </p>
                     </div>
                     <div class="cs-invoice_right cs-text_right" style="padding-bottom: 0%">
@@ -44,11 +42,14 @@
                     <div class="cs-invoice_left">
                         <p style="color: black;">
                             <span style="color: black;font-weight: bold;">Name:</span>
-                                {{ isset($orderDetails->customer_name) ? $orderDetails->customer_name : ''}}
-                                <br><span style="color: black;font-weight: bold;">Phone:</span>
-                                {{ isset($orderDetails->customer_phone) ? $orderDetails->customer_phone : ''}}
-                                <br><span style="color: black;font-weight: bold;">Shipping Address:</span>
-                                {{ isset($orderDetails->customer_address) ? $orderDetails->customer_address : ''}}
+                                {{ isset($orderDetails->user->name) ? $orderDetails->user->name : '' }} 
+                                ({{ isset($orderDetails->user->phone) ? $orderDetails->user->phone : '' }})
+                            </span>
+                            <br>
+                            <span style="color: black;font-weight: bold;">Shipping Details:</span><br>
+                                {{ isset($orderDetails->customer_name) ? $orderDetails->customer_name : '' }}, ({{ $orderDetails->customer_phone }} ),
+                                {{ isset($orderDetails->customer_phone) ? $orderDetails->customer_phone : '' }},
+                                {{ isset($orderDetails->customer_address) ? $orderDetails->customer_address : '' }}.
                             </span>
                         </p>
                     </div>
@@ -211,21 +212,19 @@
             </div>
             <div class="cs-invoice_btns cs-hide_print">
                 <a href="javascript:window.print()" class="cs-invoice_btn cs-color1" style="margin-right: 30px">
-                    {{-- <svg xmlns="#" class="ionicon" viewBox="0 0 512 512">
-                        <path
-                            d="M384 368h24a40.12 40.12 0 0040-40V168a40.12 40.12 0 00-40-40H104a40.12 40.12 0 00-40 40v160a40.12 40.12 0 0040 40h24"
-                            fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" />
-                        <rect x="128" y="240" width="256" height="208" rx="24.32" ry="24.32"
-                            fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" />
-                        <path d="M384 128v-24a40.12 40.12 0 00-40-40H168a40.12 40.12 0 00-40 40v24" fill="none"
-                            stroke="currentColor" stroke-linejoin="round" stroke-width="32" />
-                        <circle cx="392" cy="184" r="24" />
-                    </svg> --}}
                     <span>Download</span>
                 </a>
                 <a href="{{  route('orders') }}" class="cs-invoice_btn cs-color3">
                     <span>Go Back</span>
                 </a>
+            </div>
+            <div class="footer__invoice">
+                <i class="fas fa-map-marker-alt"></i>
+                <p> 
+                    <i class="fa fa-map-marker" aria-hidden="true" style="color: #fff; font-size: 20px;"></i>
+                    Khaja Super Market, 2nd to 7th Floor,
+                    Kallyanpur Bus Stop, Mirpur Road, Dhaka-1207
+                </p>
             </div>
         </div>
     </div>

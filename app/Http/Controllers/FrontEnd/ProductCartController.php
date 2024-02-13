@@ -5,6 +5,7 @@ namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductCart;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -134,4 +135,23 @@ class ProductCartController extends Controller
             return response()->json(['message' => 'Not working']);
         }
     }
+
+
+
+    public function ProductaddToCart()
+    {
+
+        return view('front-end.cart.product-add-to-cart');
+    }
+
+    public function removeCartItem($rowId)
+    {
+        $getCart = Cart::get($rowId);
+        $name = $getCart->name = 'akash';
+        // Cart::remove($rowId);
+        Cart::update($rowId, $name);
+        return redirect()->back();
+
+    }
+
 }

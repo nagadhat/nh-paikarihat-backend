@@ -62,6 +62,10 @@
                                 <div class="buttons register__btn__area">
                                     <div class="pull-right register__btn">
                                         <button type="submit" class="btn btn-primary">Continue</button>
+                                        <a href="{{ route('customer_login') }}" style="padding-top: 15px; font-size:15px; text-align:left;">
+                                            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                                            Back
+                                        </a>
                                     </div>
                                 </div>
                             </div>

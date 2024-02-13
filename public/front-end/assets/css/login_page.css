@@ -92,6 +92,7 @@
 .nh--login--redesign--area .pull-right.register__btn {
     max-width: 420px !important;
     padding-top: 10px;
+    justify-content: center;
 }
 .nh--login--redesign--area .pull-right.register__btn button {
     box-shadow: rgba(241,96,39, 0.3) 0px 10px 29px 0px;

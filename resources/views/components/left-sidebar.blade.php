@@ -10,14 +10,22 @@
             </div>
         </div>
         <div class="user__dasboard__menu">
-            <a href="{{ route('customer_dashboard') }}" class="active"><i class="fa fa-server" aria-hidden="true"></i>
-                Dashboard</a>
-            <a href="{{ route('customer_order_history') }}"><i class="fa fa-history" aria-hidden="true"></i> order
-                history </a>
-            <a href="{{ route('customer_profile_update') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                Account </a>
-            <a href="{{ route('customer_password') }}"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Change
-                Password</a>
+            <a href="{{ route('customer_dashboard') }}" class="{{ request()->routeIs('customer_dashboard') ? 'active' : '' }}">
+                <i class="fa fa-server" aria-hidden="true"></i>
+                Dashboard
+            </a>
+            <a href="{{ route('customer_order_history') }}" class="{{ request()->routeIs('customer_order_history') ? 'active' : '' }}">
+                <i class="fa fa-history" aria-hidden="true"></i>
+                order history
+            </a>
+            <a href="{{ route('customer_profile_update') }}" class="{{ request()->routeIs('customer_profile_update') ? 'active' : '' }}">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                Account
+             </a>
+            <a href="{{ route('customer_password') }}" class="{{ request()->routeIs('customer_password') ? 'active' : '' }}">
+                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                Change Password
+            </a>
             <a href="{{ route('customer_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
         </div>
     </div>

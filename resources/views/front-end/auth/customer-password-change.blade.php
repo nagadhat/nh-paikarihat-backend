@@ -15,10 +15,9 @@
     </div>
     <div id="account-password" class="container">
         <x-mobile-left-sidebar />
-
         <div class="user__dasboard__section__wrapp account__information__area customer__password__change__area">
             <div class="user__dasboard__section row">
-                <x-left-sidebar />
+                <x-left-sidebar/>
                 <div class="user__dasboard__section__right customer__password__change col-xs-12 col-sm-9 ">
                     <div class="user__dasboard__content">
                         <div class="account__information__form">

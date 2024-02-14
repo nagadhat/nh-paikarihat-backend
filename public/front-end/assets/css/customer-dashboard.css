@@ -1,0 +1,290 @@
+.user__dasboard__section {
+    display: flex;
+}
+/* .user__dasboard__section__left {
+    max-width: 25%;
+    flex-basis: 25%;
+    flex-shrink: 1;
+    padding-right: 15px;
+}
+.user__dasboard__section__right {
+    max-width: 75%;
+    flex-basis: 75%;
+    flex-shrink: 1;
+    padding-left: 15px;
+    padding-right: 15px;
+} */
+.user__dasboard__menu {
+    display: flex;
+    flex-direction: column;
+}
+.user__dasboard__sidebar {
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    position: relative;
+    padding: 15px;
+}
+.user__dasboard__section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.user__dasboard__menu a {
+    padding-bottom: 10px;
+    font-size: 15px;
+    color: #000;
+    font-weight: 400;
+    text-transform: capitalize;
+    font-family: 'Hind Siliguri';
+}
+.user__dasboard__menu a:hover {
+    color: #f16027;
+    font-weight: 500;
+}
+.user__dasboard__menu a i {
+    font-size: 20px;
+    padding-right: 6px;
+}
+.user__dasboard__sidebar .user__dasboard__photo {
+    padding-bottom: 10px;
+    text-align: center;
+}
+.user__dasboard__sidebar .user__dasboard__photo img {
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+.user__dasboard__profile__info {
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.user__dasboard__profile__info .name {
+    font-weight: 700;
+}
+.user__dasboard__profile {
+    padding-bottom: 30px;
+}
+.user__dasboard__menu .active {
+    color: #f16027;
+}
+.user__dasboard__menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.user__dasboard__box__bg {
+    position: relative;
+    height: 100%;
+    text-align: center;
+    border: 1px solid rgba(226, 226, 266, .6);
+    border-radius: 10px;
+    padding: 30px 15px;
+    background: rgba(65, 65, 66, .8);
+    color: #fff;
+    box-shadow: 14px 14px 16px 0px rgba(0, 0, 0, 0.1);
+}
+.user__dasboard__section__wrapp {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 0 15px;
+}
+.user__dasboard__section.row>div {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+.user__dasboard__box__holder.row {
+    margin: 0 -5px;
+}
+.user__dasboard__box__holder.row>div {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.user__dasboard__content__title p {
+    font-size: 16px;
+    color: #000;
+    text-transform: capitalize;
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+.user__dasboard__box__bg h3 {
+    font-size: 17px;
+    text-transform: capitalize;
+    word-break: break-all;
+}
+.user__dasboard__box__bg span {
+    font-size: 18px;
+    font-weight: 400;
+}
+.user__dasboard__box__item {
+    margin-bottom: 10px;
+}
+.user__dasboard__content {
+    box-shadow: 2px 0px 6px 0px rgba(242,222,222,0.75);
+    -webkit-box-shadow: 2px 0px 6px 0px rgba(242,222,222,0.75);
+    -moz-box-shadow: 2px 0px 6px 0px rgba(242,222,222,0.75);
+    height: 100%;
+    padding: 15px 10px;
+
+}
+.account__information__area .user__dasboard__content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.account__information__area .account__information__form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.account__information__area .account__information__form .control-label {
+    max-width: 88px;
+}
+.account__information__area .account__information__form .form-group {
+    margin-bottom: 15px;
+}
+.account__information__button {
+    display: flex;
+    align-items: center;
+}
+.account__information__button .back__button {
+   max-width: 88px;
+   flex: 1;
+   flex-shrink: 1;
+}
+.account__information__button .back__button a {
+    color: #fff;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 400;
+    background: rgba(241,96,39);
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+.account__information__button .continue__button {
+    flex: 1;
+   flex-shrink: 1;
+}
+.account__information__button .continue__button button {
+    width: 100%;
+    background: rgba(241,96,39);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+.account__information__form {
+    padding-bottom: 30px;
+}
+.account__information__area .user__dasboard__section  {
+    padding-bottom: 0;
+}
+.account__information__form h1 {
+    margin-bottom: 20px;
+}
+.customer__password__change .account__information__button .back__button,
+.account__information__area .customer__password__change .account__information__form .control-label {
+    max-width: 130px;
+}
+.customer__password__change__area {
+    padding-bottom: 50px;
+}
+.account__information__form__table h1 {
+    margin-bottom: 10px;
+}
+.account__information__form__table .table-responsive {
+    border-color: rgba(226, 226, 226, 1);
+}
+.account__information__form__table .table-responsive table {
+    border-color:  rgba(226, 226, 226, 1) !important;
+    border-right: 0 !important;
+    border-left: 0 !important;
+}
+.account__information__form__table .table-responsive table thead tr {
+    padding: 10px !important;
+}
+.order__invoice__customer,
+.order__details__customer {
+    color: rgba(241,96,39);
+}
+.account__information__form__table .pagination>li:hover {
+    background: rgba(241,96,39);
+    color: #000;
+}
+.account__information__form__table .pagination>li.active {
+    background: rgba(241,96,39);
+}
+.account__information__form__table .badge {
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%);
+    color: #fff;
+}
+.order__detsils__customer__btn a.btn:active {
+    background: rgba(58,188,155,1) !important;
+}
+
+#content.customer__new__order_info {
+    box-shadow: 2px 0px 6px 0px rgba(242,222,222,0.75);
+    -webkit-box-shadow: 2px 0px 6px 0px rgba(242,222,222,0.75);
+    -moz-box-shadow: 2px 0px 6px 0px rgba(242,222,222,0.75);
+    padding: 0 30px;
+    padding-bottom: 30px;
+}
+.row.customer__new__order_row .customer__orders {
+    display: flex;
+    gap: 10px;
+    padding-bottom: 30px;
+}
+.row.customer__new__order_row .customer__orderitem {
+    flex: 1;
+    flex-shrink: 1;
+    position: relative;
+    height: 100%;
+}
+.row.customer__new__order_row .customer__orderitem table {
+    border-color: rgba(226, 226, 226, 1) !important;
+}
+.row.customer__new__order_row .customer__orderitem table .badge {
+    background: rgb(58,188,155);
+}
+.customer__orderitem.customer--orderitem  {
+    padding-bottom: 30px;
+}
+.customer__orderitem.customer--orderitem .table-responsive {
+    border-color: rgba(226, 226, 226, 1) ;
+}
+.customer--orders--box .customer--orderitem:last-child {
+    max-width: 30%;
+    margin-left: auto;
+}
+.customer--orders--box .customer--orderitem:last-child .card {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: 100%;
+}
+.customer--orders--box .customer--orderitem:last-child .card  table {
+    border-color:  rgba(226, 226, 226, 1) !important ;
+}
+
+.customer__new__order_info .order__detsils__customer__btn {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+@media screen and (min-width: 767px) {
+/* .account__information__button {
+   flex-direction: column-reverse;
+}
+.account__information__button .back__button {
+   display: block;
+}
+.account__information__button .continue__button {
+    display: block;
+} */
+}
+
+

@@ -525,7 +525,7 @@ div#content {
     font-weight: 400 !important;
 }
 .module-products-169 .product-grid .product-thumb .price {
-    color: #44BC9D;
+    color: #000;
 }
 .module-products-169 .product-grid .product-thumb .price-old {
     color: rgba(241,96,39,1);
@@ -545,6 +545,7 @@ div#content {
 }
 .ph__price__group_item span {
     font-weight: 400;
+    color: #000;
 }
 .ph__price__group_item.product__sku strong {
     color: #000;
@@ -601,7 +602,7 @@ div#content {
 }
 .recent__view__product__area .price .price-new,
 .related__product__content .price .price-new {
-    color: #44BC9D;
+    color: #000;
 }
 .recent__view__product__area .price .price-old,
 .related__product__content .price .price-old {

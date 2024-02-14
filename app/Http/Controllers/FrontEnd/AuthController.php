@@ -34,8 +34,8 @@ class AuthController extends Controller
 
         // Check if the phone number or email already exist
         $existingUser = User::where('phone', $request->phone)
-                            ->orWhere('email', $request->email)
-                            ->first();
+            ->orWhere('email', $request->email)
+            ->first();
 
         if ($existingUser) {
             Alert::error("Phone number or email already exists!");
@@ -68,7 +68,7 @@ class AuthController extends Controller
     {
         $request->validated();
         $customerAuth = $request->only('phone', 'password');
-        $product_count =0;
+        $product_count = 0;
 
         if (Auth::attempt($customerAuth, true)) {
 
@@ -77,8 +77,8 @@ class AuthController extends Controller
             $product_count = ProductCart::where('session_id', $sessionId)->count();
 
             Alert::success("Logging Successfuly!!");
-            if($product_count > 0){
-                return redirect()->route('checkout_details',['checkout'=>'checkout','product_count'=>$product_count]);
+            if ($product_count > 0) {
+                return redirect()->route('checkout_details', ['checkout' => 'checkout', 'product_count' => $product_count]);
             }
             return redirect()->route('customer_dashboard');
         } else {
@@ -90,7 +90,7 @@ class AuthController extends Controller
     //  Function to logout Customer
     public function logoutCustomer()
     {
-        ProductCart::where('user_id',Auth::id())->delete();
+        ProductCart::where('user_id', Auth::id())->delete();
         Auth::logout();
         // Auth::guard('web')->logout();
         return to_route('home_page');
@@ -107,8 +107,17 @@ class AuthController extends Controller
     public function profileSave(UpdateCustomerProfileRequest $request)
     {
         $user = User::find(auth()->id());
+
         $request->validated();
         if ($user) {
+            if ($request->hasFile('photo')) {
+                if ($request->hasFile('photo')) {
+                    $photo = $request->file('photo');
+                    $originalName = $photo->getClientOriginalName();
+                    $photo->move(public_path('storage/user-photo/'), $originalName);
+                    $user->photo = 'storage/user-photo/' . $originalName;
+                }
+            }
             $user->update([
                 'name'    => $request->name,
                 'email'   => $request->email,

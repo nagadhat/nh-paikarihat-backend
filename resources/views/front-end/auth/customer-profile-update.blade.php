@@ -56,13 +56,26 @@
                                             <textarea name="address" id="input-address" class="form-control" required>{{ $user->address }}</textarea>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <div class="customer_profile_image_uodate">
+
+                                            <img src="{{ !empty($user->photo) ? asset($user->photo) : asset('assets/images/others/error.png') }}" alt="image" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group required account-telephone">
+                                        <label class="col-sm-2 control-label" for="input-image">Photo</label>
+                                        <div class="col-sm-10">
+                                            <input type="file" name="photo" value="{{ $user->photo }}"
+                                                placeholder="Telephone" id="input-image" class="form-control" >
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="account__information__button">
                                     <div class="back__button">
                                         <a href="{{ route('customer_dashboard') }}" class=" ">Back </a>
                                     </div>
                                     <div class="continue__button">
-                                        <button type="submit"><span>Continue</span></button>
+                                        <button type="submit"><span>Submit</span></button>
                                     </div>
                                 </div>
                             </form>

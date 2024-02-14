@@ -4,10 +4,16 @@
 @extends('front-end.layouts.app')
 @section('page_content')
     <div id="account-account" class="container">
-        <ul class="breadcrumb">
-            <li><a href="{{ route('home_page') }}"><i class="fa fa-home"></i></a></li>
-            <li><a href="javascript:void(0)">Account</a></li>
-        </ul>
+        <div class="mobile__toggle__menu__icon">
+            <ul class="breadcrumb">
+                <li><a href="{{ route('home_page') }}"><i class="fa fa-home"></i></a></li>
+                <li><a href="javascript:void(0)">Account</a></li>
+            </ul>
+            <div class="user__dashboard__mobile__icon" onclick="userLeftSidebar()">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+        </div>
+
         {{-- <div class="row">
             <div id="content" class="account-page col-sm-9">
                 <h1 class="title page-title" style="margin:30px 0 15px 0">My Account</h1>
@@ -53,12 +59,10 @@
 
             </div>
         </div> --}}
+       <x-mobile-left-sidebar/>
 
 
         <div class="user__dasboard__section__wrapp">
-            <div class="user__dashboard__mobile__icon">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-            </div>
             <div class="user__dasboard__section row">
                 <x-left-sidebar/>
                 <div class="user__dasboard__section__right col-xs-12 col-sm-9 ">
@@ -102,3 +106,4 @@
         </div>
     </div>
 @endsection
+

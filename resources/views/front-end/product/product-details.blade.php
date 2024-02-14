@@ -76,14 +76,14 @@
                                                 <span>Price:</span>
                                                 @if ($products->discount_amount > 0)
                                                     <strong>
-                                                        <span class="price-new">৳ {{ $disPrice }}</span>
+                                                        <span class="price-new">{{ $disPrice }} ৳ </span>
                                                         <span class="price-old">
-                                                            <del>৳  {{ $products->price }}</del>
+                                                            <del> {{ $products->price }} ৳ </del>
                                                         </span>
                                                     </strong>
                                                 @else
                                                     <strong>
-                                                        <small class="price-new">৳ {{ $products->price }}</small>
+                                                        <small class="price-new">{{ $products->price }} ৳ </small>
                                                     </strong>
                                                 @endif
                                             </div>
@@ -232,12 +232,12 @@
                                                                                         <div>
                                                                                             @if ($product->discount_amount > 0)
                                                                                                 <span
-                                                                                                    class="price-new">৳ {{ $disPrice }} </span>
+                                                                                                    class="price-new"> {{ $disPrice }} ৳  </span>
                                                                                                 <span
-                                                                                                    class="price-old">৳ {{ $product->price }}</span>
+                                                                                                    class="price-old"> {{ $product->price }} ৳ </span>
                                                                                             @else
                                                                                                 <span
-                                                                                                    class="price-new">৳ {{ $product->price }}</span>
+                                                                                                    class="price-new"> {{ $product->price }} ৳ </span>
                                                                                             @endif
                                                                                         </div>
                                                                                     </div>
@@ -344,12 +344,12 @@
                                                                                         <div>
                                                                                             @if ($product->discount_amount > 0)
                                                                                                 <span
-                                                                                                    class="price-new">৳ {{ $disPrice }} </span>
+                                                                                                    class="price-new"> {{ $disPrice }} ৳  </span>
                                                                                                 <span
-                                                                                                    class="price-old">৳ {{ $product->price }} </span>
+                                                                                                    class="price-old"> {{ $product->price }} ৳  </span>
                                                                                             @else
                                                                                                 <span
-                                                                                                    class="price-new">৳ {{ $product->price }} </span>
+                                                                                                    class="price-new"> {{ $product->price }} ৳  </span>
                                                                                             @endif
                                                                                         </div>
                                                                                     </div>

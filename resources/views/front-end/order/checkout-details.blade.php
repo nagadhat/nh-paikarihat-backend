@@ -295,7 +295,7 @@
                                                                         </p>
                                                                     </td>
                                                                     <td class="qc-price  ">
-                                                                        ৳ {{ isset($products->unit_price) ? $products->unit_price : '' }}
+                                                                         {{ isset($products->unit_price) ? $products->unit_price : '' }} ৳
                                                                     </td>
                                                                     <td class="qc-quantity">
                                                                         <div class="input-group input-group-sm">
@@ -341,7 +341,7 @@
                                                                     </td>
                                                                     <td class="text-center td-total"
                                                                         id="subTotal_{{ $i }}">
-                                                                        ৳ {{ $products->unit_price * $products->quantity }}
+                                                                         {{ $products->unit_price * $products->quantity }} ৳
                                                                     </td>
                                                                     <td style="text-align: center">
                                                                         <span class="input-group-btn">
@@ -367,7 +367,7 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <span id="productPrice">
-                                                                    ৳ {{ isset($totalprice) ? $totalprice : '' }}
+                                                                     {{ isset($totalprice) ? $totalprice : '' }} ৳
                                                                 </span>
                                                                 <input id="productPriceval" type="hidden" name="price"
                                                                     value="{{ isset($totalprice) ? $totalprice : '' }}">
@@ -379,7 +379,7 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right"
                                                                 id="discount_increment">
-                                                                ৳ {{ isset($totaldiscount) ? $totaldiscount : '' }}
+                                                                 {{ isset($totaldiscount) ? $totaldiscount : '' }} ৳
 
                                                                 <input type="hidden" id="Discount"
                                                                     name="discount_amount_old"
@@ -404,12 +404,12 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <p id="insideDhakaCharge" class="text-white">
-                                                                    <span> ৳ 60</span>
+                                                                    <span>  60 ৳</span>
 
                                                                 </p>
                                                                 <p id="outsideDhakaCharge" class="text-white"
                                                                     style="display: none">
-                                                                    <span> ৳ 120</span>
+                                                                    <span>  120 ৳</span>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -425,7 +425,7 @@
                                                                 name="discount_amount" value="{{ $totaldiscount }}">
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right"
                                                                 id="grandTotal">
-                                                                ৳ {{ isset($totalprice) && isset($totaldiscount) ? $totalprice + 60 - $totaldiscount : '' }}
+                                                                 {{ isset($totalprice) && isset($totaldiscount) ? $totalprice + 60 - $totaldiscount : '' }} ৳
                                                             </div>
                                                         </div>
                                                     </div>

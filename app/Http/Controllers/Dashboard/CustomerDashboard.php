@@ -13,8 +13,9 @@ class CustomerDashboard extends Controller
     {
         $UserCount = User::count();
         $OrderCount = Order::count();
+        $PendingOrder = Order::where('status', 1)->count();
         $ProcessingOrder = Order::where('status', 3)->count();
         $DeliveredOrderCount = Order::where('status', 4)->count();
-        return view('customer.dashboard', compact('OrderCount', 'ProcessingOrder','DeliveredOrderCount','UserCount'));
+        return view('customer.dashboard', compact('PendingOrder','OrderCount', 'ProcessingOrder','DeliveredOrderCount','UserCount'));
     }
 }

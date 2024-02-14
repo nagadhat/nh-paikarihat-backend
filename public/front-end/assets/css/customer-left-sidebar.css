@@ -1,0 +1,67 @@
+.user__dasboard__section {
+    display: flex;
+}
+
+.user__dasboard__menu {
+    display: flex;
+    flex-direction: column;
+}
+.user__dasboard__sidebar {
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    position: relative;
+    padding: 15px;
+}
+.user__dasboard__section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.user__dasboard__menu a {
+    padding-bottom: 10px;
+    font-size: 15px;
+    color: #000;
+    font-weight: 400;
+    text-transform: capitalize;
+    font-family: 'Hind Siliguri';
+}
+.user__dasboard__menu a:hover {
+    color: #f16027;
+    font-weight: 500;
+}
+.user__dasboard__menu a i {
+    font-size: 20px;
+    padding-right: 6px;
+}
+.user__dasboard__sidebar .user__dasboard__photo {
+    padding-bottom: 10px;
+    text-align: center;
+}
+.user__dasboard__sidebar .user__dasboard__photo img {
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+.user__dasboard__profile__info {
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.user__dasboard__profile__info .name {
+    font-weight: 700;
+}
+.user__dasboard__profile {
+    padding-bottom: 30px;
+}
+.user__dasboard__menu .active {
+    color: #f16027;
+}
+.user__dasboard__menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/* end left sidbar css */

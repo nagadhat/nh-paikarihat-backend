@@ -1,19 +1,7 @@
 .user__dasboard__section {
     display: flex;
 }
-/* .user__dasboard__section__left {
-    max-width: 25%;
-    flex-basis: 25%;
-    flex-shrink: 1;
-    padding-right: 15px;
-}
-.user__dasboard__section__right {
-    max-width: 75%;
-    flex-basis: 75%;
-    flex-shrink: 1;
-    padding-left: 15px;
-    padding-right: 15px;
-} */
+
 .user__dasboard__menu {
     display: flex;
     flex-direction: column;
@@ -76,6 +64,9 @@
     align-items: center;
     gap: 10px;
 }
+/* end left sidbar css */
+
+
 .user__dasboard__box__bg {
     position: relative;
     height: 100%;
@@ -147,9 +138,11 @@
 .account__information__button {
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 12px;
 }
 .account__information__button .back__button {
-   max-width: 88px;
+   max-width: max-content;
    flex: 1;
    flex-shrink: 1;
 }
@@ -163,11 +156,10 @@
     border-radius: 3px;
 }
 .account__information__button .continue__button {
-    flex: 1;
    flex-shrink: 1;
 }
 .account__information__button .continue__button button {
-    width: 100%;
+    width: max-content;
     background: rgba(241,96,39);
     color: #fff;
     font-size: 16px;
@@ -184,7 +176,9 @@
 .account__information__form h1 {
     margin-bottom: 20px;
 }
-.customer__password__change .account__information__button .back__button,
+.customer__password__change .account__information__button .back__button {
+    max-width: max-content;
+}
 .account__information__area .customer__password__change .account__information__form .control-label {
     max-width: 130px;
 }
@@ -273,18 +267,99 @@
     justify-content: center;
 }
 
+.user__dashboard__mobile__icon {
+    display: none;
+}
 
 
-@media screen and (min-width: 767px) {
-/* .account__information__button {
-   flex-direction: column-reverse;
+/* user mobile left sidebar css */
+td.order__history__option {
+    display: inline-flex;
 }
-.account__information__button .back__button {
-   display: block;
+.user__mobile__menu__dashboard {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .5);
+    position: fixed;
+    height: calc(100vh - 0px);
+    top: 0;
+    left: -100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: 200ms linear;
+    z-index: 999;
 }
-.account__information__button .continue__button {
-    display: block;
-} */
+.user__mobile__menu__dashboard .user__dasboard__sidebar {
+    position: relative;
+    z-index: 9999;
+    width: 320px;
+    max-width: 100%;
+    background: #fff;
+    overflow-y: auto;
+    padding: 0;
+}
+.activeleftsidebar .user__mobile__menu__dashboard {
+    visibility: visible;
+    opacity: 1;
+    left: 0;
+}
+.user__mobile__menu__dashboard .user__dasboard__profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #44bc9d ;
+    padding: 10px 20px;
+    width: 100%;
+}
+.user__mobile__menu__dashboard .user__dasboard__profile>div {
+    flex: 1;
+}
+.user__mobile__menu__dashboard .user__dasboard__sidebar .user__dasboard__photo img {
+    width: 60px;
+    height: 60px;
+}
+.user__mobile__menu__dashboard .user__dasboard__profile__info {
+    gap: 4px;
+}
+.user__mobile__menu__dashboard .user__dasboard__menu {
+    padding:20px;
+}
+.user__mobile__menu__dashboard .user__dasboard__profile__crose {
+   display: grid;
+   justify-content: end;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.mobile__toggle__menu__icon {
+    position: relative;
+}
+.mobile__toggle__menu__icon .user__dashboard__mobile__icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    color: #fff;
+    font-size: 20px;
+}
+
+
+@media screen and (max-width: 767px) {
+    .user__dasboard__section__left {
+        display: none;
+    }
+    .user__dashboard__mobile__icon {
+        display: block;
+    }
+
+}
+@media screen and (max-width: 470px) {
+    .mobile__toggle__menu__icon .breadcrumb {
+        display: block !important;
+    }
+
 }
 
 

@@ -10,7 +10,6 @@
                 <li><a href="{{ route('customer_dashboard') }}">Account</a></li>
                 <li><a href="javascript:void(0)">Order History</a></li>
             </ul>
-
         </div>
         <x-mobile-left-sidebar/>
 

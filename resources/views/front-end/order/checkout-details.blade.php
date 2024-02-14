@@ -290,7 +290,7 @@
                                                                         <p
                                                                             style="background:{{ $products->product->product_type == 'PRE' ? '#FED430' : 'none' }}; color:#000; width:max-content; padding:2px 8px;font-weight:700 ">
                                                                             @if ($products->product->product_type != 'REG')
-                                                                                Pre Product
+                                                                                Pre Order
                                                                             @endif
                                                                         </p>
                                                                     </td>

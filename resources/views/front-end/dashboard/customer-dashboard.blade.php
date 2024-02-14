@@ -27,25 +27,25 @@
                             <div class="user__dasboard__box__item col-xs-6 col-sm-6 col-md-3">
                                 <div class="user__dasboard__box__bg">
                                     <h3>Order</h3>
-                                    <span>10</span>
+                                    <span>{{ isset($CustomerProductCount) ? $CustomerProductCount :'0' }}</span>
                                 </div>
                             </div>
                             <div class="user__dasboard__box__item col-xs-6 col-sm-6 col-md-3">
                                 <div class="user__dasboard__box__bg">
                                     <h3>processing</h3>
-                                    <span>20</span>
+                                    <span>{{ isset($ProcessingProductCount) ? $ProcessingProductCount : '0'}}</span>
                                 </div>
                             </div>
                             <div class="user__dasboard__box__item col-xs-6 col-sm-6 col-md-3">
                                 <div class="user__dasboard__box__bg">
                                     <h3>receive order </h3>
-                                    <span>10</span>
+                                    <span>{{ isset($DeliveredProductCount) ?  $DeliveredProductCount : '0'}}</span>
                                 </div>
                             </div>
                             <div class="user__dasboard__box__item col-xs-6 col-sm-6 col-md-3">
                                 <div class="user__dasboard__box__bg">
                                     <h3>in Cart</h3>
-                                    <span>02</span>
+                                    <span>{{ isset($CustomerCartCount) ? $CustomerCartCount : '0'}}</span>
                                 </div>
                             </div>
                         </div>

@@ -69,6 +69,21 @@
                                 <i class="anticon anticon-user"></i>
                             </div>
                             <div class="m-l-15">
+                                <h2 class="m-b-0">{{ isset($PendingOrder) ? $PendingOrder : '0'}}</h2>
+                                <p class="m-b-0 text-muted">Pending Order</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="media align-items-center">
+                            <div class="avatar avatar-icon avatar-lg avatar-purple">
+                                <i class="anticon anticon-user"></i>
+                            </div>
+                            <div class="m-l-15">
                                 <h2 class="m-b-0">{{ isset($ProcessingOrder) ? $ProcessingOrder : '0'}}</h2>
                                 <p class="m-b-0 text-muted">Processing Order</p>
                             </div>

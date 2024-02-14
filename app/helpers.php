@@ -32,7 +32,6 @@ if (!function_exists("product_count")) {
 if (!function_exists("user_info")) {
     function user_info()
     {
-    
         $user = auth()->user();
         return $user;
     }

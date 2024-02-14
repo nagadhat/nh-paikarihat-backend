@@ -208,5 +208,17 @@
     font-size: 30px;
     padding-bottom: 10px;
 }
+.customer_profile_image_uodate {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+.customer_profile_image_uodate img {
+    width: 100px;
+    height: 80px;
+    object-fit: scale-down;
+
+}
 
 

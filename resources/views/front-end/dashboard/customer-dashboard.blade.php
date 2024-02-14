@@ -26,24 +26,28 @@
                         <div class="user__dasboard__box__holder row">
                             <div class="user__dasboard__box__item col-xs-6 col-sm-6 col-md-3">
                                 <div class="user__dasboard__box__bg">
+                                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                                     <h3>Order</h3>
                                     <span>{{ isset($CustomerProductCount) ? $CustomerProductCount :'0' }}</span>
                                 </div>
                             </div>
                             <div class="user__dasboard__box__item col-xs-6 col-sm-6 col-md-3">
                                 <div class="user__dasboard__box__bg">
+                                    <i class="fa fa-spinner" aria-hidden="true"></i>
                                     <h3>processing</h3>
                                     <span>{{ isset($ProcessingProductCount) ? $ProcessingProductCount : '0'}}</span>
                                 </div>
                             </div>
                             <div class="user__dasboard__box__item col-xs-6 col-sm-6 col-md-3">
                                 <div class="user__dasboard__box__bg">
+                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
                                     <h3>receive order </h3>
                                     <span>{{ isset($DeliveredProductCount) ?  $DeliveredProductCount : '0'}}</span>
                                 </div>
                             </div>
                             <div class="user__dasboard__box__item col-xs-6 col-sm-6 col-md-3">
                                 <div class="user__dasboard__box__bg">
+                                    <i class="fa fa-cart-plus" aria-hidden="true" style=""></i>
                                     <h3>in Cart</h3>
                                     <span>{{ isset($CustomerCartCount) ? $CustomerCartCount : '0'}}</span>
                                 </div>

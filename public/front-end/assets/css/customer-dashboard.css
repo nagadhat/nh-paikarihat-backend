@@ -1,71 +1,3 @@
-.user__dasboard__section {
-    display: flex;
-}
-
-.user__dasboard__menu {
-    display: flex;
-    flex-direction: column;
-}
-.user__dasboard__sidebar {
-    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
-    height: 100%;
-    position: relative;
-    padding: 15px;
-}
-.user__dasboard__section {
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-.user__dasboard__menu a {
-    padding-bottom: 10px;
-    font-size: 15px;
-    color: #000;
-    font-weight: 400;
-    text-transform: capitalize;
-    font-family: 'Hind Siliguri';
-}
-.user__dasboard__menu a:hover {
-    color: #f16027;
-    font-weight: 500;
-}
-.user__dasboard__menu a i {
-    font-size: 20px;
-    padding-right: 6px;
-}
-.user__dasboard__sidebar .user__dasboard__photo {
-    padding-bottom: 10px;
-    text-align: center;
-}
-.user__dasboard__sidebar .user__dasboard__photo img {
-    height: 110px;
-    width: 110px;
-    border-radius: 50%;
-    margin: 0 auto;
-}
-.user__dasboard__profile__info {
-    text-align: center;
-    font-size: 14px;
-    color: #000;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.user__dasboard__profile__info .name {
-    font-weight: 700;
-}
-.user__dasboard__profile {
-    padding-bottom: 30px;
-}
-.user__dasboard__menu .active {
-    color: #f16027;
-}
-.user__dasboard__menu a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-/* end left sidbar css */
-
 
 .user__dasboard__box__bg {
     position: relative;
@@ -73,7 +5,7 @@
     text-align: center;
     border: 1px solid rgba(226, 226, 266, .6);
     border-radius: 10px;
-    padding: 30px 15px;
+    padding: 20px 15px;
     background: rgba(65, 65, 66, .8);
     color: #fff;
     box-shadow: 14px 14px 16px 0px rgba(0, 0, 0, 0.1);
@@ -105,6 +37,7 @@
     font-size: 17px;
     text-transform: capitalize;
     word-break: break-all;
+    margin-bottom: 2px;
 }
 .user__dasboard__box__bg span {
     font-size: 18px;
@@ -271,95 +204,9 @@
     display: none;
 }
 
-
-/* user mobile left sidebar css */
-td.order__history__option {
-    display: inline-flex;
-}
-.user__mobile__menu__dashboard {
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, .5);
-    position: fixed;
-    height: calc(100vh - 0px);
-    top: 0;
-    left: -100%;
-    visibility: hidden;
-    opacity: 0;
-    transition: 200ms linear;
-    z-index: 999;
-}
-.user__mobile__menu__dashboard .user__dasboard__sidebar {
-    position: relative;
-    z-index: 9999;
-    width: 320px;
-    max-width: 100%;
-    background: #fff;
-    overflow-y: auto;
-    padding: 0;
-}
-.activeleftsidebar .user__mobile__menu__dashboard {
-    visibility: visible;
-    opacity: 1;
-    left: 0;
-}
-.user__mobile__menu__dashboard .user__dasboard__profile {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background: #44bc9d ;
-    padding: 10px 20px;
-    width: 100%;
-}
-.user__mobile__menu__dashboard .user__dasboard__profile>div {
-    flex: 1;
-}
-.user__mobile__menu__dashboard .user__dasboard__sidebar .user__dasboard__photo img {
-    width: 60px;
-    height: 60px;
-}
-.user__mobile__menu__dashboard .user__dasboard__profile__info {
-    gap: 4px;
-}
-.user__mobile__menu__dashboard .user__dasboard__menu {
-    padding:20px;
-}
-.user__mobile__menu__dashboard .user__dasboard__profile__crose {
-   display: grid;
-   justify-content: end;
-    color: #fff;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.mobile__toggle__menu__icon {
-    position: relative;
-}
-.mobile__toggle__menu__icon .user__dashboard__mobile__icon {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 999;
-    color: #fff;
-    font-size: 20px;
-}
-
-
-@media screen and (max-width: 767px) {
-    .user__dasboard__section__left {
-        display: none;
-    }
-    .user__dashboard__mobile__icon {
-        display: block;
-    }
-
-}
-@media screen and (max-width: 470px) {
-    .mobile__toggle__menu__icon .breadcrumb {
-        display: block !important;
-    }
-
+.user__dasboard__box__item  .user__dasboard__box__bg i{
+    font-size: 30px;
+    padding-bottom: 10px;
 }
 
 

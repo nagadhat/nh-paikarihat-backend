@@ -10,6 +10,9 @@
                 <li><a href="{{ route('customer_dashboard') }}">Account</a></li>
                 <li><a href="javascript:void(0)">Edit Information</a></li>
             </ul>
+            <div class="user__dashboard__mobile__icon" onclick="userLeftSidebar()">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
         </div>
         <x-mobile-left-sidebar />
         <div class="user__dasboard__section__wrapp account__information__area">

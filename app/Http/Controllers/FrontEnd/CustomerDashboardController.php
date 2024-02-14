@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\User;
 use App\Models\Order;
 use App\Models\ProductCart;
 use Illuminate\Http\Request;

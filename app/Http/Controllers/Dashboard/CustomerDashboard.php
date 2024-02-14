@@ -18,4 +18,10 @@ class CustomerDashboard extends Controller
         $DeliveredOrderCount = Order::where('status', 4)->count();
         return view('customer.dashboard', compact('PendingOrder','OrderCount', 'ProcessingOrder','DeliveredOrderCount','UserCount'));
     }
+
+    public function customerLeftSideBar()
+    {
+        $user = auth()->user();
+        return view('components.left-sidebar',compact('user'));
+    }
 }

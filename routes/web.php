@@ -121,6 +121,8 @@ Route::match(['get', 'post'], '/order-landing-product', [LandingPageController::
 Route::prefix('/customer')->middleware('customer')->group(function () {
     // Route::get('/{id?}', [CustomerDashboardController::class, 'customerDashboard'])->name('customer_dashboard');
     Route::get('/', [CustomerDashboardController::class, 'customerDashboard'])->name('customer_dashboard');
+    Route::get('customer-left-sidebar', [CustomerDashboardController::class, 'customerLeftSideBar'])->name('customer_left_sidebar');
+    
     Route::get('/customer-profile-update', [AuthController::class, 'profileUpdate'])->name('customer_profile_update');
     Route::post('/customer-profile-update-save', [AuthController::class, 'profileSave'])->name('customer_profile_update_save');
     Route::get('/customer-password-change', [AuthController::class, 'customerPassword'])->name('customer_password');

@@ -28,3 +28,12 @@ if (!function_exists("product_count")) {
         return $product_count ? $product_count : 0;
     }
 }
+
+if (!function_exists("user_info")) {
+    function user_info()
+    {
+    
+        $user = auth()->user();
+        return $user;
+    }
+}

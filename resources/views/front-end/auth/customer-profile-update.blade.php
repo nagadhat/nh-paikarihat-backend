@@ -10,7 +10,9 @@
                 <li><a href="{{ route('customer_dashboard') }}">Account</a></li>
                 <li><a href="javascript:void(0)">Edit Information</a></li>
             </ul>
-
+            <div class="user__dashboard__mobile__icon" onclick="userLeftSidebar()">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
         </div>
 
         <x-mobile-left-sidebar />
@@ -61,7 +63,7 @@
                                         <a href="{{ route('customer_dashboard') }}" class=" ">Back </a>
                                     </div>
                                     <div class="continue__button">
-                                        <button type="submit"><span>Continue</span></button>
+                                        <button type="submit"><span>Submit</span></button>
                                     </div>
                                 </div>
                             </form>

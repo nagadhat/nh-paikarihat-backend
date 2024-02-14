@@ -61,26 +61,7 @@
 
         <div class="user__dasboard__section__wrapp account__information__area">
             <div class="user__dasboard__section row">
-                <div class="user__dasboard__section__left col-xs-12 col-sm-3 ">
-                    <div class="user__dasboard__sidebar">
-                        <div class="user__dasboard__profile">
-                            <div class="user__dasboard__photo">
-                                <img src="{{ asset('front-end/assets/image/user-photo/user1.jpg') }}" alt="">
-                            </div>
-                            <div class="user__dasboard__profile__info">
-                                <div class="name">Anjam Akash</div>
-                                <div class="phone">01258758574</div>
-                            </div>
-                        </div>
-                        <div class="user__dasboard__menu">
-                            <a href="#" class="active"><i class="fa fa-server" aria-hidden="true"></i> Dashboard</a>
-                            <a href="#"><i class="fa fa-history" aria-hidden="true"></i> order history </a>
-                            <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Account </a>
-                            <a href="#"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Change Password</a>
-                            <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
-                        </div>
-                    </div>
-                </div>
+                <x-left-sidebar/>
                 <div class="user__dasboard__section__right col-xs-12 col-sm-9 ">
                     <div class="user__dasboard__content">
                         <div class="account__information__form">

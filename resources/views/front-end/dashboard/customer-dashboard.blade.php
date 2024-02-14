@@ -57,7 +57,7 @@
 
         <div class="user__dasboard__section__wrapp">
             <div class="user__dashboard__mobile__icon">
-
+                <i class="fa fa-bars" aria-hidden="true"></i>
             </div>
             <div class="user__dasboard__section row">
                 <x-left-sidebar/>

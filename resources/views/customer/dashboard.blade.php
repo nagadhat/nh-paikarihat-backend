@@ -39,22 +39,7 @@
                                 <i class="anticon anticon-user"></i>
                             </div>
                             <div class="m-l-15">
-                                <h2 class="m-b-0">1,832</h2>
-                                <p class="m-b-0 text-muted">Total User</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media align-items-center">
-                            <div class="avatar avatar-icon avatar-lg avatar-purple">
-                                <i class="anticon anticon-user"></i>
-                            </div>
-                            <div class="m-l-15">
-                                <h2 class="m-b-0">1,832</h2>
+                                <h2 class="m-b-0">{{ isset($UserCount) ? $UserCount : '0'}}</h2>
                                 <p class="m-b-0 text-muted">Total Customer</p>
                             </div>
                         </div>
@@ -69,8 +54,8 @@
                                 <i class="anticon anticon-user"></i>
                             </div>
                             <div class="m-l-15">
-                                <h2 class="m-b-0">1,832</h2>
-                                <p class="m-b-0 text-muted">Total Supplier</p>
+                                <h2 class="m-b-0">{{ isset($OrderCount) ? $OrderCount : '0'}}</h2>
+                                <p class="m-b-0 text-muted">Total Order</p>
                             </div>
                         </div>
                     </div>
@@ -84,8 +69,23 @@
                                 <i class="anticon anticon-user"></i>
                             </div>
                             <div class="m-l-15">
-                                <h2 class="m-b-0">1,832</h2>
-                                <p class="m-b-0 text-muted">Total Order</p>
+                                <h2 class="m-b-0">{{ isset($ProcessingOrder) ? $ProcessingOrder : '0'}}</h2>
+                                <p class="m-b-0 text-muted">Processing Order</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="media align-items-center">
+                            <div class="avatar avatar-icon avatar-lg avatar-purple">
+                                <i class="anticon anticon-user"></i>
+                            </div>
+                            <div class="m-l-15">
+                                <h2 class="m-b-0">{{ isset($DeliveredOrderCount) ? $DeliveredOrderCount : '0' }}</h2>
+                                <p class="m-b-0 text-muted">Delivered Order</p>
                             </div>
                         </div>
                     </div>

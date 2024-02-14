@@ -8,7 +8,7 @@
             <li><a href="{{ route('home_page') }}"><i class="fa fa-home"></i></a></li>
             <li><a href="javascript:void(0)">Account</a></li>
         </ul>
-        <div class="row">
+        {{-- <div class="row">
             <div id="content" class="account-page col-sm-9">
                 <h1 class="title page-title" style="margin:30px 0 15px 0">My Account</h1>
                 <div class="my-account">
@@ -50,14 +50,54 @@
                         </li>
                     </ul>
                 </div>
-                {{-- <div class="my-affiliates">
-                    <h2 class="title">My Affiliate Account</h2>
-                    <ul class="list-unstyled account-list">
-                        <li class="affiliate-add"><a
-                                href="javascript: void(0)">Register for an affiliate
-                                account</a></li>
-                    </ul>
-                </div> --}}
+
+            </div>
+        </div> --}}
+
+
+        <div class="user__dasboard__section__wrapp">
+            <div class="user__dashboard__mobile__icon">
+
+            </div>
+            <div class="user__dasboard__section row">
+                <x-left-sidebar/>
+                <div class="user__dasboard__section__right col-xs-12 col-sm-9 ">
+                    <div class="user__dasboard__content">
+                        <div class="user__dasboard__content__title">
+                            <p>dashboard</p>
+                        </div>
+                        <div class="user__dasboard__box__holder__wrapp">
+                        <div class="user__dasboard__box__holder row">
+                            <div class="user__dasboard__box__item col-xs-6 col-sm-6 col-md-3">
+                                <div class="user__dasboard__box__bg">
+                                    <h3>Order</h3>
+                                    <span>10</span>
+                                </div>
+                            </div>
+                            <div class="user__dasboard__box__item col-xs-6 col-sm-6 col-md-3">
+                                <div class="user__dasboard__box__bg">
+                                    <h3>processing</h3>
+                                    <span>20</span>
+                                </div>
+                            </div>
+                            <div class="user__dasboard__box__item col-xs-6 col-sm-6 col-md-3">
+                                <div class="user__dasboard__box__bg">
+                                    <h3>receive order </h3>
+                                    <span>10</span>
+                                </div>
+                            </div>
+                            <div class="user__dasboard__box__item col-xs-6 col-sm-6 col-md-3">
+                                <div class="user__dasboard__box__bg">
+                                    <h3>in Cart</h3>
+                                    <span>02</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

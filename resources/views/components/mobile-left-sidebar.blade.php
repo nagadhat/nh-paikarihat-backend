@@ -2,7 +2,7 @@
     <div class="user__dasboard__sidebar">
         <div class="user__dasboard__profile">
             <div class="user__dasboard__photo">
-                <img src="{{ asset('front-end/assets/image/user-photo/user1.jpg') }}" alt="">
+                <img src="{{ !empty(user_info()->photo) ? asset(user_info()->photo) : asset('front-end/assets/image/user-photo/user1.jpg') }}" alt="">
             </div>
             <div class="user__dasboard__profile__info">
                 <div class="name">{{ user_info()->name }}</div>

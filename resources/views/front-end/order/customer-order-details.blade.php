@@ -10,8 +10,8 @@
             <li><a href="javascript:void(0)">Order Details</a></li>
         </ul>
         <div class="row">
-            <div id="content" class="col-sm-9">
-                <div class="row">
+            <div id="content" class="col-sm-9 customer__new__order_info">
+                <div class="row customer__new__order_row">
                     <div class="col-md-12" style="margin-top: 30px">
                         <div>
                             <div class="card">
@@ -122,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="customer__orders" style="padding-top: 30px">
+                <div class="customer__orders customer--orders--box" >
                     <div class="customer__orderitem customer--orderitem">
                         <div class="card mt-4">
                             <div class="card-header py-2">
@@ -218,11 +218,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="buttons clearfix">
-                    <div class="pull-left">
+
+                    <div class="order__detsils__customer__btn">
                         <a href="{{ route('customer_dashboard') }}" class="btn btn-default">Back</a>
                     </div>
-                </div>
+
             </div>
         </div>
     </div>

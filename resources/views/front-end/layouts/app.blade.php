@@ -399,6 +399,7 @@
         <!-- End Google Tag Manager (noscript) -->
         @yield('scripts')
 
+
     </div>
 </body>
 

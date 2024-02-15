@@ -19,23 +19,22 @@
      {{-- og meta --}}
      <meta property="og:type" content="website">
      <meta property="og:url" content="{{ url()->current() }}">
-
      @if (isset($product))
          <meta property="og:title" content="{{ $product['title'] }}">
          <meta property="og:description"
              content="{{ substr(strip_tags($product['long_description']), 0, 200) . '....' }}">
          <meta property="og:image"
-             content="{{ isset($product['photo']) && $product['photo'] != '' ? $product->photo : 'https://nagadhat.com.bd/web-files/og-meta.png' }}">
+             content="{{ isset($product['photo']) && $product['photo'] != '' ? $product->photo : 'https://paikarihat.nagadhat.com.bd/web-files/og-meta.png' }}">
      @else
-         <meta property="og:title" content="Order now from nagadhat.com.bd: Visit our website for exclusive offers.">
+         <meta property="og:title" content="Order now from paikarihat.nagadhat.com.bd: Visit our website for exclusive offers.">
          <meta property="og:description"
-             content="Paikarihat Bangladesh Ltd is your ultimate online shopping destination in Dhaka and across Bangladesh, offering a vast selection of over 1 million products. With our extensive range, we bring convenience and variety right to your fingertips. Whether you're in Dhaka or anywhere else in Bangladesh, we've got you covered with our multiple outlets conveniently located across the country.">
-         <meta property="og:image" content="https://nagadhat.com.bd/web-files/og-meta.png">
+             content="Paikarihat Bangladesh is your ultimate online shopping destination in Dhaka and across Bangladesh, offering a vast selection of over 1 million products. With our extensive range, we bring convenience and variety right to your fingertips. Whether you're in Dhaka or anywhere else in Bangladesh, we've got you covered with our multiple outlets conveniently located across the country.">
+         <meta property="og:image" content="https://paikarihat.nagadhat.com.bd/web-files/og-meta.png">
      @endif
      {{-- /og meta --}}
 
      {{-- facebook domain verification --}}
-     <meta name="facebook-domain-verification" content="f5xejsz6newphrvysr0zhll2lyidpf" />
+     <meta name="facebook-domain-verification" content="f5xejsz6newphrvysr0zhll2lyidpf"/>
      {{-- end facebook domain verification --}}
 
      <!-- Meta Pixel Code -->

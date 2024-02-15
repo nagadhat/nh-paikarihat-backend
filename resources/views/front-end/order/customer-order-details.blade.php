@@ -30,7 +30,7 @@
                                                     <tr>
                                                         <td>
                                                             <span>
-                                                                Order Code:
+                                                                Invoice:
                                                             </span>
                                                         </td>
                                                         <td>{{ $order->order_prefix . $order->order_code }}</td>
@@ -43,7 +43,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            Customer Phone:
+                                                            Phone:
                                                         </td>
                                                         <td>{{ $order->customer_phone }}</td>
                                                     </tr>
@@ -103,14 +103,6 @@
                                                                 @else
                                                                 <span style="font-size:12px" class="badge bg-success text-dark px-3 py-2 text-md font-weight-bold">Not Approve</span>
                                                             @endif
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Total order amount:
-                                                        </td>
-                                                        <td>
-                                                            {{ $order->total_amount }} TAKA
                                                         </td>
                                                     </tr>
                                                 </tbody>

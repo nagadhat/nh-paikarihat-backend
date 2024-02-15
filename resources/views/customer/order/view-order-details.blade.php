@@ -27,7 +27,7 @@
                                             <tr>
                                                 <td>
                                                     <span>
-                                                        Order Code:
+                                                        Invoice:
                                                     </span>
                                                 </td>
                                                 <td>{{ $order->order_prefix . $order->order_code }}</td>
@@ -40,7 +40,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    Customer Phone:
+                                                    Phone:
                                                 </td>
                                                 <td>{{ $order->customer_phone }}</td>
                                             </tr>
@@ -93,14 +93,6 @@
                                                                 class="dropdown-item" type="button">Paid</a>
                                                         </div>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Total order amount:
-                                                </td>
-                                                <td> &#2547;
-                                                    {{ $order->total_amount }}
                                                 </td>
                                             </tr>
                                             <tr>

@@ -108,7 +108,7 @@
                                 <label for="" class="form-label">Inside Side Dhaka<span
                                         class="text-danger"></span> :</label>
                                 <input type="text" name="inside_dhaka" value="60" id=""
-                                    class="form-control">
+                                    class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -116,7 +116,7 @@
                                 <label for="" class="form-label">Outside Side Dhaka<span
                                         class="text-danger"></span> :</label>
                                 <input type="text" name="outside_dhaka" value="120" id=""
-                                    class="form-control">
+                                    class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">

@@ -379,12 +379,13 @@
             <script src="{{ asset('front-end/assets/theme/lib/jquery/jquery-2.1.1.minf13b.js') }}"></script>
             <script src="{{ asset('front-end/assets/javascript/toastr.min.js') }}"></script>
             <script src="{{ asset('front-end/assets/javascript/script.js') }}" type="text/javascript"></script>
-            <script src="{{ asset('front-end/assets/javascript/userleftsidebar.js') }}"></script>
             <script src="{{ asset('front-end/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
             {{-- data table js --}}
             <script src="{{ asset('assets/vendors/datatables/jquery.dataTables.min.js') }}"></script>
             <script src="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.js') }}"></script>
+            <script src="{{ asset('front-end/assets/javascript/userleftsidebar.js') }}"></script>
+
 
             @include('sweetalert::alert')
             {!! Toastr::message() !!}

@@ -5,7 +5,7 @@ function userLeftSidebar() {
 
 // function to cart hover icon
 $(document).ready(function(){
-    $('#cart a.cart-heading i').hover(function(){
+    $('.nh_cart_quantity_icon a.cart-heading i').hover(function(){
         $(this).css('background','#f16027');
     }, function(){
         $(this).css('background','#3abc9b');

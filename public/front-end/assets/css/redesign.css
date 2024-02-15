@@ -679,14 +679,8 @@ border: 0;
     background: rgb(241,96,39) !important;
  }
 
-/* .desktop #cart.dropdown>a:hover {
-    background: rgba(241,96,39,1) !important;
-  } */
 
-.desktop-cart-wrapper .dropdown a.cart-heading:hover{
-    background: rgba(241,96,39,1) !important;
-}
-  
+
  /* faisal */
  .login-box .well {
     padding-top: 0;

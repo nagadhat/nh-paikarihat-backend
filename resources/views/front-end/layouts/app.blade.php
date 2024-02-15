@@ -227,7 +227,7 @@
                         </div>
                     </div>
                     <div class="desktop-cart-wrapper default-cart-wrapper">
-                        <div id="cart" class="dropdown">
+                        <div id="cart" class="dropdown nh_cart_quantity_icon">
                             <a class="dropdown-toggle cart-heading" href="{{ route('add_to_cart') }}">
                                 <i class="fa fa-shopping-cart">
                                     <span class="cart-label">Cart</span>

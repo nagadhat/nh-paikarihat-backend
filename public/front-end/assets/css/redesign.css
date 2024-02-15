@@ -679,7 +679,7 @@ border: 0;
     background: rgb(241,96,39) !important;
  }
 
-.desktop #cart.dropdown:hover>a>i {
+.desktop #cart.dropdown>a:hover {
     background: rgba(241,96,39,1) !important;
   }
   

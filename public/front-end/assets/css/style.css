@@ -28225,9 +28225,9 @@ html:not(.popup) .page-title.page-title>span::after {
 }
 
 .btn {
-  background: rgba(241,96,39);
+  background: rgba(241,96,39,1) !important;
   border-width: 2px;
-  border-color: rgba(44, 54, 64, 1);
+  border-color: rgba(241,96,39,1) !important;
   padding: 10px;
   border-radius: 3px !important;
   min-width: 100px
@@ -28418,15 +28418,15 @@ html:not(.popup) .page-title.page-title>span::after {
 .buttons .pull-right .btn:hover:active,
 .buttons .pull-right .btn:focus:active {
   color: rgba(255, 255, 255, 1) !important;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(241,96,39) 0%, rgba(241,96,39) 90%) !important
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(241,96,39) 0%, rgba(241,96,39) 90%) !important;
 }
 
-.buttons .pull-right .btn {
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(242,105,51) 0%, rgba(242,105,51) 90%)
+.custom--cart-page .buttons .pull-right .btn {
+  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(242,105,51) 0%, rgba(242,105,51) 90%) !important;
 }
 
 .buttons .pull-right .btn:focus {
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(241,96,39) 0%, rgba(241,96,39) 90%)
+  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(241,96,39) 0%, rgba(241,96,39) 90%) !important;
 }
 
 .buttons .pull-right .btn.btn.disabled::after {
@@ -28457,12 +28457,12 @@ html:not(.popup) .page-title.page-title>span::after {
   background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(241,96,39) 0%, rgba(241,96,39) 90%) !important
 }
 
-.buttons .pull-left .btn {
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(242,105,51) 0%, rgba(242,105,51) 90%)
+.custom--cart-page .buttons .pull-left .btn {
+  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(242,105,51) 0%, rgba(242,105,51) 90%) !important;
 }
 
 .buttons .pull-left .btn:focus {
-  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(242,105,51) 0%, rgba(242,105,51) 90%)
+  background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(242,105,51) 0%, rgba(242,105,51) 90%) !important;
 }
 
 .buttons .pull-left .btn.btn.disabled::after {

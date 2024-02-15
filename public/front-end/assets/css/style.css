@@ -28421,7 +28421,7 @@ html:not(.popup) .page-title.page-title>span::after {
   background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(241,96,39) 0%, rgba(241,96,39) 90%) !important;
 }
 
-.custom--cart-page .buttons .pull-right .btn {
+.custom--cart-page .buttons .pull-right.add_to_cart_checkout_btn .btn {
   background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(242,105,51) 0%, rgba(242,105,51) 90%) !important;
 }
 
@@ -28457,7 +28457,7 @@ html:not(.popup) .page-title.page-title>span::after {
   background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(241,96,39) 0%, rgba(241,96,39) 90%) !important
 }
 
-.custom--cart-page .buttons .pull-left .btn {
+.custom--cart-page .buttons .pull-left.add_to_cart_continue_btn .btn {
   background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(242,105,51) 0%, rgba(242,105,51) 90%) !important;
 }
 

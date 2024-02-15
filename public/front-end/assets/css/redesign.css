@@ -679,7 +679,10 @@ border: 0;
     background: rgb(241,96,39) !important;
  }
 
-
+.desktop #cart:hover>a>i {
+    background: rgba(241,96,39,1) !important;
+  }
+  
  /* faisal */
  .login-box .well {
     padding-top: 0;

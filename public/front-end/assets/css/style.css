@@ -36592,9 +36592,6 @@ select.form-control::placeholder {
   height: 40px
 }
 
-.desktop #cart:hover>a>i {
-  background: rgba(241,96,39,1) !important;
-}
 
 #cart-items.count-badge {
   font-family: 'Hind Siliguri';

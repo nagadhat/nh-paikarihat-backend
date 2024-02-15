@@ -36593,7 +36593,7 @@ select.form-control::placeholder {
 }
 
 .desktop #cart:hover>a>i {
-  background: rgba(241,96,39)
+  background: rgba(241,96,39,1) !important;
 }
 
 #cart-items.count-badge {

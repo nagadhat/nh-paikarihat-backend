@@ -21632,18 +21632,18 @@ background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188
 }
 
 .desktop #cart:hover>a>i::before {
-  color: rgba(241,96,39)
+  color: rgba(241,96,39,1) !important;
 }
 
 #cart>a>i {
-  background: rgba(1, 191, 102, 1);
+  background: rgba(241,96,39,1) !important;
   border-radius: 3px;
   width: 40px;
   height: 40px
 }
 
 .desktop #cart:hover>a>i {
-  background: rgba(241,96,39)
+  background: rgba(241,96,39,1) !important;
 }
 
 #cart-items.count-badge {
@@ -36582,11 +36582,11 @@ select.form-control::placeholder {
 }
 
 .desktop #cart:hover>a>i::before {
-  color: rgba(255, 255, 255, 1)
+  color: rgba(241,96,39,1) !important;
 }
 
 #cart>a>i {
-  background: rgba(1, 191, 102, 1);
+  background: rgba(241,96,39,1) !important;
   border-radius: 3px;
   width: 40px;
   height: 40px

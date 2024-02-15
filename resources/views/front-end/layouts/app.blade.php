@@ -119,6 +119,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/style.css') }}"/>
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product_carousel.css') }}" /> --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/ph-style.css') }}" />
 
      {{-- data table css --}}
      <link href="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
@@ -130,7 +131,6 @@
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/customer-dashboard.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/customer-left-sidebar.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/customer-mobile-siderbar.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/ph-style.css') }}" />
 
     <style>
         header::before {

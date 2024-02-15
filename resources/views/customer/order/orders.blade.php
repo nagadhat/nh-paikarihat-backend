@@ -53,7 +53,7 @@
                                 <th>Customer Name</th>
                                 <th>Customer Phone</th>
                                 <th>Quantity</th>
-                                <th>Total Amount</th>
+                                <th>Unit Price</th>
                                 <th>Payment Status</th>
                                 <th>Order Status</th>
                                 <th>Actions</th>

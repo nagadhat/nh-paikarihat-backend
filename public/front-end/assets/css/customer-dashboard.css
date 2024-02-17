@@ -224,3 +224,9 @@
 .qc-price-del-color-price {
     color: #f16027 !important; 
 }
+
+.top-menu-13 .j-menu li.top-menu-item-6>a::before {
+    content: '\e924' !important;
+    font-family: icomoon !important;
+    color: rgba(65,65,66, 1) !important;
+}

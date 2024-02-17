@@ -26851,11 +26851,7 @@ div.links-menu-75 .links-menu-item-11 .menu-label {
   position: relative
 }
 
-.top-menu-13 .j-menu li.top-menu-item-6>a::before {
-  content: '\e924' !important;
-  font-family: icomoon !important;
-  color: rgba(65,65,66, 1) !important;
-}
+
 
 .desktop .top-menu-13 .j-menu li.top-menu-item-6:hover>a::before {
   color: rgba(255, 255, 255, 1)

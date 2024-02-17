@@ -26854,7 +26854,7 @@ div.links-menu-75 .links-menu-item-11 .menu-label {
 .top-menu-13 .j-menu li.top-menu-item-6>a::before {
   content: '\e924' !important;
   font-family: icomoon !important;
-  color: rgba(255, 255, 255, 1)
+  color: rgba(65,65,66, 1) !important;
 }
 
 .desktop .top-menu-13 .j-menu li.top-menu-item-6:hover>a::before {
@@ -26864,7 +26864,7 @@ div.links-menu-75 .links-menu-item-11 .menu-label {
 .top-menu-13 .j-menu li.top-menu-item-6>a:first-child {
   font-family: 'Hind Siliguri';
   font-weight: 700;
-  color: rgba(255, 255, 255, 1)
+  color: rgba(65,65,66, 1) !important;
 }
 
 .top-menu-13>ul>.top-menu-item-6>a {
@@ -41555,21 +41555,12 @@ header::before {
   position: relative
 }
 
-.top-menu-13 .j-menu li.top-menu-item-6>a::before {
-  content: '\e924' !important;
-  font-family: icomoon !important;
-  color: rgba(255, 255, 255, 1)
-}
+
 
 .desktop .top-menu-13 .j-menu li.top-menu-item-6:hover>a::before {
   color: rgba(255, 255, 255, 1)
 }
 
-.top-menu-13 .j-menu li.top-menu-item-6>a:first-child {
-  font-family: 'Hind Siliguri';
-  font-weight: 700;
-  color: rgba(255, 255, 255, 1)
-}
 
 .top-menu-13>ul>.top-menu-item-6>a {
   text-align: left

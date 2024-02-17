@@ -183,7 +183,7 @@
                                     <li class="menu-item top-menu-item">
                                         <a href="{{ route('customer_logout') }}">
                                             <span class="links-text">
-                                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                                <i class="fa fa-sign-out" aria-hidden="true" style="color: #414142"></i>
                                             <strong style="color: #414142">Logout</strong>
                                            </span>
                                         </a>

@@ -133,4 +133,23 @@ class ProductCartController extends Controller
             return response()->json(['message' => 'Not working']);
         }
     }
+
+
+
+    // public function ProductaddToCart()
+    // {
+
+    //     return view('front-end.cart.product-add-to-cart');
+    // }
+
+    // public function removeCartItem($rowId)
+    // {
+    //     $getCart = Cart::get($rowId);
+    //     $name = $getCart->name = 'akash';
+    //     // Cart::remove($rowId);
+    //     Cart::update($rowId, $name);
+    //     return redirect()->back();
+
+    // }
+
 }

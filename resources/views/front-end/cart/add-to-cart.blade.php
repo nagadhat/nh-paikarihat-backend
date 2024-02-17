@@ -93,7 +93,12 @@
                                                 <td class=" td-image">
                                                     <p>
                                                         ৳ {{ $cart->product->price }}
+                                                    <p >
+                                                        {{ $cart->product->price - $cart->product->discount_amount }} ৳
                                                     </p>
+                                                    <del class="qc-price-del-color">
+                                                         {{ $cart->product->price }} ৳
+                                                    </del>
                                                 </td>
                                                 <td class="text-center td-qty">
                                                     <div class="input-group btn-block cart--quantity--btn">
@@ -120,7 +125,7 @@
                                                 </td>
                                                 <td class="text-center td-price">৳ {{ $cart->unit_price }}</td>
                                                 <td class="text-center td-total" id="subTotal_{{ $key }}">
-                                                    ৳ {{ $cart->unit_price * $cart->quantity }}
+                                                     {{ ($cart->unit_price -$cart->product->discount_amount) * $cart->quantity }} ৳
                                                 </td>
                                                 <td>
                                                     <span class="input-group-btn">

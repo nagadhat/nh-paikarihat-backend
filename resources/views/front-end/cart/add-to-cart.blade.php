@@ -166,7 +166,7 @@
                                     <div class="pull-left add_to_cart_continue_btn"><a href="{{ route('home_page') }}"
                                             class="btn btn-default"><span>Continue
                                                 Shopping</span></a></div>
-                                    <div class="pull-right add_to_cart_checkout_btn"><a href="{{ route('checkout_details', $cart->product_id) }}"
+                                    <div class="pull-right add_to_cart_checkout_btn"><a href="{{ route('checkout_details', ['producid'=>$cart->product_id,'sessionId'=>$sessionId]) }}"
                                             class="btn btn-primary"><span>Checkout</span></a></div>
                                 </div>
                             </div>

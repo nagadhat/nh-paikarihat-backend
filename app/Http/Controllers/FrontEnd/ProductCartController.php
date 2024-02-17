@@ -15,19 +15,25 @@ class ProductCartController extends Controller
     public function addToCart()
     {
         $sessionId = session()->getId();
-        // $sessionId = $_SERVER['REMOTE_ADDR'];
+        //dd( $sessionId);
         $user_id = auth()->user()->id ?? null;
         if($user_id){
             $carts = ProductCart::where('user_id',$user_id)->with('product')->get();
-        }else{
-            $carts = ProductCart::where('session_id',$sessionId)->with('product')->get();
-        }
-        $totalprice = ProductCart::where('user_id', Auth::id())
+            $totalprice = ProductCart::where('user_id', Auth::id())
             ->get()
             ->sum(function ($item) {
                 return $item->unit_price * $item->quantity;
             });
-        return view('front-end.cart.add-to-cart', compact('carts', 'totalprice'));
+        }else{
+            $carts = ProductCart::where('session_id',$sessionId)->with('product')->get();
+            $totalprice = ProductCart::where('session_id', $sessionId)
+            ->get()
+            ->sum(function ($item) {
+                return $item->unit_price * $item->quantity;
+            });
+        }
+
+        return view('front-end.cart.add-to-cart', compact('carts', 'totalprice','sessionId'));
     }
 
     public function productAddCart(Request $request)

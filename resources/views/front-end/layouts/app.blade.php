@@ -177,13 +177,13 @@
                             @auth
                                 <ul class="j-menu nh__logout_header">
                                     <li class="menu-item top-menu-item top-menu-item-2">
-                                        <a href="{{ route('customer_dashboard') }}"><span class="links-text">Account</span></a>
+                                        <a href="{{ route('customer_dashboard') }}"><span class="links-text" style="color: #414142">Account</span></a>
                                     </li>
                                     <li class="menu-item top-menu-item">
                                         <a href="{{ route('customer_logout') }}">
                                             <span class="links-text">
                                                 <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                            <strong>Logout</strong>
+                                            <strong style="color: #414142">Logout</strong>
                                            </span>
                                         </a>
                                     </li>
@@ -195,7 +195,7 @@
                                     </li>
                                     <li class="menu-item top-menu-item top-menu-item-2">
                                         <a href="{{ route('customer_login') }}">
-                                            <span class="links-text">MY ACCOUNT</span>
+                                            <span class="links-text" style="color: #414142">MY ACCOUNT</span>
                                         </a>
                                     </li>
                                 </ul>

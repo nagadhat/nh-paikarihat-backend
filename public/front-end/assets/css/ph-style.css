@@ -26830,7 +26830,8 @@ div.links-menu-75 .links-menu-item-11 .menu-label {
 
 .top-menu-13 .j-menu li.top-menu-item-2>a::before {
   content: '\ead9' !important;
-  font-family: icomoon !important
+  font-family: icomoon !important;
+  color: #414142 !important;
 }
 
 .top-menu-13 .j-menu li.top-menu-item-2>a:first-child {

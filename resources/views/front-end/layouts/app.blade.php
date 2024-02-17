@@ -118,6 +118,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/style.css') }}"/>
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product_carousel.css') }}" /> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/ph-style.css') }}" /> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/ph-style.css') }}" />
 
      {{-- data table css --}}

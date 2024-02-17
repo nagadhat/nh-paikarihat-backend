@@ -70,11 +70,7 @@ td.order__history__option {
     font-size: 20px;
 }
 
-.top-menu-13 .j-menu li.top-menu-item-6>a::before {
-    content: '\e924' !important;
-    font-family: icomoon !important;
-    color: rgba(65,65,66, 1) !important;
-  }
+
   
 @media screen and (max-width: 767px) {
     .user__dasboard__section__left {

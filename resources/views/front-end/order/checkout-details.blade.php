@@ -263,7 +263,9 @@
                                                             <?php $i = 1;
                                                             //dd($totaldiscount);
                                                             ?>
+                                                            {{-- @dd($cartItems) --}}
                                                             @foreach ($cartItems as $products)
+
                                                                 <tr class="checkout__br__color">
                                                                     <td class="">
                                                                         <input type="hidden" name="product_id[]"
@@ -557,7 +559,7 @@
         $(document).ready(function() {
             $('input[name="user_check"]').change(function() {
                 if ($(this).attr('id') === 'UserCheck') {
-                    window.location.href = "/customer-login";
+                    window.location.href = "/customer-login?session_id={{ ! empty($cartItems) && (count($cartItems) > 0 ) ? $cartItems[0]->session_id : '' }}";
                 }
             });
         });

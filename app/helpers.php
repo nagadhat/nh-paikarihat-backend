@@ -14,8 +14,8 @@ if (!function_exists("getDiscountByProductId")) {
 if (!function_exists("product_count")) {
     function product_count()
     {
-    //    $sessionId = session()->getId();
-        $sessionId = $_SERVER['REMOTE_ADDR'];
+       $sessionId = session()->getId();
+        // $sessionId = $_SERVER['REMOTE_ADDR'];
 
         // $product_count = ProductCart::where('session_id', $sessionId)->count();
         // header cart icon quantity count
@@ -27,7 +27,7 @@ if (!function_exists("product_count")) {
 
         // $ipdaddress = $_SERVER['REMOTE_ADDR'];
 
-        $product_count = ProductCart::where('session_id', $ipdaddress)
+        $product_count = ProductCart::where('session_id', $sessionId)
             ->get()
             ->sum(function ($item) {
                 return $item->quantity;

@@ -11,14 +11,20 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
     // Customer Login Page
-    public function login()
+    public function login(Request $request)
     {
-        return view('front-end.auth.login');
+        $sessionexists = 0;
+        if (isset($_GET['session_id'])) {
+            $sessionexists = $_GET['session_id'];
+        }
+        $checkout_sessionid = $request->input('session_id');
+        return view('front-end.auth.login', compact('checkout_sessionid','sessionexists'));
     }
 
     // Customer Register Page
@@ -34,8 +40,8 @@ class AuthController extends Controller
 
         // Check if the phone number or email already exist
         $existingUser = User::where('phone', $request->phone)
-                            ->orWhere('email', $request->email)
-                            ->first();
+            ->orWhere('email', $request->email)
+            ->first();
 
         if ($existingUser) {
             Alert::error("Phone number or email already exists!");
@@ -51,7 +57,6 @@ class AuthController extends Controller
         $user->address     = $request->address;
         $user->password    = bcrypt($request->password);
         $user->user_type   = 'customer';
-
         $res = $user->save();
 
         if ($res) {
@@ -66,19 +71,19 @@ class AuthController extends Controller
     //  Resgister User Login
     public function loginCustomer(StoreLoginRequest $request)
     {
+        //dd($request);
         $request->validated();
         $customerAuth = $request->only('phone', 'password');
-        $product_count =0;
+        $product_count = 0;
 
         if (Auth::attempt($customerAuth, true)) {
-
-            // $sessionId = session()->getId();
-            $sessionId = $_SERVER['REMOTE_ADDR'];
-            $product_count = ProductCart::where('session_id', $sessionId)->count();
-
-            Alert::success("Logging Successfuly!!");
-            if($product_count > 0){
-                return redirect()->route('checkout_details',['checkout'=>'checkout','product_count'=>$product_count]);
+            if (!empty($request->checkout_sessionid)) {
+                $sessionId = $request->checkout_sessionid;
+                $product_count = ProductCart::where('session_id', $sessionId)->count();
+                Alert::success("Logging Successfuly!!");
+                if ($product_count > 0) {
+                    return redirect()->route('checkout_details', ['checkout' => 'checkout', 'product_count' => $product_count, 'sessionId' => $sessionId]);
+                }
             }
             return redirect()->route('customer_dashboard');
         } else {
@@ -90,7 +95,7 @@ class AuthController extends Controller
     //  Function to logout Customer
     public function logoutCustomer()
     {
-        ProductCart::where('user_id',Auth::id())->delete();
+        ProductCart::where('user_id', Auth::id())->delete();
         Auth::logout();
         // Auth::guard('web')->logout();
         return to_route('home_page');

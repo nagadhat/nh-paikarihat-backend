@@ -21,32 +21,32 @@ class OrderDetailsController extends Controller
     public function checkoutDetails($checkout, $product_count=0)
     {
 
+        $sessionId = isset($_GET['sessionId']) ? $_GET['sessionId'] : 0;
         $product_count = isset($_GET['product_count']) ? $_GET['product_count'] : 0;
-        // $sessionId = session()->getId();
 
-         $sessionId = $_SERVER['REMOTE_ADDR'];
         $user = Auth::user();
-
         $user_id = Auth::user()->id ?? null;
 
-        if($user_id){
-            // dd($sessionId);
+       if($user_id && $sessionId){
             ProductCart::where('session_id',$sessionId )
             ->update(['user_id' => $user_id]);
         }
-        $cartItems = ProductCart::where('session_id', $sessionId )->orWhere('user_id', $user_id ?? null)->with('product')->get();
-        $userdata = [
-            'name' => $user->name ?? null,
-            'phone' => $user->phone ?? null,
-            'address' => $user->address ?? null,
-        ];
-        $totalprice = ProductCart::where('session_id', $sessionId )->orWhere('user_id', $user_id ?? null)
+        $cartItems = ProductCart::Where('user_id', $user_id)->with('product')->get();
+        $userdata = [];
+        if($user_id){
+            $userdata = [
+                'name' => $user->name,
+                'phone' => $user->phone,
+                'address' => $user->address,
+            ];
+       }
+        $totalprice = ProductCart::Where('user_id', $user_id)
             ->get()
             ->sum(function ($item) {
                 return $item->unit_price * $item->quantity;
             });
 
-        $totaldiscount = ProductCart::where('session_id', $sessionId )->orWhere('user_id', $user_id ?? null)
+        $totaldiscount = ProductCart::where('user_id', $user_id)
             ->with('product')
             ->get()
             ->sum(function ($item) {
@@ -65,8 +65,8 @@ class OrderDetailsController extends Controller
     public function orderProduct(Request $request)
     {
 
-        // $sessionId = session()->getId();
-         $sessionId = $_SERVER['REMOTE_ADDR'];
+        $sessionId = session()->getId();
+        //  $sessionId = $_SERVER['REMOTE_ADDR'];
         Alert::success('success', 'Order ');
         if (!$request->has('customer_name') || empty($request->customer_name)) {
             return redirect()->back();
@@ -110,7 +110,7 @@ class OrderDetailsController extends Controller
             "delivery_area" => $deliveryCharge,
             "discount_amount" => $request->discount_amount,
         ]);
-        
+
         $products = Product::whereIn('id', $request->product_id)->get();
         foreach ($products as $product) {
             $lineItem = ProductCart::where('product_id', $product->id)->first();
@@ -141,8 +141,8 @@ class OrderDetailsController extends Controller
     // function to order invoice
     public function invoiceOrder($id)
     {
-    //    $sessionId = session()->getId();
-         $sessionId = $_SERVER['REMOTE_ADDR'];
+       $sessionId = session()->getId();
+        //  $sessionId = $_SERVER['REMOTE_ADDR'];
         $orderDetails = Order::where('id', $id)->first();
         $orderProductsDetailslist = OrderProduct::where('order_id', $id)->get();
         ProductCart::where('session_id', $sessionId)->orWhere('user_id',Auth::id())->delete();

@@ -27,40 +27,6 @@
             </div>
         </div>
     </div>
-    {{-- <div class="grid-rows">
-  <div class="grid-row-4 grid-row-top-1">
-    <div class="grid-cols-lg">
-      <div class="grid-col grid-col-top-1-2">
-        <div class="grid-items">
-          <div class="grid-item">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-              </ol>
-              <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                  <img src="front-end/assets/image/slider/c1-1100x400.png" alt="">
-                </div>
-                <div class="item">
-                  <img src="front-end/assets/image/slider/c22-1100x400.png" alt="">
-                </div>
-                <div class="item">
-                  <img src="front-end/assets/image/slider/c11-1100x400.png" alt="">
-                </div>
-                <div class="item">
-                  <img src="front-end/assets/image/slider/c55-1100x400.png" alt="">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> --}}
     <div class="grid-rows">
         <div class="grid-row grid-row-bottom-1">
             <div class="grid-cols">

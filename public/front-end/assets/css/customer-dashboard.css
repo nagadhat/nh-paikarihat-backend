@@ -226,5 +226,5 @@
 }
 .cart__tr_bg_color .td-image p {
     padding-bottom: 5px;
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }

@@ -191,7 +191,7 @@
                             @else
                                 <ul class="j-menu">
                                     <li class="menu-item top-menu-item top-menu-item-6">
-                                        <a href="tel:09647 444 444"><span class="links-text">HOTLINE : 09647 444 444</span></a>
+                                        <a href="tel:09647 444 444"><span class="links-text" style="color: #414142">HOTLINE : 09647 444 444</span></a>
                                     </li>
                                     <li class="menu-item top-menu-item top-menu-item-2">
                                         <a href="{{ route('customer_login') }}">

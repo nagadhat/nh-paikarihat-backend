@@ -16,7 +16,6 @@ if (!function_exists("product_count")) {
     function product_count()
     {
         $sessionId = session()->getId();
-
         if (Auth::check()) {
             $product_count = ProductCart::where('user_id', Auth()->user()->id)
                 ->get()

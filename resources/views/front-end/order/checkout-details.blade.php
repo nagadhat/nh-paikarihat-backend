@@ -295,8 +295,8 @@
                                                                         </p>
                                                                     </td>
                                                                     <td class="qc-price  ">
-                                                                        <span>{{ $products->unit_price - $products->product->discount_amount }} ৳ </span>
-                                                                        <del class="qc-price-del-color">{{ isset($products->unit_price) ? $products->unit_price : '' }} ৳</del>
+                                                                        <span>{{ $products->unit_price - $products->product->discount_amount }} ৳ </span> <br>
+                                                                        <del class="qc-price-del-color-price">{{ isset($products->unit_price) ? $products->unit_price : '' }} ৳</del>
                                                                     </td>
                                                                     <td class="qc-quantity">
                                                                         <div class="input-group input-group-sm">

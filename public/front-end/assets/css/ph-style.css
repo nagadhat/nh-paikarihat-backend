@@ -26851,11 +26851,6 @@ div.links-menu-75 .links-menu-item-11 .menu-label {
   position: relative
 }
 
-.top-menu-13 .j-menu li.top-menu-item-6>a::before {
-  content: '\e924' !important;
-  font-family: icomoon !important;
-  color: rgba(255, 255, 255, 1)
-}
 
 .desktop .top-menu-13 .j-menu li.top-menu-item-6:hover>a::before {
   color: rgba(255, 255, 255, 1)
@@ -41555,11 +41550,6 @@ header::before {
   position: relative
 }
 
-.top-menu-13 .j-menu li.top-menu-item-6>a::before {
-  content: '\e924' !important;
-  font-family: icomoon !important;
-  color: rgba(255, 255, 255, 1)
-}
 
 .desktop .top-menu-13 .j-menu li.top-menu-item-6:hover>a::before {
   color: rgba(255, 255, 255, 1)

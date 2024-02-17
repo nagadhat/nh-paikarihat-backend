@@ -98,7 +98,7 @@
                                                             </div>
                                                             <div class="extra-group nh__order__confirm">
                                                                 <div class="nh__order__confirm__btn">
-                                                                    <a href="{{ route('checkout_details', ['checkout' => $product->slug]) }}"
+                                                                    <a href="#"
                                                                         class="btn btn-extra btn-extra-46 add--to--checkout-btn "
                                                                         data-checkout_id="{{ $product->id }}"
                                                                         data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
@@ -167,9 +167,7 @@
                             "progressBar": true,
                             "timeOut": "1500",
                         }
-
                         $("#cart-items").removeClass("count-zero").html(product_count);
-                        console.log(product_count);
                     },
                     error: function(error) {
                         console.log('error1st', error);
@@ -197,10 +195,10 @@
                         console.log(data);
                         let {
                             productid,
+                            product_count,
+                            sessionId,
                         } = data;
-                        console.log(productid);
-                        // Redirect to the checkout_details page
-                        window.location.href = '/checkout-details/{productid}';
+                        window.location.href = '/checkout-details?productid='+ productid + '&product_count=' + product_count + '&sessionId=' + sessionId;
                     },
                     error: function(error) {
                         console.log('error1st', error);

@@ -60,13 +60,22 @@ class ProductCartController extends Controller
         }
         // $product_count = ProductCart::where('session_id',$sessionId)->orWhere('user_id', $user->id ?? null)->count();
 
-        $product_count = ProductCart::where('session_id', $sessionId)->orWhere('user_id', $user->id ?? null)
+        if(Auth::check()){
+            $product_count = ProductCart::where('user_id', Auth()->user()->id)
             ->get()
             ->sum(function ($item) {
                 return $item->quantity;
             });
+        }else{
+            $product_count = ProductCart::where('session_id', $sessionId)
+            ->get()
+            ->sum(function ($item) {
+                return $item->quantity;
+            });
+        }
+   
 
-        return response()->json(['message' => 'working','product_count'=> $product_count]);
+        return response()->json(['message' => 'working','product_count'=> $product_count, 'productid'=>$product->id, 'sessionId' => $sessionId]);
     }
 
     public function productDeleteCart($id)

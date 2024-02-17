@@ -21,9 +21,9 @@ class OrderDetailsController extends Controller
 {
     public function checkoutDetails($checkout, $product_count=0)
     {
-
         $sessionId = isset($_GET['sessionId']) ? $_GET['sessionId'] : 0;
         $product_count = isset($_GET['product_count']) ? $_GET['product_count'] : 0;
+        $productid = isset($_GET['productid']) ? $_GET['productid'] : 0;
 
         $user = Auth::user();
         $user_id = Auth::user()->id ?? null;
@@ -32,22 +32,17 @@ class OrderDetailsController extends Controller
             ProductCart::where('session_id',$sessionId )
             ->update(['user_id' => $user_id]);
         }
-        $cartItems = ProductCart::Where('user_id', $user_id)->with('product')->get();
+
         $userdata = [];
         if($user_id){
-            $userdata = [
-                'name' => $user->name,
-                'phone' => $user->phone,
-                'address' => $user->address,
-            ];
-       }
-        $totalprice = ProductCart::Where('user_id', $user_id)
+            $cartItems = ProductCart::Where('user_id', $user_id)->with('product')->get();
+            $totalprice = ProductCart::Where('user_id', $user_id)
             ->get()
             ->sum(function ($item) {
                 return $item->unit_price * $item->quantity;
             });
 
-        $totaldiscount = ProductCart::where('user_id', $user_id)
+           $totaldiscount = ProductCart::where('user_id', $user_id)
             ->with('product')
             ->get()
             ->sum(function ($item) {
@@ -59,6 +54,38 @@ class OrderDetailsController extends Controller
                     return 0;
                 }
             });
+            $userdata = [
+                'name' => $user->name,
+                'phone' => $user->phone,
+                'address' => $user->address,
+            ];
+       }else{
+            $cartItems = ProductCart::Where('session_id', $sessionId)->with('product')->get();
+            $totalprice = ProductCart::Where('session_id', $sessionId)
+            ->get()
+            ->sum(function ($item) {
+                return $item->unit_price * $item->quantity;
+            });
+
+            $totaldiscount = ProductCart::where('session_id', $sessionId)
+            ->with('product')
+            ->get()
+            ->sum(function ($item) {
+                if ($item->product) {
+                    $discountPerItem = $item->product->discount_amount;
+                    $quantity = $item->quantity;
+                    return $discountPerItem * $quantity;
+                } else {
+                    return 0;
+                }
+            });
+            $userdata = [
+                'name' => '',
+                'phone' => '',
+                'address' => '',
+            ];
+       }
+       
 
         return view('front-end.order.checkout-details', compact('cartItems', 'userdata', 'totalprice', 'totaldiscount', 'product_count'));
     }
@@ -145,7 +172,7 @@ class OrderDetailsController extends Controller
     // function to order invoice
     public function invoiceOrder($id)
     {
-       $sessionId = session()->getId();
+        $sessionId = session()->getId();
         //  $sessionId = $_SERVER['REMOTE_ADDR'];
         $orderDetails = Order::where('id', $id)->first();
         $orderProductsDetailslist = OrderProduct::where('order_id', $id)->get();

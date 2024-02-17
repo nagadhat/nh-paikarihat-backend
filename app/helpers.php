@@ -12,6 +12,7 @@ if (!function_exists("getDiscountByProductId")) {
         return $product_info->discount_amount;
     }
 }
+
 if (!function_exists("product_count")) {
     function product_count()
     {

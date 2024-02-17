@@ -263,7 +263,9 @@
                                                             <?php $i = 1;
                                                             //dd($totaldiscount);
                                                             ?>
+                                                            {{-- @dd($cartItems) --}}
                                                             @foreach ($cartItems as $products)
+
                                                                 <tr class="checkout__br__color">
                                                                     <td class="">
                                                                         <input type="hidden" name="product_id[]"
@@ -364,7 +366,7 @@
                                                     <div class="form-horizontal qc-totals checkout__details__price">
                                                         <div class="row">
                                                             <label class="col-sm-9 col-xs-6 control-label">
-                                                                প্রোডাক্টের মূল্য
+                                                                ইউনিট প্রাইস:
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <span id="productPrice">
@@ -502,7 +504,7 @@
                         $('#productPriceval').val(totalprice);
                         $('#productPrice').html(totalprice + ' ৳');
 
-                        $("#discount_increment").html(parseFloat(totaldiscount) + ' ৳');
+                        $("#discount_increment").html(parseFloat(totaldiscount) + ' TAKA');
                         location.reload();
                     }
                 },
@@ -546,7 +548,7 @@
         $(document).ready(function() {
             $('input[name="user_check"]').change(function() {
                 if ($(this).attr('id') === 'UserCheck') {
-                    window.location.href = "/customer-login";
+                    window.location.href = "/customer-login?session_id={{ ! empty($cartItems) && (count($cartItems) > 0 ) ? $cartItems[0]->session_id : '' }}";
                 }
             });
         });

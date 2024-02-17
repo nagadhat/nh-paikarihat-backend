@@ -14,8 +14,8 @@ class ProductCartController extends Controller
 {
     public function addToCart()
     {
-        // $sessionId = session()->getId();
-        $sessionId = $_SERVER['REMOTE_ADDR'];
+        $sessionId = session()->getId();
+        // $sessionId = $_SERVER['REMOTE_ADDR'];
         $user_id = auth()->user()->id ?? null;
         if($user_id){
             $carts = ProductCart::where('user_id',$user_id)->with('product')->get();
@@ -33,8 +33,8 @@ class ProductCartController extends Controller
     public function productAddCart(Request $request)
     {
 
-        // $sessionId = session()->getId();
-        $sessionId = $_SERVER['REMOTE_ADDR'];
+        $sessionId = session()->getId();
+        // $sessionId = $_SERVER['REMOTE_ADDR'];
         $data = $request->all();
         $user = Auth::user() ?? null;
         $product = Product::findOrFail(intval($data['productid']));
@@ -60,7 +60,6 @@ class ProductCartController extends Controller
         }
         // $product_count = ProductCart::where('session_id',$sessionId)->orWhere('user_id', $user->id ?? null)->count();
 
-        //product count with quantity
         $product_count = ProductCart::where('session_id', $sessionId)->orWhere('user_id', $user->id ?? null)
             ->get()
             ->sum(function ($item) {
@@ -78,8 +77,8 @@ class ProductCartController extends Controller
     }
     public function productIncrement(Request $request)
     {
-    //    $sessionId = session()->getId();
-       $sessionId = $_SERVER['REMOTE_ADDR'];
+       $sessionId = session()->getId();
+    //    $sessionId = $_SERVER['REMOTE_ADDR'];
         $data = $request->all();
 
         $existingCartItem = ProductCart::where('session_id', $sessionId )->where('id', $data['productid'])->first();
@@ -138,20 +137,20 @@ class ProductCartController extends Controller
 
 
 
-    public function ProductaddToCart()
-    {
+    // public function ProductaddToCart()
+    // {
 
-        return view('front-end.cart.product-add-to-cart');
-    }
+    //     return view('front-end.cart.product-add-to-cart');
+    // }
 
-    public function removeCartItem($rowId)
-    {
-        $getCart = Cart::get($rowId);
-        $name = $getCart->name = 'akash';
-        // Cart::remove($rowId);
-        Cart::update($rowId, $name);
-        return redirect()->back();
+    // public function removeCartItem($rowId)
+    // {
+    //     $getCart = Cart::get($rowId);
+    //     $name = $getCart->name = 'akash';
+    //     // Cart::remove($rowId);
+    //     Cart::update($rowId, $name);
+    //     return redirect()->back();
 
-    }
+    // }
 
 }

@@ -22,6 +22,7 @@
 
                             <form action="{{ route('login_customer') }}" method="post" enctype="multipart/form-data"
                                 class="form-horizontal login-form">
+                                <input type="hidden" name="checkout_sessionid" value="{{ $sessionexists }}">
                                 @csrf
                                 <div class="form-group required" style="padding-top: 20px;">
                                     <label class="control-label" for="input-phone">Phone</label>

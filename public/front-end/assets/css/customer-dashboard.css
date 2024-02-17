@@ -221,7 +221,10 @@
 
 }
 
-.qc-price-del-color-price {
-    color: #f16027 !important; 
+.qc-price-del-color {
+    color: #f16027 !important;
 }
-
+.cart__tr_bg_color .td-image p {
+    padding-bottom: 5px;
+    margin-bottom: 0;
+}

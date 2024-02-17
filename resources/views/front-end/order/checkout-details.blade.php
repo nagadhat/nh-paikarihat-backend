@@ -295,7 +295,9 @@
                                                                         </p>
                                                                     </td>
                                                                     <td class="qc-price  ">
-                                                                         {{ isset($products->unit_price) ? $products->unit_price : '' }} ৳
+                                                                        <span>{{ $products->unit_price - $products->product->discount_amount }} ৳ </span>
+                                                                        <del class="qc-price-del-color">{{ isset($products->unit_price) ? $products->unit_price : '' }} ৳</del>
+
                                                                     </td>
                                                                     <td class="qc-quantity">
                                                                         <div class="input-group input-group-sm">
@@ -341,7 +343,7 @@
                                                                     </td>
                                                                     <td class="text-center td-total"
                                                                         id="subTotal_{{ $i }}">
-                                                                         {{ $products->unit_price * $products->quantity }} ৳
+                                                                         {{ ($products->unit_price - $products->product->discount_amount) * $products->quantity }} ৳
                                                                     </td>
                                                                     <td style="text-align: center">
                                                                         <span class="input-group-btn">

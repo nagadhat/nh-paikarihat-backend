@@ -295,7 +295,7 @@
                                                                         </p>
                                                                     </td>
                                                                     <td class="qc-price  ">
-                                                                         {{ isset($products->unit_price) ? $products->unit_price : '' }} ৳
+                                                                        {{ isset($products->unit_price) ? $products->unit_price : '' }} ৳
                                                                     </td>
                                                                     <td class="qc-quantity">
                                                                         <div class="input-group input-group-sm">
@@ -342,6 +342,9 @@
                                                                     <td class="text-center td-total"
                                                                         id="subTotal_{{ $i }}">
                                                                          {{ $products->unit_price * $products->quantity }} ৳
+                                                                         {{-- <del>
+                                                                            {{ $products->product->discount_amount }} ৳
+                                                                         </del> --}}
                                                                     </td>
                                                                     <td style="text-align: center">
                                                                         <span class="input-group-btn">
@@ -386,18 +389,6 @@
                                                                     value="{{ isset($totaldiscount) ? $totaldiscount : '' }}">
                                                             </div>
                                                         </div>
-                                                        {{-- <div class="row">
-                                                            <label class="col-sm-9 col-xs-6 control-label">
-                                                                সাবটোটাল
-                                                            </label>
-                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right">
-                                                                <span id="subtotal">
-                                                                    {{ $products->quantity * ($products->price - $products->discount_amount) }}
-
-                                                                </span>
-                                                                ৳
-                                                            </div>
-                                                        </div> --}}
                                                         <div class="row">
                                                             <label class="col-sm-9 col-xs-6 control-label">
                                                                 ডেলিভারী চার্জ

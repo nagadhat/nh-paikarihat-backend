@@ -77,7 +77,6 @@
                                                             alt="image" class="image-responsive "
                                                             style="width: 60px;height:60px">
                                                     </div>
-
                                                     <p>
                                                         {{-- {{ Str::limit($cart->product->title, $limit = 10, $end = '...') }} --}}
                                                         {{ $cart->product->title }}
@@ -92,7 +91,7 @@
                                                 </td>
                                                 <td class=" td-image">
                                                     <p>
-                                                         {{ $cart->product->price }} ৳
+                                                        {{ $cart->product->price }} ৳
                                                     </p>
                                                 </td>
                                                 <td class="text-center td-qty">

@@ -78,10 +78,14 @@ class ProductCartController extends Controller
     public function productIncrement(Request $request)
     {
        $sessionId = session()->getId();
+    //    dd($sessionId);
     //    $sessionId = $_SERVER['REMOTE_ADDR'];
         $data = $request->all();
-
-        $existingCartItem = ProductCart::where('session_id', $sessionId )->where('id', $data['productid'])->first();
+        if(Auth::check()){
+            $existingCartItem = ProductCart::where('user_id', Auth()->user()->id )->where('id', $data['productid'])->first();
+        }else{
+            $existingCartItem = ProductCart::where('session_id', $sessionId )->where('id', $data['productid'])->first();
+        }
         $unitPrice = $existingCartItem->unit_price;
         $exqty = $existingCartItem->quantity;
         if ($existingCartItem) {

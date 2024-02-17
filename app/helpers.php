@@ -2,6 +2,7 @@
 
 use App\Models\Product;
 use App\Models\ProductCart;
+use Illuminate\Support\Facades\Auth;
 
 if (!function_exists("getDiscountByProductId")) {
     function getDiscountByProductId($product_id)
@@ -14,24 +15,21 @@ if (!function_exists("getDiscountByProductId")) {
 if (!function_exists("product_count")) {
     function product_count()
     {
-       $sessionId = session()->getId();
-        // $sessionId = $_SERVER['REMOTE_ADDR'];
+        $sessionId = session()->getId();
 
-        // $product_count = ProductCart::where('session_id', $sessionId)->count();
-        // header cart icon quantity count
-        $product_count = ProductCart::where('session_id', $sessionId)
-            ->get()
-            ->sum(function ($item) {
-                return $item->quantity;
-            });
-
-        // $ipdaddress = $_SERVER['REMOTE_ADDR'];
-
-        $product_count = ProductCart::where('session_id', $sessionId)
-            ->get()
-            ->sum(function ($item) {
-                return $item->quantity;
-            });
+        if (Auth::check()) {
+            $product_count = ProductCart::where('user_id', Auth()->user()->id)
+                ->get()
+                ->sum(function ($item) {
+                    return $item->quantity;
+                });
+        }else{
+            $product_count = ProductCart::where('session_id', $sessionId)
+                ->get()
+                ->sum(function ($item) {
+                    return $item->quantity;
+                });
+        }
         return $product_count ? $product_count : 0;
     }
 }

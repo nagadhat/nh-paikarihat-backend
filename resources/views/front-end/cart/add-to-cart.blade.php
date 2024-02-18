@@ -87,7 +87,6 @@
                                                             Pre Order
                                                         @endif
                                                     </p>
-
                                                 </td>
                                                 <td class=" td-image">
                                                     <p>

@@ -22,10 +22,10 @@
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                 Account
              </a>
-            <a href="{{ route('customer_password') }}" class="{{ request()->routeIs('customer_password') ? 'active' : '' }}">
+            {{-- <a href="{{ route('customer_password') }}" class="{{ request()->routeIs('customer_password') ? 'active' : '' }}">
                 <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                 Change Password
-            </a>
+            </a> --}}
             <a href="{{ route('customer_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
         </div>
     </div>

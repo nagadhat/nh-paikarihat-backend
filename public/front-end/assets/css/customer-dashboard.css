@@ -228,3 +228,7 @@
     padding-bottom: 5px;
     margin-bottom: 0 !important;
 }
+
+.user_password_info .account__information__form .control-label {
+    max-width: 135px !important;
+}

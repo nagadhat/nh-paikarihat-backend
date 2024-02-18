@@ -334,7 +334,7 @@
                                                                                         <button
                                                                                             class="qty-btn-minus btn-danger btn-cornered mr-2"
                                                                                             onClick="manageQuantity({{ $i }}, 'decrement')"
-                                                                                            type="button">
+                                                                                            type="button"  @if($products->quantity == 1) disabled @endif>
                                                                                             <i class="fa fa-chevron-down"></i>
                                                                                         </button>
                                                                                     </div>

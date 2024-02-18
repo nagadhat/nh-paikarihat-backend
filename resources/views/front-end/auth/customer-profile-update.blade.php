@@ -19,65 +19,125 @@
             <div class="user__dasboard__section row">
                 <x-left-sidebar />
                 <div class="user__dasboard__section__right col-xs-12 col-sm-9 ">
-                    <div class="user__dasboard__content">
-                        <div class="account__information__form">
-                            <h1 class="title page-title" style="color: #000;"> Account Information
-                            </h1>
-                            <form action="{{ route('customer_profile_update_save') }}" method="post"
-                                enctype="multipart/form-data" class="form-horizontal">
-                                @csrf
-                                <div id="account">
-                                    <div class="form-group">
-                                        <div class="customer_profile_image_uodate">
-
-                                            <img src="{{ !empty($user->photo) ? asset($user->photo) : asset('assets/images/others/error.png') }}" alt="image" >
+                    <div class="row" style="margin-bottom: 30px;">
+                        <div class="col-sm-12">
+                            <div class="user__dasboard__content">
+                                <div class="account__information__form">
+                                    <h1 class="title page-title" style="color: #000;"> Account Information
+                                    </h1>
+                                    <form action="{{ route('customer_profile_update_save') }}" method="post"
+                                        enctype="multipart/form-data" class="form-horizontal">
+                                        @csrf
+                                        <div id="account">
+                                            <div class="form-group">
+                                                <div class="customer_profile_image_uodate">
+                                                    <img src="{{ !empty($user->photo) ? asset($user->photo) : asset('assets/images/others/error.png') }}" alt="image" >
+                                                </div>
+                                            </div>
+                                            <div class="form-group required account-telephone">
+                                                <label class="col-sm-2 control-label" for="input-image">Photo</label>
+                                                <div class="col-sm-10">
+                                                    <input type="file" name="photo" value="{{ $user->photo }}"
+                                                        placeholder="Telephone" id="input-image" class="form-control" >
+                                                </div>
+                                            </div>
+                                            <div class="form-group required account-firstname">
+                                                <label class="col-sm-2 control-label" for="input-firstname">Name </label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="name" value="{{ $user->name }}"
+                                                        placeholder="First Name" id="input-firstname" class="form-control" required>
+                                                </div>
+                                            </div>
+        
+                                            <div class="form-group required account-email">
+                                                <label class="col-sm-2 control-label" for="input-email">E-Mail</label>
+                                                <div class="col-sm-10">
+                                                    <input type="email" name="email" value="{{ $user->email }}"
+                                                        placeholder="E-Mail" id="input-email" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group required account-telephone">
+                                                <label class="col-sm-2 control-label" for="input-telephone">Telephone</label>
+                                                <div class="col-sm-10">
+                                                    <input type="tel" name="telephone" value="{{ $user->phone }}"
+                                                        placeholder="Telephone" id="input-telephone" class="form-control" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group required account-lastname">
+                                                <label class="col-sm-2 control-label" for="input-address">Address</label>
+                                                <div class="col-sm-10">
+                                                    <textarea name="address" id="input-address" class="form-control" required>{{ $user->address }}</textarea>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group required account-telephone">
-                                        <label class="col-sm-2 control-label" for="input-image">Photo</label>
-                                        <div class="col-sm-10">
-                                            <input type="file" name="photo" value="{{ $user->photo }}"
-                                                placeholder="Telephone" id="input-image" class="form-control" >
+                                        <div class="account__information__button">
+                                            <div class="continue__button">
+                                                <button type="submit"><span>Submit</span></button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group required account-firstname">
-                                        <label class="col-sm-2 control-label" for="input-firstname">Name </label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="name" value="{{ $user->name }}"
-                                                placeholder="First Name" id="input-firstname" class="form-control" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group required account-email">
-                                        <label class="col-sm-2 control-label" for="input-email">E-Mail</label>
-                                        <div class="col-sm-10">
-                                            <input type="email" name="email" value="{{ $user->email }}"
-                                                placeholder="E-Mail" id="input-email" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group required account-telephone">
-                                        <label class="col-sm-2 control-label" for="input-telephone">Telephone</label>
-                                        <div class="col-sm-10">
-                                            <input type="tel" name="telephone" value="{{ $user->phone }}"
-                                                placeholder="Telephone" id="input-telephone" class="form-control" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="form-group required account-lastname">
-                                        <label class="col-sm-2 control-label" for="input-address">Address</label>
-                                        <div class="col-sm-10">
-                                            <textarea name="address" id="input-address" class="form-control" required>{{ $user->address }}</textarea>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
-                                <div class="account__information__button">
-                                    <div class="back__button">
-                                        <a href="{{ route('customer_dashboard') }}" class=" ">Back </a>
-                                    </div>
-                                    <div class="continue__button">
-                                        <button type="submit"><span>Submit</span></button>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row user_password_info">
+                        <div class="col-sm-12">
+                            <div class="user__dasboard__content">
+                                <div class="account__information__form">
+                                    <h1 class="title page-title" style="color: #000;"> Change Password
+                                    </h1>
+                                    <form action="{{ route('customer_password_update') }}" method="post"
+                                        enctype="multipart/form-data" class="form-horizontal">
+                                        @csrf
+                                        <fieldset>
+                                            <div class="form-group required">
+                                                <label class="col-sm-2 control-label" for="input-password">Current Password</label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" name="current_password" value=""
+                                                        placeholder="Password" id="input-password" class="form-control">
+                                                </div>
+                                                <div style="margin-top:10px;width:100%">
+                                                    @error('current_password')
+                                                        <div class="alert alert-danger" style="width:60%">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="form-group required">
+                                                <label class="col-sm-2 control-label" for="input-password">New Password</label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" name="new_password" value="" placeholder="Password"
+                                                        id="input-password" class="form-control">
+                                                </div>
+                                                <div style="margin-top:10px;width:100%">
+                                                    @error('new_password')
+                                                        <div class="alert alert-danger" style="width:60%">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="form-group required">
+                                                <label class="col-sm-2 control-label" for="input-confirm">Confirm Password </label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" name="new_password_confirmation" value=""
+                                                        placeholder="Password Confirm" id="input-confirm" class="form-control">
+                                                </div>
+                                                <div style="margin-top:10px;width:100%">
+                                                    @error('new_password_confirmation')
+                                                        <div class="alert alert-danger" style="width:60%">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <div class="account__information__button">
+                                            <div class="back__button">
+                                                <a href="{{ route('customer_dashboard') }}" class="">Back </a>
+                                            </div>
+                                            <div class="continue__button">
+                                                <button type="submit"><span>Submit</span></button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -176,15 +176,20 @@
                     <div class="top-menu top-menu-13 nh__top__header">
                         @if (Route::has('customer_login'))
                             @auth
-                                <ul class="j-menu nh__logout_header">
-                                    <li class="menu-item top-menu-item top-menu-item-2">
-                                        <a href="{{ route('customer_dashboard') }}"><span class="links-text" style="color: #414142">Account</span></a>
+                                <ul class="user-dashboard-header-area">
+                                    <li>
+                                        <a href="{{ route('customer_dashboard') }}">
+                                            <span class="user-dashboard-header" style="color: #414142">
+                                                <i class="fa fa-user" aria-hidden="true"></i>
+                                                 <strong>Account</strong>    
+                                            </span>
+                                        </a>
                                     </li>
-                                    <li class="menu-item top-menu-item">
+                                    <li>
                                         <a href="{{ route('customer_logout') }}">
-                                            <span class="links-text">
-                                                <i class="fa fa-sign-out" aria-hidden="true" style="color: #414142"></i>
-                                            <strong style="color: #414142">Logout</strong>
+                                            <span class="user-dashboard-header">
+                                                <i class="fa fa-sign-in" aria-hidden="true" style="color: #414142"></i>
+                                                <strong style="color: #414142">Logout</strong>
                                            </span>
                                         </a>
                                     </li>
@@ -192,11 +197,16 @@
                             @else
                                 <ul class="j-menu">
                                     <li class="menu-item top-menu-item top-menu-item-6">
-                                        <a href="tel:09647 444 444"><span class="links-text" style="color: #414142">HOTLINE : 09647 444 444</span></a>
+                                        <a href="tel:09647 444 444">
+                                            <span class="links-text" style="color: #414142">HOTLINE : 09647 444 444</span>
+                                        </a>
                                     </li>
-                                    <li class="menu-item top-menu-item top-menu-item-2">
+                                    <li class="menu-item top-menu-item ">
                                         <a href="{{ route('customer_login') }}">
-                                            <span class="links-text" style="color: #414142">MY ACCOUNT</span>
+                                            <span class="user-dashboard-header" style="color: #414142">
+                                                <i class="fa fa-user" aria-hidden="true"></i>
+                                                 <strong>My Account</strong>    
+                                            </span>
                                         </a>
                                     </li>
                                 </ul>
@@ -254,15 +264,19 @@
                             @if (Route::has('customer_login'))
                                 @auth
                                     <ul class="j-menu">
-                                        <li class="menu-item top-menu-item top-menu-item-2">
-                                            <a href="{{ route('customer_dashboard') }}"><span class="links-text">
-                                                    Account</span></a>
+                                        <li>
+                                            <a href="{{ route('customer_dashboard') }}">
+                                                <span class="user-dashboard-header" style="color: #414142">
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                     <strong>Account</strong>    
+                                                </span>
+                                                </a>
                                         </li>
-                                        <li class="menu-item top-menu-item">
+                                        <li>
                                             <a href="{{ route('customer_logout') }}">
-                                                <span class="links-text">
-                                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                                <strong>Logout</strong>
+                                                <span class="user-dashboard-header">
+                                                    <i class="fa fa-sign-in" aria-hidden="true" style="color: #414142"></i>
+                                                    <strong style="color: #414142">Logout</strong>
                                                </span>
                                             </a>
                                         </li>
@@ -270,12 +284,16 @@
                                 @else
                                     <ul class="j-menu">
                                         <li class="menu-item top-menu-item top-menu-item-6">
-                                            <a href="tel:09647 444 444"><span class="links-text">HOTLINE :
+                                            <a href="tel:09647 444 444"><span class="links-text" style="color: #414142">HOTLINE :
                                                 09647 444 444</span></a>
                                         </li>
-                                        <li class="menu-item top-menu-item top-menu-item-2">
-                                            <a href="{{ route('customer_login') }}"><span class="links-text">MY
-                                                    ACCOUNT</span></a>
+                                        <li class="menu-item top-menu-item ">
+                                            <a href="{{ route('customer_login') }}">
+                                                <span class="user-dashboard-header" style="color: #414142">
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                     <strong>My Account</strong>    
+                                                </span>
+                                            </a>
                                         </li>
                                     </ul>
                                 @endauth

@@ -148,6 +148,12 @@ textarea.form-control.nh__customer__address {
     padding-top: 4px;
     color: #414142 !important;
 }
+.user-dashboard-header .fa-sign-out {
+    padding: 0;
+}
+.top-menu .j-menu.nh__logout_header>li>a {
+    padding: 0;
+}
 .module-products-169 .title.module-title::after,
 .module-products-169 .title.module-title.page-title>span::after {
     width: 8%;
@@ -687,3 +693,19 @@ border: 0;
     padding-top: 0;
  }
  
+ ul.user-dashboard-header-area {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+ }
+ .header.header-classic.header-lg .top-bar.navbar-nav {
+    padding-top:0 ;
+    padding-bottom: 0;
+    line-height: 30px;
+ }
+ .user-dashboard-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+ }

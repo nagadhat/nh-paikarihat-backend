@@ -71,11 +71,9 @@
                                     <td> {{ $order->total_amount }} </td>
                                     <td>
                                         @if ($order->payment_status == 1)
-                                            <span
-                                                class="badge bg-primary text-white">Unpaid</span>
+                                            <span class="badge bg-primary text-white">Unpaid</span>
                                         @else
-                                            <span
-                                                class="badge bg-success text-white">Paid</span>
+                                            <span class="badge bg-success text-white">Paid</span>
                                         @endif
                                     </td>
                                     <td>
@@ -129,8 +127,11 @@
 @section('page_js')
     <script>
         $(document).ready(function() {
-            // init data table
-            $('#table').DataTable();
+            $('#table').DataTable({
+                "order": [
+                    [0, "desc"]
+                ]
+            });
         });
     </script>
     <script>

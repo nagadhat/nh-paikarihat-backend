@@ -27,7 +27,19 @@
                                 enctype="multipart/form-data" class="form-horizontal">
                                 @csrf
                                 <div id="account">
+                                    <div class="form-group">
+                                        <div class="customer_profile_image_uodate">
 
+                                            <img src="{{ !empty($user->photo) ? asset($user->photo) : asset('assets/images/others/error.png') }}" alt="image" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group required account-telephone">
+                                        <label class="col-sm-2 control-label" for="input-image">Photo</label>
+                                        <div class="col-sm-10">
+                                            <input type="file" name="photo" value="{{ $user->photo }}"
+                                                placeholder="Telephone" id="input-image" class="form-control" >
+                                        </div>
+                                    </div>
                                     <div class="form-group required account-firstname">
                                         <label class="col-sm-2 control-label" for="input-firstname">Name </label>
                                         <div class="col-sm-10">
@@ -56,19 +68,6 @@
                                             <textarea name="address" id="input-address" class="form-control" required>{{ $user->address }}</textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="customer_profile_image_uodate">
-
-                                            <img src="{{ !empty($user->photo) ? asset($user->photo) : asset('assets/images/others/error.png') }}" alt="image" >
-                                        </div>
-                                    </div>
-                                    <div class="form-group required account-telephone">
-                                        <label class="col-sm-2 control-label" for="input-image">Photo</label>
-                                        <div class="col-sm-10">
-                                            <input type="file" name="photo" value="{{ $user->photo }}"
-                                                placeholder="Telephone" id="input-image" class="form-control" >
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="account__information__button">
                                     <div class="back__button">
@@ -81,13 +80,8 @@
                             </form>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
-
-
-
     </div>
 @endsection

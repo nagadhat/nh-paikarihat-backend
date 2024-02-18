@@ -47,7 +47,7 @@
                             </span>
                             <br>
                             <span style="color: black;font-weight: bold;">Shipping Details:</span><br>
-                                {{ isset($orderDetails->customer_name) ? $orderDetails->customer_name : '' }}, ({{ $orderDetails->customer_phone }} ),
+                                {{ isset($orderDetails->customer_name) ? $orderDetails->customer_name : '' }}
                                 {{ isset($orderDetails->customer_phone) ? $orderDetails->customer_phone : '' }},
                                 {{ isset($orderDetails->customer_address) ? $orderDetails->customer_address : '' }}.
                             </span>

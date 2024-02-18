@@ -53,7 +53,7 @@
                             </span>
                             <br>
                             <span style="color: black;font-weight: bold;">Shipping Details:</span><br>
-                                {{ isset($orderDetails->customer_name) ? $orderDetails->customer_name : '' }}, ({{ $orderDetails->customer_phone }} ),
+                                {{ isset($orderDetails->customer_name) ? $orderDetails->customer_name : '' }},
                                 {{ isset($orderDetails->customer_phone) ? $orderDetails->customer_phone : '' }},
                                 {{ isset($orderDetails->customer_address) ? $orderDetails->customer_address : '' }}.
                             </span>
@@ -70,12 +70,12 @@
                         <p class="cs-invoice_date cs-primary_color cs-m0"><b class="cs-primary_color">Payment Status:
                             </b>
                             <span
-                                style="background: #a4e208; padding-top:1px; padding-right:10px;
+                                style="background: #F16027; padding-top:1px; padding-right:10px;
                                 padding-bottom:1px; padding-left: 10px;  border: 2px;
                                 border-radius: 25px; font-weight: bold;">
 
                                 @if ($orderDetails->payment_status == 1)
-                                    <span class="badge bg-primary text-white">Unpaid</span>
+                                    <span class="badge bg-primary">Unpaid</span>
                                 @else
                                     <span class="badge bg-success text-white">Paid</span>
                                 @endif
@@ -99,7 +99,7 @@
                                 }
                             @endphp
                             <span
-                                style="background: #a4e208; padding-top:1px; padding-right:10px;
+                                style="background: #F16027; padding-top:1px; padding-right:10px;
                                 padding-bottom:1px; padding-left: 10px; border: 2px;
                                 border-radius: 25px; font-weight: bold;">
                                 {{ $status }}
@@ -220,7 +220,7 @@
                 <a href="javascript:window.print()" class="cs-invoice_btn cs-color1" style="margin-right: 30px">
                     <span>Download</span>
                 </a>
-                <a href="{{ route('home_page') }}" class="cs-invoice_btn cs-color3">
+                <a href="{{ route('home_page') }}" class="cs-invoice_btn cs-color3 btn btn-black" style="background: #000">
                     <span>Go Back</span>
                 </a>
             </div>

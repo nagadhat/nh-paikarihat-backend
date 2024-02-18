@@ -31,7 +31,8 @@
                                                         <div class="block-body expand-block">
                                                             <div class="block-wrapper">
                                                                 <div class="block-content  block-html">
-                                                                    <div style="text-align: justify;" class="add__to__carttop"><b>
+                                                                    <div style="text-align: justify;"
+                                                                        class="add__to__carttop"><b>
                                                                             <font color="#f16027">সম্মানিত ক্রেতা</font>,
                                                                             অর্ডারটি কনফার্ম করতে আপনার নাম, সম্পূর্ণ
                                                                             ঠিকানা, মোবাইল নাম্বার লিখে <font
@@ -59,171 +60,168 @@
                         <div class="qc-col-1 col-md-4 mobile__view nh__checkout__page">
                             <div id="payment_address" class="qc-step" data-col="1" data-row="0">
 
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <p class="description"> </p>
-                                            @if (!Auth::check())
-                                                <div class="text-input form-group required">
-                                                    <div class="col-xs-12">
-                                                        <label class="radio-inline" for="notUserCheck">
-                                                            <input type="radio" name="user_check" id="notUserCheck"
-                                                                value="" checked>
-                                                            Without Registration
-                                                        </label>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <p class="description"> </p>
+                                        @if (!Auth::check())
+                                            <div class="text-input form-group required">
+                                                <div class="col-xs-12">
+                                                    <label class="radio-inline" for="notUserCheck">
+                                                        <input type="radio" name="user_check" id="notUserCheck"
+                                                            value="" checked>
+                                                        Without Registration
+                                                    </label>
 
-                                                        <label class="radio-inline" for="UserCheck">
+                                                    <label class="radio-inline" for="UserCheck">
 
-                                                            <input type="radio" name="user_check" id="UserCheck"
-                                                                value="">
-                                                            Existing User
-                                                        </label>
-                                                    </div>
+                                                        <input type="radio" name="user_check" id="UserCheck"
+                                                            value="">
+                                                        Existing User
+                                                    </label>
                                                 </div>
-                                            @endif
+                                            </div>
+                                        @endif
 
-                                            @if(Auth::check())
-                                                <div class="text-input form-group">
-                                                    <div class="col-xs-12">
-                                                        <label class="control-label" for="name">
-                                                            <span class="text" title=""><b>ডেলিভারী ইনফোরমেশন </b></span>
-                                                        </label>
-                                                    </div>
+                                        @if (Auth::check())
+                                            <div class="text-input form-group">
+                                                <div class="col-xs-12">
+                                                    <label class="control-label" for="name">
+                                                        <span class="text" title=""><b>ডেলিভারী ইনফোরমেশন
+                                                            </b></span>
+                                                    </label>
                                                 </div>
-                                                <div class="text-input form-group required">
-                                                    <div class="col-xs-12" style="padding-top:10px">
-                                                        <label class="control-label" for="name">
-                                                            <span class="text" title=""><b>নাম</b></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-xs-12">
-                                                        <input type="text" name="customer_name" class="form-control"
-                                                            placeholder="আপনার নাম লিখুন"
-                                                            value="{{ !empty($userdata['name']) ? $userdata['name'] : '' }}"
-                                                            required>
-                                                    </div>
+                                            </div>
+                                            <div class="text-input form-group required">
+                                                <div class="col-xs-12" style="padding-top:10px">
+                                                    <label class="control-label" for="name">
+                                                        <span class="text" title=""><b>নাম</b></span>
+                                                    </label>
                                                 </div>
-                                                <div class="text-input form-group required">
-                                                    <div class="col-xs-12">
-                                                        <label class="control-label" for="phone">
-                                                            <span class="text" title=""><b>মোবাইল</b></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-xs-12">
-                                                        <input type="text" name="customer_phone"
-                                                            value="{{ !empty($userdata['phone']) ? $userdata['phone'] : '' }}"
-                                                            class="form-control" placeholder="মোবাইল নম্বর লিখুন" required>
-                                                    </div>
+                                                <div class="col-xs-12">
+                                                    <input type="text" name="customer_name" class="form-control"
+                                                        placeholder="আপনার নাম লিখুন"
+                                                        value="{{ !empty($userdata['name']) ? $userdata['name'] : '' }}"
+                                                        required>
                                                 </div>
-                                                <div class="text-input form-group required">
-                                                    <div class="col-xs-12">
-                                                        <label class="control-label" for="address">
-                                                            <span class="text" title=""><b>ঠিকানা</b></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-xs-12">
-                                                        <textarea name="customer_address" class="form-control nh__customer__address" autocomplete="on"
-                                                            placeholder="ডেলিভারী ঠিকানা লিখুন" required>{{ !empty($userdata['address']) ? $userdata['address'] : '' }}
+                                            </div>
+                                            <div class="text-input form-group required">
+                                                <div class="col-xs-12">
+                                                    <label class="control-label" for="phone">
+                                                        <span class="text" title=""><b>মোবাইল</b></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <input type="text" name="customer_phone"
+                                                        value="{{ !empty($userdata['phone']) ? $userdata['phone'] : '' }}"
+                                                        class="form-control" placeholder="মোবাইল নম্বর লিখুন" required>
+                                                </div>
+                                            </div>
+                                            <div class="text-input form-group required">
+                                                <div class="col-xs-12">
+                                                    <label class="control-label" for="address">
+                                                        <span class="text" title=""><b>ঠিকানা</b></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <textarea name="customer_address" class="form-control nh__customer__address" autocomplete="on"
+                                                        placeholder="ডেলিভারী ঠিকানা লিখুন" required>{{ !empty($userdata['address']) ? $userdata['address'] : '' }}
                                                         </textarea>
-                                                    </div>
                                                 </div>
-                                                <div class="text-input form-group required" data-sort="16">
-                                                    <div class="col-xs-12">
-                                                        <label class="control-label" for="payment_address_zone_id">
-                                                            <span class="text" title="">
-                                                                <b>ডেলিভারী এরিয়া</b>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-xs-12">
-                                                        <label class="radio-inline" for="insideDhaka">
-                                                            <input type="radio" id="insideDhaka" name="delivery_area"
-                                                                value="inside_dhaka" onclick="showInsideDhaka()"
-                                                                checked>Inside
-                                                            Dhaka
-                                                        </label>
+                                            </div>
+                                            <div class="text-input form-group required" data-sort="16">
+                                                <div class="col-xs-12">
+                                                    <label class="control-label" for="payment_address_zone_id">
+                                                        <span class="text" title="">
+                                                            <b>ডেলিভারী এরিয়া</b>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <label class="radio-inline" for="insideDhaka">
+                                                        <input type="radio" id="insideDhaka" name="delivery_area"
+                                                            value="inside_dhaka" onclick="showInsideDhaka()"
+                                                            checked>Inside
+                                                        Dhaka
+                                                    </label>
 
-                                                        <label class="radio-inline" for="outsideDhaka">
-                                                            <input type="radio" name="delivery_area" id="outsideDhaka"
-                                                                value="outside_dhaka" onclick="showOutsideDhaka()">Outside
-                                                            Dhaka
-                                                        </label>
-                                                    </div>
+                                                    <label class="radio-inline" for="outsideDhaka">
+                                                        <input type="radio" name="delivery_area" id="outsideDhaka"
+                                                            value="outside_dhaka" onclick="showOutsideDhaka()">Outside
+                                                        Dhaka
+                                                    </label>
                                                 </div>
-                                            @else
-                                                <div class="text-input form-group required">
-                                                    <div class="col-xs-12" style="padding-top:10px">
-                                                        <label class="control-label" for="name">
-                                                            <span class="text" title=""><b>আপনার নাম</b></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-xs-12">
-                                                        <input type="text" name="customer_name" class="form-control"
-                                                            placeholder="আপনার নাম লিখুন"
-                                                            value=""
-                                                            required>
-                                                    </div>
+                                            </div>
+                                        @else
+                                            <div class="text-input form-group required">
+                                                <div class="col-xs-12" style="padding-top:10px">
+                                                    <label class="control-label" for="name">
+                                                        <span class="text" title=""><b>আপনার নাম</b></span>
+                                                    </label>
                                                 </div>
-                                                <div class="text-input form-group required">
-                                                    <div class="col-xs-12">
-                                                        <label class="control-label" for="phone">
-                                                            <span class="text" title=""><b>মোবাইল নম্বর</b></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-xs-12">
-                                                        <input type="text" name="customer_phone"
-                                                            value=""
-                                                            class="form-control" placeholder="মোবাইল নম্বর লিখুন" required>
-                                                    </div>
+                                                <div class="col-xs-12">
+                                                    <input type="text" name="customer_name" class="form-control"
+                                                        placeholder="আপনার নাম লিখুন" value="" required>
                                                 </div>
-                                                <div class="text-input form-group required">
-                                                    <div class="col-xs-12">
-                                                        <label class="control-label" for="address">
-                                                            <span class="text" title=""><b>ডেলিভারী ঠিকানা</b></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-xs-12">
-                                                        <textarea name="customer_address" class="form-control nh__customer__address" autocomplete="on"
-                                                            placeholder="ডেলিভারী ঠিকানা লিখুন" required>
+                                            </div>
+                                            <div class="text-input form-group required">
+                                                <div class="col-xs-12">
+                                                    <label class="control-label" for="phone">
+                                                        <span class="text" title=""><b>মোবাইল নম্বর</b></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <input type="text" name="customer_phone" value=""
+                                                        class="form-control" placeholder="মোবাইল নম্বর লিখুন" required>
+                                                </div>
+                                            </div>
+                                            <div class="text-input form-group required">
+                                                <div class="col-xs-12">
+                                                    <label class="control-label" for="address">
+                                                        <span class="text" title=""><b>ডেলিভারী ঠিকানা</b></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <textarea name="customer_address" class="form-control nh__customer__address" autocomplete="on"
+                                                        placeholder="ডেলিভারী ঠিকানা লিখুন" required>
                                                         </textarea>
-                                                    </div>
                                                 </div>
-                                                <div class="text-input form-group required" data-sort="16">
-                                                    <div class="col-xs-12">
-                                                        <label class="control-label" for="payment_address_zone_id">
-                                                            <span class="text" title="">
-                                                                <b>ডেলিভারী এরিয়া</b>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-xs-12">
-                                                        <label class="radio-inline" for="insideDhaka">
-                                                            <input type="radio" id="insideDhaka" name="delivery_area"
-                                                                value="inside_dhaka" onclick="showInsideDhaka()"
-                                                                checked>Inside
-                                                            Dhaka
-                                                        </label>
+                                            </div>
+                                            <div class="text-input form-group required" data-sort="16">
+                                                <div class="col-xs-12">
+                                                    <label class="control-label" for="payment_address_zone_id">
+                                                        <span class="text" title="">
+                                                            <b>ডেলিভারী এরিয়া</b>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <label class="radio-inline" for="insideDhaka">
+                                                        <input type="radio" id="insideDhaka" name="delivery_area"
+                                                            value="inside_dhaka" onclick="showInsideDhaka()"
+                                                            checked>Inside
+                                                        Dhaka
+                                                    </label>
 
-                                                        <label class="radio-inline" for="outsideDhaka">
-                                                            <input type="radio" name="delivery_area" id="outsideDhaka"
-                                                                value="outside_dhaka" onclick="showOutsideDhaka()">Outside
-                                                            Dhaka
-                                                        </label>
-                                                    </div>
+                                                    <label class="radio-inline" for="outsideDhaka">
+                                                        <input type="radio" name="delivery_area" id="outsideDhaka"
+                                                            value="outside_dhaka" onclick="showOutsideDhaka()">Outside
+                                                        Dhaka
+                                                    </label>
                                                 </div>
-                                            @endif
-                                        </div>
-                                        <div class="qc-col-4 col-md-12">
-                                            <div id="payment_view" class="qc-step" data-col="4" data-row="0">
-                                                <div class="buttons">
-                                                    <div class="pull-right">
-                                                        <input type="submit" value="অর্ডার কনফার্ম করুণ"
-                                                            id="button-confirm" data-loading-text="Loading..."
-                                                            class="btn btn-primary">
-                                                    </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="qc-col-4 col-md-12">
+                                        <div id="payment_view" class="qc-step" data-col="4" data-row="0">
+                                            <div class="buttons">
+                                                <div class="pull-right">
+                                                    <input type="submit" value="অর্ডার কনফার্ম করুণ" id="button-confirm"
+                                                        data-loading-text="Loading..." class="btn btn-primary">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
                             </div>
                         </div>
@@ -246,13 +244,12 @@
                                                     <table class="table table-bordered qc-cart checkout__border__color">
                                                         <thead>
                                                             <tr>
-                                                                <td class="qc-image" >নাম ও ছবি:
+                                                                <td class="qc-image">নাম ও ছবি:
                                                                 </td>
-                                                                <td class="qc-quantity" >
+                                                                <td class="qc-quantity">
                                                                     ইউনিট প্রাইস:
                                                                 </td>
-                                                                <td class="qc-quantity"
-                                                                    style=" text-align:center">
+                                                                <td class="qc-quantity" style=" text-align:center">
                                                                     কোয়ান্টিটি:
                                                                 </td>
                                                                 <td class="text-center td-total">মোট প্রোডাক্টের মূল্য</td>
@@ -265,7 +262,6 @@
                                                             ?>
                                                             {{-- @dd($cartItems) --}}
                                                             @foreach ($cartItems as $products)
-
                                                                 <tr class="checkout__br__color">
                                                                     <td class="">
                                                                         <input type="hidden" name="product_id[]"
@@ -297,8 +293,11 @@
                                                                         </p>
                                                                     </td>
                                                                     <td class="qc-price  ">
-                                                                        <span>{{ $products->unit_price - $products->product->discount_amount }} ৳ </span> <br>
-                                                                        <del class="qc-price-del-color-price" style="color: #F16027">{{ isset($products->unit_price) ? $products->unit_price : '' }} ৳</del>
+                                                                        <span>{{ $products->unit_price - $products->product->discount_amount }}
+                                                                            ৳ </span> <br>
+                                                                        <del class="qc-price-del-color-price"
+                                                                            style="color: #F16027">{{ isset($products->unit_price) ? $products->unit_price : '' }}
+                                                                            ৳</del>
                                                                     </td>
                                                                     <td class="qc-quantity">
                                                                         <div class="input-group input-group-sm">
@@ -313,14 +312,16 @@
                                                                                         onChange="manualIncrement(this.value,  {{ $products->id }}, {{ $products->unit_price }}, {{ $i }})"
                                                                                         class="input-qty input-cornered" />
                                                                                 </div>
-                                                                                <div class="nh__product__qty nh--product--qty">
+                                                                                <div
+                                                                                    class="nh__product__qty nh--product--qty">
                                                                                     <div class="nh__product__qty__inner">
                                                                                         <button
                                                                                             class="qty-btn-plus btn-danger btn-cornered ml-1"
                                                                                             onClick="manageQuantity({{ $i }}, 'increment')"
                                                                                             type="button"
                                                                                             data-product_id="{{ $products->id }}">
-                                                                                            <i class="fa fa-chevron-up"></i>
+                                                                                            <i
+                                                                                                class="fa fa-chevron-up"></i>
                                                                                         </button>
                                                                                     </div>
                                                                                     <div class="nh__product__qty__inner">
@@ -344,13 +345,15 @@
                                                                     </td>
                                                                     <td class="text-center td-total"
                                                                         id="subTotal_{{ $i }}">
-                                                                        {{ ($products->unit_price - $products->product->discount_amount) * $products->quantity }} ৳ 
+                                                                        {{ ($products->unit_price - $products->product->discount_amount) * $products->quantity }}
+                                                                        ৳
                                                                     </td>
                                                                     <td style="text-align: center">
                                                                         <span class="input-group-btn">
                                                                             <a href="{{ route('product_delete_cart', $products->id) }}"
                                                                                 class="btn btn-remove cart_item__remove">
-                                                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                                                <i class="fa fa-trash-o"
+                                                                                    aria-hidden="true"></i>
                                                                             </a>
                                                                         </span>
                                                                     </td>
@@ -370,7 +373,7 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <span id="productPrice">
-                                                                     {{ isset($totalprice) ? $totalprice : '' }} ৳
+                                                                    {{ isset($totalprice) ? $totalprice : '' }} ৳
                                                                 </span>
                                                                 <input id="productPriceval" type="hidden" name="price"
                                                                     value="{{ isset($totalprice) ? $totalprice : '' }}">
@@ -382,7 +385,7 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right"
                                                                 id="discount_increment">
-                                                                 {{ isset($totaldiscount) ? $totaldiscount : '' }} ৳
+                                                                {{ isset($totaldiscount) ? $totaldiscount : '' }} ৳
 
                                                                 <input type="hidden" id="Discount"
                                                                     name="discount_amount_old"
@@ -395,12 +398,12 @@
                                                             </label>
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right">
                                                                 <p id="insideDhakaCharge" class="text-white">
-                                                                    <span>  60 ৳</span>
+                                                                    <span> 60 ৳</span>
 
                                                                 </p>
                                                                 <p id="outsideDhakaCharge" class="text-white"
                                                                     style="display: none">
-                                                                    <span>  120 ৳</span>
+                                                                    <span> 120 ৳</span>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -416,7 +419,8 @@
                                                                 name="discount_amount" value="{{ $totaldiscount }}">
                                                             <div class="col-sm-3 col-xs-6 form-control-static text-right"
                                                                 id="grandTotal">
-                                                                 {{ isset($totalprice) && isset($totaldiscount) ? $totalprice + 60 - $totaldiscount : '' }} ৳
+                                                                {{ isset($totalprice) && isset($totaldiscount) ? $totalprice + 60 - $totaldiscount : '' }}
+                                                                ৳
                                                             </div>
                                                         </div>
                                                     </div>
@@ -462,6 +466,12 @@
             }
             let subTotal = unit_price * qty;
             $("#subTotal_" + i).html(subTotal + ' ৳');
+
+            if (qty == 1) {
+                $(".qty-btn-minus").attr("disabled", "disabled");
+            } else {
+                $(".qty-btn-minus").removeAttr('disabled');
+            }
 
             orderSubmit(productid, type, i, qty, unit_price);
         };
@@ -548,7 +558,8 @@
         $(document).ready(function() {
             $('input[name="user_check"]').change(function() {
                 if ($(this).attr('id') === 'UserCheck') {
-                    window.location.href = "/customer-login?session_id={{ ! empty($cartItems) && (count($cartItems) > 0 ) ? $cartItems[0]->session_id : '' }}";
+                    window.location.href =
+                        "/customer-login?session_id={{ !empty($cartItems) && count($cartItems) > 0 ? $cartItems[0]->session_id : '' }}";
                 }
             });
         });

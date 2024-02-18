@@ -47,7 +47,7 @@
                             </span>
                             <br>
                             <span style="color: black;font-weight: bold;">Shipping Details:</span><br>
-                                {{ isset($orderDetails->customer_name) ? $orderDetails->customer_name : '' }}
+                                {{ isset($orderDetails->customer_name) ? $orderDetails->customer_name : '' }},
                                 {{ isset($orderDetails->customer_phone) ? $orderDetails->customer_phone : '' }},
                                 {{ isset($orderDetails->customer_address) ? $orderDetails->customer_address : '' }}.
                             </span>
@@ -63,7 +63,7 @@
                         <p class="cs-invoice_date cs-primary_color cs-m0"><b class="cs-primary_color">Payment Status:
                             </b>
                             <span
-                                style="background: #a4e208; padding-top:1px; padding-right:10px;
+                                style="background: #F1632B; padding-top:1px; padding-right:10px;
                                 padding-bottom:1px; padding-left: 10px;  border: 2px;
                                 border-radius: 25px; font-weight: bold;">
 
@@ -94,7 +94,7 @@
                                 }
                             @endphp
                             <span
-                                style="background: #a4e208; padding-top:1px; padding-right:10px;
+                                style="background: #F1632B; padding-top:1px; padding-right:10px;
                                 padding-bottom:1px; padding-left: 10px; border: 2px;
                                 border-radius: 25px; font-weight: bold;">
                                 {{ $status}}
@@ -214,7 +214,7 @@
                 <a href="javascript:window.print()" class="cs-invoice_btn cs-color1" style="margin-right: 30px">
                     <span>Download</span>
                 </a>
-                <a href="{{  route('orders') }}" class="cs-invoice_btn cs-color3">
+                <a href="{{  route('orders') }}" class="cs-invoice_btn cs-color3" style="background: #000">
                     <span>Go Back</span>
                 </a>
             </div>

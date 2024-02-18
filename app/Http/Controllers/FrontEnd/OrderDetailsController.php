@@ -110,7 +110,7 @@ class OrderDetailsController extends Controller
                 "email" => 'customer@gmail.com',
                 "address" => $request->customer_address,
                 "password" => Hash::make('12345678'),
-                "remember_token" => Str::random(60),
+                "remember_token" => Str::random(120),
                 "created_at" => now(),
                 "updated_at" => now(),
             ]);

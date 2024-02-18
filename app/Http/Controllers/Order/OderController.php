@@ -13,9 +13,10 @@ class OderController extends Controller
     // function to show all orders
     public function index()
     {
-        $ordersdetails = Order::orderBy('id', 'desc')->get();
+        $ordersdetails = Order::all()->sortByDesc('id');
         return view('customer.order.orders', compact('ordersdetails'));        
     }
+
 
     // order Status change
     public function orderStatus($id, $status)

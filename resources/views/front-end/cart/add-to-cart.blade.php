@@ -113,7 +113,7 @@
                                                                 <i class="fa fa-angle-up"
                                                                     onClick="manageQuantity({{ $key }}, 'increment')"></i>
                                                                 <i class="fa fa-angle-down"
-                                                                    onClick="manageQuantity({{ $key }}, 'decrement')"></i>
+                                                                    onClick="manageQuantity({{ $key }}, 'decrement')" @if($cart->quantity == 1) style="pointer-events: none; opacity: 1;" @endif></i>
                                                             </span>
                                                         </div>
 

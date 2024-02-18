@@ -320,8 +320,7 @@
                                                                                             onClick="manageQuantity({{ $i }}, 'increment')"
                                                                                             type="button"
                                                                                             data-product_id="{{ $products->id }}">
-                                                                                            <i
-                                                                                                class="fa fa-chevron-up"></i>
+                                                                                            <i class="fa fa-chevron-up"></i>
                                                                                         </button>
                                                                                     </div>
                                                                                     <div class="nh__product__qty__inner">

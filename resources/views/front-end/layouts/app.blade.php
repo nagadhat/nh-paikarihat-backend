@@ -125,7 +125,7 @@
      <link href="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
      <link rel="stylesheet" href="{{ asset('front-end/assets/css/toastr.min.css') }}">
 
-     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/redesign.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/redesign-new.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product-button.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/login_page.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/customer-dashboard.css') }}" />

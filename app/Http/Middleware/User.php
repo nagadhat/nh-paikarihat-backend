@@ -33,7 +33,7 @@ class User
                         return $next($request);
                     } else {
                         // return to subscription
-                        return redirect()->route('sign_in');
+                        return redirect()->route('web_packages');
                     }
                 }
 
@@ -42,7 +42,7 @@ class User
                 Alert::error('Account Blocked!', 'To violate terms, your subscription is blocked. Contact support for further information.');
             } else {
                 // return to subscription
-                return redirect()->route('sign_in');
+                return redirect()->route('web_packages');
             }
         }
 

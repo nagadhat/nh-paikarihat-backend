@@ -1,7 +1,7 @@
 <!-- Header START -->
 <div class="header">
     <div class="logo logo-dark">
-        <a href="{{ route('user_dashboard') }}" style="width: 90%;">
+        <a href="#" style="width: 90%;">
             <img src="{{ asset('back-end/Paikari-Hat-logo-260-X-114.png') }}" class="img-fluid" alt="Logo" style="height: 60px" >
         </a>
     </div>

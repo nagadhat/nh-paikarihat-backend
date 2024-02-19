@@ -18,7 +18,6 @@ class AdminDashboard extends Controller
         $ProcessingOrder = Order::where('status', 3)->count();
         $DeliveredOrderCount = Order::where('status', 4)->count();
         return view('admin.dashboard', compact('PendingOrder','OrderCount', 'ProcessingOrder','DeliveredOrderCount','UserCount'));
-        // return view('admin.dashboard');
     }
     
 }

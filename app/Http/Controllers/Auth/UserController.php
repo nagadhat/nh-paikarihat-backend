@@ -35,7 +35,7 @@ class UserController extends Controller
                     return redirect()->route('admin_dashboard');
                 } elseif (Auth::user()->is_admin == 0) {
                     // return to user dashboard
-                    return redirect()->route('user_dashboard');
+                    return redirect()->back();
                 } else {
                     // sign-out and return back
                     Auth::logout();

@@ -159,9 +159,35 @@ Route::get('/sign-out', [UserController::class, 'sign_out'])->name('sign_out');
 
 Route::prefix('/user')->middleware('user')->group(function () {
     // dashboard route
-    Route::get('/', [CustomerDashboard::class, 'index'])->name('user_dashboard');
+    // Route::get('/', [CustomerDashboard::class, 'index'])->name('user_dashboard');
+    //  packages
+    Route::resource('/packages', PackageController::class);
 
-    // profile routes
+    // // courier routes
+    Route::resource('/couriers', CourierController::class);
+    Route::get('/courier-status/{id}/{status}', [CourierController::class, 'status'])->name('courier_status');
+
+    // ticket routes
+    Route::controller(SupportTicketController::class)->group(function () {
+        Route::get("/support-tickets", "tickets")->name('support_tickets');
+        Route::get('/delete-support-ticket/{id}', 'delete')->name('delete_support_ticket');
+        Route::get('/inspect-support-ticket/{id}', 'inspectTicket')->name('inspect_support_ticket');
+        Route::post('/reply-support-ticket', 'replyTicket')->name('admin_reply_support_ticket');
+        Route::get('/support-ticket-status/{id}/{status}', 'status')->name('support_ticket_status');
+    });
+    
+});
+
+/*
+|--------------------------------------------------------------------------
+|   # admin routes
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('/admin')->middleware('admin')->group(function () {
+    // admin dashboard
+    Route::get('/', [AdminDashboard::class, 'index'])->name('admin_dashboard');
+
     Route::get('/profiles', [UserController::class, 'user_profiles'])->name('user_profiles');
     Route::post('/update-profile', [UserController::class, 'updateProfile'])->name('update_profile');
     Route::post('/update-password', [UserController::class, 'updatePassword'])->name('update_password');
@@ -273,33 +299,6 @@ Route::prefix('/user')->middleware('user')->group(function () {
 
     // subscription routes
     Route::resource('/subscription', SubscriptionController::class);
-});
-
-/*
-|--------------------------------------------------------------------------
-|   # admin routes
-|--------------------------------------------------------------------------
-*/
-
-Route::prefix('/admin')->middleware('admin')->group(function () {
-    // admin dashboard
-    Route::get('/', [AdminDashboard::class, 'index'])->name('admin_dashboard');
-
-    // packages
-    Route::resource('/packages', PackageController::class);
-
-    // courier routes
-    Route::resource('/couriers', CourierController::class);
-    Route::get('/courier-status/{id}/{status}', [CourierController::class, 'status'])->name('courier_status');
-
-    // ticket routes
-    Route::controller(SupportTicketController::class)->group(function () {
-        Route::get("/support-tickets", "tickets")->name('support_tickets');
-        Route::get('/delete-support-ticket/{id}', 'delete')->name('delete_support_ticket');
-        Route::get('/inspect-support-ticket/{id}', 'inspectTicket')->name('inspect_support_ticket');
-        Route::post('/reply-support-ticket', 'replyTicket')->name('admin_reply_support_ticket');
-        Route::get('/support-ticket-status/{id}/{status}', 'status')->name('support_ticket_status');
-    });
 
 });
 

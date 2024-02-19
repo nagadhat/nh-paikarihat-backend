@@ -79,7 +79,7 @@ class ProductCartController extends Controller
                 return $item->quantity;
             });
         }
-   
+
 
         return response()->json(['message' => 'working','product_count'=> $product_count, 'productid'=>$product->id, 'sessionId' => $sessionId]);
     }
@@ -152,22 +152,5 @@ class ProductCartController extends Controller
         }
     }
 
-
-
-    // public function ProductaddToCart()
-    // {
-
-    //     return view('front-end.cart.product-add-to-cart');
-    // }
-
-    // public function removeCartItem($rowId)
-    // {
-    //     $getCart = Cart::get($rowId);
-    //     $name = $getCart->name = 'akash';
-    //     // Cart::remove($rowId);
-    //     Cart::update($rowId, $name);
-    //     return redirect()->back();
-
-    // }
 
 }

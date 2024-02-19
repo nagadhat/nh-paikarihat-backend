@@ -85,7 +85,7 @@ class OrderDetailsController extends Controller
                 'address' => '',
             ];
        }
-       
+
 
         return view('front-end.order.checkout-details', compact('cartItems', 'userdata', 'totalprice', 'totaldiscount', 'product_count'));
     }

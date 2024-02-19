@@ -240,190 +240,209 @@
                                                 </h4>
                                             </div>
                                             <div class="qc-checkout-product panel-body">
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered qc-cart checkout__border__color">
-                                                        <thead>
-                                                            <tr>
-                                                                <td class="qc-image">নাম ও ছবি:
-                                                                </td>
-                                                                <td class="qc-quantity">
-                                                                    ইউনিট প্রাইস:
-                                                                </td>
-                                                                <td class="qc-quantity" style=" text-align:center">
-                                                                    কোয়ান্টিটি:
-                                                                </td>
-                                                                <td class="text-center td-total">মোট প্রোডাক্টের মূল্য</td>
-                                                                <td class="text-center td-total">ডিলিট প্রোডাক্ট</td>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @php
-                                                                $i = 1;
-                                                            @endphp
-
-                                                            @foreach ($cartItems as $products)
-                                                                <tr class="checkout__br__color">
-                                                                    <td class="">
-                                                                        <input type="hidden" name="product_id[]"
-                                                                            value="{{ $products->product->id }}">
-                                                                        @if (isset($products->product->photo))
-                                                                            <div class=" ph__checkout__photo">
-                                                                                <img src="{{ asset('storage/products/' . $products->product->photo) }}"
-                                                                                    class="img-responsive mobile-image"
-                                                                                    style="width:120px; height:100px !important;object-fit: cover;"
-                                                                                    alt="product image" />
-                                                                            </div>
-                                                                        @else
-                                                                            <div class="ph__checkout__photo ">
-                                                                                <img src="{{ asset('assets/images/others/error.png') }}"
-                                                                                    class="img-responsive mobile-image"
-                                                                                    alt="product image" />
-                                                                            </div>
-                                                                        @endif
-                                                                        <br>
-                                                                        <p>
-                                                                            {{-- {{ Str::limit($products->product->title, 30, '...') ? Str::limit($products->product->title, 30, '...') : '' }} --}}
-                                                                            {{ $products->product->title }}
-                                                                        </p>
-                                                                        <p
-                                                                            style="background:{{ $products->product->product_type == 'PRE' ? '#FED430' : 'none' }}; color:#000; width:max-content; padding:2px 8px;font-weight:700 ">
-                                                                            @if ($products->product->product_type != 'REG')
-                                                                                Pre Order
-                                                                            @endif
-                                                                        </p>
-                                                                    </td>
-                                                                    <td class="qc-price  ">
-                                                                        <span>{{ $products->unit_price - $products->product->discount_amount }}
-                                                                            ৳ </span> <br>
-                                                                        <del class="qc-price-del-color-price"
-                                                                            style="color: #F16027">{{ isset($products->unit_price) ? $products->unit_price : '' }}
-                                                                            ৳</del>
+                                                @if ($cartItems->isEmpty())
+                                                    <div style="text-align: center; padding: 30px 0;">
+                                                        <h5>Your shopping product is empty!</h5>
+                                                        <a href="{{ route('home_page') }}" style="color:white; background: #F16027; padding: 5px 15px; ">
+                                                            Continue Shoping
+                                                        </a>
+                                                    </div>
+                                                @else
+                                                    <div class="table-responsive">
+                                                        <table
+                                                            class="table table-bordered qc-cart checkout__border__color">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td class="qc-image">নাম ও ছবি:
                                                                     </td>
                                                                     <td class="qc-quantity">
-                                                                        <div class="input-group input-group-sm">
-                                                                            <div class="qty-container nh__product__qty__area"
-                                                                                style="width:100%;">
-                                                                                <div class="nh__product__qty">
-                                                                                    <input type="text"
-                                                                                        id="CurrentQty_{{ $i }}"
-                                                                                        name="total_quantity"
-                                                                                        min="1"
-                                                                                        value="{{ $products->quantity }}"
-                                                                                        onChange="manualIncrement(this.value,  {{ $products->id }}, {{ $products->unit_price }}, {{ $i }})"
-                                                                                        class="input-qty input-cornered" />
+                                                                        ইউনিট প্রাইস:
+                                                                    </td>
+                                                                    <td class="qc-quantity" style=" text-align:center">
+                                                                        কোয়ান্টিটি:
+                                                                    </td>
+                                                                    <td class="text-center td-total">মোট প্রোডাক্টের মূল্য
+                                                                    </td>
+                                                                    <td class="text-center td-total">ডিলিট প্রোডাক্ট</td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @php
+                                                                    $i = 1;
+                                                                @endphp
+
+                                                                @foreach ($cartItems as $products)
+                                                                    <tr class="checkout__br__color">
+                                                                        <td class="">
+                                                                            <input type="hidden" name="product_id[]"
+                                                                                value="{{ $products->product->id }}">
+                                                                            @if (isset($products->product->photo))
+                                                                                <div class=" ph__checkout__photo">
+                                                                                    <img src="{{ asset('storage/products/' . $products->product->photo) }}"
+                                                                                        class="img-responsive mobile-image"
+                                                                                        style="width:120px; height:100px !important;object-fit: cover;"
+                                                                                        alt="product image" />
                                                                                 </div>
-                                                                                <div
-                                                                                    class="nh__product__qty nh--product--qty">
-                                                                                    <div class="nh__product__qty__inner">
-                                                                                        <button
-                                                                                            class="qty-btn-plus btn-danger btn-cornered ml-1"
-                                                                                            onClick="manageQuantity({{ $i }}, 'increment')"
-                                                                                            type="button"
-                                                                                            data-product_id="{{ $products->id }}">
-                                                                                            <i class="fa fa-chevron-up"></i>
-                                                                                        </button>
+                                                                            @else
+                                                                                <div class="ph__checkout__photo ">
+                                                                                    <img src="{{ asset('assets/images/others/error.png') }}"
+                                                                                        class="img-responsive mobile-image"
+                                                                                        alt="product image" />
+                                                                                </div>
+                                                                            @endif
+                                                                            <br>
+                                                                            <p>
+                                                                                {{-- {{ Str::limit($products->product->title, 30, '...') ? Str::limit($products->product->title, 30, '...') : '' }} --}}
+                                                                                {{ $products->product->title }}
+                                                                            </p>
+                                                                            <p
+                                                                                style="background:{{ $products->product->product_type == 'PRE' ? '#FED430' : 'none' }}; color:#000; width:max-content; padding:2px 8px;font-weight:700 ">
+                                                                                @if ($products->product->product_type != 'REG')
+                                                                                    Pre Order
+                                                                                @endif
+                                                                            </p>
+                                                                        </td>
+                                                                        <td class="qc-price  ">
+                                                                            <span>{{ $products->unit_price - $products->product->discount_amount }}
+                                                                                ৳ </span> <br>
+                                                                            <del class="qc-price-del-color-price"
+                                                                                style="color: #F16027">{{ isset($products->unit_price) ? $products->unit_price : '' }}
+                                                                                ৳</del>
+                                                                        </td>
+                                                                        <td class="qc-quantity">
+                                                                            <div class="input-group input-group-sm">
+                                                                                <div class="qty-container nh__product__qty__area"
+                                                                                    style="width:100%;">
+                                                                                    <div class="nh__product__qty">
+                                                                                        <input type="text"
+                                                                                            id="CurrentQty_{{ $i }}"
+                                                                                            name="total_quantity"
+                                                                                            min="1"
+                                                                                            value="{{ $products->quantity }}"
+                                                                                            onChange="manualIncrement(this.value,  {{ $products->id }}, {{ $products->unit_price }}, {{ $i }})"
+                                                                                            class="input-qty input-cornered" />
                                                                                     </div>
-                                                                                    <div class="nh__product__qty__inner">
-                                                                                        <input type="hidden"
-                                                                                            id="product_id_{{ $i }}"
-                                                                                            value="{{ $products->id }}">
-                                                                                        <input type="hidden"
-                                                                                            name=""
-                                                                                            id="unit_price_{{ $i }}"
-                                                                                            value="{{ $products->unit_price }}">
-                                                                                        <button
-                                                                                            class="qty-btn-minus btn-danger btn-cornered mr-2"
-                                                                                            onClick="manageQuantity({{ $i }}, 'decrement')"
-                                                                                            type="button"  @if($products->quantity == 1) disabled @endif>
-                                                                                            <i class="fa fa-chevron-down"></i>
-                                                                                        </button>
+                                                                                    <div
+                                                                                        class="nh__product__qty nh--product--qty">
+                                                                                        <div
+                                                                                            class="nh__product__qty__inner">
+                                                                                            <button
+                                                                                                class="qty-btn-plus btn-danger btn-cornered ml-1"
+                                                                                                onClick="manageQuantity({{ $i }}, 'increment')"
+                                                                                                type="button"
+                                                                                                data-product_id="{{ $products->id }}">
+                                                                                                <i
+                                                                                                    class="fa fa-chevron-up"></i>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="nh__product__qty__inner">
+                                                                                            <input type="hidden"
+                                                                                                id="product_id_{{ $i }}"
+                                                                                                value="{{ $products->id }}">
+                                                                                            <input type="hidden"
+                                                                                                name=""
+                                                                                                id="unit_price_{{ $i }}"
+                                                                                                value="{{ $products->unit_price }}">
+                                                                                            <button
+                                                                                                class="qty-btn-minus btn-danger btn-cornered mr-2"
+                                                                                                onClick="manageQuantity({{ $i }}, 'decrement')"
+                                                                                                type="button"
+                                                                                                @if ($products->quantity == 1) disabled @endif>
+                                                                                                <i
+                                                                                                    class="fa fa-chevron-down"></i>
+                                                                                            </button>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td class="text-center td-total"
-                                                                        id="subTotal_{{ $i }}">
-                                                                        {{ ($products->unit_price - $products->product->discount_amount) * $products->quantity }}
-                                                                        ৳
-                                                                    </td>
-                                                                    <td style="text-align: center">
-                                                                        <span class="input-group-btn">
-                                                                            <a href="{{ route('product_delete_cart', $products->id) }}"
-                                                                                class="btn btn-remove cart_item__remove">
-                                                                                <i class="fa fa-trash-o"
-                                                                                    aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </span>
-                                                                    </td>
-                                                                </tr>
-                                                                <?php
-                                                                $i++;
-                                                                ?>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="form-horizontal">
-                                                    <div class="form-horizontal qc-totals checkout__details__price">
-                                                        <div class="row">
-                                                            <label class="col-sm-9 col-xs-6 control-label">
-                                                                ইউনিট প্রাইস:
-                                                            </label>
-                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right">
-                                                                <span id="productPrice">
-                                                                    {{ isset($totalprice) ? $totalprice : '' }} ৳
-                                                                </span>
-                                                                <input id="productPriceval" type="hidden" name="price"
-                                                                    value="{{ isset($totalprice) ? $totalprice : '' }}">
+                                                                        </td>
+                                                                        <td class="text-center td-total"
+                                                                            id="subTotal_{{ $i }}">
+                                                                            {{ ($products->unit_price - $products->product->discount_amount) * $products->quantity }}
+                                                                            ৳
+                                                                        </td>
+                                                                        <td style="text-align: center">
+                                                                            <span class="input-group-btn">
+                                                                                <a href="{{ route('product_delete_cart', $products->id) }}"
+                                                                                    class="btn btn-remove cart_item__remove">
+                                                                                    <i class="fa fa-trash-o"
+                                                                                        aria-hidden="true"></i>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <?php
+                                                                    $i++;
+                                                                    ?>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="form-horizontal">
+                                                        <div class="form-horizontal qc-totals checkout__details__price">
+                                                            <div class="row">
+                                                                <label class="col-sm-9 col-xs-6 control-label">
+                                                                    ইউনিট প্রাইস:
+                                                                </label>
+                                                                <div
+                                                                    class="col-sm-3 col-xs-6 form-control-static text-right">
+                                                                    <span id="productPrice">
+                                                                        {{ isset($totalprice) ? $totalprice : '' }} ৳
+                                                                    </span>
+                                                                    <input id="productPriceval" type="hidden"
+                                                                        name="price"
+                                                                        value="{{ isset($totalprice) ? $totalprice : '' }}">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <label class="col-sm-9 col-xs-6 control-label">
-                                                                ডিসকাউন্ট
-                                                            </label>
-                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right"
-                                                                id="discount_increment">
-                                                                {{ isset($totaldiscount) ? $totaldiscount : '' }} ৳
+                                                            <div class="row">
+                                                                <label class="col-sm-9 col-xs-6 control-label">
+                                                                    ডিসকাউন্ট
+                                                                </label>
+                                                                <div class="col-sm-3 col-xs-6 form-control-static text-right"
+                                                                    id="discount_increment">
+                                                                    {{ isset($totaldiscount) ? $totaldiscount : '' }} ৳
 
-                                                                <input type="hidden" id="Discount"
-                                                                    name="discount_amount_old"
-                                                                    value="{{ isset($totaldiscount) ? $totaldiscount : '' }}">
+                                                                    <input type="hidden" id="Discount"
+                                                                        name="discount_amount_old"
+                                                                        value="{{ isset($totaldiscount) ? $totaldiscount : '' }}">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <label class="col-sm-9 col-xs-6 control-label">
-                                                                ডেলিভারী চার্জ
-                                                            </label>
-                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right">
-                                                                <p id="insideDhakaCharge" class="text-white">
-                                                                    <span> 60 ৳</span>
+                                                            <div class="row">
+                                                                <label class="col-sm-9 col-xs-6 control-label">
+                                                                    ডেলিভারী চার্জ
+                                                                </label>
+                                                                <div
+                                                                    class="col-sm-3 col-xs-6 form-control-static text-right">
+                                                                    <p id="insideDhakaCharge" class="text-white">
+                                                                        <span> 60 ৳</span>
 
-                                                                </p>
-                                                                <p id="outsideDhakaCharge" class="text-white"
-                                                                    style="display: none">
-                                                                    <span> 120 ৳</span>
-                                                                </p>
+                                                                    </p>
+                                                                    <p id="outsideDhakaCharge" class="text-white"
+                                                                        style="display: none">
+                                                                        <span> 120 ৳</span>
+                                                                    </p>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <hr>
-                                                        <div class="row">
-                                                            <label class="col-sm-9 col-xs-6 control-label"
-                                                                style="font-weight: bold">
-                                                                মোট বিল
-                                                            </label>
-                                                            <input type="hidden" name="order_total"
-                                                                value="{{ $totalprice + $totaldiscount }}">
-                                                            <input type="hidden" id="discount_amount"
-                                                                name="discount_amount" value="{{ $totaldiscount }}">
-                                                            <div class="col-sm-3 col-xs-6 form-control-static text-right"
-                                                                id="grandTotal">
-                                                                {{ isset($totalprice) && isset($totaldiscount) ? $totalprice + 60 - $totaldiscount : '' }}
-                                                                ৳
+                                                            <hr>
+                                                            <div class="row">
+                                                                <label class="col-sm-9 col-xs-6 control-label"
+                                                                    style="font-weight: bold">
+                                                                    মোট বিল
+                                                                </label>
+                                                                <input type="hidden" name="order_total"
+                                                                    value="{{ $totalprice + $totaldiscount }}">
+                                                                <input type="hidden" id="discount_amount"
+                                                                    name="discount_amount" value="{{ $totaldiscount }}">
+                                                                <div class="col-sm-3 col-xs-6 form-control-static text-right"
+                                                                    id="grandTotal">
+                                                                    {{ isset($totalprice) && isset($totaldiscount) ? $totalprice + 60 - $totaldiscount : '' }}
+                                                                    ৳
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

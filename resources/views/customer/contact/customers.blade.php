@@ -51,6 +51,10 @@
                                                 <label for="" class="form-label">Address:</label>
                                                 <textarea name="address" id="" class="form-control" placeholder="address"></textarea>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="" class="form-label">Note:</label>
+                                                <textarea name="note" id="" class="form-control" placeholder="note" style="height: 100px;"></textarea>
+                                            </div>
                                             <div class="text-right">
                                                 <button type="submit" class="btn btn-sm btn-primary">Save</button>
                                             </div>
@@ -77,6 +81,7 @@
                                 <th>Phone</th>
                                 <th>Email</th>
                                 <th>Address</th>
+                                <th>Note</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -89,6 +94,7 @@
                                     <td>{{ $customer->phone }}</td>
                                     <td>{{ $customer->email }}</td>
                                     <td>{{ $customer->address }}</td>
+                                    <td>{{ $customer->note }}</td>
                                     <td>
                                         <span class="badge bg-primary text-light">
                                             {{ $customer->status == 1 ? 'Active' : 'In-active' }}
@@ -114,7 +120,7 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4>Edit {{ $customer->title }} Category</h4>
+                                                            <h4>Edit {{ $customer->title }} Customer</h4>
                                                             <button type="button" class="close" data-dismiss="modal">
                                                                 <i class="anticon anticon-close"></i>
                                                             </button>
@@ -144,6 +150,10 @@
                                                                 <div class="form-group">
                                                                     <label for="" class="form-label">Address:</label>
                                                                     <textarea name="address" id="" class="form-control" placeholder="address">{{ $customer->address }}</textarea>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="" class="form-label">Note:</label>
+                                                                    <textarea name="note" id="" class="form-control" placeholder="address">{{ $customer->note }}</textarea>
                                                                 </div>
                                                                 <div class="text-right">
                                                                     <button type="submit"

@@ -43,6 +43,7 @@ class CustomerController extends Controller
        $customer->phone = $request->input('phone');
        $customer->email = $request->input('email');
        $customer->address = $request->input('address');
+       $customer->note = $request->input('note');
        $customer->save();
 
        // Alert
@@ -86,6 +87,7 @@ class CustomerController extends Controller
         $updateCustomer->phone = $request->input('phone');
         $updateCustomer->email = $request->input('email');
         $updateCustomer->address = $request->input('address');
+        $updateCustomer->note = $request->input('note');
         $updateCustomer->save();
 
         // return to customers

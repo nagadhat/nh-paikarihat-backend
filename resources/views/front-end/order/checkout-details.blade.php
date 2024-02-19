@@ -222,7 +222,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div class="col-md-8 mobile__view">

@@ -108,7 +108,8 @@
                                                             <input type="text" name="quantity"
                                                                 value="{{ $cart->quantity }}" size="1"
                                                                 id="CurrentQty_{{ $key }}" class="form-control"
-                                                                min="1">
+                                                                onChange="manualIncrement(this.value,  {{ $cart->id }}, {{ $cart->unit_price }}, {{ $key }})"
+                                                                min="1" >
                                                             <span>
                                                                 <i class="fa fa-angle-up"
                                                                     onClick="manageQuantity({{ $key }}, 'increment')"></i>
@@ -121,7 +122,7 @@
                                                 </td>
                                                 <td class="text-center td-price"> {{ $cart->unit_price }} ৳</td>
                                                 <td class="text-center td-total" id="subTotal_{{ $key }}">
-                                                     {{ ($cart->unit_price -$cart->product->discount_amount) * $cart->quantity }} ৳
+                                                     {{ ($cart->unit_price - $cart->product->discount_amount) * $cart->quantity }} ৳
                                                 </td>
                                                 <td>
                                                     <span class="input-group-btn">
@@ -193,6 +194,12 @@
             });            
         })(jQuery);
 
+        function manualIncrement(p_qty, p_id, p_up, i) {
+            let subTotal = p_up * p_qty;
+            $("#subTotal_" + i).html(subTotal + ' ৳');
+            orderSubmit(p_id, 'manual', i, p_qty, p_up);
+        }
+
         function manageQuantity(i, type) {
             let productid = $('#product_id_' + i).val();
             let unit_price = $('#unit_price_' + i).val();
@@ -209,14 +216,18 @@
 
             let subTotal = unit_price * qty;
             $("#subTotal_" + i).html(subTotal + ' ৳');
-
+            orderSubmit(productid, type, i, qty, unit_price);
+        }
+        function orderSubmit(productid, type, i, qty, unit_price) {
             $.ajax({
                 url: "/product-increment",
                 type: 'post',
                 contentType: 'application/json',
                 data: JSON.stringify({
                     productid,
-                    type: type
+                    type: type,
+                    qty: qty,
+                    unit_price: unit_price
                 }),
                 success: function(data) {
                     let {

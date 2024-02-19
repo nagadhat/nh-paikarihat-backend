@@ -257,10 +257,10 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <?php $i = 1;
-                                                            //dd($totaldiscount);
-                                                            ?>
-                                                            {{-- @dd($cartItems) --}}
+                                                            @php
+                                                                $i = 1;
+                                                            @endphp
+
                                                             @foreach ($cartItems as $products)
                                                                 <tr class="checkout__br__color">
                                                                     <td class="">
@@ -465,12 +465,6 @@
             }
             let subTotal = unit_price * qty;
             $("#subTotal_" + i).html(subTotal + ' ৳');
-
-            if (qty == 1) {
-                $(".qty-btn-minus").attr("disabled", "disabled");
-            } else {
-                $(".qty-btn-minus").removeAttr('disabled');
-            }
 
             orderSubmit(productid, type, i, qty, unit_price);
         };

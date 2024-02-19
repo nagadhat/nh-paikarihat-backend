@@ -305,7 +305,7 @@
                                                                             @if($products->product->discount_amount > 0)
                                                                                 <span>{{ $products->unit_price - $products->product->discount_amount }}
                                                                                     ৳ </span> <br>
-                                                                                <del class="qc-price-del-color-price" style="color: #F16027">
+                                                                                <del class="" style="color: #F16027">
                                                                                     {{ isset($products->unit_price) ? $products->unit_price : '' }} ৳
                                                                                 </del>
                                                                             @else

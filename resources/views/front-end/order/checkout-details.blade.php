@@ -301,12 +301,18 @@
                                                                                 @endif
                                                                             </p>
                                                                         </td>
-                                                                        <td class="qc-price  ">
-                                                                            <span>{{ $products->unit_price - $products->product->discount_amount }}
-                                                                                ৳ </span> <br>
-                                                                            <del class="qc-price-del-color-price"
-                                                                                style="color: #F16027">{{ isset($products->unit_price) ? $products->unit_price : '' }}
-                                                                                ৳</del>
+                                                                        <td class="qc-price">
+                                                                            @if($products->product->discount_amount > 0)
+                                                                                <span>{{ $products->unit_price - $products->product->discount_amount }}
+                                                                                    ৳ </span> <br>
+                                                                                <del class="qc-price-del-color-price"
+                                                                                    style="color: #F16027">{{ isset($products->unit_price) ? $products->unit_price : '' }} ৳
+                                                                                </del>
+                                                                            @else
+                                                                                <span>
+                                                                                    {{ $products->unit_price - $products->product->discount_amount }} ৳ 
+                                                                                </span>
+                                                                            @endif     
                                                                         </td>
                                                                         <td class="qc-quantity">
                                                                             <div class="input-group input-group-sm">

@@ -89,12 +89,18 @@
                                                     </p>
                                                 </td>
                                                 <td class=" td-image">
-                                                    <p>
-                                                        {{ $cart->product->price - $cart->product->discount_amount }} ৳
-                                                    </p>
-                                                    <del class="qc-price-del-color">
-                                                         {{ $cart->product->price }} ৳
-                                                    </del>
+                                                    @if($cart->product->discount_amount > 0)
+                                                        <p>
+                                                            {{ $cart->product->price - $cart->product->discount_amount }} ৳
+                                                        </p>
+                                                        <del class="qc-price-del-color">
+                                                            {{ $cart->product->price }} ৳
+                                                        </del>
+                                                    @else
+                                                        <p>
+                                                            {{ $cart->product->price }} ৳
+                                                        </p>
+                                                    @endif                                                   
                                                 </td>
                                                 <td class="text-center td-qty">
                                                     <div class="input-group btn-block cart--quantity--btn">

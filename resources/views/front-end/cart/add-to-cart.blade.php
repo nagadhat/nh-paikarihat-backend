@@ -108,7 +108,7 @@
                                                             <input type="text" name="quantity"
                                                                 value="{{ $cart->quantity }}" size="1"
                                                                 id="CurrentQty_{{ $key }}" class="form-control"
-                                                                min="1" readonly>
+                                                                min="1">
                                                             <span>
                                                                 <i class="fa fa-angle-up"
                                                                     onClick="manageQuantity({{ $key }}, 'increment')"></i>
@@ -190,7 +190,7 @@
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 }
-            });
+            });            
         })(jQuery);
 
         function manageQuantity(i, type) {
@@ -240,5 +240,6 @@
                 }
             });
         };
+
     </script>
 @endsection

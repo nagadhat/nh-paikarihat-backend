@@ -13,7 +13,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::where('user_id', auth()->id())->get();
+        $customers = Customer::all();
         return view('customer.contact.customers', compact('customers'));
     }
 

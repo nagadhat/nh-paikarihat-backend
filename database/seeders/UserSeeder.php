@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // create default admin user
+        // create default customer user
         $user = new User();
         $user->name = 'Admin';
         $user->username = 'a';
@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
         $user->is_admin = 1;
         $user->save();
 
-        // create default customer user
+        // create default admin user
         $user = new User();
         $user->name = 'Admin';
         $user->username = 'admin@8901';

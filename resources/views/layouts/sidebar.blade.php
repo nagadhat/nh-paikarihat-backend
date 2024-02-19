@@ -3,6 +3,39 @@
     <div class="side-nav-inner">
         <ul class="side-nav-menu scrollable">
             @if (auth()->user()->is_admin == 0)
+            <li class="nav-item dropdown">
+                <a href="">
+                    <span class="icon-holder">
+                        <i class="fas fa-home"></i>
+                    </span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="{{ route('packages.index') }}">
+                    <span class="icon-holder">
+                        <i class="fas fa-clipboard-list"></i>
+                    </span>
+                    <span class="title">Packages</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="{{ route('couriers.index') }}">
+                    <span class="icon-holder">
+                        <i class="fas fa-truck"></i>
+                    </span>
+                    <span class="title">Couriers</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="{{ route('support_tickets') }}">
+                    <span class="icon-holder">
+                        <i class="fas fa-ticket-alt"></i>
+                    </span>
+                    <span class="title">Support Tickets</span>
+                </a>
+            </li>
+            @else
                 <li>
                     <a href="{{ route('user_dashboard') }}" class="{{ Route::currentRouteName() == 'user_dashboard' ? 'parent-menu-active' : '' }}">
                         <span class="icon-holder">
@@ -212,39 +245,6 @@
                             <i class="fab fa-rocketchat"></i>
                         </span>
                         <span class="title">Bulk SMS</span>
-                    </a>
-                </li>
-            @else
-                <li class="nav-item dropdown">
-                    <a href="">
-                        <span class="icon-holder">
-                            <i class="fas fa-home"></i>
-                        </span>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="{{ route('packages.index') }}">
-                        <span class="icon-holder">
-                            <i class="fas fa-clipboard-list"></i>
-                        </span>
-                        <span class="title">Packages</span>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="{{ route('couriers.index') }}">
-                        <span class="icon-holder">
-                            <i class="fas fa-truck"></i>
-                        </span>
-                        <span class="title">Couriers</span>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="{{ route('support_tickets') }}">
-                        <span class="icon-holder">
-                            <i class="fas fa-ticket-alt"></i>
-                        </span>
-                        <span class="title">Support Tickets</span>
                     </a>
                 </li>
             @endif

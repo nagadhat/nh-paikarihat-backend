@@ -127,11 +127,12 @@
 
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/redesign-new.css') }}" />
      {{-- <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product-button.css') }}" /> --}}
-     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product-btn.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/login_page.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/customer-dashboard.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/customer-left-sidebar.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/customer-mobile-siderbar.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/product-btn.css') }}" />
+
 
     <style>
         header::before {

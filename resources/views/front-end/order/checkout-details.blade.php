@@ -387,7 +387,7 @@
                                                         <div class="form-horizontal qc-totals checkout__details__price">
                                                             <div class="row">
                                                                 <label class="col-sm-9 col-xs-6 control-label">
-                                                                    ইউনিট প্রাইস:
+                                                                    সাবটোটাল
                                                                 </label>
                                                                 <div
                                                                     class="col-sm-3 col-xs-6 form-control-static text-right">

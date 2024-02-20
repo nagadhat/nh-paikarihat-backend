@@ -1,0 +1,41 @@
+.nh_top_header_login {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.hotline-after-login a {
+    color: #414142;
+    font-weight: 700;
+    font-size: 14px;
+} 
+.mobile-top-menu-custom {
+    display: flex;
+    align-items: center;
+}
+.hotline-after-login a {
+    color: #414142;
+    font-weight: 700;
+    font-size: 12px;
+}
+.j-menu.before-customer-login>li>a {
+    padding: 0 !important;
+}
+.before-customer-login .before-customer-login-menu {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+}
+@media (max-width:1024px) {
+    .before-customer-login .before-customer-login-menu {
+        font-size: 12px !important;
+    }
+    .j-menu.before-customer-login {
+        gap: 20px;
+    }
+}
+@media (max-width:450px) {
+    .user-dashboard-header,
+    .hotline-after-login a {
+        font-size: 12px;
+    }
+}

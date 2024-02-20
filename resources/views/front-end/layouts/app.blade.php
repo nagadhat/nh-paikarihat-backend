@@ -131,6 +131,7 @@
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/customer-dashboard.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/customer-left-sidebar.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/customer-mobile-siderbar.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/number-type-hide.css') }}" />
 
 
     <style>

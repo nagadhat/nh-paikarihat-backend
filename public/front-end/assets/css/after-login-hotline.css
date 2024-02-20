@@ -16,7 +16,7 @@
 .hotline-after-login a {
     color: #414142;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 14px !important;
 }
 .j-menu.before-customer-login>li>a {
     padding: 0 !important;

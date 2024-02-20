@@ -73,7 +73,7 @@
                 <x-alert />
 
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="table">
                         <thead>
                             <tr>
                                 <th>SL#</th>
@@ -98,11 +98,11 @@
                                     <td>
                                         <span class="badge bg-primary text-light">
                                             {{ $customer->status == 1 ? 'Active' : 'In-active' }}
-                                       </span>
-                                   </td>
+                                        </span>
+                                    </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a class="btn btn-sm btn-primary text-white" data-toggle="modal"
+                                            <a class="btn btn-sm btn-primary text-white mr-2" data-toggle="modal"
                                                 data-target="#editModal_{{ $customer->id }}">Edit</a>
                                             <a href="#" class="btn btn-sm btn-danger"
                                                 onclick="document.getElementById('delete-form-{{ $customer->id }}').submit();">Delete</a>
@@ -132,23 +132,33 @@
                                                                 @method('PUT')
                                                                 <div class="form-group">
                                                                     <label for="" class="form-label">Name<span
-                                                                            class="text-danger"><sup>*</sup></span> :</label>
-                                                                    <input type="text" name="name" placeholder="name" id="" value="{{ $customer->name }}"
+                                                                            class="text-danger"><sup>*</sup></span>
+                                                                        :</label>
+                                                                    <input type="text" name="name"
+                                                                        placeholder="name" id=""
+                                                                        value="{{ $customer->name }}"
                                                                         class="form-control" required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="" class="form-label">Phone<span
-                                                                            class="text-danger"><sup>*</sup></span> :</label>
-                                                                    <input type="text" name="phone" placeholder="phone" id="" value="{{ $customer->phone }}"
+                                                                            class="text-danger"><sup>*</sup></span>
+                                                                        :</label>
+                                                                    <input type="text" name="phone"
+                                                                        placeholder="phone" id=""
+                                                                        value="{{ $customer->phone }}"
                                                                         class="form-control" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="" class="form-label">Email:</label>
-                                                                    <input type="email" name="email" placeholder="email" id="" value="{{ $customer->email }}"
+                                                                    <label for=""
+                                                                        class="form-label">Email:</label>
+                                                                    <input type="email" name="email"
+                                                                        placeholder="email" id=""
+                                                                        value="{{ $customer->email }}"
                                                                         class="form-control">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="" class="form-label">Address:</label>
+                                                                    <label for=""
+                                                                        class="form-label">Address:</label>
                                                                     <textarea name="address" id="" class="form-control" placeholder="address">{{ $customer->address }}</textarea>
                                                                 </div>
                                                                 <div class="form-group">
@@ -179,8 +189,11 @@
 @section('page_js')
     <script>
         $(document).ready(function() {
-            // init data table
-            $('#table').DataTable();
+            $('#table').DataTable({
+                "order": [
+                    [0, "desc"]
+                ]
+            });
         });
     </script>
 @endsection

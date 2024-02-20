@@ -111,8 +111,11 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="number" name="customer_phone" value="{{ !empty($userdata['phone']) ? $userdata['phone'] : '' }}" class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন" required 
-                                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                                    <input type="number" name="customer_phone"
+                                                        value="{{ !empty($userdata['phone']) ? $userdata['phone'] : '' }}"
+                                                        class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন"
+                                                        required
+                                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                                 </div>
                                             </div>
                                             <div class="text-input form-group required">
@@ -169,8 +172,10 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="number" name="customer_phone" value="" class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন" required 
-                                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                                    <input type="number" name="customer_phone" value=""
+                                                        class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন"
+                                                        required
+                                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                                 </div>
                                             </div>
                                             <div class="text-input form-group required">
@@ -241,7 +246,8 @@
                                                 @if ($cartItems->isEmpty())
                                                     <div style="text-align: center; padding: 30px 0;">
                                                         <h5>Your shopping product is empty!</h5>
-                                                        <a href="{{ route('home_page') }}" style="color:white; background: #F16027; padding: 5px 15px; ">
+                                                        <a href="{{ route('home_page') }}"
+                                                            style="color:white; background: #F16027; padding: 5px 15px; ">
                                                             Continue Shoping
                                                         </a>
                                                     </div>
@@ -301,17 +307,20 @@
                                                                             </p>
                                                                         </td>
                                                                         <td class="qc-price">
-                                                                            @if($products->product->discount_amount > 0)
+                                                                            @if ($products->product->discount_amount > 0)
                                                                                 <span>{{ $products->unit_price - $products->product->discount_amount }}
                                                                                     ৳ </span> <br>
-                                                                                <del class="" style="color: #F16027">
-                                                                                    {{ isset($products->unit_price) ? $products->unit_price : '' }} ৳
+                                                                                <del class=""
+                                                                                    style="color: #F16027">
+                                                                                    {{ isset($products->unit_price) ? $products->unit_price : '' }}
+                                                                                    ৳
                                                                                 </del>
                                                                             @else
                                                                                 <span>
-                                                                                    {{ $products->unit_price - $products->product->discount_amount }} ৳ 
+                                                                                    {{ $products->unit_price - $products->product->discount_amount }}
+                                                                                    ৳
                                                                                 </span>
-                                                                            @endif     
+                                                                            @endif
                                                                         </td>
                                                                         <td class="qc-quantity">
                                                                             <div class="input-group input-group-sm">
@@ -323,6 +332,7 @@
                                                                                             name="total_quantity"
                                                                                             min="1"
                                                                                             value="{{ $products->quantity }}"
+                                                                                            oninput="handleInputChange(this)"
                                                                                             onChange="manualIncrement(this.value,  {{ $products->id }}, {{ $products->unit_price }}, {{ $i }})"
                                                                                             class="input-qty input-cornered" />
                                                                                     </div>
@@ -461,6 +471,18 @@
 @endsection
 @section('scripts')
     <script>
+        function handleInputChange(input) {
+            if (input.value === "0") {
+                input.value = "1";
+                location.reload();
+            }
+            if (input.value === "1") {
+                input.setAttribute("readonly", true);
+            } else {
+                input.removeAttribute("readonly");
+            }
+        }
+
         (function($) {
             $.ajaxSetup({
                 headers: {

@@ -112,7 +112,7 @@
                                                                 id="product_id_{{ $key }}"
                                                                 value="{{ $cart->id }}">
                                                             <input type="text" name="quantity"
-                                                                value="{{ $cart->quantity }}" size="1"
+                                                                value="{{ $cart->quantity }}" size="1" oninput="handleInputChange(this)"
                                                                 id="CurrentQty_{{ $key }}" class="form-control"
                                                                 onChange="manualIncrement(this.value,  {{ $cart->id }}, {{ $cart->unit_price }}, {{ $key }})"
                                                                 min="1" >
@@ -192,6 +192,18 @@
 
 @section('scripts')
     <script>
+        function handleInputChange(input) {
+            if (input.value === "0") {
+                input.value = "1";
+                location.reload();
+            }
+            if (input.value === "1") {
+                input.setAttribute("readonly", true);
+            } else {
+                input.removeAttribute("readonly");
+            }
+        }
+
         (function($) {
             $.ajaxSetup({
                 headers: {

@@ -159,6 +159,8 @@ padding: 0;
     font-size: 13px;
     letter-spacing: .3px;
 }
+
+
 @media (max-width:352px) {
     .nh__login__btn__area {
         flex-direction: column-reverse;

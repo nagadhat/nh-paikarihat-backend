@@ -132,7 +132,7 @@
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/customer-left-sidebar.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/customer-mobile-siderbar.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/number-type-hide.css') }}" />
-
+     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/after-login-hotline.css') }}" />
 
     <style>
         header::before {
@@ -178,12 +178,23 @@
                     <div class="top-menu top-menu-13 nh__top__header">
                         @if (Route::has('customer_login'))
                             @auth
+                            <div class="nh_top_header_login">
+                                <div class="hotline-after-login">
+
+                                    <a href="tel:09647 444 444">
+                                        <span class="links-text" style="color: #414142">
+                                            <i class="fa fa-phone-square" aria-hidden="true"></i>
+                                            HOTLINE : 09647 444 444
+                                        </span>
+                                    </a>
+
+                                </div>
                                 <ul class="user-dashboard-header-area">
                                     <li>
                                         <a href="{{ route('customer_dashboard') }}">
                                             <span class="user-dashboard-header" style="color: #414142">
                                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                                 <strong>Account</strong>    
+                                                 <strong>Account</strong>
                                             </span>
                                         </a>
                                     </li>
@@ -196,18 +207,21 @@
                                         </a>
                                     </li>
                                 </ul>
+                            </div>
                             @else
-                                <ul class="j-menu">
-                                    <li class="menu-item top-menu-item top-menu-item-6">
-                                        <a href="tel:09647 444 444">
-                                            <span class="links-text" style="color: #414142">HOTLINE : 09647 444 444</span>
+                                <ul class="j-menu before-customer-login">
+                                    <li class="menu-item top-menu-item ">
+                                        <a href="tel:09647 444 444" class="before-customer-login-menu">
+                                            <span class="links-text" style="color: #414142">
+                                                <i class="fa fa-phone-square" aria-hidden="true"></i> HOTLINE : 09647 444 444
+                                            </span>
                                         </a>
                                     </li>
                                     <li class="menu-item top-menu-item ">
                                         <a href="{{ route('customer_login') }}">
                                             <span class="user-dashboard-header" style="color: #414142">
                                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                                 <strong>My Account</strong>    
+                                                 <strong>My Account</strong>
                                             </span>
                                         </a>
                                     </li>
@@ -262,17 +276,27 @@
             <div class="mobile-header mobile-default mobile-2">
                 <div class="mobile-top-bar">
                     <div class="mobile-top-menu-wrapper">
-                        <div class="top-menu top-menu-13">
+                        <div class="top-menu top-menu-13 mobile-top-menu-custom">
                             @if (Route::has('customer_login'))
                                 @auth
-                                    <ul class="j-menu">
+                                <div class="nh_top_header_login">
+                                    <div class="hotline-after-login ">
+                                        <a href="tel:09647 444 444">
+                                            <span class="links-text" style="color: #414142">
+                                                <i class="fa fa-phone-square" aria-hidden="true"></i>
+                                                HOTLINE : 09647 444 444
+                                            </span>
+                                        </a>
+
+                                    </div>
+                                    <ul class="user-dashboard-header-area">
                                         <li>
                                             <a href="{{ route('customer_dashboard') }}">
                                                 <span class="user-dashboard-header" style="color: #414142">
                                                     <i class="fa fa-user" aria-hidden="true"></i>
-                                                     <strong>Account</strong>    
+                                                     <strong>Account</strong>
                                                 </span>
-                                                </a>
+                                            </a>
                                         </li>
                                         <li>
                                             <a href="{{ route('customer_logout') }}">
@@ -283,17 +307,21 @@
                                             </a>
                                         </li>
                                     </ul>
+                                </div>
                                 @else
-                                    <ul class="j-menu">
-                                        <li class="menu-item top-menu-item top-menu-item-6">
-                                            <a href="tel:09647 444 444"><span class="links-text" style="color: #414142">HOTLINE :
-                                                09647 444 444</span></a>
+                                    <ul class="j-menu before-customer-login">
+                                        <li class="menu-item top-menu-item ">
+                                            <a href="tel:09647 444 444" class="before-customer-login-menu">
+                                                <span class="links-text" style="color: #414142">
+                                                    <i class="fa fa-phone-square" aria-hidden="true"></i> HOTLINE : 09647 444 444
+                                                </span>
+                                            </a>
                                         </li>
                                         <li class="menu-item top-menu-item ">
                                             <a href="{{ route('customer_login') }}">
                                                 <span class="user-dashboard-header" style="color: #414142">
                                                     <i class="fa fa-user" aria-hidden="true"></i>
-                                                     <strong>My Account</strong>    
+                                                     <strong>My Account</strong>
                                                 </span>
                                             </a>
                                         </li>
@@ -302,12 +330,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="language-currency top-menu">
-                        <div class="mobile-currency-wrapper">
-                        </div>
-                        <div class="mobile-language-wrapper">
-                        </div>
-                    </div>
+
                 </div>
                 <div class="mobile-bar sticky-bar">
                     {{-- <div class="menu-trigger">

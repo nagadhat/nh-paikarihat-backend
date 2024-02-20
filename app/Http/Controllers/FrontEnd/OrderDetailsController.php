@@ -92,7 +92,6 @@ class OrderDetailsController extends Controller
 
     public function orderProduct(Request $request)
     {
-
         $sessionId = session()->getId();
         //  $sessionId = $_SERVER['REMOTE_ADDR'];
         Alert::success('success', 'Order ');
@@ -110,7 +109,7 @@ class OrderDetailsController extends Controller
                 "email" => 'customer@gmail.com',
                 "address" => $request->customer_address,
                 "password" => Hash::make('12345678'),
-                "remember_token" => Str::random(120),
+                "remember_token" => Str::random(60),
                 "created_at" => now(),
                 "updated_at" => now(),
             ]);

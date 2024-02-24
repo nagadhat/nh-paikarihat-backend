@@ -178,7 +178,7 @@
                                                         onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                                 </div>
                                             </div>
-                                            <div class="text-input form-group required">
+                                            {{-- <div class="text-input form-group required">
                                                 <div class="col-xs-12">
                                                     <label class="control-label" for="address">
                                                         <span class="text" title=""><b>ডেলিভারী ঠিকানা</b></span>
@@ -188,6 +188,17 @@
                                                     <textarea name="customer_address" class="form-control nh__customer__address" autocomplete="on"
                                                         placeholder="ডেলিভারী ঠিকানা লিখুন" required>
                                                         </textarea>
+                                                </div>
+                                            </div> --}}
+                                            <div class="text-input form-group required">
+                                                <div class="col-xs-12">
+                                                    <label class="control-label" for="address">
+                                                        <span class="text" title=""><b>ডেলিভারী ঠিকানা</b></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <textarea name="customer_address" id="customer_address" class="form-control nh__customer__address" autocomplete="on"
+                                                        placeholder="ডেলিভারী ঠিকানা লিখুন" required></textarea>
                                                 </div>
                                             </div>
                                             <div class="text-input form-group required" data-sort="16">

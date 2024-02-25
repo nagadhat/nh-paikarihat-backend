@@ -111,11 +111,8 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="number" name="customer_phone"
-                                                        value="{{ !empty($userdata['phone']) ? $userdata['phone'] : '' }}"
-                                                        class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন"
-                                                        required
-                                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                                    <input type="number" name="customer_phone" value="{{ !empty($userdata['phone']) ? $userdata['phone'] : '' }}" class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন" required
+                                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                                 </div>
                                             </div>
                                             <div class="text-input form-group required">
@@ -172,10 +169,8 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="number" name="customer_phone" value=""
-                                                        class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন"
-                                                        required
-                                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                                    <input type="number" name="customer_phone" value="" class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন" required
+                                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                                 </div>
                                             </div>
                                             {{-- <div class="text-input form-group required">
@@ -328,8 +323,7 @@
                                                                                 </del>
                                                                             @else
                                                                                 <span>
-                                                                                    {{ $products->unit_price - $products->product->discount_amount }}
-                                                                                    ৳
+                                                                                    {{ $products->unit_price - $products->product->discount_amount }} ৳
                                                                                 </span>
                                                                             @endif
                                                                         </td>

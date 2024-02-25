@@ -100,7 +100,7 @@
                                                         <p>
                                                             {{ $cart->product->price }} ৳
                                                         </p>
-                                                    @endif                                                   
+                                                    @endif
                                                 </td>
                                                 <td class="text-center td-qty">
                                                     <div class="input-group btn-block cart--quantity--btn">
@@ -209,7 +209,7 @@
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 }
-            });            
+            });
         })(jQuery);
 
         function manualIncrement(p_qty, p_id, p_up, i) {

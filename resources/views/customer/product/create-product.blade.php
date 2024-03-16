@@ -76,6 +76,8 @@
                                             <option value="0">Choose Type</option>
                                             <option value="REG">REG</option>
                                             <option value="PRE">PRE</option>
+                                            <option value="stock">STO
+                                            </option>
                                         </select>
                                     </div>
                                 </div>

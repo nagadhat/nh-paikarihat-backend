@@ -53,7 +53,7 @@
                         <div class="form-group">
                             <div class="row align-items-center">
                                 <div class="col-md-10">
-                                    <select name="customer_name" id="" class="form-control">
+                                    <select name="customer_name" id="" class="select2">
                                         <option value="">Select Customer</option>
                                         <option value="">test1</option>
                                         <option value="">test2</option>
@@ -259,4 +259,7 @@
 
 @section('page_js')
     <script src="{{ asset('assets/js/pos/index.js') }}"></script>
+    <script>
+        $('.select2').select2();
+    </script>
 @endsection

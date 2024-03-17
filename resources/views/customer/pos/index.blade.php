@@ -54,7 +54,7 @@
                             <div class="row align-items-center">
                                 <div class="col-md-10">
                                     <select name="customer_name" id="" class="select2">
-                                        <option value="">Select Customer</option>
+                                        <option value="">--Select--</option>
                                         <option value="">test1</option>
                                         <option value="">test2</option>
                                     </select>

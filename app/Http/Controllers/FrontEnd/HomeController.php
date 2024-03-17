@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function homePage()
     {
-        $products = Product::latest()->limit(20)->get();
+        $products = Product::latest()->limit(26)->get();
         // dd($products);
         return view('front-end.home.home-page', compact('products'));
     }

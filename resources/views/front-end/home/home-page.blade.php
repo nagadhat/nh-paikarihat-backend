@@ -100,23 +100,43 @@
                                                                 </div>
                                                             </div>
                                                             <div class="extra-group nh__order__confirm">
-                                                                <div class="nh__order__confirm__btn">
-                                                                    <a href="#"
-                                                                        class="btn btn-extra btn-extra-46 add--to--checkout-btn "
-                                                                        data-checkout_id="{{ $product->id }}"
-                                                                        data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
-                                                                        @if ($product->product_type == 'REG')
+                                                                @if($product->product_type == 'REG')
+                                                                    <div class="nh__order__confirm__btn">
+                                                                        <a href="#"
+                                                                            class="btn btn-extra btn-extra-46 add--to--checkout-btn "
+                                                                            data-checkout_id="{{ $product->id }}">
                                                                             <span class="btn-text">অর্ডার করুণ</span>
-                                                                        @else
-                                                                            <span class="btn-text">প্রি অর্ডার করুণ</span>
-                                                                        @endif
-                                                                    </a>
-                                                                    <div class="nh__cart__icon">
-                                                                        <i class="fa fa-cart-plus add--to--cart-btn"
-                                                                            data-product_id="{{ $product->id }}"
-                                                                            aria-hidden="true"></i>
+                                                                        </a>
+                                                                        <div class="nh__cart__icon">
+                                                                            <i class="fa fa-cart-plus add--to--cart-btn"
+                                                                                data-product_id="{{ $product->id }}"
+                                                                                aria-hidden="true"></i>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
+                                                                @elseif($product->product_type == 'PRE')
+                                                                    <div class="nh__order__confirm__btn">
+                                                                        <a href="#"
+                                                                            class="btn btn-extra btn-extra-46 add--to--checkout-btn "
+                                                                            data-checkout_id="{{ $product->id }}">
+                                                                            <span class="btn-text">প্রি অর্ডার করুণ</span>
+                                                                        </a>
+                                                                        <div class="nh__cart__icon">
+                                                                            <i class="fa fa-cart-plus add--to--cart-btn"
+                                                                                data-product_id="{{ $product->id }}"
+                                                                                aria-hidden="true"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                @else
+                                                                    <div class="nh__order__confirm__btn">
+                                                                        <a href="#" class="btn btn-extra btn-extra-46 add--to--checkout-btn"
+                                                                         style="background: #F16128 !important" disabled>
+                                                                            <span class="btn-text">স্টক আউট</span>
+                                                                        </a>
+                                                                        <div class="nh__cart__icon">
+                                                                            <i class="fa fa-cart-plus add--to--cart-btn" aria-hidden="true" style="background: #F69873 !important; cursor:not-allowed;" disabled></i>
+                                                                        </div>
+                                                                    </div>                                                                
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>

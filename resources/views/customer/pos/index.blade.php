@@ -1,5 +1,5 @@
 @php
-    $title = 'Create POS';
+    $title = 'Add Sales';
 @endphp
 @extends('layouts.app')
 
@@ -40,21 +40,81 @@
     <div class="col-12" v-cloak>
         <div class="card">
             <div class="card-header py-2">
-                <h3 class="mb-0">{{ $title }}</h3>
+                <h4 class="mb-0">{{ $title }}</h4>
             </div>
             <div class="card-body">
-
                 {{-- alert --}}
                 <x-alert />
-
                 <div class="row">
                     <div class="col-12">
                         <label for="" class="form-label">Select Customer</label>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" v-model="customer_name" disabled class="form-control">
+                            <div class="row align-items-center">
+                                <div class="col-md-10">
+                                    <select name="customer_name" id="" class="form-control">
+                                        <option value="">Select Customer</option>
+                                        <option value="">test1</option>
+                                        <option value="">test2</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <div class="btn btn-primary" data-toggle="modal" data-target="#customerModal">+</div>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Create user Modal start-->
+                        <div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4>Create Customer</h4>
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <i class="anticon anticon-close"></i>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body text-left">
+                                        <form action="{{ route('add_new_customer') }}" method="post">
+                                        @csrf
+                                            <div class="form-group">
+                                                <label for="" class="form-label">Name<span
+                                                        class="text-danger"><sup>*</sup></span>
+                                                    :</label>
+                                                <input type="text" id="" name="name" class="form-control" placeholder="Enter name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="" class="form-label">Email (Optional):</label>
+                                                <input type="text" id="" name="email" class="form-control" placeholder="Enter email" >
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="" class="form-label">Phone<span
+                                                        class="text-danger"><sup>*</sup></span>
+                                                    :</label>
+                                                <input type="number" id="" name="phone" class="form-control" placeholder="Enter Phone" 
+                                                onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="" class="form-label">Alternative Phone:</label>
+                                                <input type="number" id="" name="phone_2" class="form-control" placeholder="Enter alternative phone" 
+                                                onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="" class="form-label">Address:</label>
+                                                <textarea name="address" id="" class="form-control" placeholder="Enter Address"></textarea>
+                                            </div>
+                                            <div class="text-right">
+                                                <button type="submit"
+                                                    class="btn btn-sm btn-primary">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Create User Modal end-->
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
@@ -86,7 +146,6 @@
                         </div>
                     </div>
                 </div>
-
                 <hr>
                 <div class="table-responsive mt-5">
                     <table class="table table-bordered">
@@ -178,11 +237,11 @@
                             <input type="number" id="amount_received" v-model="amount_received" @keyup="amountToReturn()"
                                 class="form-control" required>
                         </div>
-                        <div class="col-md-3">
+                        {{-- <div class="col-md-3">
                             <label for="" class="form-label">Amount to Return</label>
                             <input type="number" id="amount_to_return" v-model="amount_to_return" class="form-control"
                                 disabled>
-                        </div>
+                        </div> --}}
                         <div class="col-md-3 text-right">
                             <form action="{{ route('pos_sale') }}" method="POST">
                                 @csrf

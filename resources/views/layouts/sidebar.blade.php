@@ -109,17 +109,17 @@
                         <span class="icon-holder">
                             <i class="fas fa-clipboard-list"></i>
                         </span>
-                        <span class="title">POS</span>
+                        <span class="title">Sales</span>
                         <span class="arrow">
                             <i class="arrow-icon"></i>
                         </span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="{{ Route::currentRouteName() == 'pos' ? 'active' : '' }}">
-                            <a href="{{ route('pos') }}">POS</a>
+                            <a href="{{ route('pos') }}">Add Sales</a>
                         </li>
                         <li class="{{ Route::currentRouteName() == 'pos_sales' ? 'active' : '' }}">
-                            <a href="{{ route('pos_sales') }}">Sales</a>
+                            <a href="{{ route('pos_sales') }}">Quotations</a>
                         </li>
                     </ul>
                 </li>

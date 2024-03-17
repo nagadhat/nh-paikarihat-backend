@@ -76,7 +76,7 @@
                                             <option value="0">Choose Type</option>
                                             <option value="REG">REG</option>
                                             <option value="PRE">PRE</option>
-                                            <option value="sto">STO</option>
+                                            <option value="STO">STO</option>
                                         </select>
                                     </div>
                                 </div>
@@ -181,7 +181,6 @@
                             </div>
                             <!-- Brand Modal end-->
                         </div>
-
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="" class="form-label">Category
@@ -245,7 +244,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="" class="form-label">Short Description</label>
-                                <textarea name="short_description" id="" rows="7" class="form-control"></textarea>
+                                <textarea name="short_description" id="" rows="7" class="form-control editor"></textarea>
                             </div>
                         </div>
                     </div>

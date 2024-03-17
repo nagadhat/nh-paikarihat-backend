@@ -28,10 +28,10 @@
                                 <th>SL#</th>
                                 <th>Product</th>
                                 <th>SKU</th>
-                                <th>Purchase Amount</th>
-                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Pur.Price</th>
+                                <th>Ret.Price</th>
                                 <th>Discount</th>
-                                {{-- <th>Stock</th> --}}
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -54,6 +54,7 @@
                                         </div>
                                     </td>
                                     <td>{{ $item->sku }}</td>
+                                    <td>0.00</td>
                                     <td>
                                         &#2547; {{ number_format($item->purchase_amount, 2) }}
                                     </td>
@@ -70,7 +71,7 @@
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ route('products.edit', $item->id) }}"
-                                                class="btn btn-sm btn-primary text-white">Edit</a>
+                                                class="btn btn-sm btn-primary text-white mr-2">Edit</a>
                                             <a href="#" class="btn btn-sm btn-danger"
                                                 onclick="document.getElementById('delete-form-{{ $item->id }}').submit();">Delete</a>
 

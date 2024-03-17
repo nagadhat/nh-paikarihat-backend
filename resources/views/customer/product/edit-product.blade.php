@@ -11,10 +11,8 @@
                 <h3 class="mb-0">{{ $title }}</h3>
             </div>
             <div class="card-body">
-
                 {{-- alert --}}
                 <x-alert />
-
                 <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -78,7 +76,6 @@
                                     onchange="multipleImageLoad(event)" class="form-control" multiple>
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="" class="form-label">Purchase Amount<span
@@ -105,6 +102,7 @@
                                             <option value="0">Choose Type</option>
                                             <option value="REG" {{ old('product_type', $product->product_type) == 'REG' ? 'selected' : '' }}>REG</option>
                                             <option value="PRE" {{ old('product_type', $product->product_type) == 'PRE' ? 'selected' : '' }}>PRE</option>
+                                            <option value="PRE" {{ old('product_type', $product->product_type) == 'STO' ? 'selected' : '' }}>STO</option>
                                         </select>
                                     </div>
                                 </div>
@@ -276,8 +274,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="" class="form-label">Short Description</label>
-                                <textarea name="short_description" rows="7" class="form-control">{{ $product->short_description }}
-                                </textarea>
+                                <textarea name="short_description" id="" rows="7" class="form-control editor">{{ $product->short_description }}</textarea>
                             </div>
                         </div>
                     </div>

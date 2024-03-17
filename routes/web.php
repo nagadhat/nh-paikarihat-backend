@@ -247,6 +247,7 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
         Route::get("/", "index")->name('pos');
         Route::post('/api/get-products', 'getProducts');
         Route::post('/api/get-customer', 'getCustomer');
+        Route::post('add-new-customer', 'addNewCustomer')->name('add_new_customer');
 
         Route::post('/sale', 'sale')->name('pos_sale');
         Route::get("/sales", "sales")->name('pos_sales');
@@ -282,7 +283,7 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
         Route::get("/order-details/{invoice}", "orderDetails")->name('order_details');
         Route::get("/order-status/{id}/{status}", "orderStatus")->name('order_status');
         Route::get("/order-filter/{status}", "orderFilter")->name('order_filter');
-    Route::get("/view-order-details/{id}", "viewOrderDetails")->name('view_order_details');
+        Route::get("/view-order-details/{id}", "viewOrderDetails")->name('view_order_details');
         Route::get("/order-invoice/{id}", "orderInvoice")->name('order_invoice');
         Route::get("/payment-status/{id}", "paymentStatus")->name('payment_status');
         Route::get("/payment-status-update/{id}/{paystatus}", "paymentStatusUpdate")->name('payment_status_update');

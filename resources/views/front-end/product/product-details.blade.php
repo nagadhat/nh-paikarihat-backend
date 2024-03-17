@@ -93,41 +93,66 @@
                             </div>
                             <div class="button-group-page">
                                 <div class="buttons-wrapper ph__cart__group">
-                                    <div class="stepper-group cart-group ph__cart__qt__group">
-                                        {{-- <div class="stepper">
-                                            <label class="control-label" for="product-quantity">Qty</label>
-                                            <input id="product-quantity" type="text" name="quantity" value="1"
-                                                min="1" class="form-control" />
-                                            <input id="product-id" type="hidden" name="product_id" value="154" />
-                                            <span>
-                                                <i class="fa fa-angle-up"></i>
-                                                <i class="fa fa-angle-down"></i>
-                                            </span>
-                                        </div> --}}
-                                        <div class="extra-group">
-                                            <a class="btn btn-extra btn-extra-46 btn-1-extra nh__product__detail"
-                                                href="{{ route('checkout_details', ['checkout' => $products->slug]) }}"
-                                                data-detail_id="{{ $products->id }}"
-                                                data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
-                                                @if ($products->product_type == 'REG')
+                                    @if($products->product_type == 'REG')
+                                        <div class="stepper-group cart-group ph__cart__qt__group">
+                                            <div class="extra-group">
+                                                <a class="btn btn-extra btn-extra-46 btn-1-extra nh__product__detail"
+                                                    href="{{ route('checkout_details', ['checkout' => $products->slug]) }}"
+                                                    data-detail_id="{{ $products->id }}"
+                                                    data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
                                                     <span class="btn-text">অর্ডার করুণ</span>
-                                                @else
-                                                    <span class="btn-text">প্রি অর্ডার করুণ</span>
-                                                @endif
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="wishlist-compare">
+                                            <a class="btn main__add__to__cart"
+                                                data-main_add_cart_product="{{ $products->id }}"
+                                                href="{{ route('checkout_details', ['checkout' => $products->slug]) }}">
+                                                <span class="btn-text ">
+                                                    <i class="fa fa-cart-plus " aria-hidden="true"></i>
+                                                    Add to Cart
+                                                </span>
                                             </a>
                                         </div>
-
-                                    </div>
-                                    <div class="wishlist-compare">
-                                        <a class="btn main__add__to__cart"
-                                            data-main_add_cart_product="{{ $products->id }}"
-                                            href="{{ route('checkout_details', ['checkout' => $products->slug]) }}">
-                                            <span class="btn-text ">
-                                                <i class="fa fa-cart-plus " aria-hidden="true"></i>
-                                                Add to Cart
-                                            </span>
-                                        </a>
-                                    </div>
+                                    @elseif($products->product_type == 'PRE')
+                                        <div class="stepper-group cart-group ph__cart__qt__group">
+                                            <div class="extra-group">
+                                                <a class="btn btn-extra btn-extra-46 btn-1-extra nh__product__detail"
+                                                    href="{{ route('checkout_details', ['checkout' => $products->slug]) }}"
+                                                    data-detail_id="{{ $products->id }}"
+                                                    data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
+                                                    <span class="btn-text">প্রি অর্ডার করুণ</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="wishlist-compare">
+                                            <a class="btn main__add__to__cart"
+                                                data-main_add_cart_product="{{ $products->id }}"
+                                                href="{{ route('checkout_details', ['checkout' => $products->slug]) }}">
+                                                <span class="btn-text ">
+                                                    <i class="fa fa-cart-plus " aria-hidden="true"></i>
+                                                    Add to Cart
+                                                </span>
+                                            </a>
+                                        </div>
+                                    @else
+                                        <div class="stepper-group cart-group ph__cart__qt__group">
+                                            <div class="extra-group">
+                                                <a class="btn btn-extra btn-extra-46 btn-1-extra nh__product__detail" 
+                                                href="#" style="background: #F16128 !important" disabled>
+                                                    <span class="btn-text">স্টক আউট</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="wishlist-compare">
+                                            <a class="btn main__add__to__cart" href="#" disabled>
+                                                <span class="btn-text">
+                                                    <i class="fa fa-cart-plus" aria-hidden="true" style="background: #F69873 !important; cursor:not-allowed;"></i>
+                                                    Add to Cart
+                                                </span>
+                                            </a>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="hotline_number">
                                     <strong>
@@ -144,7 +169,7 @@
                                             <div class="grid-items">
                                                 <div class="grid-item grid-item-58-1-1-1">
                                                     <div  class="nh__product__long__text">
-                                                        {{ isset($products->short_description) ? $products->short_description : '' }}
+                                                        {!! $products->short_description !!}
                                                     </div>
                                                 </div>
                                             </div>

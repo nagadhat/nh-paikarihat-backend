@@ -22,9 +22,31 @@ class PosController extends Controller
         foreach ($items as $item) {
             $item->delete();
         }
-
         // return to pos
         return view('customer.pos.index');
+    }
+
+    public function addNewCustomer(Request $request)
+    {
+        // data validation
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required|regex:/(01)[0-9]{9}/|unique:customers,phone',
+        ]);
+
+        // create customers
+       $customer = new Customer();
+       $customer->user_id = auth()->id();
+       $customer->name = $request->input('name');
+       $customer->phone = $request->input('phone');
+       $customer->email = $request->input('email');
+       $customer->address = $request->input('address');
+       $customer->phone_2 = $request->input('phone_2');
+       $customer->save();
+       // Alert
+       toast('Customer created successfully.', 'success');
+       // return to customers
+       return redirect()->back();
     }
 
     // function to get customer details

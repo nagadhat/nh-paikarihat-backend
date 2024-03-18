@@ -133,6 +133,7 @@
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/customer-mobile-siderbar.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/number-type-hide.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/after-login-hotline.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/category-menu-style.css') }}" />
 
     <style>
         header::before {

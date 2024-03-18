@@ -38,7 +38,7 @@
                                     <div class="module-item module-item-1">
                                         <div class="title module-title product-category-holder">
                                             <ul class="category-home-menu">
-                                                <li>
+                                                <li class="{{ request()->route()->getName() === 'home_page' ? 'active' : '' }}">
                                                     <a href="{{ route('home_page') }}">new arrivals</a>
                                                 </li>
                                                 @foreach ($categories as $category)

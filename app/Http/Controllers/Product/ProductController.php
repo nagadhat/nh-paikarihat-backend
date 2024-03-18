@@ -33,7 +33,6 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // data validation
-        // dd($request->all());
         $request->validate([
             'title' => 'required',
             'photo' => 'required|max:1000',
@@ -43,7 +42,7 @@ class ProductController extends Controller
             'product_type' => 'required',
             'purchase_amount' => 'required|numeric',
             // 'brand' => 'nullable|exists:brands,id',
-            'category' => 'required|exists:categories,id'
+            // 'category' => 'required|exists:categories,id'
         ]);
 
         // create product
@@ -56,9 +55,9 @@ class ProductController extends Controller
         $product->product_type = $request->input('product_type');
         $product->purchase_amount = $request->input('purchase_amount');
         $product->brand_id = $request->input('brand');
-        $product->category_id = $request->input('category');
-        $product->quantity = $request->input('min_quantity');
-        $product->max_quantity = $request->input('max_quantity');
+        // $product->category_id = $request->input('category');
+        // $product->quantity = $request->input('min_quantity');
+        // $product->max_quantity = $request->input('max_quantity');
         $product->short_description = $request->input('short_description');
         $product->description = $request->input('description');
         $product->inside_dhaka = $request->input('inside_dhaka');
@@ -117,7 +116,7 @@ class ProductController extends Controller
             'product_type' => 'required',
             'purchase_amount' => 'required|numeric',
             // 'brand' => 'nullable|exists:brands,id',
-            'category' => 'required|exists:categories,id'
+            // 'category' => 'required|exists:categories,id'
         ]);
 
         // create product
@@ -128,11 +127,11 @@ class ProductController extends Controller
         $product->product_type = $request->input('product_type');
         $product->purchase_amount = $request->input('purchase_amount');
         $product->brand_id = $request->input('brand');
-        $product->category_id = $request->input('category');
+        // $product->category_id = $request->input('category');
         $product->discount_type = $request->input('discount_type');
         $product->discount_amount = $request->input('discount_amount');
-        $product->quantity = $request->input('min_quantity');
-        $product->max_quantity = $request->input('max_quantity');
+        // $product->quantity = $request->input('min_quantity');
+        // $product->max_quantity = $request->input('max_quantity');
         $product->short_description = $request->input('short_description');
         $product->description = $request->input('description');
         $product->inside_dhaka = $request->input('inside_dhaka');
@@ -156,7 +155,7 @@ class ProductController extends Controller
 
         // update multiple image
         $this->validate($request, [
-            'multiple_photo.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'multiple_photo.*' => 'image|mimes:jpeg,png,jpg,gif|max:5000',
         ]);
         if ($request->hasFile('multiple_photo')) {
             $multiple_photos = $request->file('multiple_photo');

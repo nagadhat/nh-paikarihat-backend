@@ -39,7 +39,9 @@
                                     :</label>
                                 <div class="text-center pb-3">
                                     @php
-                                        $photo = empty($product->photo) ? asset('assets/images/others/error.png') : asset('storage/products/' . $product->photo);
+                                        $photo = empty($product->photo)
+                                            ? asset('assets/images/others/error.png')
+                                            : asset('storage/products/' . $product->photo);
                                     @endphp
 
                                     @if (file_exists(public_path('storage/products/' . $product->photo)))
@@ -68,7 +70,7 @@
                                         @endphp
                                         <div class="multiple__image px-2">
                                             <img src="@if (file_exists($imagePath) && is_file($imagePath)) {{ asset($image) }}@else{{ asset('assets/images/others/error.png') }} @endif"
-                                                alt="" class="img-fluid"  width="150" height="100">
+                                                alt="" class="img-fluid" width="150" height="100">
                                         </div>
                                     @endforeach
                                 </div>
@@ -95,14 +97,20 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="" class="form-label">Product Type:<span
-                                    class="text-danger"><sup>*</sup></span></label>
+                                        class="text-danger"><sup>*</sup></span></label>
                                 <div class="row align-items-center">
                                     <div class="col-md-10">
                                         <select name="product_type" id="" class="form-control">
                                             <option value="0">Choose Type</option>
-                                            <option value="REG" {{ old('product_type', $product->product_type) == 'REG' ? 'selected' : '' }}>REG</option>
-                                            <option value="PRE" {{ old('product_type', $product->product_type) == 'PRE' ? 'selected' : '' }}>PRE</option>
-                                            <option value="PRE" {{ old('product_type', $product->product_type) == 'STO' ? 'selected' : '' }}>STO</option>
+                                            <option value="REG"
+                                                {{ old('product_type', $product->product_type) == 'REG' ? 'selected' : '' }}>
+                                                REG</option>
+                                            <option value="PRE"
+                                                {{ old('product_type', $product->product_type) == 'PRE' ? 'selected' : '' }}>
+                                                PRE</option>
+                                            <option value="PRE"
+                                                {{ old('product_type', $product->product_type) == 'STO' ? 'selected' : '' }}>
+                                                STO</option>
                                         </select>
                                     </div>
                                 </div>
@@ -137,16 +145,16 @@
                             <div class="form-group">
                                 <label for="" class="form-label">Inside Side Dhaka<span
                                         class="text-danger"></span> :</label>
-                                <input type="text" name="inside_dhaka" value="{{ $product->inside_dhaka }}" id=""
-                                    class="form-control" readonly>
+                                <input type="text" name="inside_dhaka" value="{{ $product->inside_dhaka }}"
+                                    id="" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="" class="form-label">Outside Side Dhaka<span
                                         class="text-danger"></span> :</label>
-                                <input type="text" name="outside_dhaka" value="{{ $product->outside_dhaka }}" id=""
-                                    class="form-control" readonly>
+                                <input type="text" name="outside_dhaka" value="{{ $product->outside_dhaka }}"
+                                    id="" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -219,8 +227,14 @@
                                     <div class="col-md-10">
                                         <select name="category" id="" class="form-control">
                                             <option value="">Choose category</option>
-                                            <option v-for="item in categories" v-bind:value="item.id">
-                                                @{{ item.title }}</option>
+                                            @foreach ($categories as $item)
+                                                @if ($item->id )
+                                                    <option value="{{ $item->id }}"
+                                                        {{ $item->id ? 'selected' : 'No Category Found' }}>
+                                                        {{ $item->title }}
+                                                    </option>
+                                                @endif
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="col">
@@ -315,7 +329,7 @@
     <script>
         function multipleImageLoad(event) {
             var outputContainer = document.querySelector('.multiple__image');
-            outputContainer.innerHTML = ''; 
+            outputContainer.innerHTML = '';
             var files = event.target.files;
 
             for (var i = 0; i < files.length; i++) {
@@ -357,6 +371,7 @@
         // Global end
 
         let checkShipping = 1;
+
         function showInsideDhaka() {
             //Inside
             checkShipping = 1;

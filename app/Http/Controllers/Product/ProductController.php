@@ -25,7 +25,8 @@ class ProductController extends Controller
     // function to show add product page
     public function create()
     {
-        return view('customer.product.create-product');
+        $categories = Category::all();
+        return view('customer.product.create-product',compact('categories'));
     }
 
     // function to add product
@@ -35,13 +36,14 @@ class ProductController extends Controller
         // dd($request->all());
         $request->validate([
             'title' => 'required',
-            'photo' => 'required|mimes:png,jpg,jpeg|max:1000',
+            'photo' => 'required|max:1000',
+            // 'photo' => 'required|mimes:png,jpg,jpeg|max:1000',
             'sku' => 'required|numeric',
             'price' => 'required|numeric',
             'product_type' => 'required',
             'purchase_amount' => 'required|numeric',
             // 'brand' => 'nullable|exists:brands,id',
-            // 'category' => 'required|exists:categories,id'
+            'category' => 'required|exists:categories,id'
         ]);
 
         // create product
@@ -92,11 +94,12 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 
-   
-    // function to edit category and brand    
+
+    // function to edit category and brand
     public function edit(Product $product)
     {
         $categories = Category::where('user_id', auth()->id())->where('status', 1)->get();
+        // dd($categories);
         $brands = Brand::where('user_id', auth()->id())->where('status', 1)->get();
 
         return view('customer.product.edit-product', compact('product', 'categories', 'brands'));
@@ -108,13 +111,13 @@ class ProductController extends Controller
         // data validation
         $request->validate([
             'title' => 'required',
-            'photo' => 'nullable|mimes:png,jpg,jpeg|max:1000',
+            'photo' => 'nullable|max:1000',
             'sku' => 'required',
             'price' => 'required|numeric',
             'product_type' => 'required',
             'purchase_amount' => 'required|numeric',
             // 'brand' => 'nullable|exists:brands,id',
-            // 'category' => 'required|exists:categories,id'
+            'category' => 'required|exists:categories,id'
         ]);
 
         // create product
@@ -148,7 +151,7 @@ class ProductController extends Controller
             }
             $product->photo = $newName;
         }
-        
+
         // update multiple image
         $this->validate($request, [
             'multiple_photo.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -165,14 +168,14 @@ class ProductController extends Controller
             }
             $product->multiple_photo = implode(',', $paths);
         }
-    
+
         $product->save();
 
         // return back
         toast('Product updated successfully.', 'success');
         return redirect()->route('products.index');
     }
-    
+
     // function to delete product
     public function destroy(Product $product)
     {

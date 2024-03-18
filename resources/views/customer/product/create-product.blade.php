@@ -37,7 +37,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="" class="form-label">Others Photo :</label>
-                                <input type="file" name="multiple_photo[]" id="photoUpload" class="form-control" multiple>
+                                 <input type="file" name="multiple_photo[]" id="photoUpload" class="form-control" multiple>
                             </div>
                         </div>
                         <div class="col-md-4">

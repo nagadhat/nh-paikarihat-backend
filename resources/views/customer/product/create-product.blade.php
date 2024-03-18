@@ -184,14 +184,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="" class="form-label">Category
-                                    {{-- <span class="text-danger"><sup>*</sup></span> --}}
+                                    <span class="text-danger"><sup>*</sup></span>
                                          :</label>
                                 <div class="row align-items-center">
                                     <div class="col-md-10">
                                         <select name="category" id="" class="form-control">
-                                            <option value="">Choose category</option>
-                                            <option v-for="item in categories" v-bind:value="item.id">
-                                                @{{ item.title }}</option>
+                                            <option value="" selected>Choose category</option>
+                                            @foreach ($categories as $category)
+                                            <option  value="{{ $category->id }}">{{ $category->title }} </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="col">

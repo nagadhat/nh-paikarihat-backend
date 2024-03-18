@@ -37,16 +37,16 @@
                                 <div class="module-body">
                                     <div class="title module-title product-category-holder">
                                         <ul class="category-home-menu">
-                                            <li>
+                                            <li class="{{ request()->route()->getName() === 'home_page' ? 'active' : '' }}">
                                                 <a href="{{ route('home_page') }}">new arrivals</a>
                                             </li>
                                             @foreach ($categories as $category)
-                                            <li>
+                                            <li class="{{ request()->is('category/'.$category->id) ? 'active' : '' }}">
                                                 <a href="{{ route('category.products', $category) }}">{{ $category->title }}</a>
                                             </li>
                                             @endforeach
-                                            <li>
-                                                <a class="last-child" href="{{ route('home_page') }}">All</a>
+                                            <li class="{{ request()->route()->getName() === 'all_product_home' ? 'active' : '' }}">
+                                                <a class="last-child" href="{{ route('all_product_home') }}">All</a>
                                             </li>
                                         </ul>
                                     </div>

@@ -68,6 +68,7 @@ Route::domain('{shop}.' . env('APP_URL'))->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::get('/', [HomeController::class, 'homePage'])->name('home_page');
+Route::get('/all-product-home', [HomeController::class, 'homePageAllProduct'])->name('all_product_home');
 Route::get('/search-product',[HomeController::class,'searchProduct'])->name('search_product');
 Route::get('/category/{category}',[HomeController::class,'showCategoryProducts'])->name('category.products');
 Route::get('/product-details/{slug}', [ProductDetialsController::class, 'productDetails'])->name('product_details');
@@ -121,7 +122,7 @@ Route::match(['get', 'post'], '/order-landing-product', [LandingPageController::
 // customer routes
 Route::prefix('/customer')->middleware('customer')->group(function () {
     // Route::get('/{id?}', [CustomerDashboardController::class, 'customerDashboard'])->name('customer_dashboard');
-    Route::get('/', [CustomerDashboardController::class, 'customerDashboard'])->name('customer_dashboard');    
+    Route::get('/', [CustomerDashboardController::class, 'customerDashboard'])->name('customer_dashboard');
     Route::get('/customer-profile-update', [AuthController::class, 'profileUpdate'])->name('customer_profile_update');
     Route::post('/customer-profile-update-save', [AuthController::class, 'profileSave'])->name('customer_profile_update_save');
     Route::get('/customer-password-change', [AuthController::class, 'customerPassword'])->name('customer_password');
@@ -176,7 +177,7 @@ Route::prefix('/user')->middleware('user')->group(function () {
         Route::post('/reply-support-ticket', 'replyTicket')->name('admin_reply_support_ticket');
         Route::get('/support-ticket-status/{id}/{status}', 'status')->name('support_ticket_status');
     });
-    
+
 });
 
 /*

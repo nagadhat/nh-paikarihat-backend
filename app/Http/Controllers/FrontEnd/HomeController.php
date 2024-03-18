@@ -20,6 +20,14 @@ class HomeController extends Controller
         }
         return view('front-end.home.home-page', compact('products', 'categories'));
     }
+    public function homePageAllProduct(Request $request) {
+        $products = Product::latest()->paginate(15);
+        $categories = Category::where('status', 1)->latest()->get();
+        if ($request->ajax()) {
+            return view('front-end.home.all-product', compact('products'));
+        }
+        return view('front-end.home.home-page', compact('products', 'categories'));
+    }
 
     public function showCategoryProducts(Category $category)
     {

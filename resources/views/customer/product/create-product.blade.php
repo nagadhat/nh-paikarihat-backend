@@ -106,6 +106,18 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="" class="form-label">Min Quantity :</label>
+                                <input type="number" name="min_quantity" value="" id=""class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="" class="form-label">Max Quantity :</label>
+                                <input type="number" name="max_quantity" value="" id=""class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label for="" class="form-label">Inside Side Dhaka<span
                                         class="text-danger"></span> :</label>
                                 <input type="text" name="inside_dhaka" value="60" id=""
@@ -201,7 +213,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <!-- Category Modal Start-->
                             <div class="modal fade" id="categoryModal" tabindex="-1"
                                 aria-labelledby="categoryModalLabel" aria-hidden="true">

@@ -42,7 +42,8 @@
                                         </div>
                                         <div class="" style="padding-top:20px; text-align:center;">
                                             @if ($products->hasMorePages())
-                                                <button id="loadMore" style="background: #3ABC9B; padding: 5px 20px; font-size:15px;">Load
+                                                <button id="loadMore"
+                                                    style="background: #F16027; color:white; padding: 5px 20px; font-size:15px;">Load
                                                     More</button>
                                             @endif
                                         </div>
@@ -144,7 +145,6 @@
                 })
                 .then(response => response.text())
                 .then(data => {
-                    // Append the new products to the product grid
                     document.querySelector('.product-grid').innerHTML += data;
                 });
         });

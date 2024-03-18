@@ -38,7 +38,6 @@ class ProductCartController extends Controller
 
     public function productAddCart(Request $request)
     {
-
         $sessionId = session()->getId();
         // $sessionId = $_SERVER['REMOTE_ADDR'];
         $data = $request->all();
@@ -65,7 +64,6 @@ class ProductCartController extends Controller
             $cart->save();
         }
         // $product_count = ProductCart::where('session_id',$sessionId)->orWhere('user_id', $user->id ?? null)->count();
-
         if(Auth::check()){
             $product_count = ProductCart::where('user_id', Auth()->user()->id)
             ->get()

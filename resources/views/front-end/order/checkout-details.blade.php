@@ -280,7 +280,6 @@
                                                                 @php
                                                                     $i = 1;
                                                                 @endphp
-
                                                                 @foreach ($cartItems as $products)
                                                                     <tr class="checkout__br__color">
                                                                         <td class="">

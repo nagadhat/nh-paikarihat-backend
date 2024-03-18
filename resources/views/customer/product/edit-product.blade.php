@@ -74,7 +74,7 @@
                                         </div>
                                     @endforeach
                                 </div>
-                                <input type="file" name="multiple_photo[]" placeholder="photo"
+                                <input type="file" name="multiple_photo[]" id="photoUpload" placeholder="photo"
                                     onchange="multipleImageLoad(event)" class="form-control" multiple>
                             </div>
                         </div>
@@ -233,7 +233,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="" class="form-label">Category :</label>
+                                <label for="" class="form-label">Category
+                                    <span class="text-danger"><sup>*</sup></span>
+                                    :</label>
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <select name="category" id="" class="form-control">
@@ -269,7 +271,6 @@
                                             <div class="alert bg-primary text-light mb-2" v-if="category_error != ''">
                                                 @{{ category_error }}
                                             </div>
-
                                             <div>
                                                 <div class="form-group">
                                                     <label for="" class="form-label">Title<span
@@ -426,5 +427,14 @@
             var subtotal = quantity * (price - discountAmount);
             return subtotal;
         }
+    </script>
+     <script>
+        document.getElementById('photoUpload').addEventListener('change', function() {
+            var files = this.files;
+            if (files.length > 5) {
+                alert('You can only upload a maximum of 5 photos.');
+                this.value = '';
+            }
+        });
     </script>
 @endsection

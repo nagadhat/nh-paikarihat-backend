@@ -69,7 +69,7 @@ Route::domain('{shop}.' . env('APP_URL'))->group(function () {
 */
 Route::get('/', [HomeController::class, 'homePage'])->name('home_page');
 Route::get('/search-product',[HomeController::class,'searchProduct'])->name('search_product');
-Route::get('/category/{category}',[HomeController::class,'showProducts'])->name('category.products');
+Route::get('/category/{category}',[HomeController::class,'showCategoryProducts'])->name('category.products');
 Route::get('/product-details/{slug}', [ProductDetialsController::class, 'productDetails'])->name('product_details');
 Route::get('/checkout-details/{checkout?}/{count?}/{s_id?}', [OrderDetailsController::class, 'checkoutDetails'])->name('checkout_details');
 // Route::post('/order-product', [OrderDetailsController::class, 'orderProduct'])->name('order_product');

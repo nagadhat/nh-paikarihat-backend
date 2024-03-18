@@ -21,7 +21,7 @@ class HomeController extends Controller
         return view('front-end.home.home-page', compact('products', 'categories'));
     }
 
-    public function showProducts(Category $category)
+    public function showCategoryProducts(Category $category)
     {
         $categories = Category::where('status', 1)->latest()->get();
         $products = $category->products()->get();

@@ -226,11 +226,10 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-10">
                                         <select name="category" id="" class="form-control">
-                                            <option value="">Choose category</option>
-                                            @foreach ($categories as $item)
-                                                @if ($item->id )
-                                                    <option value="{{ $item->id }}"
-                                                        {{ $item->id ? 'selected' : 'No Category Found' }}>
+                                            <option value="0">Choose category</option>
+                                            @foreach($categories as $item)
+                                                @if($item->id != $product->id)
+                                                    <option value="{{ $item->id }}" {{ $product->category_id == $item->id ? 'selected': 'No Category Found'}}>
                                                         {{ $item->title }}
                                                     </option>
                                                 @endif

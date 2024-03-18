@@ -189,7 +189,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-10">
                                         <select name="category" id="" class="form-control">
-                                            <option value="" selected>Choose category</option>
+                                            <option value="0" selected>Choose category</option>
                                             @foreach ($categories as $category)
                                             <option  value="{{ $category->id }}">{{ $category->title }} </option>
                                             @endforeach

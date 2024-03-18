@@ -85,7 +85,7 @@
                                     @php
                                         $product['multiple_photo'] = explode(',', $product->multiple_photo);
                                     @endphp
-                        
+
                                     @foreach ($product->multiple_photo as $image)
                                         @php
                                             $imagePath = public_path($image);
@@ -98,6 +98,7 @@
                                 </div>
                                 <input type="file" name="multiple_photo[]" id="photoUpload" placeholder="photo"
                                     onchange="multipleImageLoad(event)" class="form-control" multiple>
+                                <div id="previewContainer"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -262,9 +263,10 @@
                                     <div class="col-md-12">
                                         <select name="category" id="" class="form-control">
                                             <option value="0">Choose category</option>
-                                            @foreach($categories as $item)
-                                                @if($item->id != $product->id)
-                                                    <option value="{{ $item->id }}" {{ $product->category_id == $item->id ? 'selected': 'No Category Found'}}>
+                                            @foreach ($categories as $item)
+                                                @if ($item->id != $product->id)
+                                                    <option value="{{ $item->id }}"
+                                                        {{ $product->category_id == $item->id ? 'selected' : 'No Category Found' }}>
                                                         {{ $item->title }}
                                                     </option>
                                                 @endif
@@ -365,6 +367,12 @@
             outputContainer.innerHTML = '';
             var files = event.target.files;
 
+            if (files.length > 5) {
+                alert("Maximum 5 images allowed");
+                event.target.value = ''; // Reset input file
+                return;
+            }
+
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
                 var reader = new FileReader();
@@ -375,94 +383,6 @@
                 };
 
                 reader.readAsDataURL(file);
-            }
-        }
-
-        function placeOrder() {
-            alert("Order Placed Sucessfully");
-        }
-
-        function showAllFields() {
-            $("#newuser").val(0);
-            document.getElementById('NewUserFields').style.display = 'block';
-            document.getElementById('ExistingUserFields').style.display = 'none';
-            document.getElementById('ExistingUserIn').style.display = 'none';
-        }
-
-        function showLimitedFields() {
-            $("#olduser").val(1);
-            document.getElementById('NewUserFields').style.display = 'none';
-            document.getElementById('ExistingUserFields').style.display = 'block';
-            document.getElementById('ExistingUserIn').style.display = 'block';
-        }
-
-        // Global Start
-        var subtotal = getData();
-        document.getElementById('grandTotal').innerText = '৳ ' + (subtotal + 60);
-        document.getElementById('orderAmount').innerText = subtotal + 60;
-        document.getElementById('subtotal').innerText = subtotal;
-        // Global end
-
-        let checkShipping = 1;
-
-        function showInsideDhaka() {
-            //Inside
-            checkShipping = 1;
-            var subtotal = getData();
-
-            document.getElementById('grandTotal').innerText = '৳ ' + (subtotal + 60);
-            document.getElementById('orderAmount').innerText = subtotal + 60;
-            document.getElementById('subtotal').innerText = subtotal;
-
-            document.getElementById("insideDhakaCharge").style.display = "block";
-            document.getElementById("outsideDhakaCharge").style.display = "none";
-        }
-
-        function showOutsideDhaka() {
-            //Outside
-            checkShipping = 2;
-            var subtotal = getData();
-            document.getElementById('grandTotal').innerText = '৳ ' + (subtotal + 120);
-            document.getElementById('orderAmount').innerText = subtotal + 120;
-            document.getElementById('subtotal').innerText = subtotal;
-
-            document.getElementById("insideDhakaCharge").style.display = "none";
-            document.getElementById("outsideDhakaCharge").style.display = "block";
-        }
-
-        function updateOrderDetails(input) {
-            //Quantity Change
-            let shippingCharge = 120;
-            if (checkShipping == 1) {
-                shippingCharge = 60;
-            }
-            var subtotal = getData();
-            document.getElementById('grandTotal').innerText = '৳ ' + (subtotal + shippingCharge);
-            document.getElementById('orderAmount').innerText = subtotal + shippingCharge;
-            document.getElementById('subtotal').innerText = subtotal;
-        }
-
-        function getData() {
-            var quantity = $("#CurrentQty").val();
-            var discountAmount = $("#Discount").val();
-            var price = parseFloat(document.getElementById('productPrice').innerText);
-            var subtotal = quantity * (price - discountAmount);
-            return subtotal;
-        }
-    </script>
-    <script>
-        function multipleImageLoad(event) {
-            var input = event.target;
-            var files = input.files;
-            var counter = 0;
-            for (var i = 0; i < files.length; i++) {
-                if (files[i].type.match('image.*')) {
-                    counter++;
-                }
-            }    
-            if (counter > 5) {
-                alert("You can only upload a maximum of 5 images.");
-                input.value = '';
             }
         }
     </script>

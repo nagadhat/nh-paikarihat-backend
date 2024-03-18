@@ -173,17 +173,17 @@
                             <div class="form-group">
                                 <label for="" class="form-label">Brand:</label>
                                 <div class="row align-items-center">
-                                    <div class="col-md-10">
+                                    <div class="col-md-12">
                                         <select name="brand" id="" class="form-control">
                                             <option value="">Choose brand</option>
                                             <option v-for="item in brands" v-bind:value="item.id">@{{ item.title }}
                                             </option>
                                         </select>
                                     </div>
-                                    <div class="col">
+                                    {{-- <div class="col">
                                         <div class="btn btn-primary" data-toggle="modal" data-target="#brandModal">+
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 
@@ -235,7 +235,7 @@
                             <div class="form-group">
                                 <label for="" class="form-label">Category :</label>
                                 <div class="row align-items-center">
-                                    <div class="col-md-10">
+                                    <div class="col-md-12">
                                         <select name="category" id="" class="form-control">
                                             <option value="0">Choose category</option>
                                             @foreach($categories as $item)
@@ -247,10 +247,10 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col">
+                                    {{-- <div class="col">
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
                                             data-target="#categoryModal">+</button>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 

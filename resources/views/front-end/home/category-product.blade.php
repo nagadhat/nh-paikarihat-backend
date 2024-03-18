@@ -37,18 +37,11 @@
                                 <div class="module-body">
                                     <div class="module-item module-item-1">
                                         @foreach($categories as $category)
-                                            <a href="{{ route('category.products', $category) }}">{{ $category->title }}</a>
+                                            <a href="">{{ $category->title }}</a>
                                         @endforeach
                                         <h3 class="title module-title">নতুন পণ্য</h3>
                                         <div class="product-grid">
                                             @include('front-end.home.all-product')
-                                        </div>
-                                        <div class="" style="padding-top:20px; text-align:center;">
-                                            @if ($products->hasMorePages())
-                                                <button id="loadMore"
-                                                    style="background: #F16027; color:white; padding: 5px 20px; font-size:15px;">Load
-                                                    More</button>
-                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -136,20 +129,5 @@
                 });
             });
         })(jQuery);
-    </script>
-    <script>
-        document.getElementById('loadMore').addEventListener('click', function() {
-            var nextPage = {{ $products->currentPage() }} + 1;
-            var url = "{{ route('home_page') }}" + "?page=" + nextPage;
-            fetch(url, {
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                })
-                .then(response => response.text())
-                .then(data => {
-                    document.querySelector('.product-grid').innerHTML += data;
-                });
-        });
     </script>
 @endsection

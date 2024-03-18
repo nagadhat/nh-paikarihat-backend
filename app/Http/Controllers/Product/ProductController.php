@@ -43,7 +43,7 @@ class ProductController extends Controller
             'product_type' => 'required',
             'purchase_amount' => 'required|numeric',
             // 'brand' => 'nullable|exists:brands,id',
-            // 'category' => 'required|exists:categories,id'
+            'category' => 'required|exists:categories,id'
         ]);
 
         // create product
@@ -56,7 +56,7 @@ class ProductController extends Controller
         $product->product_type = $request->input('product_type');
         $product->purchase_amount = $request->input('purchase_amount');
         $product->brand_id = $request->input('brand');
-        // $product->category_id = $request->input('category');
+        $product->category_id = $request->input('category');
         // $product->quantity = $request->input('min_quantity');
         // $product->max_quantity = $request->input('max_quantity');
         $product->short_description = $request->input('short_description');
@@ -117,7 +117,7 @@ class ProductController extends Controller
             'product_type' => 'required',
             'purchase_amount' => 'required|numeric',
             // 'brand' => 'nullable|exists:brands,id',
-            // 'category' => 'required|exists:categories,id'
+            'category' => 'required|exists:categories,id'
         ]);
 
         // create product
@@ -128,7 +128,7 @@ class ProductController extends Controller
         $product->product_type = $request->input('product_type');
         $product->purchase_amount = $request->input('purchase_amount');
         $product->brand_id = $request->input('brand');
-        // $product->category_id = $request->input('category');
+        $product->category_id = $request->input('category');
         $product->discount_type = $request->input('discount_type');
         $product->discount_amount = $request->input('discount_amount');
         // $product->quantity = $request->input('min_quantity');

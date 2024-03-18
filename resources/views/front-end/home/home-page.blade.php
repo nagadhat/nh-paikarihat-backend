@@ -42,11 +42,11 @@
                                                     <a href="{{ route('home_page') }}">new arrivals</a>
                                                 </li>
                                                 @foreach ($categories as $category)
-                                                <li>
+                                                <li class="">
                                                     <a href="{{ route('category.products', $category) }}">{{ $category->title }}</a>
                                                 </li>
                                                 @endforeach
-                                                <li>
+                                                <li class="{{ request()->route()->getName() === 'home_page' ? 'active' : '' }}">
                                                     <a class="last-child" href="{{ route('home_page') }}">All</a>
                                                 </li>
                                             </ul>

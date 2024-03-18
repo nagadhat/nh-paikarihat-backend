@@ -28,3 +28,7 @@
 .title.module-title.product-category-holder::after {
     content: none;
 }
+
+.category-home-menu li.active a {
+    color: yellow;
+}

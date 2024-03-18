@@ -1,0 +1,30 @@
+.category-home-menu {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    list-style: none;
+    margin: 0;
+    justify-content: center;
+}
+.category-home-menu li a {
+    text-transform: capitalize;
+    color: #fff;
+    font-size: 22px;
+    position: relative;
+    font-weight: 700;
+}
+.category-home-menu li a::after {
+    position: absolute;
+    content: '';
+    right: -9px;
+    height: 100%;
+    width: 1px;
+    background: #fff;
+    top: 0;
+}
+.category-home-menu li a.last-child::after {
+    content: none; /* Remove the pseudo-element */
+}
+.title.module-title.product-category-holder::after {
+    content: none;
+}

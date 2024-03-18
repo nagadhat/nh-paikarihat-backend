@@ -36,10 +36,21 @@
                             <div class="module module-products module-products-169 module-products-grid">
                                 <div class="module-body">
                                     <div class="module-item module-item-1">
-                                        @foreach($categories as $category)
-                                            <a href="{{ route('category.products', $category) }}">{{ $category->title }}</a>
-                                        @endforeach
-                                        <h3 class="title module-title">নতুন পণ্য</h3>
+                                        <div class="title module-title product-category-holder">
+                                            <ul class="category-home-menu">
+                                                <li>
+                                                    <a href="{{ route('home_page') }}">new arrivals</a>
+                                                </li>
+                                                @foreach ($categories as $category)
+                                                <li>
+                                                    <a href="{{ route('category.products', $category) }}">{{ $category->title }}</a>
+                                                </li>
+                                                @endforeach
+                                                <li>
+                                                    <a class="last-child" href="{{ route('home_page') }}">All</a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                         <div class="product-grid">
                                             @include('front-end.home.all-product')
                                         </div>

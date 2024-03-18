@@ -150,7 +150,6 @@
                                     </div> --}}
                                 </div>
                             </div>
-
                             <!-- Brand Modal start-->
                             <div class="modal fade" id="brandModal" tabindex="-1" aria-labelledby="brandModalLabel"
                                 aria-hidden="true">

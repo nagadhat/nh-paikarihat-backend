@@ -56,7 +56,7 @@
                                     onchange="loadFile(event)" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        {{-- <div class="col-md-6">
                             <div class="form-group">
                                 <label for="" class="form-label">Other Photo:</label>
                                 <div class="pb-3 d-flex align-items-center justify-content-between multiple__image">
@@ -64,6 +64,28 @@
                                         $product['multiple_photo'] = explode(',', $product->multiple_photo);
                                     @endphp
 
+                                    @foreach ($product->multiple_photo as $image)
+                                        @php
+                                            $imagePath = public_path($image);
+                                        @endphp
+                                        <div class="multiple__image px-2">
+                                            <img src="@if (file_exists($imagePath) && is_file($imagePath)) {{ asset($image) }}@else{{ asset('assets/images/others/error.png') }} @endif"
+                                                alt="" class="img-fluid" width="150" height="100">
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <input type="file" name="multiple_photo[]" id="photoUpload" placeholder="photo"
+                                    onchange="multipleImageLoad(event)" class="form-control" multiple>
+                            </div>
+                        </div> --}}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="" class="form-label">Other Photo:</label>
+                                <div class="pb-3 d-flex align-items-center justify-content-between multiple__image">
+                                    @php
+                                        $product['multiple_photo'] = explode(',', $product->multiple_photo);
+                                    @endphp
+                        
                                     @foreach ($product->multiple_photo as $image)
                                         @php
                                             $imagePath = public_path($image);
@@ -428,13 +450,20 @@
             return subtotal;
         }
     </script>
-     <script>
-        document.getElementById('photoUpload').addEventListener('change', function() {
-            var files = this.files;
-            if (files.length > 5) {
-                alert('You can only upload a maximum of 5 photos.');
-                this.value = '';
+    <script>
+        function multipleImageLoad(event) {
+            var input = event.target;
+            var files = input.files;
+            var counter = 0;
+            for (var i = 0; i < files.length; i++) {
+                if (files[i].type.match('image.*')) {
+                    counter++;
+                }
+            }    
+            if (counter > 5) {
+                alert("You can only upload a maximum of 5 images.");
+                input.value = '';
             }
-        });
+        }
     </script>
 @endsection

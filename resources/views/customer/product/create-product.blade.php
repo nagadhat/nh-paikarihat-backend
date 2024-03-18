@@ -27,7 +27,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="" class="form-label">Feature Photo<span class="text-danger"><sup>*</sup></span>
+                                <label for="" class="form-label">Feature Photo<span
+                                        class="text-danger"><sup>*</sup></span>
                                     :</label>
                                 <input type="file" name="photo" placeholder="photo" id=""
                                     class="form-control">
@@ -36,8 +37,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="" class="form-label">Others Photo :</label>
-                                <input type="file" name="multiple_photo[]" placeholder="Multiple Photo" id=""
-                                    class="form-control" multiple>
+                                <input type="file" name="multiple_photo[]" id="photoUpload" class="form-control" multiple>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -47,7 +47,8 @@
                                 @endphp
                                 <label for="" class="form-label">SKU<span class="text-danger"><sup>*</sup></span>
                                     :</label>
-                                <input type="text" name="sku" placeholder="sku" id="" value="{{ $uniqueNumericId }}" class="form-control">
+                                <input type="text" name="sku" placeholder="sku" id=""
+                                    value="{{ $uniqueNumericId }}" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -69,7 +70,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="" class="form-label">Product Type:<span
-                                    class="text-danger"><sup>*</sup></span></label>
+                                        class="text-danger"><sup>*</sup></span></label>
                                 <div class="row align-items-center">
                                     <div class="col-md-10">
                                         <select name="product_type" id="" class="form-control">
@@ -98,8 +99,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="" class="form-label">Discount Amount<span
-                                        class="text-danger"></span> :</label>
+                                <label for="" class="form-label">Discount Amount<span class="text-danger"></span>
+                                    :</label>
                                 <input type="number" name="discount_amount" value="0" id=""
                                     class="form-control">
                             </div>
@@ -144,7 +145,8 @@
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <div class="btn btn-primary" data-toggle="modal" data-target="#brandModal">+</div>
+                                        <div class="btn btn-primary" data-toggle="modal" data-target="#brandModal">+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -197,13 +199,13 @@
                             <div class="form-group">
                                 <label for="" class="form-label">Category
                                     <span class="text-danger"><sup>*</sup></span>
-                                         :</label>
+                                    :</label>
                                 <div class="row align-items-center">
                                     <div class="col-md-10">
                                         <select name="category" id="" class="form-control">
                                             <option value="0" selected>Choose category</option>
                                             @foreach ($categories as $category)
-                                            <option  value="{{ $category->id }}">{{ $category->title }} </option>
+                                                <option value="{{ $category->id }}">{{ $category->title }} </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -241,7 +243,8 @@
                                                     <textarea id="" class="form-control" placeholder="category description" v-model="category_desc"></textarea>
                                                 </div>
                                                 <div class="text-right">
-                                                    <button type="button" class="btn btn-sm btn-primary" @click.prevent="saveCategory()">Save</button>
+                                                    <button type="button" class="btn btn-sm btn-primary"
+                                                        @click.prevent="saveCategory()">Save</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -286,7 +289,16 @@
     <script>
         // Summernote
         $('.editor').summernote({
-                height: 300
-            });
+            height: 300
+        });
+    </script>
+    <script>
+        document.getElementById('photoUpload').addEventListener('change', function() {
+            var files = this.files;
+            if (files.length > 5) {
+                alert('You can only upload a maximum of 5 photos.');
+                this.value = '';
+            }
+        });
     </script>
 @endsection

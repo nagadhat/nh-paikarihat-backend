@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Product;
+
 use Illuminate\Pagination\Paginator;
 use App\Models\Product;
 use App\Models\ProductView;
@@ -26,7 +27,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('customer.product.create-product',compact('categories'));
+        return view('customer.product.create-product', compact('categories'));
     }
 
     // function to add product
@@ -154,9 +155,9 @@ class ProductController extends Controller
         }
 
         // update multiple image
-        $this->validate($request, [
-            'multiple_photo.*' => 'image|mimes:jpeg,png,jpg,gif|max:5000',
-        ]);
+        // $this->validate($request, [
+        //     'multiple_photo.*' => 'image|mimes:jpeg,png,jpg,gif|max:5000',
+        // ]);
         if ($request->hasFile('multiple_photo')) {
             $multiple_photos = $request->file('multiple_photo');
             $paths = [];

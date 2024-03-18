@@ -8,12 +8,24 @@ use App\Models\Product;
 
 class HomeController extends Controller
 {
-    public function homePage()
+    public function homePage(Request $request)
     {
-        $products = Product::latest()->limit(26)->get();
-        // dd($products);
+        // $products = Product::latest()->limit(26)->get();
+        // return view('front-end.home.home-page', compact('products'));
+        $products = Product::latest()->paginate(15);
+        if ($request->ajax()) {
+            return view('front-end.home.all-product', compact('products'));
+        }
         return view('front-end.home.home-page', compact('products'));
     }
+
+    public function loadMoreProducts(Request $request)
+    {
+        $page = $request->get('page');
+        $products = Product::skip(($page - 1) * 15)->take(15)->get();
+        return view('front-end.home.home-page')->with('products', $products);
+    }
+
 
     public function searchProduct(Request $request)
     {

@@ -216,7 +216,6 @@
                                             <div class="alert bg-primary text-light mb-2" v-if="category_error != ''">
                                                 @{{ category_error }}
                                             </div>
-
                                             <div>
                                                 <div class="form-group">
                                                     <label for="" class="form-label">Title<span

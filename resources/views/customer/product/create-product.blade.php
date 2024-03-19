@@ -108,13 +108,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="" class="form-label">Min Quantity :</label>
-                                <input type="number" name="min_quantity" value="" id=""class="form-control">
+                                <input type="number" name="min_quantity" value="1" class="form-control" min="1" >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="" class="form-label">Max Quantity :</label>
-                                <input type="number" name="max_quantity" value="" id=""class="form-control">
+                                <input type="number" name="max_quantity" value="0" id=""class="form-control" max="0">
                             </div>
                         </div>
                         <div class="col-md-6">

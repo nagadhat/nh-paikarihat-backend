@@ -166,14 +166,14 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="" class="form-label">Min Quantity :</label>
-                                <input type="number" name="min_quantity" value="{{ $product->min_quantity }}" id=""class="form-control">
+                                <label for="" class="form-label">Min Quantity (update minimum 1 quantity):</label>
+                                <input type="number" name="min_quantity" value="{{ $product->quantity}}" class="form-control" >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="" class="form-label">Max Quantity :</label>
-                                <input type="number" name="max_quantity" value="{{ $product->max_quantity }}" id=""class="form-control">
+                                <input type="number" name="max_quantity" value="{{ $product->max_quantity }}" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">

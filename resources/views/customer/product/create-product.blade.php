@@ -105,7 +105,7 @@
                                     class="form-control">
                             </div>
                         </div>
-                        {{-- <div class="col-md-6">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="" class="form-label">Min Quantity :</label>
                                 <input type="number" name="min_quantity" value="" id=""class="form-control">
@@ -116,7 +116,7 @@
                                 <label for="" class="form-label">Max Quantity :</label>
                                 <input type="number" name="max_quantity" value="" id=""class="form-control">
                             </div>
-                        </div> --}}
+                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="" class="form-label">Inside Side Dhaka<span

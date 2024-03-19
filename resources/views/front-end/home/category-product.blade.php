@@ -41,8 +41,8 @@
                                                 <a href="{{ route('home_page') }}">new arrivals</a>
                                             </li>
                                             @foreach ($categories as $category)
-                                            <li class="{{ request()->is('category/'.$category->id) ? 'active' : '' }}">
-                                                <a href="{{ route('category.products', $category) }}">{{ $category->title }}</a>
+                                            <li class="{{ request()->is('category/' . $category->slug) ? 'active' : '' }}">
+                                                <a href="{{ route('category.products', $category->slug) }}">{{ $category->title }}</a>
                                             </li>
                                             @endforeach
                                             <li class="{{ request()->route()->getName() === 'all_product_home' ? 'active' : '' }}">

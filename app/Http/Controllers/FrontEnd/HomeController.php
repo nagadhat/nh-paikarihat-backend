@@ -20,7 +20,9 @@ class HomeController extends Controller
         }
         return view('front-end.home.home-page', compact('products', 'categories'));
     }
-    public function homePageAllProduct(Request $request) {
+
+    public function homePageAllProduct(Request $request)
+    {
         $products = Product::latest()->paginate(15);
         $categories = Category::where('status', 1)->latest()->get();
         if ($request->ajax()) {
@@ -29,14 +31,14 @@ class HomeController extends Controller
         return view('front-end.home.home-page', compact('products', 'categories'));
     }
 
-    public function showCategoryProducts(Category $category)
+    public function showCategoryProducts($slug)
     {
+        $category = Category::where('slug', $slug)->where('status', 1)->firstOrFail();
         $categories = Category::where('status', 1)->latest()->get();
         $products = $category->products()->get();
-        return view('front-end.home.category-product', compact('products', 'category','categories'));
+        return view('front-end.home.category-product', compact('products', 'category', 'categories'));
     }
-
-
+    
     public function loadMoreProducts(Request $request)
     {
         $page = $request->get('page');

@@ -89,7 +89,6 @@ class ProductController extends Controller
         }
 
         $product->save();
-
         // return back
         toast('Product created successfully.', 'success');
         return redirect()->route('products.index');

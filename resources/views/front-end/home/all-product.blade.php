@@ -22,13 +22,13 @@
                     @endif
                 </a>
                 {{-- @if (isset($product->product_type))
-                                                                <div class="product-labels">
-                                                                    <span
-                                                                        class="product-label product-label-28 product-label-diagonal">
-                                                                        <b>{{ $product->product_type }}</b>
-                                                                    </span>
-                                                                </div>
-                                                            @endif --}}
+                    <div class="product-labels">
+                        <span
+                            class="product-label product-label-28 product-label-diagonal">
+                            <b>{{ $product->product_type }}</b>
+                        </span>
+                    </div>
+                @endif --}}
             </div>
             <div class="caption">
                 <div class="name">
@@ -81,10 +81,6 @@
                                 style="background: #F16128 !important" disabled>
                                 <span class="btn-text">স্টক আউট</span>
                             </a>
-                            <div class="nh__cart__icon">
-                                <i class="fa fa-cart-plus add--to--cart-btn" aria-hidden="true"
-                                    style="background: #F69873 !important; cursor:not-allowed;" disabled></i>
-                            </div>
                         </div>
                     @endif
                 </div>
@@ -92,3 +88,4 @@
         </div>
     </div>
 @endforeach
+

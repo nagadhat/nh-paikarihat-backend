@@ -55,16 +55,25 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="product-grid">
-                                            @include('front-end.home.all-product')
-                                        </div>
-                                        <div class="" style="padding-top:20px; text-align:center;">
-                                            @if ($products->hasMorePages())
-                                                <button id="loadMore"
-                                                    style="background: #F16027; color:white; padding: 5px 20px; font-size:15px;">Load
-                                                    More</button>
-                                            @endif
-                                        </div>
+                                        @if ($products->isEmpty())
+                                            <div>No products found</div>
+                                        @else
+                                            <div class="product-grid">
+                                                @include('front-end.home.all-product')
+                                            </div>
+                                            <div style="padding-top:20px; text-align:center;">
+                                                @if ($products->hasMorePages())
+                                                    <button id="loadMore"
+                                                        style="background: #F16027; color:white; padding: 5px 20px; font-size:15px;">Load
+                                                        More</button>
+                                                @else
+                                                    <div id="loadMoreMessage"
+                                                        style="padding-top: 10px; text-align: center; color: #f00;">
+                                                        No Products Found
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -156,15 +165,29 @@
         document.getElementById('loadMore').addEventListener('click', function() {
             var nextPage = {{ $products->currentPage() }} + 1;
             var url = "{{ route('home_page') }}" + "?page=" + nextPage;
+            var totalProductsCount = {{ $totalProductsCount }};
+            var productsDisplayedCount = document.querySelectorAll('.product-layout').length;
+    
             fetch(url, {
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('.product-grid').innerHTML += data;
+                productsDisplayedCount += {{ $products->count() }};
+    
+                // Check if all products have been displayed
+                if (productsDisplayedCount >= totalProductsCount) {
+                    document.getElementById('loadMore').style.display = 'none';
+                    // Check if there are no products
+                    if (totalProductsCount === 0) {
+                        document.getElementById('loadMoreMessage').style.display = 'block'; // Show the message
                     }
-                })
-                .then(response => response.text())
-                .then(data => {
-                    document.querySelector('.product-grid').innerHTML += data;
-                });
+                }
+            });
         });
     </script>
+    
 @endsection

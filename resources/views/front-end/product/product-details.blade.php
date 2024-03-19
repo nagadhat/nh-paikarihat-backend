@@ -149,14 +149,6 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="wishlist-compare">
-                                            <a class="btn main__add__to__cart" href="#" disabled>
-                                                <span class="btn-text">
-                                                    <i class="fa fa-cart-plus" aria-hidden="true" style="background: #F69873 !important; cursor:not-allowed;"></i>
-                                                    Add to Cart
-                                                </span>
-                                            </a>
-                                        </div>
                                     @endif
                                 </div>
                                 <div class="hotline_number">

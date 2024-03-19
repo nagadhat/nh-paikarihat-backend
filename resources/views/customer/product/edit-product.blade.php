@@ -369,14 +369,12 @@
 
             if (files.length > 5) {
                 alert("Maximum 5 images allowed");
-                event.target.value = ''; // Reset input file
+                event.target.value = '';
                 return;
             }
-
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
                 var reader = new FileReader();
-
                 reader.onload = function(e) {
                     outputContainer.innerHTML += '<div class="multiple__image"><img src="' + e.target.result +
                         '" alt="" class="img-fluid" width="150" height="100"></div>';

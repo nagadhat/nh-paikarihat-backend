@@ -28,19 +28,24 @@
                                 <div class="ph__multiple__image">
                                     @php
                                         $products['multiple_photo'] = explode(',', $products->multiple_photo);
+                                        $counter = 0;
                                     @endphp
-
                                     @foreach ($products->multiple_photo as $image)
                                         @php
                                             $imagePath = public_path($image);
                                         @endphp
-                                        <div class="ph__multiple__image__item xzoom-thumbs">
-                                            <a href="{{ asset($image) }}">
-                                                <img src="@if (file_exists($imagePath) && is_file($imagePath)) {{ asset($image) }}@else{{ asset('assets/images/others/error.png') }} @endif"
-                                                    alt="" class="img-fluid xzoom-gallery"
-                                                    xpreview="{{ asset($image) }}">
-                                            </a>
-                                        </div>
+                                        @if ($counter < 5) 
+                                            <div class="ph__multiple__image__item xzoom-thumbs">
+                                                <a href="{{ asset($image) }}">
+                                                    <img src="@if (file_exists($imagePath) && is_file($imagePath)) {{ asset($image) }}@else{{ asset('assets/images/others/error.png') }} @endif"
+                                                        alt="" class="img-fluid xzoom-gallery"
+                                                        xpreview="{{ asset($image) }}">
+                                                </a>
+                                            </div>
+                                            @php
+                                                $counter++;
+                                            @endphp
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>

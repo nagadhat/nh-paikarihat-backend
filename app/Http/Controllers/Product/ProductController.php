@@ -87,7 +87,6 @@ class ProductController extends Controller
 
             $product->multiple_photo = implode(',', $paths);
         }
-
         $product->save();
         // return back
         toast('Product created successfully.', 'success');
@@ -99,9 +98,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::where('user_id', auth()->id())->where('status', 1)->get();
-        // dd($categories);
         $brands = Brand::where('user_id', auth()->id())->where('status', 1)->get();
-
         return view('customer.product.edit-product', compact('product', 'categories', 'brands'));
     }
 

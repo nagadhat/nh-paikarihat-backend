@@ -67,7 +67,7 @@
 
                                         <div id="noProductFound"
                                             style="display: none; font-size:20px; font-weight:400; padding-top:20px; text-align:center;">
-                                            No product found
+                                            No Products Found
                                         </div>
                                     </div>
                                 </div>

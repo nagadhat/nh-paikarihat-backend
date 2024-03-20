@@ -61,7 +61,8 @@
                                 <table class="table table-bordered nh__cart__table">
                                     <thead>
                                         <tr>
-                                            <td class="text-center td-image">নাম ও ছবি</td>
+                                            <td class="text-center td-image">ছবি</td>
+                                            <td class="text-center td-image">নাম</td>
                                             <td class="text-center td-image">প্রোডাক্টের মূল্য</td>
                                             <td class="text-center td-qty">কোয়ান্টিটি</td>
                                             <td class="text-center td-total">মোট প্রোডাক্টের মূল্য</td>
@@ -75,17 +76,19 @@
                                                     <div class="" style="padding-bottom:10px">
                                                         <img src="{{ asset('storage/products/' . $cart->product->photo) }}"
                                                             alt="image" class="image-responsive "
-                                                            style="width: 60px;height:60px">
+                                                            style="width: 80px;height:60px">
                                                     </div>
-                                                    <p>
-                                                        {{-- {{ Str::limit($cart->product->title, $limit = 10, $end = '...') }} --}}
-                                                        {{ $cart->product->title }}
-                                                    </p>
                                                     <p
                                                         style="background:{{ $cart->product->product_type == 'PRE' ? '#FED430' : 'none' }}; color:#000; width:max-content; padding:2px 8px;font-weight:700 ">
                                                         @if ($cart->product->product_type != 'REG')
                                                             Pre Order
                                                         @endif
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        {{-- {{ Str::limit($cart->product->title, $limit = 10, $end = '...') }} --}}
+                                                        {{ $cart->product->title }}
                                                     </p>
                                                 </td>
                                                 <td class=" td-image">

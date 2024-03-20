@@ -24,11 +24,12 @@ class HomeController extends Controller
     public function homePageAllProduct(Request $request)
     {
         $products = Product::latest()->paginate(15);
+        $totalProductsCount = Product::count();
         $categories = Category::where('status', 1)->latest()->get();
         if ($request->ajax()) {
-            return view('front-end.home.all-product', compact('products'));
+            return view('front-end.home.all-product', compact('products', 'totalProductsCount'));
         }
-        return view('front-end.home.home-page', compact('products', 'categories'));
+        return view('front-end.home.home-page', compact('products', 'categories', 'totalProductsCount'));
     }
 
     public function showCategoryProducts($slug)
@@ -39,21 +40,14 @@ class HomeController extends Controller
         return view('front-end.home.category-product', compact('products', 'category', 'categories'));
     }
 
-    public function loadMoreProducts(Request $request)
-    {
-        $page = $request->get('page');
-        $products = Product::skip(($page - 1) * 15)->take(15)->get();
-        return view('front-end.home.home-page')->with('products', $products);
-    }
-
     public function searchProduct(Request $request)
     {
         $query = $request->input('query');
         $products = Product::where(function ($queryBuilder) use ($query) {
             $lowercaseQuery = mb_strtolower($query);
             $queryBuilder->whereRaw('LOWER(title) LIKE ?', ['%' . $lowercaseQuery . '%'])
-                ->orWhere('sku', 'like', '%' . $query . '%');
-        })->get();
+            ->orWhere('sku', 'like', '%' . $query . '%');
+        })->get();                    
         $categories = Category::where('status', 1)->latest()->get();
         return view('front-end.home.search-product', compact('products','categories'));
     }

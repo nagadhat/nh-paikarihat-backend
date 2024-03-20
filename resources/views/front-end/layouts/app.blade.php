@@ -246,7 +246,7 @@
                             <div class="dropdown-menu j-dropdown">
                                 <form action="{{ route('search_product') }}" method="GET">
                                     <div class="header-search">
-                                        <input type="text" name="productsearch" value=""
+                                        <input type="text" name="query" value=""
                                             placeholder="পণ্য খুঁজুন এখানে......" class="search-input"
                                             data-category_id="" />
                                         <button type="submit" class="search-button"></button>

@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function homePage(Request $request)
     {
         $products = Product::latest()->paginate(15);
-        $totalProductsCount = Product::count(); // Get the total count of products
+        $totalProductsCount = Product::count();
         $categories = Category::where('status', 1)->latest()->get();
         if ($request->ajax()) {
             return view('front-end.home.all-product', compact('products', 'totalProductsCount'));

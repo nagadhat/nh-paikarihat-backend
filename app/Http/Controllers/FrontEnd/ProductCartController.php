@@ -112,6 +112,7 @@ class ProductCartController extends Controller
                     });
             } else if('manual' == $data['type']){
                 $data = $request->all();
+                // dd($existingCartItem);
                 $existingCartItem->quantity = $data['qty'];
                 $existingCartItem->save();
                 $unitPrice = $data['unit_price'];

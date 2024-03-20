@@ -89,7 +89,7 @@
                                                     </p>
                                                 </td>
                                                 <td class=" td-image">
-                                                    @if($cart->product->discount_amount > 0)
+                                                    @if ($cart->product->discount_amount > 0)
                                                         <p>
                                                             {{ $cart->product->price - $cart->product->discount_amount }} ৳
                                                         </p>
@@ -103,6 +103,7 @@
                                                     @endif
                                                 </td>
                                                 <td class="text-center td-qty">
+                                                    {{-- @dd($cart->product->max_quantity) --}}
                                                     <div class="input-group btn-block cart--quantity--btn">
                                                         <div class="stepper">
                                                             <input type="hidden" name=""
@@ -112,15 +113,18 @@
                                                                 id="product_id_{{ $key }}"
                                                                 value="{{ $cart->id }}">
                                                             <input type="text" name="quantity"
-                                                                value="{{ $cart->quantity }}" size="1" oninput="handleInputChange(this)"
+                                                                value="{{ $cart->quantity }}" size="1"
+                                                                oninput="handleInputChange(this)"
                                                                 id="CurrentQty_{{ $key }}" class="form-control"
-                                                                onChange="manualIncrement(this.value,  {{ $cart->id }}, {{ $cart->unit_price }}, {{ $key }})"
-                                                                min="1" >
+                                                                onChange="manualIncrement(this.value,  {{ $cart->id }}, {{ $cart->unit_price }}, {{ $key }},{{ $cart->quantity }}, {{ $cart->product->max_quantity }})"
+                                                                min="1">
                                                             <span>
                                                                 <i class="fa fa-angle-up"
-                                                                    onClick="manageQuantity({{ $key }}, 'increment')"></i>
+                                                                    onClick="manageQuantity({{ $key }}, 'increment')"
+                                                                    @if ($cart->quantity == $cart->product->max_quantity || $cart->quantity == $cart->product->max_quantity) style="pointer-events: none; opacity: 0.5;" @endif></i>
                                                                 <i class="fa fa-angle-down"
-                                                                    onClick="manageQuantity({{ $key }}, 'decrement')" @if($cart->quantity == 1) style="pointer-events: none; opacity: 1;" @endif></i>
+                                                                    onClick="manageQuantity({{ $key }}, 'decrement')"
+                                                                    @if ($cart->quantity == 1 || $cart->quantity == $cart->quantity) style="pointer-events: none; opacity: 0.5;" @endif></i>
                                                             </span>
                                                         </div>
 
@@ -128,7 +132,8 @@
                                                 </td>
                                                 <td class="text-center td-price"> {{ $cart->unit_price }} ৳</td>
                                                 <td class="text-center td-total" id="subTotal_{{ $key }}">
-                                                     {{ ($cart->unit_price - $cart->product->discount_amount) * $cart->quantity }} ৳
+                                                    {{ ($cart->unit_price - $cart->product->discount_amount) * $cart->quantity }}
+                                                    ৳
                                                 </td>
                                                 <td>
                                                     <span class="input-group-btn">
@@ -172,7 +177,8 @@
                                     <div class="pull-left add_to_cart_continue_btn"><a href="{{ route('home_page') }}"
                                             class="btn btn-default"><span>Continue
                                                 Shopping</span></a></div>
-                                    <div class="pull-right add_to_cart_checkout_btn"><a href="{{ route('checkout_details', ['producid'=>$cart->product_id,'sessionId'=>$sessionId]) }}"
+                                    <div class="pull-right add_to_cart_checkout_btn"><a
+                                            href="{{ route('checkout_details', ['producid' => $cart->product_id, 'sessionId' => $sessionId]) }}"
                                             class="btn btn-primary"><span>Checkout</span></a></div>
                                 </div>
                             </div>
@@ -212,11 +218,51 @@
             });
         })(jQuery);
 
-        function manualIncrement(p_qty, p_id, p_up, i) {
+        function manualIncrement(p_qty, p_id, p_up, i,cart_qty) {
             let subTotal = p_up * p_qty;
             $("#subTotal_" + i).html(subTotal + ' ৳');
             orderSubmit(p_id, 'manual', i, p_qty, p_up);
         }
+
+        function manualIncrement(p_qty, p_id, p_up, i, cart_qty, max_qty) {
+            if (p_qty <= cart_qty) {
+                alert("Quantity cannot be decremented further.");
+                location.reload();
+                return;
+            }
+            if (p_qty > max_qty) {
+                alert("Maximum quantity reached.");
+                location.reload();
+                return;
+            }
+
+            let subTotal = p_up * p_qty;
+            $("#subTotal_" + i).html(subTotal + ' ৳');
+            orderSubmit(p_id, 'manual', i, p_qty, p_up);
+        }
+
+        // function manualIncrement(p_qty, p_id, p_up, i, cart_qty, max_qty) {
+        //     if (p_qty <= cart_qty) {
+        //         alert("Quantity cannot be decremented further.");
+        //         location.reload();
+        //         return;
+        //     }
+        //     if (p_qty > max_qty) {
+        //         alert("Maximum quantity reached.");
+        //         location.reload();
+        //         return;
+        //     }
+
+        //     let new_qty = p_qty - 1;
+        //     let subTotal = p_up * new_qty;
+
+        //     $("#quantity_" + i).html(new_qty);
+        //     $("#subTotal_" + i).html(subTotal + ' ৳');
+
+        //     orderSubmit(p_id, 'manual', i, new_qty, p_up);
+        // }
+
+
 
         function manageQuantity(i, type) {
             let productid = $('#product_id_' + i).val();
@@ -236,6 +282,7 @@
             $("#subTotal_" + i).html(subTotal + ' ৳');
             orderSubmit(productid, type, i, qty, unit_price);
         }
+
         function orderSubmit(productid, type, i, qty, unit_price) {
             $.ajax({
                 url: "/product-increment",
@@ -269,6 +316,5 @@
                 }
             });
         };
-
     </script>
 @endsection

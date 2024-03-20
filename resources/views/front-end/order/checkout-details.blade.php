@@ -338,7 +338,7 @@
                                                                                             value="{{ $products->quantity }}"
                                                                                             oninput="handleInputChange(this)"
                                                                                             onChange="manualIncrement(this.value,  {{ $products->id }}, {{ $products->unit_price }}, {{ $i }})"
-                                                                                            class="input-qty input-cornered" />
+                                                                                            class="input-qty input-cornered" @if($products->quantity == $products->quantity ||  $products->quantity == $products->product->max_quantity) disabled @endif />
                                                                                     </div>
                                                                                     <div
                                                                                         class="nh__product__qty nh--product--qty">
@@ -348,7 +348,7 @@
                                                                                                 class="qty-btn-plus btn-danger btn-cornered ml-1"
                                                                                                 onClick="manageQuantity({{ $i }}, 'increment')"
                                                                                                 type="button"
-                                                                                                data-product_id="{{ $products->id }}">
+                                                                                                data-product_id="{{ $products->id }}" @if($products->quantity == $products->product->max_quantity || $products->quantity == $products->product->max_quantity) style="pointer-events: none; opacity: 0.5;" @endif>
                                                                                                 <i
                                                                                                     class="fa fa-chevron-up"></i>
                                                                                             </button>
@@ -366,7 +366,7 @@
                                                                                                 class="qty-btn-minus btn-danger btn-cornered mr-2"
                                                                                                 onClick="manageQuantity({{ $i }}, 'decrement')"
                                                                                                 type="button"
-                                                                                                @if ($products->quantity == 1) disabled @endif>
+                                                                                                @if ($products->quantity == 1 || $products->quantity == $products->quantity) style="pointer-events: none; opacity: 0.5;" disabled @endif>
                                                                                                 <i
                                                                                                     class="fa fa-chevron-down"></i>
                                                                                             </button>

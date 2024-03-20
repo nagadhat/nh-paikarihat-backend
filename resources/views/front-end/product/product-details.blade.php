@@ -154,7 +154,7 @@
                                 <div class="hotline_number">
                                     @if ($products->quantity>1)
                                     <p>
-                                        <strong>minimum order quantity: {{ $products->quantity }}</strong>
+                                        <strong>MOQ: {{ $products->quantity }}</strong>
                                     </p>
                                     @endif
                                     <strong>

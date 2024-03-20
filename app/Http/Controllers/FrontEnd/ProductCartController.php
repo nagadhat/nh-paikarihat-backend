@@ -47,22 +47,23 @@ class ProductCartController extends Controller
             ->where('product_id', $product->id)
             ->first();
         if ($existingCartItem) {
-            $existingCartItem->quantity += 1;
+            $existingCartItem->quantity += $product->quantity;
             $existingCartItem->save();
         } else {
             $cart = new ProductCart();
             $cart->user_id = $user->id ?? null;
             $cart->session_id = $sessionId;
             $cart->product_id = $product->id;
-            $cart->quantity = 1;
+            $cart->quantity =  $product->quantity;
             if ($product->discount_amount != null) {
-                $cart->unit_price = ($product->price * 1);
+                $cart->unit_price = ($product->price *  $product->quantity);
             } else {
-                $cart->unit_price = $product->price * 1;
+                $cart->unit_price = $product->price *  $product->quantity;
             }
             $cart->order_type = 'REG';
             $cart->save();
         }
+
         // $product_count = ProductCart::where('session_id',$sessionId)->orWhere('user_id', $user->id ?? null)->count();
         if(Auth::check()){
             $product_count = ProductCart::where('user_id', Auth()->user()->id)

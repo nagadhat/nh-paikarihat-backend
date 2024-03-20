@@ -34,7 +34,7 @@
                                         @php
                                             $imagePath = public_path($image);
                                         @endphp
-                                        @if ($counter < 5) 
+                                        @if ($counter < 5)
                                             <div class="ph__multiple__image__item xzoom-thumbs">
                                                 <a href="{{ asset($image) }}">
                                                     <img src="@if (file_exists($imagePath) && is_file($imagePath)) {{ asset($image) }}@else{{ asset('assets/images/others/error.png') }} @endif"
@@ -143,7 +143,7 @@
                                     @else
                                         <div class="stepper-group cart-group ph__cart__qt__group">
                                             <div class="extra-group">
-                                                <a class="btn btn-extra btn-extra-46 btn-1-extra nh__product__detail" 
+                                                <a class="btn btn-extra btn-extra-46 btn-1-extra nh__product__detail"
                                                 href="#" style="background: #F16128 !important" disabled>
                                                     <span class="btn-text">স্টক আউট</span>
                                                 </a>
@@ -152,6 +152,11 @@
                                     @endif
                                 </div>
                                 <div class="hotline_number">
+                                    @if ($products->quantity>1)
+                                    <p>
+                                        <strong>minimum order quantity: {{ $products->quantity }}</strong>
+                                    </p>
+                                    @endif
                                     <strong>
                                         <i class="fa fa-phone-square" aria-hidden="true"></i> 09647 444 444
                                     </strong>

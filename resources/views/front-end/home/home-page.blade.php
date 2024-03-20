@@ -38,19 +38,15 @@
                                     <div class="module-item module-item-1">
                                         <div class="title module-title product-category-holder">
                                             <ul class="category-home-menu">
-                                                <li
-                                                    class="{{ request()->route()->getName() === 'home_page' ? 'active' : '' }}">
+                                                <li class="{{ request()->route()->getName() === 'home_page' ? 'active' : '' }}">
                                                     <a href="{{ route('home_page') }}">new arrivals</a>
                                                 </li>
                                                 @foreach ($categories as $category)
-                                                    <li
-                                                        class="{{ request()->is('category/' . $category->slug) ? 'active' : '' }}">
-                                                        <a
-                                                            href="{{ route('category.products', $category->slug) }}">{{ $category->title }}</a>
-                                                    </li>
+                                                <li class="{{ request()->is('category/'.$category->slug) ? 'active' : '' }}">
+                                                    <a href="{{ route('category.products',$category->slug) }}">{{ $category->title }}</a>
+                                                </li>
                                                 @endforeach
-                                                <li
-                                                    class="{{ request()->route()->getName() === 'all_product_home' ? 'active' : '' }}">
+                                                <li class="{{ request()->route()->getName() === 'all_product_home' ? 'active' : '' }}">
                                                     <a class="last-child" href="{{ route('all_product_home') }}">All</a>
                                                 </li>
                                             </ul>

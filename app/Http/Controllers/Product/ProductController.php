@@ -58,8 +58,8 @@ class ProductController extends Controller
         $product->purchase_amount = $request->input('purchase_amount');
         $product->brand_id = $request->input('brand');
         $product->category_id = $request->input('category');
-        $product->quantity = $request->input('min_quantity');
-        $product->max_quantity = $request->input('max_quantity') ?? 0;
+        // $product->quantity = $request->input('min_quantity');
+        // $product->max_quantity = $request->input('max_quantity') ?? 0;
         $product->short_description = $request->input('short_description');
         $product->description = $request->input('description');
         $product->inside_dhaka = $request->input('inside_dhaka');
@@ -129,8 +129,8 @@ class ProductController extends Controller
         $product->category_id = $request->input('category');
         $product->discount_type = $request->input('discount_type');
         $product->discount_amount = $request->input('discount_amount');
-        $product->quantity = $request->input('min_quantity');
-        $product->max_quantity = $request->input('max_quantity') ?? 0;
+        // $product->quantity = $request->input('min_quantity');
+        // $product->max_quantity = $request->input('max_quantity') ?? 0;
         $product->short_description = $request->input('short_description');
         $product->description = $request->input('description');
         $product->inside_dhaka = $request->input('inside_dhaka');

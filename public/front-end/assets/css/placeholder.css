@@ -53,3 +53,8 @@ input.form-control::-webkit-input-placeholder {
    text-decoration: none !important;
    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
  }
+ .ph__cart__qt__group a.nh__product__detail.btn.btn-extra :hover {
+   /* color: #000 !important; */
+   color: #fff !important;
+   font-weight: 700 !important;
+}

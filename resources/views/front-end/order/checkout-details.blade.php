@@ -2,7 +2,6 @@
     $title = 'checkout';
 
 @endphp
-
 @extends('front-end.layouts.app')
 @section('page_content')
     <?php
@@ -111,8 +110,11 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="number" name="customer_phone" value="{{ !empty($userdata['phone']) ? $userdata['phone'] : '' }}" class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন" required
-                                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                                    <input type="number" name="customer_phone"
+                                                        value="{{ !empty($userdata['phone']) ? $userdata['phone'] : '' }}"
+                                                        class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন"
+                                                        required
+                                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                                 </div>
                                             </div>
                                             <div class="text-input form-group required">
@@ -159,7 +161,7 @@
                                                 </div>
                                                 <div class="col-xs-12">
                                                     <input type="text" name="customer_name" class="form-control"
-                                                        placeholder="আপনার নাম লিখুন" value="" required>
+                                                        id="customer_name_input" value="" required>
                                                 </div>
                                             </div>
                                             <div class="text-input form-group required">
@@ -169,22 +171,12 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="number" name="customer_phone" value="" class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন" required
-                                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                                    <input type="number" name="customer_phone" value=""
+                                                        class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন"
+                                                        required
+                                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                                 </div>
                                             </div>
-                                            {{-- <div class="text-input form-group required">
-                                                <div class="col-xs-12">
-                                                    <label class="control-label" for="address">
-                                                        <span class="text" title=""><b>ডেলিভারী ঠিকানা</b></span>
-                                                    </label>
-                                                </div>
-                                                <div class="col-xs-12">
-                                                    <textarea name="customer_address" class="form-control nh__customer__address" autocomplete="on"
-                                                        placeholder="ডেলিভারী ঠিকানা লিখুন" required>
-                                                        </textarea>
-                                                </div>
-                                            </div> --}}
                                             <div class="text-input form-group required">
                                                 <div class="col-xs-12">
                                                     <label class="control-label" for="address">
@@ -221,7 +213,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <div class="qc-col-4 col-md-12">
+                                    <div class="qc-col-4 col-md-12 order-button-hide991">
                                         <div id="payment_view" class="qc-step" data-col="4" data-row="0">
                                             <div class="buttons">
                                                 <div class="pull-right">
@@ -322,7 +314,8 @@
                                                                                 </del>
                                                                             @else
                                                                                 <span>
-                                                                                    {{ $products->unit_price - $products->product->discount_amount }} ৳
+                                                                                    {{ $products->unit_price - $products->product->discount_amount }}
+                                                                                    ৳
                                                                                 </span>
                                                                             @endif
                                                                         </td>
@@ -467,6 +460,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="qc-col-4 col-md-12 order-button-show991">
+                            <div id="payment_view" class="qc-step" data-col="4" data-row="0">
+                                <div class="buttons">
+                                    <div class="pull-right">
+                                        <input type="submit" value="অর্ডার কনফার্ম করুণ" id="button-confirm"
+                                            data-loading-text="Loading..." class="btn btn-primary">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -595,8 +598,6 @@
             document.getElementById("outsideDhakaCharge").style.display = "block";
         };
 
-
-
         $(document).ready(function() {
             $('input[name="user_check"]').change(function() {
                 if ($(this).attr('id') === 'UserCheck') {
@@ -604,6 +605,12 @@
                         "/customer-login?session_id={{ !empty($cartItems) && count($cartItems) > 0 ? $cartItems[0]->session_id : '' }}";
                 }
             });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var inputElement = document.getElementById('customer_name_input');
+            inputElement.placeholder = 'আপনার নাম লিখুন';
         });
     </script>
 @endsection

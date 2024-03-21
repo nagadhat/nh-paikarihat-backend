@@ -17,13 +17,13 @@ class PosController extends Controller
     // function to show pos page
     public function index()
     {
-        // remove pos cart items
+        $customers = Customer::orderBy('id', 'desc')->get();
         $items = PosCart::where('user_id', auth()->id())->get();
         foreach ($items as $item) {
             $item->delete();
         }
         // return to pos
-        return view('customer.pos.index');
+        return view('customer.pos.index', compact('customers'));
     }
 
     public function addNewCustomer(Request $request)
@@ -33,20 +33,18 @@ class PosController extends Controller
             'name' => 'required',
             'phone' => 'required|regex:/(01)[0-9]{9}/|unique:customers,phone',
         ]);
-
         // create customers
-       $customer = new Customer();
-       $customer->user_id = auth()->id();
-       $customer->name = $request->input('name');
-       $customer->phone = $request->input('phone');
-       $customer->email = $request->input('email');
-       $customer->address = $request->input('address');
-       $customer->phone_2 = $request->input('phone_2');
-       $customer->save();
-       // Alert
-       toast('Customer created successfully.', 'success');
-       // return to customers
-       return redirect()->back();
+        $customer = new Customer();
+        $customer->user_id = auth()->id();
+        $customer->name = $request->input('name');
+        $customer->email = $request->input('email');
+        $customer->phone = $request->input('phone');
+        $customer->phone_2 = $request->input('phone_2');
+        $customer->address = $request->input('address');
+        $customer->save();
+
+        toast('Customer created successfully.', 'success');
+       return redirect()->back()->with('new_customer_id', $customer->id);
     }
 
     // function to get customer details

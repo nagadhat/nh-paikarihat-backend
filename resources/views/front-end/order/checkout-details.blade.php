@@ -111,8 +111,11 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="number" name="customer_phone" value="{{ !empty($userdata['phone']) ? $userdata['phone'] : '' }}" class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন" required
-                                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                                    <input type="number" name="customer_phone"
+                                                        value="{{ !empty($userdata['phone']) ? $userdata['phone'] : '' }}"
+                                                        class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন"
+                                                        required
+                                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                                 </div>
                                             </div>
                                             <div class="text-input form-group required">
@@ -169,8 +172,10 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-xs-12">
-                                                    <input type="number" name="customer_phone" value="" class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন" required
-                                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                                    <input type="number" name="customer_phone" value=""
+                                                        class="form-control customer_num" placeholder="মোবাইল নম্বর লিখুন"
+                                                        required
+                                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                                 </div>
                                             </div>
                                             {{-- <div class="text-input form-group required">
@@ -221,7 +226,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <div class="qc-col-4 col-md-12">
+                                    <div class="qc-col-4 col-md-12 order-button-hide991">
                                         <div id="payment_view" class="qc-step" data-col="4" data-row="0">
                                             <div class="buttons">
                                                 <div class="pull-right">
@@ -322,7 +327,8 @@
                                                                                 </del>
                                                                             @else
                                                                                 <span>
-                                                                                    {{ $products->unit_price - $products->product->discount_amount }} ৳
+                                                                                    {{ $products->unit_price - $products->product->discount_amount }}
+                                                                                    ৳
                                                                                 </span>
                                                                             @endif
                                                                         </td>
@@ -338,7 +344,8 @@
                                                                                             value="{{ $products->quantity }}"
                                                                                             oninput="handleInputChange(this)"
                                                                                             onChange="manualIncrement(this.value,  {{ $products->id }}, {{ $products->unit_price }}, {{ $i }})"
-                                                                                            class="input-qty input-cornered" @if($products->quantity == $products->quantity ||  $products->quantity == $products->product->max_quantity) disabled @endif />
+                                                                                            class="input-qty input-cornered"
+                                                                                            @if ($products->quantity == $products->quantity || $products->quantity == $products->product->max_quantity) disabled @endif />
                                                                                     </div>
                                                                                     <div
                                                                                         class="nh__product__qty nh--product--qty">
@@ -348,7 +355,8 @@
                                                                                                 class="qty-btn-plus btn-danger btn-cornered ml-1"
                                                                                                 onClick="manageQuantity({{ $i }}, 'increment')"
                                                                                                 type="button"
-                                                                                                data-product_id="{{ $products->id }}" @if($products->quantity == $products->product->max_quantity || $products->quantity == $products->product->max_quantity) style="pointer-events: none; opacity: 0.5;" @endif>
+                                                                                                data-product_id="{{ $products->id }}"
+                                                                                                @if ($products->quantity == $products->product->max_quantity || $products->quantity == $products->product->max_quantity) style="pointer-events: none; opacity: 0.5;" @endif>
                                                                                                 <i
                                                                                                     class="fa fa-chevron-up"></i>
                                                                                             </button>
@@ -463,6 +471,16 @@
                                                 @endif
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="qc-col-4 col-md-12 order-button-show991">
+                            <div id="payment_view" class="qc-step" data-col="4" data-row="0">
+                                <div class="buttons">
+                                    <div class="pull-right">
+                                        <input type="submit" value="অর্ডার কনফার্ম করুণ" id="button-confirm"
+                                            data-loading-text="Loading..." class="btn btn-primary">
                                     </div>
                                 </div>
                             </div>
@@ -605,5 +623,7 @@
                 }
             });
         });
+
+
     </script>
 @endsection

@@ -250,6 +250,8 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
         Route::post('/api/get-products', 'getProducts');
         Route::post('/api/get-customer', 'getCustomer');
         Route::post('add-new-customer', 'addNewCustomer')->name('add_new_customer');
+        Route::get("/product/suggestions", "suggestions")->name('product.suggestions');
+        Route::get("/product/details", "details")->name('product.details');
         Route::post('/sale', 'sale')->name('pos_sale');
         Route::get("/sales", "sales")->name('pos_sales');
     });

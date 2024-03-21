@@ -71,6 +71,16 @@
                             </div>
                         </div>
                     </div>
+                    {{-- <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <input type="text" @change="getCustomer()" v-model="input_customer"
+                                        placeholder="Enter customer's username.." class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -87,6 +97,15 @@
                         </div>
                     </div>
                 </div>
+                {{-- <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <ul style="list-style:none" id="search_results">
+                               <li>test</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> --}}
                 <hr>
                 <div class="table-responsive mt-5">
                     <table class="table table-bordered">
@@ -102,26 +121,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(item, key) in cart_items">
-                                <td>@{{ key + 1 }}</td>
-                                <td style="max-width: 300px">
-                                    <div class="row">
-                                        <div class="col-2 col-md-3">
-                                            <img v-if="item.product_details.photo === null" :src="default_photo"
-                                                alt="" width="60" class="img-fluid rounded">
-                                            <img v-else :src="getImageUrl(item.product_details.photo)" alt=""
-                                                width="60" class="img-fluid rounded">
-                                        </div>
-                                        <div class="col">
-                                            @{{ item.product_details.title }}
-                                        </div>
-                                    </div>
-                                </td>
-                                <td style="min-width: 100px">@{{ item.product_details.quantity }}</td>
+                            <tr>
+                                <td></td>
+                                <td style="max-width: 300px"></td>
+                                <td style="min-width: 100px"></td>
                                 <td style="min-width: 100px">
-                                    <span>&#2547; @{{ item.product_details.price }}</span>
+                                    <span>&#2547;</span>
                                 </td>
-                                <td style="width: 250px">
                                     <div class="row align-items-center justify-content-center">
                                         <div class="col-3 text-right">
                                             <button class="btn btn-rounded btn-primary btn-icon btn-sm"
@@ -131,9 +137,9 @@
                                         </div>
                                         <div class="col-6 p-0">
                                             <input type="number"
-                                                @change.prevent="updateToCart(item.product_details.id, key)"
-                                                min="1" v-model="item.quantity"
-                                                :max="item.product_details.quantity" class="form-control">
+                                                @change.prevent="updateToCart(item.product_details.id, key)" min="1"
+                                                v-model="item.quantity" :max="item.product_details.quantity"
+                                                class="form-control">
                                         </div>
                                         <div class="col-3 text-left">
                                             <button class="btn btn-rounded btn-primary btn-icon btn-sm"
@@ -141,15 +147,8 @@
                                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                             </button>
                                         </div>
-                                    </div>
-                                </td>
-                                <td style="min-width: 100px">&#2547; @{{ item.product_price }}</td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning text-dark"
-                                        @click.prevent="removeCart(item.product_details.id)">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </td>
+        
+                                <td style="min-width: 100px">&#2547;</td>
                             </tr>
                         </tbody>
                     </table>
@@ -175,8 +174,8 @@
                         </div>
                         <div class="col-md-3">
                             <label for="" class="form-label">Amount Received</label>
-                            <input type="number" id="amount_received" v-model="amount_received"
-                                @keyup="amountToReturn()" class="form-control" required>
+                            <input type="number" id="amount_received" v-model="amount_received" @keyup="amountToReturn()"
+                                class="form-control" required>
                         </div>
                         {{-- <div class="col-md-3">
                             <label for="" class="form-label">Amount to Return</label>
@@ -210,8 +209,7 @@
                     <form action="{{ route('add_new_customer') }}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="" class="form-label">Name<span
-                                    class="text-danger"><sup>*</sup></span>
+                            <label for="" class="form-label">Name<span class="text-danger"><sup>*</sup></span>
                                 :</label>
                             <input type="text" id="" name="name" class="form-control"
                                 placeholder="Enter name">
@@ -222,8 +220,7 @@
                                 placeholder="Enter email">
                         </div>
                         <div class="form-group">
-                            <label for="" class="form-label">Phone<span
-                                    class="text-danger"><sup>*</sup></span>
+                            <label for="" class="form-label">Phone<span class="text-danger"><sup>*</sup></span>
                                 :</label>
                             <input type="number" id="" name="phone" class="form-control"
                                 placeholder="Enter Phone"
@@ -265,7 +262,7 @@
                         success: function(response) {
                             $('#productList').empty();
                             $.each(response, function(index, product) {
-                                $('#productList').append('<li style="cursor:pointer;list-style:none">' + product.title +
+                                $('#productList').append('<li style="cursor:pointer;">' + product.title +
                                     ' - ' + product.sku + '</li>');
                             });
                         }

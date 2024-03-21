@@ -44,7 +44,26 @@ class PosController extends Controller
         $customer->save();
 
         toast('Customer created successfully.', 'success');
-       return redirect()->back()->with('new_customer_id', $customer->id);
+        return redirect()->back()->with('new_customer_id', $customer->id);
+    }
+
+    public function suggestions(Request $request)
+    {
+        $searchTerm = $request->input('searchTerm');
+        $products = Product::where('title', 'like', '%' . $searchTerm . '%')
+                           ->orWhere('sku', 'like', '%' . $searchTerm . '%')
+                           ->get(['title', 'sku']);
+
+
+        return response()->json($products);
+    }
+
+
+    public function details(Request $request)
+    {
+        $productId = $request->input('productId');
+        $product = Product::find($productId);
+        return response()->json($product);
     }
 
     // function to get customer details
@@ -52,7 +71,6 @@ class PosController extends Controller
     {
         $customer = Customer::where('username', $request->input('username'))
             ->where('is_admin', 0)->first();
-
         // return response
         return response()->json([
             'customer' => $customer

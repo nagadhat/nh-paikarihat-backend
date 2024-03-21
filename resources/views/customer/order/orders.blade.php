@@ -53,7 +53,7 @@
                                 <th>Customer Name</th>
                                 <th>Customer Phone</th>
                                 <th>Quantity</th>
-                                <th>Unit Price</th>
+                                <th>Total Price</th>
                                 <th>Payment Status</th>
                                 <th>Order Status</th>
                                 <th>Actions</th>
@@ -64,7 +64,11 @@
                                 <tr>
                                     <td> {{ $order->id }} </td>
                                     <td> {{ $order->created_at }} </td>
-                                    <td>{{ $order->order_prefix . $order->order_code }}</td>
+                                    <td>
+                                        <a href="{{ route('view_order_details', ['id' => $order->id]) }}" style="color: #71B6F9">
+                                            {{ $order->order_prefix . $order->order_code }}
+                                        </a>
+                                    </td>
                                     <td> {{ $order->customer_name }} </td>
                                     <td> {{ $order->customer_phone }} </td>
                                     <td> {{ $order->total_quantity }} </td>

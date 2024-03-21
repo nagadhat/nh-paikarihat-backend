@@ -49,23 +49,31 @@
                     <div class="col-12">
                         <label for="" class="form-label">Select Customer</label>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <div class="row align-items-center">
                                 <div class="col-md-10">
                                     <select name="customer_name" id="" class="select2">
                                         <option value="">--Select--</option>
                                         @foreach ($customers as $customer)
-                                            <option value="{{ $customer->id }}"
-                                                @if (session('new_customer_id') == $customer->id) selected @endif>{{ $customer->name }}
-                                                &nbsp; ({{ $customer->phone }})</option>
+                                            <option value="{{ $customer->id }}" @if(session('new_customer_id') == $customer->id) selected @endif>{{ $customer->name }}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                </div>                                
                                 <div class="col">
                                     <div class="btn btn-primary" data-toggle="modal" data-target="#customerModal">+</div>
                                 </div>
-                                <div class="col">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <input type="text" @change="getCustomer()" v-model="input_customer"
+                                        placeholder="Enter customer's username.." class="form-control">
+                                </div>
+                                <div class="col-md-3 text-right">
                                     <a href="" class="btn btn-warning text-dark">Reset</a>
                                 </div>
                             </div>
@@ -76,12 +84,13 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="" class="form-label">Search Product</label>
-                            <input type="text" name="input_product" id="input_product"
-                                placeholder="Enter product's name or sku .." class="form-control">
-                            <div id="suggestions" class="suggestions">
-                                <ul id="productList" style="padding-top: 15px;"
-                                    class="pos-product">
-                                    {{-- product diplay from ajax --}}
+                            <input type="text" v-model="input_product" @change="getProducts()"
+                                placeholder="Enter product's barcode, brand or name.." class="form-control">
+
+                            <div id="sugessions" class="sugessions" :class="{ 'd-none': products.length == 0 }">
+                                <ul>
+                                    <li v-for="item in products" @click="addToCart(item.id)">@{{ item.title }}
+                                        (Qty: @{{ item.quantity }})</li>
                                 </ul>
                             </div>
                         </div>
@@ -251,31 +260,6 @@
 @endsection
 @section('page_js')
     <script src="{{ asset('assets/js/pos/index.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('#input_product').on('input', function() {
-                var searchTerm = $(this).val();
-                if (searchTerm.length >= 2) {
-                    $.ajax({
-                        url: "{{ route('product.suggestions') }}",
-                        type: 'GET',
-                        data: {
-                            searchTerm: searchTerm
-                        },
-                        success: function(response) {
-                            $('#productList').empty();
-                            $.each(response, function(index, product) {
-                                $('#productList').append('<li style="cursor:pointer;list-style:none">' + product.title +
-                                    ' - ' + product.sku + '</li>');
-                            });
-                        }
-                    });
-                } else {
-                    $('#productList').empty();
-                }
-            });
-        });
-    </script>
     <script>
         $('.select2').select2();
     </script>

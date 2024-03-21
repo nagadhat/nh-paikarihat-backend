@@ -136,7 +136,8 @@ class OrderDetailsController extends Controller
             "customer_address" => $request->customer_address ?? $user->address,
             "status" => 1,
             "total_amount" => $request->price,
-            "total_quantity" => count($request->product_id),
+            "total_quantity" => $request->total_quantity,
+            // "total_quantity" => count($request->product_id),
             "delivery_area" => $deliveryCharge,
             "discount_amount" => $request->discount_amount,
         ]);

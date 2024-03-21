@@ -710,7 +710,7 @@ border: 0;
     gap: 5px;
  }
 
- input.form-control::-webkit-input-placeholder {
+ /* input.form-control::-webkit-input-placeholder {
     color: rgba(139, 145, 152, 1) !important;
  }
  input.form-control:-moz-placeholder {
@@ -739,4 +739,4 @@ border: 0;
     .order-button-show991 {
         display: block;
      }
-}
+} */

@@ -1,0 +1,30 @@
+input.form-control::-webkit-input-placeholder {
+    color: rgba(139, 145, 152, 1) !important;
+ }
+ input.form-control:-moz-placeholder {
+    color: rgba(139, 145, 152, 1) !important;
+ }
+ input.form-control:-moz-placeholder  {
+    color: rgba(139, 145, 152, 1) !important;
+ }
+
+ textarea.form-control::-webkit-input-placeholder {
+    color: rgba(139, 145, 152, 1) !important;
+ }
+ textarea.form-control:-moz-placeholder {
+    color: rgba(139, 145, 152, 1) !important;
+ }
+ textarea.form-control:-moz-placeholder {
+    color: rgba(139, 145, 152, 1) !important;
+ }
+ .order-button-show991 {
+    display: none;
+ }
+ @media (max-width:991px) {
+    .order-button-hide991 {
+        display: none;
+    }
+    .order-button-show991 {
+        display: block;
+     }
+}

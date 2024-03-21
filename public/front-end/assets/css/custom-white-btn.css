@@ -10,6 +10,7 @@
 .module-products-169 .product-grid .product-thumb .extra-group .btn.btn:hover {
     color: #fff !important;
     font-weight: 700 !important;
+    text-transform: capitalize !important;
 }
 .module-products-169 .product-grid .product-thumb .extra-group .btn.btn:hover {
     font-family: 'Hind Siliguri' !important;

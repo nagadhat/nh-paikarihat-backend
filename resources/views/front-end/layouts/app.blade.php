@@ -135,6 +135,7 @@
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/after-login-hotline.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/category-menu-style.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/placeholder.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/custom-white-btn.css') }}" />
 
     <style>
         header::before {

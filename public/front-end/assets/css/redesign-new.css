@@ -550,10 +550,7 @@ div#content {
     padding-left: 8px;
 }
 
-.product-info .button-group-page .btn-extra.btn:hover {
-    color: #000 !important;
-    font-weight: 400 !important;
-}
+
 .wishlist-compare .btn.main__add__to__cart {
     background-color: rgb(241,96,39);
     font-weight: 400;
@@ -596,10 +593,7 @@ div#content {
 .related__product__content .price .price-old {
     color: rgb(241,96,39) !important;
 }
-.module-products-253 .product-grid .product-thumb .extra-group .btn.btn:hover{
-    color: #fff !important;
-    font-weight: 700 !important;
-}
+
 
 .btn.btn-remove.cart_item__remove {
     min-width: 40px;

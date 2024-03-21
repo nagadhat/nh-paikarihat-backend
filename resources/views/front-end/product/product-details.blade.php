@@ -105,7 +105,7 @@
                                                     href="{{ route('checkout_details', ['checkout' => $products->slug]) }}"
                                                     data-detail_id="{{ $products->id }}"
                                                     data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
-                                                    <span class="btn-text">অর্ডার করুণ</span>
+                                                    <span class="btn-text">Order Now</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -126,7 +126,7 @@
                                                     href="{{ route('checkout_details', ['checkout' => $products->slug]) }}"
                                                     data-detail_id="{{ $products->id }}"
                                                     data-loading-text="<span class='btn-text'>অর্ডার করুণ</span>">
-                                                    <span class="btn-text">প্রি অর্ডার করুণ</span>
+                                                    <span class="btn-text">Pre Order</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -145,7 +145,7 @@
                                             <div class="extra-group">
                                                 <a class="btn btn-extra btn-extra-46 btn-1-extra nh__product__detail" 
                                                 href="#" style="background: #F16128 !important" disabled>
-                                                    <span class="btn-text">স্টক আউট</span>
+                                                    <span class="btn-text">Stock Out</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -272,12 +272,13 @@
                                                                                                 data-checkout_id="{{ $product->id }}">
                                                                                                 @if ($product->product_type == 'REG')
                                                                                                     <span
-                                                                                                        class="btn-text">অর্ডার
-                                                                                                        করুণ</span>
+                                                                                                        class="btn-text">
+                                                                                                        Order Now</span>
                                                                                                 @else
                                                                                                     <span
-                                                                                                        class="btn-text">প্রি
-                                                                                                        অর্ডার করুণ</span>
+                                                                                                        class="btn-text">
+                                                                                                        Pre Order
+                                                                                                    </span>
                                                                                                 @endif
                                                                                             </a>
                                                                                             <div class="nh__cart__icon">
@@ -384,12 +385,14 @@
                                                                                                 data-recent_product_id="{{ $product->id }}">
                                                                                                 @if ($product->product_type == 'REG')
                                                                                                     <span
-                                                                                                        class="btn-text">অর্ডার
-                                                                                                        করুণ</span>
+                                                                                                        class="btn-text">
+                                                                                                        Order Now
+                                                                                                    </span>
                                                                                                 @else
                                                                                                     <span
-                                                                                                        class="btn-text">প্রি
-                                                                                                        অর্ডার করুণ</span>
+                                                                                                        class="btn-text">
+                                                                                                       Pre Order
+                                                                                                    </span>
                                                                                                 @endif
                                                                                             </a>
                                                                                             <div class="nh__cart__icon">

@@ -18504,7 +18504,6 @@ select.form-control::placeholder {
   color: rgba(255, 255, 255, 1) !important;
   font-style: normal !important;
   text-align: center !important;
-  text-transform: uppercase !important;
   text-decoration: none !important;
   background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
 }
@@ -25993,18 +25992,7 @@ div.links-menu-75 .links-menu-item-11 .menu-label {
   word-break: break-word
 }
 
-.module-products-169 .product-grid .product-thumb .extra-group .btn.btn:hover {
-  font-family: 'Hind Siliguri' !important;
-  font-weight: 700 !important;
-  font-size: 20px !important;
-  color: rgba(255, 255, 255, 1) !important;
-  font-style: normal !important;
-  text-align: center !important;
-  text-transform: uppercase !important;
-  text-decoration: none !important;
-  background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-  !important
-}
+
 
 .module-products-169 .product-grid .product-thumb .extra-group .btn.btn {
   background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
@@ -33461,17 +33449,7 @@ select.form-control::placeholder {
   word-break: break-word
 }
 
-.product-info .button-group-page .btn-extra.btn:hover {
-  font-family: 'Hind Siliguri' !important;
-  font-weight: 700 !important;
-  font-size: 20px !important;
-  color: rgba(255, 255, 255, 1) !important;
-  font-style: normal !important;
-  text-align: center !important;
-  text-transform: uppercase !important;
-  text-decoration: none !important;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
-}
+
 
 .product-info .button-group-page .btn-extra.btn {
     background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(58,188,155) 0%, rgba(58,188,155) 90%) !important;
@@ -41270,10 +41248,9 @@ header::before {
   font-family: 'Hind Siliguri' !important;
   font-weight: 700 !important;
   font-size: 20px !important;
-  color: rgba(255, 255, 255, 1) !important;
+  color: #fff !important;
   font-style: normal !important;
   text-align: center !important;
-  text-transform: uppercase !important;
   text-decoration: none !important;
   background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
   !important

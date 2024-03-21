@@ -57,7 +57,7 @@
                         <div class="nh__order__confirm__btn">
                             <a href="#" class="btn btn-extra btn-extra-46 add--to--checkout-btn "
                                 data-checkout_id="{{ $product->id }}">
-                                <span class="btn-text">অর্ডার করুণ</span>
+                                <span class="btn-text">Order Now</span>
                             </a>
                             <div class="nh__cart__icon">
                                 <i class="fa fa-cart-plus add--to--cart-btn" data-product_id="{{ $product->id }}"
@@ -68,7 +68,7 @@
                         <div class="nh__order__confirm__btn">
                             <a href="#" class="btn btn-extra btn-extra-46 add--to--checkout-btn "
                                 data-checkout_id="{{ $product->id }}">
-                                <span class="btn-text">প্রি অর্ডার করুণ</span>
+                                <span class="btn-text">Pre Order</span>
                             </a>
                             <div class="nh__cart__icon">
                                 <i class="fa fa-cart-plus add--to--cart-btn" data-product_id="{{ $product->id }}"
@@ -79,7 +79,7 @@
                         <div class="nh__order__confirm__btn">
                             <a href="#" class="btn btn-extra btn-extra-46 add--to--checkout-btn"
                                 style="background: #F16128 !important" disabled>
-                                <span class="btn-text">স্টক আউট</span>
+                                <span class="btn-text">Stock Out</span>
                             </a>
                         </div>
                     @endif

@@ -55,15 +55,3 @@
     font-weight: 700 !important;
     text-transform: capitalize !important;
 }
-.module-products-253 .product-grid .product-thumb .extra-group .btn.btn:hover {
-    font-family: 'Hind Siliguri' !important;
-    font-weight: 700 !important;
-    font-size: 14px !important;
-    color: #fff !important;
-    font-style: normal !important;
-    text-align: center !important;
-    text-decoration: none !important;
-    text-transform: capitalize !important;
-    background-image: radial-gradient(circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
-    !important
-  }

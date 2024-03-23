@@ -136,6 +136,7 @@
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/category-menu-style.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/placeholder.css') }}" />
      <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/custom-white-btn.css') }}" />
+     <link rel="stylesheet" type="text/css" href="{{ asset('front-end/assets/css/releted-products.css.css') }}" />
 
     <style>
         header::before {

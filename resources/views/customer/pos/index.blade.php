@@ -53,10 +53,11 @@
                         <div class="form-group">
                             <div class="row align-items-center">
                                 <div class="col-md-10">
-                                    <select name="customer_name" id="" class="select2">
+                                    <select name="customer_name" onchange="changeCustomer(this.value)" id="account_head"
+                                        class="select2">
                                         <option value="">--Select--</option>
                                         @foreach ($customers as $customer)
-                                            <option value="{{ $customer->id }}"
+                                            <option value="{{ $customer->name }}"
                                                 @if (session('new_customer_id') == $customer->id) selected @endif>{{ $customer->name }}
                                                 &nbsp; ({{ $customer->phone }})</option>
                                         @endforeach
@@ -79,8 +80,7 @@
                             <input type="text" name="input_product" id="input_product"
                                 placeholder="Enter product's name or sku .." class="form-control">
                             <div id="suggestions" class="suggestions">
-                                <ul id="productList" style="padding-top: 15px;"
-                                    class="pos-product">
+                                <ul id="productList" style="padding-top: 15px;" class="pos-product">
                                     {{-- product diplay from ajax --}}
                                 </ul>
                             </div>
@@ -103,47 +103,27 @@
                         </thead>
                         <tbody>
                             <tr v-for="(item, key) in cart_items">
-                                <td>@{{ key + 1 }}</td>
+                                <td>....</td>
                                 <td style="max-width: 300px">
                                     <div class="row">
                                         <div class="col-2 col-md-3">
-                                            <img v-if="item.product_details.photo === null" :src="default_photo"
-                                                alt="" width="60" class="img-fluid rounded">
-                                            <img v-else :src="getImageUrl(item.product_details.photo)" alt=""
-                                                width="60" class="img-fluid rounded">
+
                                         </div>
                                         <div class="col">
-                                            @{{ item.product_details.title }}
+
                                         </div>
                                     </div>
                                 </td>
-                                <td style="min-width: 100px">@{{ item.product_details.quantity }}</td>
+                                <td style="min-width: 100px"></td>
                                 <td style="min-width: 100px">
-                                    <span>&#2547; @{{ item.product_details.price }}</span>
+                                    <span>&#2547;</span>
                                 </td>
                                 <td style="width: 250px">
                                     <div class="row align-items-center justify-content-center">
-                                        <div class="col-3 text-right">
-                                            <button class="btn btn-rounded btn-primary btn-icon btn-sm"
-                                                @click.prevent="decreaseCart(item.product_details.id)">
-                                                <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-6 p-0">
-                                            <input type="number"
-                                                @change.prevent="updateToCart(item.product_details.id, key)"
-                                                min="1" v-model="item.quantity"
-                                                :max="item.product_details.quantity" class="form-control">
-                                        </div>
-                                        <div class="col-3 text-left">
-                                            <button class="btn btn-rounded btn-primary btn-icon btn-sm"
-                                                @click.prevent="addToCart(item.product_details.id, key)">
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
+
                                     </div>
                                 </td>
-                                <td style="min-width: 100px">&#2547; @{{ item.product_price }}</td>
+                                <td style="min-width: 100px">&#2547; </td>
                                 <td>
                                     <button class="btn btn-sm btn-warning text-dark"
                                         @click.prevent="removeCart(item.product_details.id)">
@@ -175,19 +155,20 @@
                         </div>
                         <div class="col-md-3">
                             <label for="" class="form-label">Amount Received</label>
-                            <input type="number" id="amount_received" v-model="amount_received"
-                                @keyup="amountToReturn()" class="form-control" required>
+                            <input type="number" id="amount_received" v-model="amount_received" @keyup="amountToReturn()"
+                                class="form-control" required>
                         </div>
                         {{-- <div class="col-md-3">
                             <label for="" class="form-label">Amount to Return</label>
                             <input type="number" id="amount_to_return" v-model="amount_to_return" class="form-control"
                                 disabled>
                         </div> --}}
+                        <div class="col-md-3">
+                            <strong>Account Head: <span id="accountHead"></span></strong>
+                        </div>
                         <div class="col-md-3 text-right">
                             <form action="{{ route('pos_sale') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="customer_id" :value="customer_info.id">
-                                <input type="hidden" name="discount_amount" :value="discount_amount">
                                 <button type="submit" class="btn btn-primary">Save & Print</button>
                             </form>
                         </div>
@@ -210,8 +191,7 @@
                     <form action="{{ route('add_new_customer') }}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="" class="form-label">Name<span
-                                    class="text-danger"><sup>*</sup></span>
+                            <label for="" class="form-label">Name<span class="text-danger"><sup>*</sup></span>
                                 :</label>
                             <input type="text" id="" name="name" class="form-control"
                                 placeholder="Enter name">
@@ -222,8 +202,7 @@
                                 placeholder="Enter email">
                         </div>
                         <div class="form-group">
-                            <label for="" class="form-label">Phone<span
-                                    class="text-danger"><sup>*</sup></span>
+                            <label for="" class="form-label">Phone<span class="text-danger"><sup>*</sup></span>
                                 :</label>
                             <input type="number" id="" name="phone" class="form-control"
                                 placeholder="Enter Phone"
@@ -252,7 +231,18 @@
 @section('page_js')
     <script src="{{ asset('assets/js/pos/index.js') }}"></script>
     <script>
+        function changeCustomer(acc_head) {
+            $("#accountHead").text(acc_head);
+        }
         $(document).ready(function() {
+            var acc_head = $("#account_head option:selected").val();
+            $("#accountHead").text(acc_head);
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             $('#input_product').on('input', function() {
                 var searchTerm = $(this).val();
                 if (searchTerm.length >= 2) {
@@ -265,7 +255,10 @@
                         success: function(response) {
                             $('#productList').empty();
                             $.each(response, function(index, product) {
-                                $('#productList').append('<li style="cursor:pointer;list-style:none">' + product.title +
+                                $('#productList').append(
+                                    '<li style="cursor:pointer;list-style:none" data-product-id="' +
+                                    product.id + '">' +
+                                    product.title +
                                     ' - ' + product.sku + '</li>');
                             });
                         }
@@ -274,6 +267,34 @@
                     $('#productList').empty();
                 }
             });
+
+            $('#productList').on('click', 'li', function() {
+                var productId = $(this).data('product-id');
+                var quantity = 1;
+                var customerId = 1;
+
+                $.ajax({
+                    url: "{{ route('cart.add') }}",
+                    type: 'POST',
+                    data: {
+                        productId: productId,
+                        quantity: quantity,
+                        customerId: customerId
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            alert(response.message);
+                        } else {
+                            alert('Failed to add product to cart: ' + response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        alert('Item not added in the cart');
+                    }
+                });
+            });
+
         });
     </script>
     <script>

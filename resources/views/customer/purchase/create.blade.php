@@ -22,10 +22,9 @@
                                 <label for="" class="form-label">Select Supplier:</label>
                                 <select name="supplier" id="supplier" class="select2">
                                     <option value="">Select Supplier</option>
-                                    <option v-for="item in suppliers" v-bind:value="item.id">
-                                        (@{{ item.company }})
-                                        - @{{ item.name }}, @{{ item.phone }}
-                                    </option>
+                                    @foreach ($suppliers as $supplier)
+                                        <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -37,8 +36,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="" class="form-label">Date<span class="text-danger"><sup>*</sup></span>
-                                    :</label>
+                                <label for="" class="form-label">Date<span
+                                        class="text-danger"><sup>*</sup></span>:</label>
                                 <input type="date" name="purchase-date" placeholder="" id="purchase-date"
                                     class="form-control" required>
                             </div>
@@ -79,16 +78,16 @@
                             <tbody id="purchase-cart-items"></tbody>
                             <tfoot>
                                 <tr>
-                                    <td>...</td>
-                                    <td>...</td>
-                                    <td>...</td>
-                                    <td>...</td>
-                                    <td>...</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>Sub-Total: <span id="sub-total"></span></td>
                                     <td>Discount: <span id="discount-total"></span></td>
                                     <td>Total: <span id="grand-total"></span></td>
-                                    <td>...</td>
-                                    <td>...</td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -115,7 +114,8 @@
                                 <label for="" class="form-label">Purchase Status:</label>
                                 <select name="purchase-status" id="purchase-status" class="form-control">
                                     <option value="0">Select Purchase Status</option>
-                                    <option value="1">Order Received</option>
+                                    <option value="1">Ordered</option>
+                                    <option value="2">Order Received</option>
                                 </select>
                             </div>
                         </div>
@@ -223,7 +223,11 @@
 
 @section('page_js')
     <script src="{{ asset('assets/js/purchase/index.js') }}"></script>
-
+    <script>
+        var today = new Date();
+        var formattedDate = today.toISOString().substr(0, 10);
+        document.getElementById("purchase-date").value = formattedDate;
+    </script>
     <script>
         $(document).ready(function() {
             // init data table
@@ -268,18 +272,16 @@
         // add product to purchase cart
         $('#purchase-product').on('change', function() {
             var productId = this.value;
-
             $.ajax({
-                url: '/user/api/create-purchase-cart/' + productId,
-                type: 'get',
+                // url: '/user/api/create-purchase-cart/' + productId,
+                url: "{{ route('create.purchase.cart', ':productId') }}".replace(':productId', productId),
+                type: 'GET',
                 success: function(response) {
-                    // console.log(response);
-
-                    // load cart products
                     loadPurchaseCartProducts();
                 }
             });
         });
+
 
         // function to load purchase cart products
         let total_amount = 0;
@@ -289,11 +291,11 @@
             let discount_total = 0;
 
             $.ajax({
-                url: '/user/api/load-purchase-carts',
+                // url: '/user/api/load-purchase-carts',
+                url: "{{ route('load.purchase.carts') }}",
                 type: 'get',
                 success: function(response) {
                     // console.log(response);
-
                     if (response != '') {
                         let productContent = "";
 

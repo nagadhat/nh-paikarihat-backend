@@ -69,22 +69,22 @@ Route::domain('{shop}.' . env('APP_URL'))->group(function () {
 */
 Route::get('/', [HomeController::class, 'homePage'])->name('home_page');
 Route::get('/all-product-home', [HomeController::class, 'homePageAllProduct'])->name('all_product_home');
-Route::get('/search-product',[HomeController::class,'searchProduct'])->name('search_product');
-Route::get('/category/{category:slug}',[HomeController::class,'showCategoryProducts'])->name('category.products');
+Route::get('/search-product', [HomeController::class, 'searchProduct'])->name('search_product');
+Route::get('/category/{category:slug}', [HomeController::class, 'showCategoryProducts'])->name('category.products');
 Route::get('/product-details/{slug}', [ProductDetialsController::class, 'productDetails'])->name('product_details');
 Route::get('/checkout-details/{checkout?}/{count?}/{s_id?}', [OrderDetailsController::class, 'checkoutDetails'])->name('checkout_details');
 // Route::post('/order-product', [OrderDetailsController::class, 'orderProduct'])->name('order_product');
 Route::match(['get', 'post'], '/order-product', [OrderDetailsController::class, 'orderProduct'])->name('order_product');
 Route::get('/invoice-order/{id}', [OrderDetailsController::class, 'invoiceOrder'])->name('invoice_order');
-Route::get("/add-to-cart", [ProductCartController::class,'addToCart'])->name('add_to_cart');
-Route::post('/product-add-cart',[ProductCartController::class,'productAddCart'])->name('product_add_cart');
-Route::get('/product-delete-cart/{id}',[ProductCartController::class,'productDeleteCart'])->name('product_delete_cart');
-Route::post('/product-increment',[ProductCartController::class,'productIncrement'])->name('product_increment');
-Route::get('/customer-with-register',[OrderDetailsController::class,'customerWithRegister'])->name('customer_with_register');
+Route::get("/add-to-cart", [ProductCartController::class, 'addToCart'])->name('add_to_cart');
+Route::post('/product-add-cart', [ProductCartController::class, 'productAddCart'])->name('product_add_cart');
+Route::get('/product-delete-cart/{id}', [ProductCartController::class, 'productDeleteCart'])->name('product_delete_cart');
+Route::post('/product-increment', [ProductCartController::class, 'productIncrement'])->name('product_increment');
+Route::get('/customer-with-register', [OrderDetailsController::class, 'customerWithRegister'])->name('customer_with_register');
 
 
-Route::get("/product-add-to-cart", [ProductCartController::class,'ProductaddToCart'])->name('product_add_to_cart');
-Route::get("/remove-cart-item/{rowId}", [ProductCartController::class,'removeCartItem'])->name('remove_cart_item');
+Route::get("/product-add-to-cart", [ProductCartController::class, 'ProductaddToCart'])->name('product_add_to_cart');
+Route::get("/remove-cart-item/{rowId}", [ProductCartController::class, 'removeCartItem'])->name('remove_cart_item');
 
 /*
 |--------------------------------------------------------------------------
@@ -134,7 +134,6 @@ Route::prefix('/customer')->middleware('customer')->group(function () {
         Route::get('/customer-order-details/{id}', 'customerOrderDetails')->name('customer_order_details');
         Route::get('/customer-order-invoice/{id}', 'customerOrderinvoice')->name('customer_order_invoice');
     });
-
 });
 
 
@@ -177,7 +176,6 @@ Route::prefix('/user')->middleware('user')->group(function () {
         Route::post('/reply-support-ticket', 'replyTicket')->name('admin_reply_support_ticket');
         Route::get('/support-ticket-status/{id}/{status}', 'status')->name('support_ticket_status');
     });
-
 });
 
 /*
@@ -238,11 +236,13 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
 
     // purchase cart routes
     Route::controller(PurchaseCartController::class)->group(function () {
-        Route::get('/api/create-purchase-cart/{product_id}', 'store');
-        Route::get('/api/load-purchase-carts', 'index');
+        // Route::get('/api/create-purchase-cart/{product_id}', 'store');
+        // Route::get('/api/load-purchase-carts', 'index');
         Route::post('/api/update-purchase-cart', 'update');
         Route::get('/api/remove-purchase-cart/{id}', 'destroy');
     });
+    Route::get("/api/create-purchase-cart/{product_id}", [PurchaseCartController::class, 'store'])->name('create.purchase.cart');
+    Route::get("/api/load-purchase-carts", [PurchaseCartController::class, 'index'])->name('load.purchase.carts');
 
     // pos routes
     Route::prefix('pos')->controller(PosController::class)->group(function () {
@@ -251,6 +251,7 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
         Route::post('/api/get-customer', 'getCustomer');
         Route::post('add-new-customer', 'addNewCustomer')->name('add_new_customer');
         Route::get("/product/suggestions", "suggestions")->name('product.suggestions');
+        Route::post('cart/add', 'posAddToCart')->name('cart.add');
         Route::get("/product/details", "details")->name('product.details');
         Route::post('/sale', 'sale')->name('pos_sale');
         Route::get("/sales", "sales")->name('pos_sales');
@@ -303,7 +304,6 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
 
     // subscription routes
     Route::resource('/subscription', SubscriptionController::class);
-
 });
 
 

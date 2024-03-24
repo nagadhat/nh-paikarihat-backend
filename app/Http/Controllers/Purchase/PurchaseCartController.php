@@ -23,17 +23,6 @@ class PurchaseCartController extends Controller
         return $cart_items;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store($product_id, $quantity = 1)
     {
         // check the product is have or not

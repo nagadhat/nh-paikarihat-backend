@@ -77,6 +77,23 @@ class PosController extends Controller
         ]);
     }
 
+
+    public function posAddToCart(Request $request) {
+        $productId = $request->input('productId');
+        $quantity = $request->input('quantity');
+        $customerId = $request->input('customerId');
+        $product = Product::find($productId);    
+        if (!$product) {
+            return response()->json(['success' => false, 'message' => 'Product not found'], 404);
+        }
+        $cartItem = new PosCart();
+        $cartItem->product_id = $product->id;
+        $cartItem->quantity = $quantity;
+        $cartItem->customer_id = $customerId;
+        $cartItem->save();
+        return response()->json(['success' => true, 'message' => 'Product added to cart successfully']);
+    }
+    
     // function to get products
     public function getProducts(Request $req)
     {

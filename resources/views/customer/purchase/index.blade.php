@@ -24,7 +24,7 @@
                 <x-alert />
 
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered"  id="table">
                         <thead>
                             <tr>
                                 <th>SL#</th>
@@ -63,8 +63,21 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('inspect_purchase', $item->id) }}" class="btn btn-sm btn-info">Inspect</a>
-                                            <a href="{{ route('edit_purchase', $item->id) }}" class="btn btn-sm btn-primary text-white">Edit</a>
+                                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                                data-toggle="dropdown" data-display="static" aria-expanded="false">
+                                                Actions
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                                                
+                                                <a href="{{ route('inspect_purchase', $item->id) }}" class="dropdown-item"
+                                                    type="button">View</a>
+                                                <a href="{{ route('inspect_purchase', $item->id) }}" class="dropdown-item"
+                                                    type="button">Manage Order</a>
+                                                <a href="#" class="dropdown-item"
+                                                    type="button">Payment</a>
+                                                <a href="#" class="dropdown-item"
+                                                    type="button">Invoice</a>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>
@@ -78,10 +91,13 @@
 @endsection
 
 @section('page_js')
-    <script>
-        $(document).ready(function() {
-            // init data table
-            $('#table').DataTable();
+<script>
+    $(document).ready(function() {
+        $('#table').DataTable({
+            "order": [
+                [0, "desc"]
+            ]
         });
-    </script>
+    });
+</script>
 @endsection

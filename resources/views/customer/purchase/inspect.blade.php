@@ -50,15 +50,26 @@
                         <tbody id="purchase-cart-items"></tbody>
                         <tfoot>
                             <tr>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>...</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td>Sub-Total: <span id="sub-total"></span></td>
                                 <td>Discount: <span id="discount-total"></span></td>
                                 <td>Total: <span id="grand-total"></span></td>
-                                <td>...</td>
+                                <td></td>
                             </tr>
                         </tfoot>
                     </table>
@@ -77,7 +88,7 @@
                         <div class="form-group">
                             <label for="" class="form-label">Total Amount<span
                                     class="text-danger"><sup>*</sup></span>:</label>
-                            <input type="number" name="total-amount" placeholder="Total Amount" id="total-amount-2"
+                            <input type="number" name="total-amount" value="{{ $purchase->total_amount }}" placeholder="Total Amount" id="total-amount-2"
                                 class="form-control" readonly>
                         </div>
                     </div>
@@ -87,8 +98,8 @@
                             <select name="purchase-status" id="purchase-status" class="form-control" readonly>
                                 <option value="0" {{ $purchase->purchase_status == 0 ? 'selected' : '' }}>
                                     Select Purchase Status</option>
-                                <option value="1" {{ $purchase->purchase_status == 1 ? 'selected' : '' }}>
-                                    Order Received</option>
+                                <option value="1" {{ $purchase->purchase_status == 1 ? 'selected' : '' }}>Ordered</option>
+                                <option value="2" {{ $purchase->purchase_status == 2 ? 'selected' : '' }}>Order Received</option>
                             </select>
                         </div>
                     </div>
@@ -135,7 +146,7 @@
                         <div class="form-group">
                             <label for="" class="form-label">Paid Amount<span
                                     class="text-danger"><sup>*</sup></span>:</label>
-                            <input type="number" name="paid-amount" placeholder="Paid Amount" id="paid-amount"
+                            <input type="number" name="paid-amount" value="{{ $purchase->paid_amount }}" placeholder="Paid Amount" id="paid-amount"
                                 class="form-control" readonly>
                         </div>
                     </div>

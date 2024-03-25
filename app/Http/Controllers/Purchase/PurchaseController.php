@@ -235,7 +235,6 @@ class PurchaseController extends Controller
             $purchase_cart = new PurchaseCartController();
             $purchase_cart->store($item->product_id, $item->quantity);
         }
-
         return view('customer.purchase.inspect', compact(
             'purchase',
             'supplier',

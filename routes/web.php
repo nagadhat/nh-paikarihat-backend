@@ -230,20 +230,24 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
         Route::post("/create-purchase", "store")->name('store_purchase');
         Route::get("/purchase-list", "index")->name('purchase_list');
         Route::get("/inspect-purchase/{purchase}", 'inspect')->name('inspect_purchase');
+        Route::get("/view-perchase-order/{purchase_order}", 'viewPurchaseOrder')->name('view)_perchase_order');
         Route::get("/edit-purchase/{purchase}", 'edit')->name('edit_purchase');
         Route::post("/update-purchase/{purchase}", 'update')->name('update_purchase');
     });
 
     // purchase cart routes
-    Route::controller(PurchaseCartController::class)->group(function () {
-        // Route::get('/api/create-purchase-cart/{product_id}', 'store');
-        // Route::get('/api/load-purchase-carts', 'index');
-        Route::post('/api/update-purchase-cart', 'update');
-        Route::get('/api/remove-purchase-cart/{id}', 'destroy');
-    });
     Route::get("/api/create-purchase-cart/{product_id}", [PurchaseCartController::class, 'store'])->name('create.purchase.cart');
     Route::get("/api/load-purchase-carts", [PurchaseCartController::class, 'index'])->name('load.purchase.carts');
+    Route::get("/api/remove-purchase-cart/{id}", [PurchaseCartController::class, 'destroy'])->name('remove.purchase.carts');
+    Route::post("/api/update-purchase-cart", [PurchaseCartController::class, 'update'])->name('update.purchase.carts');
 
+    // Route::controller(PurchaseCartController::class)->group(function () {
+    //     Route::get('/api/create-purchase-cart/{product_id}', 'store');
+    //     Route::get('/api/load-purchase-carts', 'index');
+    //     Route::post('/api/update-purchase-cart', 'update');
+    //     Route::get('/api/remove-purchase-cart/{id}', 'destroy');
+    // });
+    
     // pos routes
     Route::prefix('pos')->controller(PosController::class)->group(function () {
         Route::get("/", "index")->name('pos');

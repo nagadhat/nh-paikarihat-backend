@@ -2,7 +2,19 @@
     $title = 'Create Purchase';
 @endphp
 @extends('layouts.app')
+@section('page_css')
+    <style>
+        .no-spinner::-webkit-outer-spin-button,
+        .no-spinner::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
+        .no-spinner {
+            -moz-appearance: textfield;
+        }
+    </style>
+@endsection
 @section('page_content')
     <div class="col-12" v-cloak>
         <div class="card">
@@ -125,9 +137,9 @@
                                         class="text-danger"><sup>*</sup></span>:</label>
                                 <select name="payment-status" id="payment-status" class="form-control" required>
                                     <option value="">Select Payment Status</option>
-                                    <option value="0">Pending</option>
-                                    <option value="1">Partial</option>
+                                    {{-- <option value="0">Pending</option> --}}
                                     <option value="2">Paid</option>
+                                    <option value="1">Due</option>
                                 </select>
                             </div>
                         </div>
@@ -147,7 +159,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="" class="form-label">Paid Amount<span
+                                <label for="" class="form-label">Receive Amount<span
                                         class="text-danger"><sup>*</sup></span>:</label>
                                 <input type="number" name="paid-amount" placeholder="Paid Amount" id="paid-amount"
                                     class="form-control">
@@ -285,6 +297,7 @@
 
         // function to load purchase cart products
         let total_amount = 0;
+
         function loadPurchaseCartProducts() {
             let sub_total = 0;
             let grand_total = 0;
@@ -312,25 +325,25 @@
                                         <input type="hidden" name="loopCounter" value="${j}">
                                     </td>
                                     <td>
-                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" name="quantity${j}" class="form-control form-control-sm" id="quantity${response[j]["id"]}" value="${response[j]["quantity"]}">
+                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" name="quantity${j}" class="form-control form-control-sm no-spinner" id="quantity${response[j]["id"]}" value="${response[j]["quantity"]}">
                                     </td>
                                     <td>
-                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" class="form-control form-control-sm" id="mrp${response[j]["id"]}" value="${response[j]["mrp"]}">
+                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" class="form-control form-control-sm no-spinner" id="mrp${response[j]["id"]}" value="${response[j]["mrp"]}">
                                     </td>
                                     <td>
-                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" name="purchase_amount${j}" class="form-control form-control-sm" id="purchase_amount${response[j]["id"]}" value="${response[j]["purchase_amount"]}">
+                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" name="purchase_amount${j}" class="form-control form-control-sm no-spinner" id="purchase_amount${response[j]["id"]}" value="${response[j]["purchase_amount"]}">
                                     </td>
                                     <td>
                                         <input type="number" class="form-control form-control-sm" id="" readonly value="${response[j]["sub_total"]}">
                                     </td>
                                     <td>
-                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" name="discount_amount${j}" class="form-control form-control-sm" id="discount_amount${response[j]["id"]}" value="${response[j]["discount_amount"]}">
+                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" name="discount_amount${j}" class="form-control form-control-sm no-spinner" id="discount_amount${response[j]["id"]}" value="${response[j]["discount_amount"]}">
                                     </td>
                                     <td>
                                         <input type="number" name="total_amount${j}" class="form-control form-control-sm" id="" readonly value="${response[j]["total_amount"]}">
                                     </td>
                                     <td>
-                                        <input type="text" name="lot_no${j}" class="form-control form-control-sm" id="lot_no${response[j]["id"]}" readonly value="${response[j]["lot_no"] ? response[j]["lot_no"] : ''}">
+                                        <input type="number" onblur="updateProduct(${response[j]['id']})" name="lot_no${j}" class="form-control form-control-sm no-spinner" id="lot_no${response[j]['id']}" value="${response[j]['lot_no'] ? response[j]['lot_no'] : ''}">
                                     </td>
                                     <td>
                                         <button class="btn btn-sm btn-danger m-1" type="button" onclick="removeProduct(${response[j]["id"]})">
@@ -370,7 +383,8 @@
             var _mrp = $('#mrp' + _id).val();
 
             $.ajax({
-                url: '/user/api/update-purchase-cart',
+                // url: '/user/api/update-purchase-cart',
+                url: '{{ route('update.purchase.carts') }}',
                 type: 'post',
                 data: {
                     _token: '{{ csrf_token() }}',
@@ -401,7 +415,8 @@
         // function to remove purchase cart product
         function removeProduct(_id) {
             $.ajax({
-                url: '/user/api/remove-purchase-cart/' + _id,
+                // url: '/user/api/remove-purchase-cart/' + _id,
+                url: '{{ route('remove.purchase.carts', ['id' => '_id']) }}'.replace('_id', _id),
                 type: 'get',
                 success: function(response) {
                     // console.log(response);
@@ -413,7 +428,6 @@
                         showConfirmButton: false,
                         timer: 1200
                     });
-
                     // load cart products
                     loadPurchaseCartProducts();
                 }
@@ -421,11 +435,20 @@
         }
 
         // update total amount
-        $('#shipping-charge').on('change', function() {
-            let shippingCharge = document.getElementById('shipping-charge');
-            let paidAmount = document.getElementById('paid-amount');
+        // $('#shipping-charge').on('change', function() {
+        //     let shippingCharge = document.getElementById('shipping-charge');
+        //     let paidAmount = document.getElementById('paid-amount').value + parseInt(shippingCharge.value);
+        //     let totalAmount = document.getElementById('total-amount-2').value + parseInt(shippingCharge.value);
+        //     // paidAmount.value = total_amount + parseInt(shippingCharge.value);
+        // });
 
-            paidAmount.value = total_amount + parseInt(shippingCharge.value);
+        $('#shipping-charge').on('change', function() {
+            let shippingCharge = parseInt($(this).val());
+            let paidAmount = parseInt(document.getElementById('paid-amount').value) + shippingCharge;
+            let totalAmount = parseInt(document.getElementById('total-amount-2').value) + shippingCharge;
+            
+            document.getElementById('paid-amount').value = paidAmount;
+            document.getElementById('total-amount-2').value = totalAmount;
         });
     </script>
 @endsection

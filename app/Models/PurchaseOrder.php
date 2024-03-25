@@ -9,4 +9,10 @@ class PurchaseOrder extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+
+    public function getPurchaseOrderProduct()
+    {
+        return $this->hasOne(PurchaseOrderProduct::class);
+    }
 }

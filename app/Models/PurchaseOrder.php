@@ -15,4 +15,9 @@ class PurchaseOrder extends Model
     {
         return $this->hasOne(PurchaseOrderProduct::class);
     }
+
+    public function getSupplier()
+    {
+        return $this->belongsTo(Supplier::class, 'supplier_id', 'id');
+    }
 }

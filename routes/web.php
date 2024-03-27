@@ -230,9 +230,10 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
         Route::post("/create-purchase", "store")->name('store_purchase');
         Route::get("/purchase-list", "index")->name('purchase_list');
         Route::get("/inspect-purchase/{purchase}", 'inspect')->name('inspect_purchase');
-        Route::get("/view-perchase-order/{purchase_order}", 'viewPurchaseOrder')->name('view)_perchase_order');
+        Route::get("/view-perchase-order/{purchase_order}", 'viewPurchaseOrder')->name('view_perchase_order');
         Route::get("/edit-purchase/{purchase}", 'edit')->name('edit_purchase');
         Route::post("/update-purchase/{purchase}", 'update')->name('update_purchase');
+        Route::get("/purchase-invoice/{id}", 'purchaseInvoice')->name('purchase_invoice');
     });
 
     // purchase cart routes

@@ -64,10 +64,10 @@ class PurchaseController extends Controller
         $purchase_order->user_id = auth()->id();
         $purchase_order->supplier_id = $request->input('supplier');
         $purchase_order->date = $request->input('purchase-date');
+        $purchase_order->shipping_charge = $request->input('shipping-charge');
         $purchase_order->total_amount = $request->input('total-amount');
         $purchase_order->paid_amount = $request->input('paid-amount');
         $purchase_order->due_amount =  $request->input('total-amount') - $request->input('paid-amount');
-        $purchase_order->shipping_charge = $request->input('shipping-charge');
         $purchase_order->payment_status = $request->input('payment-status');
         $purchase_order->purchase_status = $request->input('purchase-status');
         $purchase_order->save();
@@ -173,14 +173,24 @@ class PurchaseController extends Controller
         $purchase->save();
 
         // update purchase payment
-        $purchase_payment = PurchaseOrderPayment::where('purchase_order_id', $purchase->id);
+        // $purchase_payment = PurchaseOrderPayment::where('purchase_order_id', $purchase->id);
+        // if ($purchase_payment->sum('amount') < $purchase->total_amount) {
+        //     $purchase_payment->payment_method = $request->input('payment-method');
+        //     $purchase_payment->amount = $purchase->paid_amount;
+        //     $purchase_payment->payment_comment = $request->input('comment');
+
+        //     if ($purchase->paid_amount > 0) {
+        //         $purchase_payment->save();
+        //     }
+        // }
+        $purchase_payment = PurchaseOrderPayment::where('purchase_order_id', $purchase->id)->first(); // or ->get() if you expect multiple rows
         if ($purchase_payment->sum('amount') < $purchase->total_amount) {
             $purchase_payment->payment_method = $request->input('payment-method');
             $purchase_payment->amount = $purchase->paid_amount;
             $purchase_payment->payment_comment = $request->input('comment');
 
             if ($purchase->paid_amount > 0) {
-                $purchase_payment->save();
+                $purchase_payment->save(); // This should work fine now
             }
         }
 
@@ -222,22 +232,71 @@ class PurchaseController extends Controller
     // function to show inspect purchase
     public function inspect(Purchase $purchase)
     {
+        // dd($purchase);
         $supplier = Supplier::find($purchase->supplier_id);
 
         // update purchase cart items
-        $cart_items = PurchaseCart::where('user_id', auth()->id())->get();
-        foreach ($cart_items as $item) {
-            $item->delete();
+        // $cart_items = PurchaseCart::where('user_id', auth()->id())->get();
+        // foreach ($cart_items as $item) {
+        //     $item->delete();
+        // }
+
+        $purchaseProductList = PurchaseOrderProduct::where('purchase_order_id', $purchase->id)->get();
+        // foreach ($purchase_products as $item) {
+        //     $purchase_cart = new PurchaseCartController();
+        //     $purchase_cart->store($item->product_id, $item->quantity);
+        // }
+        $subTotal = 0;
+        $discountTotal = 0;
+
+        foreach ($purchaseProductList as $item) {
+            $subTotal += $item->quantity * $item->purchase_amount;
+            $discountTotal += $item->discount_amount;
         }
 
-        $purchase_products = PurchaseOrderProduct::where('purchase_order_id', $purchase->id)->get();
-        foreach ($purchase_products as $item) {
-            $purchase_cart = new PurchaseCartController();
-            $purchase_cart->store($item->product_id, $item->quantity);
-        }
+        $grandTotal = $subTotal - $discountTotal;
         return view('customer.purchase.inspect', compact(
+            'purchaseProductList',
             'purchase',
             'supplier',
+            'subTotal',
+            'discountTotal',
+            'grandTotal'
+        ));
+    }
+
+
+    // function to show inspect purchase
+    public function purchaseInvoice($id)
+    {
+        // $supplier = Supplier::find($id->supplier_id);
+        // $purchaseProductList = PurchaseOrderProduct::where('purchase_order_id', $id->id)->get();
+        // $subTotal = 0;
+        // $discountTotal = 0;
+
+        // foreach ($purchaseProductList as $item) {
+        //     $subTotal += $item->quantity * $item->purchase_amount;
+        //     $discountTotal += $item->discount_amount;
+        // }
+        // $grandTotal = $subTotal - $discountTotal;
+        $supplierDetails = PurchaseOrder::where('id', $id)->first();
+        $purchaseProductList = PurchaseOrderProduct::where('purchase_order_id', $id)->get();
+        $subTotal = 0;
+        $discountTotal = 0;
+
+        foreach ($purchaseProductList as $item) {
+            $subTotal += $item->quantity * $item->purchase_amount;
+            $discountTotal += $item->discount_amount;
+        }
+        $grandTotal = $subTotal - $discountTotal;
+        return view('customer.purchase.purchase-invoice', compact(
+            'supplierDetails',
+            'purchaseProductList',
+            // 'purchase',
+            // 'supplier',
+            'subTotal',
+            'discountTotal',
+            'grandTotal'
         ));
     }
 }

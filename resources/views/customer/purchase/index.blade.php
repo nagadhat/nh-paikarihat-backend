@@ -24,7 +24,7 @@
                 <x-alert />
 
                 <div class="table-responsive">
-                    <table class="table table-bordered"  id="table">
+                    <table class="table table-bordered" id="table">
                         <thead>
                             <tr>
                                 <th>SL#</th>
@@ -44,7 +44,8 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>#PO{{ $item->id }}</td>
-                                    <td>({{ $item->supplier_details->company }}) - {{ $item->supplier_details->name }}, {{ $item->supplier_details->phone }}</td>
+                                    <td>({{ $item->supplier_details->company }}) - {{ $item->supplier_details->name }},
+                                        {{ $item->supplier_details->phone }}</td>
                                     <td>{{ date('dS F, Y', strtotime($item->date)) }}</td>
                                     <td>&#2547; {{ number_format($item->shipping_charge, 2) }}</td>
                                     <td>&#2547; {{ number_format($item->total_amount, 2) }}</td>
@@ -68,17 +69,66 @@
                                                 Actions
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                                                
+
                                                 <a href="{{ route('inspect_purchase', $item->id) }}" class="dropdown-item"
                                                     type="button">View</a>
-                                                <a href="{{ route('inspect_purchase', $item->id) }}" class="dropdown-item"
-                                                    type="button">Manage Order</a>
-                                                <a href="#" class="dropdown-item"
-                                                    type="button">Payment</a>
-                                                <a href="#" class="dropdown-item"
+                                                <a href="{{ route('edit_purchase', $item->id) }}" class="dropdown-item"
+                                                    type="button">Manage Purchase</a>
+                                                <a href="#" class="dropdown-item" data-toggle="modal" type="button"
+                                                    data-target="#editModal_{{ $item->id }}">Payment</a>
+                                                <a href="{{ route('purchase_invoice', $item->id) }}" class="dropdown-item"
                                                     type="button">Invoice</a>
                                             </div>
                                         </div>
+                                        {{-- start modal for update payment --}}
+                                        <div class="modal fade" id="editModal_{{ $item->id }}" tabindex="-1"
+                                            aria-labelledby="editModalLabel_{{ $item->id }}" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4>Edit Payment</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            <i class="anticon anticon-close"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body text-left">
+                                                        <form action="" method="post" enctype="multipart/form-data">
+                                                            @csrf
+                                                            <div class="form-group">
+                                                                <label for="" class="form-label">Due Amount :</label>
+                                                                <input type="text" name="" value="{{ $item->due_amount }}" placeholder=""
+                                                                    class="form-control" readonly>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="" class="form-label">Paid Amount :</label>
+                                                                <input type="text" name="" value="{{ $item->paid_amount }}" placeholder=""
+                                                                    id="" class="form-control" required>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="" class="form-label">Payment Method:</label>
+                                                                <select name="payment-method" id="payment-method" class="form-control" required>
+                                                                    <option value="">Choose Payment Method</option>
+                                                                    <option value="0">Cash</option>
+                                                                    <option value="1">Bank</option>
+                                                                    <option value="2">Bkash</option>
+                                                                    <option value="3">Nagad</option>
+                                                                    <option value="4">Rocket</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="" class="form-label">Note:</label>
+                                                                <textarea name="description" id="" class="form-control" placeholder="">{{ $item->description }}</textarea>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- end modal for update payment --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -88,16 +138,17 @@
             </div>
         </div>
     </div>
+    
 @endsection
 
 @section('page_js')
-<script>
-    $(document).ready(function() {
-        $('#table').DataTable({
-            "order": [
-                [0, "desc"]
-            ]
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                "order": [
+                    [0, "desc"]
+                ]
+            });
         });
-    });
-</script>
+    </script>
 @endsection

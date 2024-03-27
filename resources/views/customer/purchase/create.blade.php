@@ -136,7 +136,7 @@
                                 <label for="" class="form-label">Payment Status<span
                                         class="text-danger"><sup>*</sup></span>:</label>
                                 <select name="payment-status" id="payment-status" class="form-control" required>
-                                    <option value="">Select Payment Status</option>
+                                    <option value="0">Select Payment Status</option>
                                     {{-- <option value="0">Pending</option> --}}
                                     <option value="2">Paid</option>
                                     <option value="1">Due</option>

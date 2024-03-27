@@ -2,7 +2,19 @@
     $title = 'Edit Purchase';
 @endphp
 @extends('layouts.app')
+@section('page_css')
+    <style>
+        .no-spinner::-webkit-outer-spin-button,
+        .no-spinner::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
+        .no-spinner {
+            -moz-appearance: textfield;
+        }
+    </style>
+@endsection
 @section('page_content')
     <div class="col-12" v-cloak>
         <div class="card">
@@ -82,16 +94,16 @@
                             <tbody id="purchase-cart-items"></tbody>
                             <tfoot>
                                 <tr>
-                                    <td>...</td>
-                                    <td>...</td>
-                                    <td>...</td>
-                                    <td>...</td>
-                                    <td>...</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>Sub-Total: <span id="sub-total"></span></td>
                                     <td>Discount: <span id="discount-total"></span></td>
                                     <td>Total: <span id="grand-total"></span></td>
-                                    <td>...</td>
-                                    <td>...</td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -111,7 +123,7 @@
                             <div class="form-group">
                                 <label for="" class="form-label">Total Amount<span
                                         class="text-danger"><sup>*</sup></span>:</label>
-                                <input type="number" name="total-amount" placeholder="Total Amount" id="total-amount-2"
+                                <input type="number" name="total-amount" placeholder="Total Amount" value="{{ $purchase->total_amount }}" id="total-amount-2"
                                     class="form-control">
                             </div>
                         </div>
@@ -121,8 +133,10 @@
                                 <select name="purchase-status" id="purchase-status" class="form-control">
                                     <option value="0" {{ $purchase->purchase_status == 0 ? 'selected' : '' }}>
                                         Select Purchase Status</option>
-                                    <option value="1" {{ $purchase->purchase_status == 1 ? 'selected' : '' }}>
-                                        Order Received</option>
+                                    <option value="1" {{ $purchase->purchase_status == 1 ? 'selected' : '' }}>Ordered
+                                    </option>
+                                    <option value="2" {{ $purchase->purchase_status == 2 ? 'selected' : '' }}>Order
+                                        Received</option>
                                 </select>
                             </div>
                         </div>
@@ -131,13 +145,10 @@
                                 <label for="" class="form-label">Payment Status<span
                                         class="text-danger"><sup>*</sup></span>:</label>
                                 <select name="payment-status" id="payment-status" class="form-control" required>
-                                    <option value="">Select Payment Status</option>
-                                    <option value="0" {{ $purchase->payment_status == 0 ? 'selected' : '' }}>
-                                        Pending</option>
-                                    <option value="1" {{ $purchase->payment_status == 1 ? 'selected' : '' }}>Partial
-                                    </option>
-                                    <option value="2" {{ $purchase->payment_status == 2 ? 'selected' : '' }}>Paid
-                                    </option>
+                                    <option value="0" {{ $purchase->payment_status == 0 ? 'selected' : '' }}>Select Payment Status</option>
+                                    {{-- <option value="0">Pending</option> --}}
+                                    <option value="2" {{ $purchase->payment_status == 2 ? 'selected' : '' }}>Paid</option>
+                                    <option value="1" {{ $purchase->payment_status == 1 ? 'selected' : '' }}>Due</option>
                                 </select>
                             </div>
                         </div>
@@ -236,14 +247,11 @@
         // add product to purchase cart
         $('#purchase-product').on('change', function() {
             var productId = this.value;
-
             $.ajax({
-                url: '/user/api/create-purchase-cart/' + productId,
-                type: 'get',
+                // url: '/user/api/create-purchase-cart/' + productId,
+                url: "{{ route('create.purchase.cart', ':productId') }}".replace(':productId', productId),
+                type: 'GET',
                 success: function(response) {
-                    // console.log(response);
-
-                    // load cart products
                     loadPurchaseCartProducts();
                 }
             });
@@ -251,14 +259,14 @@
 
         // function to load purchase cart products
         let total_amount = 0;
-
         function loadPurchaseCartProducts() {
             let sub_total = 0;
             let grand_total = 0;
             let discount_total = 0;
 
             $.ajax({
-                url: '/user/api/load-purchase-carts',
+                // url: '/user/api/load-purchase-carts',
+                url: "{{ route('load.purchase.carts') }}",
                 type: 'get',
                 success: function(response) {
                     // console.log(response);
@@ -279,25 +287,25 @@
                                         <input type="hidden" name="loopCounter" value="${j}">
                                     </td>
                                     <td>
-                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" name="quantity${j}" class="form-control form-control-sm" id="quantity${response[j]["id"]}" value="${response[j]["quantity"]}">
+                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" name="quantity${j}" class="form-control form-control-sm no-spinner" id="quantity${response[j]["id"]}" value="${response[j]["quantity"]}">
                                     </td>
                                     <td>
-                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" class="form-control form-control-sm" id="mrp${response[j]["id"]}" value="${response[j]["mrp"]}">
+                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" class="form-control form-control-sm no-spinner" id="mrp${response[j]["id"]}" value="${response[j]["mrp"]}">
                                     </td>
                                     <td>
-                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" name="purchase_amount${j}" class="form-control form-control-sm" id="purchase_amount${response[j]["id"]}" value="${response[j]["purchase_amount"]}">
+                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" name="purchase_amount${j}" class="form-control form-control-sm no-spinner" id="purchase_amount${response[j]["id"]}" value="${response[j]["purchase_amount"]}">
                                     </td>
                                     <td>
                                         <input type="number" class="form-control form-control-sm" id="" readonly value="${response[j]["sub_total"]}">
                                     </td>
                                     <td>
-                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" name="discount_amount${j}" class="form-control form-control-sm" id="discount_amount${response[j]["id"]}" value="${response[j]["discount_amount"]}">
+                                        <input type="number" onblur="updateProduct(${response[j]["id"]})" name="discount_amount${j}" class="form-control form-control-sm no-spinner" id="discount_amount${response[j]["id"]}" value="${response[j]["discount_amount"]}">
                                     </td>
                                     <td>
                                         <input type="number" name="total_amount${j}" class="form-control form-control-sm" id="" readonly value="${response[j]["total_amount"]}">
                                     </td>
                                     <td>
-                                        <input type="text" name="lot_no${j}" class="form-control form-control-sm" id="lot_no${response[j]["id"]}" readonly value="${response[j]["lot_no"] ? response[j]["lot_no"] : ''}">
+                                        <input type="text" name="lot_no${j}" class="form-control form-control-sm" id="lot_no${response[j]["id"]}" value="${response[j]["lot_no"] ? response[j]["lot_no"] : ''}">
                                     </td>
                                     <td>
                                         <button class="btn btn-sm btn-danger m-1" type="button" onclick="removeProduct(${response[j]["id"]})">
@@ -336,7 +344,8 @@
             var _mrp = $('#mrp' + _id).val();
 
             $.ajax({
-                url: '/user/api/update-purchase-cart',
+                // url: '/user/api/update-purchase-cart',
+                url: '{{ route('update.purchase.carts') }}',
                 type: 'post',
                 data: {
                     _token: '{{ csrf_token() }}',
@@ -367,7 +376,8 @@
         // function to remove purchase cart product
         function removeProduct(_id) {
             $.ajax({
-                url: '/user/api/remove-purchase-cart/' + _id,
+                // url: '/user/api/remove-purchase-cart/' + _id,
+                url: '{{ route('remove.purchase.carts', ['id' => '_id']) }}'.replace('_id', _id),
                 type: 'get',
                 success: function(response) {
                     // console.log(response);
@@ -393,5 +403,13 @@
 
         //     paidAmount.value = total_amount + parseInt(shippingCharge.value);
         // });
+        $('#shipping-charge').on('change', function() {
+            let shippingCharge = parseInt($(this).val());
+            let paidAmount = parseInt(document.getElementById('paid-amount').value) + shippingCharge;
+            let totalAmount = parseInt(document.getElementById('total-amount-2').value) + shippingCharge;
+            
+            document.getElementById('paid-amount').value = paidAmount;
+            document.getElementById('total-amount-2').value = totalAmount;
+        });
     </script>
 @endsection

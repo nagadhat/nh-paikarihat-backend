@@ -1,0 +1,27 @@
+
+
+.cs-table:nth-child(2) {
+    width: 100% !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+.purchase-history_area-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+    width: 100%;
+}
+.history-col {
+    padding: 0 10px;
+}
+.col-8.history-col {
+    max-width: 70%;
+    flex-basis: 70%;
+}
+.col-4.history-col {
+    max-width: 30%;
+    flex-basis: 30%;
+}
+.purchase-history_area-row table.table.table-bordered {
+    border: 1px solid #eaeaea !important;
+}

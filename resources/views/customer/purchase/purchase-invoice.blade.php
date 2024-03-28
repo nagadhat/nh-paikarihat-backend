@@ -17,6 +17,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('back-end/css/invoice.css') }}">
+    <link rel="stylesheet" href="{{ asset('back-end/css/purchase-invoice.css') }}">
 </head>
 
 <body>
@@ -46,26 +47,26 @@
                     <div class="cs-invoice_left">
                         <p style="color: black;">
                             <span style="color: black;font-weight: bold;">Company Name:</span>
-                                {{ isset($supplierDetails->getSupplier->company) ? $supplierDetails->getSupplier->company : '' }}
+                            {{ isset($purchaseOrderrDetails->getSupplier->company) ? $purchaseOrderrDetails->getSupplier->company : '' }}
                             </span>
                             <br>
                             <span style="color: black;font-weight: bold;">Name:</span>
-                                {{ isset($supplierDetails->getSupplier->name) ? $supplierDetails->getSupplier->name : '' }}
+                            {{ isset($purchaseOrderrDetails->getSupplier->name) ? $purchaseOrderrDetails->getSupplier->name : '' }}
                             </span>
                             <br>
                             <span style="color: black;font-weight: bold;">Supplier Details:</span><br>
-                                {{ isset($supplierDetails->getSupplier->phone) ? $supplierDetails->getSupplier->phone : '' }},
-                                {{ isset($supplierDetails->getSupplier->address) ? $supplierDetails->getSupplier->address : '' }}.
+                            {{ isset($purchaseOrderrDetails->getSupplier->phone) ? $purchaseOrderrDetails->getSupplier->phone : '' }},
+                            {{ isset($purchaseOrderrDetails->getSupplier->address) ? $purchaseOrderrDetails->getSupplier->address : '' }}.
                             </span>
                         </p>
                     </div>
                     <div class="cs-invoice_right">
                         <p class="cs-invoice_number cs-primary_color cs-mb0"><b class="cs-primary_color">
-                            Purchase No:</b> #PO{{ $supplierDetails->id }}
+                                Purchase No:</b> #PO{{ $purchaseOrderrDetails->id }}
                         </p>
                         <p class="cs-invoice_date cs-primary_color cs-m0"><b class="cs-primary_color">Date:
                             </b>
-                            {{ isset($supplierDetails->created_at) ? $supplierDetails->created_at->format('d/m/y g:i A') : ''}}
+                            {{ isset($purchaseOrderrDetails->created_at) ? $purchaseOrderrDetails->created_at->format('d/m/y g:i A') : '' }}
                         </p>
                         <p class="cs-invoice_date cs-primary_color cs-m0"><b class="cs-primary_color">Payment Status:
                             </b>
@@ -73,11 +74,12 @@
                                 style="background: #F1632B; padding-top:1px; padding-right:10px;
                                 padding-bottom:1px; padding-left: 10px;  border: 2px;
                                 border-radius: 25px; font-weight: bold;">
-
-                                @if ($supplierDetails->status == 1)
+                                @if ($purchaseOrderrDetails->status == 1)
+                                   <span class="badge bg-primary text-white">Partial</span>
+                                @elseif ($purchaseOrderrDetails->status == 2)
                                     <span class="badge bg-primary text-white">Paid</span>
                                 @else
-                                    <span class="badge bg-success text-white">Unpaid</span>
+                                    <span class="badge bg-primary text-white">Unpaid</span>
                                 @endif
                             </span>
                         </p>
@@ -97,27 +99,35 @@
                                                 Name
                                             </th>
                                             <th class="cs-width_1 cs-semi_bold cs-primary_color cs-focus_bg">Qty</th>
-                                            <th class="cs-width_3 cs-semi_bold cs-primary_color cs-focus_bg">P.Price</th>
+                                            <th class="cs-width_3 cs-semi_bold cs-primary_color cs-focus_bg">P.Price
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($purchaseProductList as $product)
-                                                @php
-                                                    $image = empty($product->purchaseOrderProductToProduct->photo) ? asset('assets/images/others/error.png') : asset('storage/products/' . $product->purchaseOrderProductToProduct->photo);
-                                                @endphp
+                                            @php
+                                                $image = empty($product->purchaseOrderProductToProduct->photo)
+                                                    ? asset('assets/images/others/error.png')
+                                                    : asset(
+                                                        'storage/products/' .
+                                                            $product->purchaseOrderProductToProduct->photo,
+                                                    );
+                                            @endphp
                                             <tr>
                                                 <td style="color: #0d0101">{{ $loop->index + 1 }}</td>
                                                 <td class="cs-width_3" style="color: #0d0101">
-                                                    <img class="img-fit rounded" style="width:50px" src="{{ $image }}">
+                                                    <img class="img-fit rounded" style="width:50px"
+                                                        src="{{ $image }}">
                                                 </td>
                                                 <td class="cs-width_4" style="color: black">
                                                     {{ isset($product->purchaseOrderProductToProduct) ? $product->purchaseOrderProductToProduct->title : '--' }}
                                                 </td>
                                                 <td class="cs-width_2" style="color: black">
-                                                    {{ isset($product->quantity) ? $product->quantity: ''}}
+                                                    {{ isset($product->quantity) ? $product->quantity : '' }}
                                                 </td>
                                                 <td class="cs-width_1" style="color: black">
-                                                    ৳ {{ isset($product->purchase_amount) ? $product->purchase_amount: ''}}
+                                                    ৳
+                                                    {{ isset($product->purchase_amount) ? $product->purchase_amount : '' }}
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -126,7 +136,53 @@
                             </div>
                         </div>
                     </div>
-                    <div class="cs-table cs-style1 mb-4">
+                </div>
+                <div style="margin-top: 10px">
+                    <h4>Payment History</h4>
+                </div>
+                <div class="row purchase-history_area-row">
+                    <div class="col-8 history-col">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#Sl</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Method</th>
+                                        <th scope="col">Note</th>
+                                        <th scope="col">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($purchasePaymentList as $payment)
+                                        <tr>
+                                            <td scope="row">{{ $loop->index + 1 }}</td>
+                                            <td> {{ isset($payment->created_at) ? $payment->created_at->format('d/m/y g:i A') : '' }}
+                                            </td>
+                                            <td>
+                                                @if ($payment->payment_method == 0)
+                                                    <span>Cash</span>
+                                                @elseif($payment->payment_method == 1)
+                                                    <span>Bank</span>
+                                                @elseif($payment->payment_method == 2)
+                                                    <span>Bkash</span>
+                                                @elseif($payment->payment_method == 3)
+                                                    <span>Nagad</span>
+                                                @elseif($payment->payment_method == 4)
+                                                    <span>Rocket</span>
+                                                @else
+                                                    <span>No Payment</span>
+                                                @endif
+                                            </td>
+                                            <td>{{ $payment->id }}{{ $payment->trxn_id }}({{ $payment->payment_note }})</td>
+                                            <td>{{ $payment->paid_amount }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-4 history-col">
                         <div class="cs-round_border">
                             <div class="cs-table_responsive">
                                 <table>
@@ -152,25 +208,29 @@
                                         <tr>
                                             <td style="font-weight:bold">Shipping Charge</td>
                                             <td style="text-align: right">
-                                                ৳ {{ isset($supplierDetails->shipping_charge) ? $supplierDetails->shipping_charge: 0}}
+                                                ৳
+                                                {{ isset($purchaseOrderrDetails->shipping_charge) ? $purchaseOrderrDetails->shipping_charge : 0 }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight:bold">Total</td>
                                             <td style="text-align: right">
-                                                ৳ {{ isset($supplierDetails->total_amount) ? $supplierDetails->total_amount: 0}}
+                                                ৳
+                                                {{ isset($purchaseOrderrDetails->total_amount) ? $purchaseOrderrDetails->total_amount : 0 }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight:bold;">Paid Amount </td>
                                             <td style="text-align: right; color: green">
-                                                ৳ {{ isset($supplierDetails->paid_amount) ? $supplierDetails->paid_amount: 0}}
+                                                ৳
+                                                {{ isset($purchaseOrderrDetails->paid_amount) ? $purchaseOrderrDetails->paid_amount : 0 }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="font-weight:bold">Due Amount </td>
+                                            <td style="font-weight:bold">Payable </td>
                                             <td style="text-align: right;color: red">
-                                                ৳ {{ isset($supplierDetails->paid_amount) ? $supplierDetails->due_amount: 0}}
+                                                ৳
+                                                {{ isset($purchaseOrderrDetails->paid_amount) ? $purchaseOrderrDetails->due_amount : 0 }}
                                             </td>
                                         </tr>
                                     </tbody>
@@ -179,6 +239,9 @@
                         </div>
                     </div>
                 </div>
+
+
+
                 <div class="cs-note">
                     <div class="cs-note_left">
                         <svg xmlns="#" class="ionicon" viewBox="0 0 512 512">

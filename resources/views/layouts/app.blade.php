@@ -34,6 +34,7 @@
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/invoice.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/purchase-invoice.css') }}" rel="stylesheet">
 
     {{-- internal css --}}
     <style>

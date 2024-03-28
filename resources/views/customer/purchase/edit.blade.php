@@ -146,9 +146,9 @@
                                         class="text-danger"><sup>*</sup></span>:</label>
                                 <select name="payment-status" id="payment-status" class="form-control" required>
                                     <option value="0" {{ $purchase->payment_status == 0 ? 'selected' : '' }}>Select Payment Status</option>
-                                    {{-- <option value="0">Pending</option> --}}
+                                    <option value="1" {{ $purchase->payment_status == 1 ? 'selected' : '' }}>Partial</option>
                                     <option value="2" {{ $purchase->payment_status == 2 ? 'selected' : '' }}>Paid</option>
-                                    <option value="1" {{ $purchase->payment_status == 1 ? 'selected' : '' }}>Due</option>
+                                    <option value="3" {{ $purchase->payment_status == 3 ? 'selected' : '' }}>Due</option>
                                 </select>
                             </div>
                         </div>

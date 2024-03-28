@@ -9,7 +9,9 @@ use App\Models\PurchaseCart;
 use App\Models\PurchaseOrder;
 use App\Models\PurchaseOrderPayment;
 use App\Models\PurchaseOrderProduct;
+use App\Models\PurchasePaymentHistory;
 use App\Models\Supplier;
+use GuzzleHttp\Psr7\Request as Psr7Request;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -269,18 +271,9 @@ class PurchaseController extends Controller
     // function to show inspect purchase
     public function purchaseInvoice($id)
     {
-        // $supplier = Supplier::find($id->supplier_id);
-        // $purchaseProductList = PurchaseOrderProduct::where('purchase_order_id', $id->id)->get();
-        // $subTotal = 0;
-        // $discountTotal = 0;
-
-        // foreach ($purchaseProductList as $item) {
-        //     $subTotal += $item->quantity * $item->purchase_amount;
-        //     $discountTotal += $item->discount_amount;
-        // }
-        // $grandTotal = $subTotal - $discountTotal;
-        $supplierDetails = PurchaseOrder::where('id', $id)->first();
+        $purchaseOrderrDetails = PurchaseOrder::where('id', $id)->first();
         $purchaseProductList = PurchaseOrderProduct::where('purchase_order_id', $id)->get();
+        $purchasePaymentList = PurchasePaymentHistory::where('purchase_order_id', $id)->get();
         $subTotal = 0;
         $discountTotal = 0;
 
@@ -290,13 +283,35 @@ class PurchaseController extends Controller
         }
         $grandTotal = $subTotal - $discountTotal;
         return view('customer.purchase.purchase-invoice', compact(
-            'supplierDetails',
+            'purchaseOrderrDetails',
             'purchaseProductList',
-            // 'purchase',
-            // 'supplier',
+            'purchasePaymentList',
             'subTotal',
             'discountTotal',
             'grandTotal'
         ));
     }
+
+    public function purchasePaymentHistory(Request $request, $id) {
+        $request->validate([
+            'paid_amount' => 'required|numeric',
+            'payment_method' => 'required',
+        ]);
+    
+        $purchaseOrder = PurchaseOrder::findOrFail($id);
+        $purchaseOrder->paid_amount += $request->paid_amount;
+        $purchaseOrder->due_amount -= $request->paid_amount;
+        $purchaseOrder->save();
+
+        PurchasePaymentHistory::create([
+            'purchase_order_id' => $id,
+            'trxn_id' => rand(1111, 9999),
+            'paid_amount' => $request->paid_amount,
+            'payment_method' => $request->payment_method,
+            'payment_note' => $request->payment_note,
+        ]);
+        toast('Payment update successfully.', 'success');
+        return redirect()->back();
+    }
+    
 }

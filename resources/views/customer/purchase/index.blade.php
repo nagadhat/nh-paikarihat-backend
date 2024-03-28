@@ -53,12 +53,12 @@
                                     <td>&#2547; {{ number_format($item->due_amount, 2) }}</td>
                                     <td>
                                         <span class="badge bg-primary text-light">
-                                            @if ($item->payment_status == 0)
-                                                Pending
-                                            @elseif ($item->payment_status == 1)
+                                            @if ($item->payment_status == 1)
                                                 Partial
-                                            @else
+                                            @elseif ($item->payment_status == 2)
                                                 Paid
+                                            @else
+                                                Upaid
                                             @endif
                                         </span>
                                     </td>
@@ -92,22 +92,22 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body text-left">
-                                                        <form action="" method="post" enctype="multipart/form-data">
+                                                        <form action="{{ route('purchase_payment_history', ['id' => $item->id]) }}" method="post" enctype="multipart/form-data">
                                                             @csrf
                                                             <div class="form-group">
                                                                 <label for="" class="form-label">Due Amount :</label>
-                                                                <input type="text" name="" value="{{ $item->due_amount }}" placeholder=""
+                                                                <input type="text" name="due_amount" value="{{ $item->due_amount }}" placeholder=""
                                                                     class="form-control" readonly>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="" class="form-label">Paid Amount :</label>
-                                                                <input type="text" name="" value="{{ $item->paid_amount }}" placeholder=""
+                                                                <input type="text" name="paid_amount" value="" placeholder=""
                                                                     id="" class="form-control" required>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="" class="form-label">Payment Method:</label>
-                                                                <select name="payment-method" id="payment-method" class="form-control" required>
+                                                                <select name="payment_method" id="payment-method" class="form-control" required>
                                                                     <option value="">Choose Payment Method</option>
                                                                     <option value="0">Cash</option>
                                                                     <option value="1">Bank</option>
@@ -118,7 +118,7 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="" class="form-label">Note:</label>
-                                                                <textarea name="description" id="" class="form-control" placeholder="">{{ $item->description }}</textarea>
+                                                                <textarea name="payment_note" class="form-control" placeholder=""></textarea>
                                                             </div>
                                                             <div class="text-right">
                                                                 <button type="submit" class="btn btn-sm btn-primary">Save</button>
@@ -128,7 +128,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- end modal for update payment --}}
+                                        
                                     </td>
                                 </tr>
                             @endforeach

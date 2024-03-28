@@ -234,6 +234,7 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
         Route::get("/edit-purchase/{purchase}", 'edit')->name('edit_purchase');
         Route::post("/update-purchase/{purchase}", 'update')->name('update_purchase');
         Route::get("/purchase-invoice/{id}", 'purchaseInvoice')->name('purchase_invoice');
+        Route::post("/purchase-payment-history/{id}", 'purchasePaymentHistory')->name('purchase_payment_history');
     });
 
     // purchase cart routes
